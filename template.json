@@ -1,0 +1,185 @@
+{
+"Actor": {
+  "types": ["pj","pnj"],
+  "pj": {
+    "attributes": {},
+    "age": 0,
+    "royaume": "Dannois",
+    "archetype": "",
+    "profession": "",
+    "taille": "",
+    "poids": "",
+    "don": "",
+    "faiblesse": "",
+    "attributs": {
+      "corps":{
+        "puissance":0,
+        "vigueur":0,
+        "agilité":0
+      },
+      "esprit":{
+        "intelect":0,
+        "perception":0,
+        "tenacite":0
+      },
+      "ame":{
+        "charisme":0,
+        "instinct":0,
+        "communication":0
+      }
+    },
+    "ini":{
+      "reaction":0,
+      "encombrement":0,
+      "protection":0,
+      "magie":0,
+      "ttlIni":0
+    },
+    "dp":{
+      "base":0,
+      "encombrement":0,
+      "protection":0,
+      "magie":0,
+      "ttlDp":0
+    },
+    "dm":{
+      "base":0,
+      "protection":0,
+      "magie":0,
+      "ttlDm":0
+    },
+    "encombrement": 0,
+    "deplacement":0,
+    "renommee":0,
+    "pdv": 0,
+    "actions": 0,
+    "reserve": 0,
+    "richesses":{
+      "or": 0,
+      "argent": 0,
+      "cuivre": 0
+    },
+    "competences":{
+      "acrobatie":0,
+      "artisanat" :{
+        "specialite":"",
+        "valeur":0
+      },
+      "arts" :{
+        "specialite":"",
+        "valeur":0
+      },
+      "attelage":0,
+      "chercher":0,
+      "chevaucher":0,
+      "commerce":0,
+      "discrétion":0,
+      "eloquence":0,
+      "empathie":0,
+      "escalade":0,
+      "esquive":0,
+      "herboristerie":0,
+      "intimidation":0,
+      "jeux":0,
+      "langue" :{
+        "specialite":"",
+        "valeur":0
+      },
+      "larcins":0,
+      "médecine*":0,
+      "mouvement":0,
+      "navigation":0,
+      "natation":0,
+      "négociation":0,
+      "sagas":0,
+      "savoir" :{
+        "specialite":"",
+        "valeur":0
+      },
+      "séduction":0,
+      "superstition":0,
+      "survie":0,
+      "tactique":0,
+      "traditions":0,
+      "Vigilance":0,
+      "competence magique":{
+        "galdr*":0,
+        "runes*":0,
+        "sejdr*":0
+      },
+      "competence martiale":{
+        "armes courtes":0,
+        "armes longues":0,
+        "armes à deux mains":0,
+        "armes d’hast":0,
+        "armes de tir":0,
+        "lancer":0,
+        "lutte":0,
+        "armes improvisées":0
+      }
+    },
+    "armes":[],
+    "armures":[],
+    "sejdr":[],
+    "runes":[],
+    "galdr":{
+      "malediction":[],
+      "illusion":[],
+      "charme":[]
+    },
+    "prouesses martiales":[],
+    "equipement":[]
+
+  },
+  "pnj": {
+    "attributes": {},
+    "description": "",
+    "conflit": [0,0],
+    "mental": 0,
+    "relationel": 0,
+    "mystique": [0,0],
+    "physique": 0,
+    "vitalite": 0
+  }
+},
+"Item": {
+  "types": ["cac","dist","bouclier","armure"],
+  "cac": {
+    "attributes": {},
+    "description": "",
+    "degats": 0,
+    "solidite": 0,
+    "encombrement": 0,
+    "valeur": 0
+  },
+  "dist": {
+    "attributes": {},
+    "description": "",
+    "degats": 0,
+    "solidite": 0,
+    "encombrement": 0,
+    "porteec": 0,
+    "porteeM": 0,
+    "porteeL": 0,
+    "porteee": 0,
+    "valeur": 0
+  },
+  "bouclier": {
+    "attributes": {},
+    "description": "",
+    "defensePhys": 0,
+    "solidite": 0,
+    "encombrementO": 0,
+    "encombrementI": 0,
+    "valeur": 0
+  },
+  "armure": {
+    "attributes": {},
+    "description": "",
+    "protection": 0,
+    "encombrement": 0,
+    "valeur": 0,
+    "pièce": false
+  }
+}
+}

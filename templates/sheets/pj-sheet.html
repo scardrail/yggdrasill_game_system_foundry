@@ -1,0 +1,75 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <body>
+        <p>PJ</p>
+        <div>
+            <div>
+                <label>Age</label>
+                <input name="data.age" type="number" value="{{systemData.age}}" placeholder="Age"/>
+            </div>
+            <div>
+                <label>Royaume</label>
+                <input name="data.royaume" type="text" value="{{systemData.royaume}}" placeholder="Royaume"/>
+            </div>
+            <label>Archétype
+                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder="Archétype"/>
+            </label>
+            <label>Profession
+                <input name="data.profession" type="text" value="{{systemData.profession}}" placeholder="Profession"/>
+            </label>
+            <label>Taille
+                <input name="data.taille" type="text" value="{{systemData.taille}}" placeholder="Taille"/>
+            </label>
+            <label>Poids
+                <input name="data.poids" type="text" value="{{systemData.poids}}" placeholder="Poids"/>
+            </label>
+            <label>Don
+                <input name="data.don" type="text" value="{{systemData.don}}" placeholder="Don"/>
+            </label>
+            <label>Faiblesse
+                <input name="data.faiblesse" type="text" value="{{systemData.faiblesse}}" placeholder="Faiblesse"/>
+            </label>
+        </div>
+        <div>
+            Attributs
+            <div>Corps
+                <label>Puissance
+                    <input name="data.attributs.corps.puissance" type="text" value="{{systemData.attributs.corps.puissance}}" placeholder="Age"/>
+                </label>
+                <label>Vigueur
+                    <input name="data.attributs.corps.vigueur" type="text" value="{{systemData.attributs.corps.vigueur}}" placeholder="Vigueur"/>
+                </label>
+                <label>Agilité
+                    <input name="data.attributs.corps.agilité" type="text" value="{{systemData.attributs.corps.agilité}}" placeholder="Agilité"/>
+                </label>
+            </div>
+            <div>Esprit
+                <label>Intelect
+                    <input name="data.attributs.esprit.intelect" type="text" value="{{systemData.attributs.esprit.intelect}}" placeholder="Intelect"/>
+                </label>
+                <label>Perception
+                    <input name="data.attributs.esprit.perception" type="text" value="{{systemData.attributs.esprit.perception}}" placeholder="Perception"/>
+                </label>
+                <label>Tenacite
+                    <input name="data.attributs.esprit.tenacite" type="text" value="{{systemData.attributs.esprit.tenacite}}" placeholder="Tenacite"/>
+                </label>
+            </div>
+            <div>Ame
+                <label>Charisme
+                    <input name="data.attributs.ame.charisme" type="text" value="{{systemData.attributs.ame.charisme}}" placeholder="Charisme"/>
+                </label>
+                <label>Instinct
+                    <input name="data.attributs.ame.instinct" type="text" value="{{systemData.attributs.ame.instinct}}" placeholder="Instinct"/>
+                </label>
+                <label>Communication
+                    <input name="data.attributs.ame.communication" type="text" value="{{systemData.attributs.ame.communication}}" placeholder="Communication"/>
+                </label>
+            </div>
+        </div>
+    </body>
+</form>
