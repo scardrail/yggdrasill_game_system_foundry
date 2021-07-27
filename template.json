@@ -49,6 +49,7 @@
       "ttlDm":0
     },
     "encombrement": 0,
+    "capaEncombrement": 0,
     "deplacement":0,
     "renommee":0,
     "pdv": 0,
@@ -58,6 +59,71 @@
       "or": 0,
       "argent": 0,
       "cuivre": 0
+    },
+    "competence":{
+      "page1":{
+        "acrobatie":0,
+        "artisanat" :{
+          "specialite":"",
+          "valeur":0
+        },
+        "arts" :{
+          "specialite":"",
+          "valeur":0
+        },
+        "attelage":0,
+        "chercher":0,
+        "chevaucher":0,
+        "commerce":0,
+        "discretion":0,
+        "eloquence":0,
+        "empathie":0,
+        "escalade":0,
+        "esquive":0,
+        "herboristerie":0,
+        "intimidation":0,
+        "jeux":0        
+      },
+      "page2":{
+        "langue" :{
+          "specialite":"",
+          "valeur":0
+        },
+        "larcins":0,
+        "medecine":0,
+        "mouvement":0,
+        "navigation":0,
+        "natation":0,
+        "negociation":0,
+        "sagas":0,
+        "savoir" :{
+          "specialite":"",
+          "valeur":0
+        },
+        "seduction":0,
+        "superstition":0,
+        "survie":0,
+        "tactique":0,
+        "traditions":0,
+        "vigilance":0
+      },
+      "page3":{
+        "competenceMagique":{
+          "galdr":0,
+          "runes":0,
+          "sejdr":0
+        },
+        "competenceMartiale":{
+          "armesCourtes":0,
+          "armesLongues":0,
+          "armesDeuxMains":0,
+          "armesHast":0,
+          "armesTir":0,
+          "lancer":0,
+          "lutte":0,
+          "armesImprovisees":0
+        }
+      }
     },
     "competences":{
       "acrobatie":0,
@@ -73,7 +139,7 @@
       "chercher":0,
       "chevaucher":0,
       "commerce":0,
-      "discrétion":0,
+      "discretion":0,
       "eloquence":0,
       "empathie":0,
       "escalade":0,
@@ -86,36 +152,36 @@
         "valeur":0
       },
       "larcins":0,
-      "médecine*":0,
+      "medecine":0,
       "mouvement":0,
       "navigation":0,
       "natation":0,
-      "négociation":0,
+      "negociation":0,
       "sagas":0,
       "savoir" :{
         "specialite":"",
         "valeur":0
       },
-      "séduction":0,
+      "seduction":0,
       "superstition":0,
       "survie":0,
       "tactique":0,
       "traditions":0,
-      "Vigilance":0,
-      "competence magique":{
-        "galdr*":0,
-        "runes*":0,
-        "sejdr*":0
+      "vigilance":0,
+      "competenceMagique":{
+        "galdr":0,
+        "runes":0,
+        "sejdr":0
       },
-      "competence martiale":{
-        "armes courtes":0,
-        "armes longues":0,
-        "armes à deux mains":0,
-        "armes d’hast":0,
-        "armes de tir":0,
+      "competenceMartiale":{
+        "armesCourtes":0,
+        "armesLongues":0,
+        "armesDeuxMains":0,
+        "armesHast":0,
+        "armesTir":0,
         "lancer":0,
         "lutte":0,
-        "armes improvisées":0
+        "armesImprovisees":0
       }
     },
     "armes":[],

@@ -6,70 +6,554 @@
         </h1>
     </header>
     <body>
-        <p>PJ</p>
         <div>
-            <div>
-                <label>Age</label>
-                <input name="data.age" type="number" value="{{systemData.age}}" placeholder="Age"/>
-            </div>
-            <div>
-                <label>Royaume</label>
-                <input name="data.royaume" type="text" value="{{systemData.royaume}}" placeholder="Royaume"/>
-            </div>
-            <label>Archétype
-                <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder="Archétype"/>
-            </label>
-            <label>Profession
-                <input name="data.profession" type="text" value="{{systemData.profession}}" placeholder="Profession"/>
-            </label>
-            <label>Taille
-                <input name="data.taille" type="text" value="{{systemData.taille}}" placeholder="Taille"/>
-            </label>
-            <label>Poids
-                <input name="data.poids" type="text" value="{{systemData.poids}}" placeholder="Poids"/>
-            </label>
-            <label>Don
-                <input name="data.don" type="text" value="{{systemData.don}}" placeholder="Don"/>
-            </label>
-            <label>Faiblesse
-                <input name="data.faiblesse" type="text" value="{{systemData.faiblesse}}" placeholder="Faiblesse"/>
-            </label>
+            <p>PJ</p>
+            <table class="infoTable">
+                <tr>
+                    <td>
+                        <label>Age</label>
+                    </td>
+                    <td>
+                        <input name="data.age" type="number" value="{{systemData.age}}" placeholder="Age"/>
+                    </td>
+                    <td>
+                        <label>Taille</label>
+                    </td>
+                    <td>
+                        <input name="data.taille" type="text" value="{{systemData.taille}}" placeholder="Taille"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Archétype</label>
+                    </td>
+                    <td>
+                        <input name="data.archetype" type="text" value="{{systemData.archetype}}" placeholder="Archétype"/>
+                    </td>
+                    <td>
+                        <label>Poids</label>
+                    </td>
+                    <td>
+                        <input name="data.poids" type="text" value="{{systemData.poids}}" placeholder="Poids"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Profession</label>
+                    </td>
+                    <td>
+                        <input name="data.profession" type="text" value="{{systemData.profession}}" placeholder="Profession"/>
+                    </td>
+                    <td>
+                        <label>Royaume</label>
+                    </td>
+                    <td>
+                        <input name="data.royaume" type="text" value="{{systemData.royaume}}" placeholder="Royaume"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Don</label>
+                    </td>
+                    <td>
+                        <input name="data.don" type="text" value="{{systemData.don}}" placeholder="Don"/>
+                    </td>
+                    <td>
+                        <label>Faiblesse</label>
+                    </td>
+                    <td>
+                        <input name="data.faiblesse" type="text" value="{{systemData.faiblesse}}" placeholder="Faiblesse"/>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div>
-            Attributs
-            <div>Corps
-                <label>Puissance
-                    <input name="data.attributs.corps.puissance" type="text" value="{{systemData.attributs.corps.puissance}}" placeholder="Age"/>
-                </label>
-                <label>Vigueur
-                    <input name="data.attributs.corps.vigueur" type="text" value="{{systemData.attributs.corps.vigueur}}" placeholder="Vigueur"/>
-                </label>
-                <label>Agilité
-                    <input name="data.attributs.corps.agilité" type="text" value="{{systemData.attributs.corps.agilité}}" placeholder="Agilité"/>
-                </label>
-            </div>
-            <div>Esprit
-                <label>Intelect
-                    <input name="data.attributs.esprit.intelect" type="text" value="{{systemData.attributs.esprit.intelect}}" placeholder="Intelect"/>
-                </label>
-                <label>Perception
-                    <input name="data.attributs.esprit.perception" type="text" value="{{systemData.attributs.esprit.perception}}" placeholder="Perception"/>
-                </label>
-                <label>Tenacite
-                    <input name="data.attributs.esprit.tenacite" type="text" value="{{systemData.attributs.esprit.tenacite}}" placeholder="Tenacite"/>
-                </label>
-            </div>
-            <div>Ame
-                <label>Charisme
-                    <input name="data.attributs.ame.charisme" type="text" value="{{systemData.attributs.ame.charisme}}" placeholder="Charisme"/>
-                </label>
-                <label>Instinct
-                    <input name="data.attributs.ame.instinct" type="text" value="{{systemData.attributs.ame.instinct}}" placeholder="Instinct"/>
-                </label>
-                <label>Communication
-                    <input name="data.attributs.ame.communication" type="text" value="{{systemData.attributs.ame.communication}}" placeholder="Communication"/>
-                </label>
-            </div>
+            <p>Attributs</p>
+            <table class="attributesTable">
+                <tr>
+                    <td colspan="2">Corps</td>
+                    <td colspan="2">Esprit</td>
+                    <td colspan="2">Ame</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Puissance</label>
+                    </td>
+                    <td>
+                        <input class="shrtNbInput" name="data.attributs.corps.puissance" type="number" value="{{systemData.attributs.corps.puissance}}" placeholder="Age"/>
+                    </td>
+                    <td>
+                        <label>Intelect</label>
+                    </td>
+                    <td>
+                        <input name="data.attributs.esprit.intelect" type="number" value="{{systemData.attributs.esprit.intelect}}" placeholder="Intelect"/>
+                    </td>
+                    <td>
+                        <label>Charisme</label>
+                    </td>
+                    <td>
+                        <input name="data.attributs.ame.charisme" type="number" value="{{systemData.attributs.ame.charisme}}" placeholder="Charisme"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Vigueur</label>
+                    </td>
+                    <td>
+                        <input class="shrtNbInput" name="data.attributs.corps.vigueur" type="number" value="{{systemData.attributs.corps.vigueur}}" placeholder="Vigueur"/>
+                    </td>
+                    <td>
+                        <label>Perception</label>
+                    </td>
+                    <td>
+                        <input name="data.attributs.esprit.perception" type="number" value="{{systemData.attributs.esprit.perception}}" placeholder="Perception"/>
+                    </td>
+                    <td>
+                        <label>Instinct</label>
+                    </td>
+                    <td>
+                        <input name="data.attributs.ame.instinct" type="number" value="{{systemData.attributs.ame.instinct}}" placeholder="Instinct"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Agilité</label>
+                    </td>
+                    <td>
+                        <input class="shrtNbInput" name="data.attributs.corps.agilité" type="number" value="{{systemData.attributs.corps.agilité}}" placeholder="Agilité"/>
+                    </td>
+                    <td>
+                        <label>Tenacite</label>
+                    </td>
+                    <td>
+                        <input name="data.attributs.esprit.tenacite" type="number" value="{{systemData.attributs.esprit.tenacite}}" placeholder="Tenacite"/>
+                    </td>
+                    <td>
+                        <label>Communication</label>
+                    </td>
+                    <td>
+                        <input name="data.attributs.ame.communication" type="number" value="{{systemData.attributs.ame.communication}}" placeholder="Communication"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <p>Attributs secondaires</p>
+            <table class="attributes2Table">
+                <tr>
+                    <td colspan="2">Initiative</td>
+                    <td colspan="2">Défense Physique</td>
+                    <td colspan="2">Défense Mentale</td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Reaction</label>
+                    </td>
+                    <td>
+                       <input name="data.ini.reaction" type="number" value="{{systemData.ini.reaction}}" placeholder="Reaction"/>
+                    </td>
+                    <td>
+                       <label>Base</label>
+                    </td>
+                    <td>
+                       <input name="data.dp.base" type="number" value="{{systemData.dp.base}}" placeholder="Base"/>
+                    </td>
+                    <td>
+                       <label>Base</label>
+                    </td>
+                    <td>
+                       <input name="data.dm.base" type="number" value="{{systemData.dm.base}}" placeholder="Base"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Encombrement</label>
+                    </td>
+                    <td>
+                       <input name="data.ini.encombrement" type="number" value="{{systemData.ini.encombrement}}" placeholder="Encombrement"/>
+                    </td>
+                    <td>
+                       <label>Encombrement</label>
+                    </td>
+                    <td>
+                       <input name="data.dp.encombrement" type="number" value="{{systemData.dp.encombrement}}" placeholder="Encombrement"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Protection</label>
+                    </td>
+                    <td>
+                       <input name="data.ini.protection" type="number" value="{{systemData.ini.protection}}" placeholder="Protection"/>
+                    </td>
+                    <td>
+                       <label>Protection</label>
+                    </td>
+                    <td>
+                       <input name="data.dp.protection" type="number" value="{{systemData.dp.protection}}" placeholder="Protection"/>
+                    </td>
+                    <td>
+                       <label>Protection</label>
+                    </td>
+                    <td>
+                       <input name="data.dm.protection" type="number" value="{{systemData.dm.protection}}" placeholder="Protection"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Magie</label>
+                    </td>
+                    <td>
+                       <input name="data.ini.magie" type="number" value="{{systemData.ini.magie}}" placeholder="Magie"/>
+                    </td>
+                    <td>
+                       <label>Magie</label>
+                    </td>
+                    <td>
+                       <input name="data.dp.magie" type="number" value="{{systemData.dp.magie}}" placeholder="Magie"/>
+                    </td>
+                    <td>
+                       <label>Magie</label>
+                    </td>
+                    <td>
+                       <input name="data.dm.magie" type="number" value="{{systemData.dm.magie}}" placeholder="Magie"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Total</label>
+                    </td>
+                    <td>
+                       <input name="data.ini.ttlIni" type="number" value="{{systemData.ini.ttlIni}}" placeholder="Total"/>
+                    </td>
+                    <td>
+                       <label>Total</label>
+                    </td>
+                    <td>
+                       <input name="data.dp.ttlDp" type="number" value="{{systemData.dp.ttlDp}}" placeholder="Total"/>
+                    </td>
+                    <td>
+                       <label>Total</label>
+                    </td>
+                    <td>
+                       <input name="data.dm.ttlDm" type="number" value="{{systemData.dm.ttlDm}}" placeholder="Total"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>Competences
+            <table class="">
+                {{#each systemData.competence as |page key|}}
+                    <tr>
+                        {{#each page as |competence value|}}
+                        <td>
+                            {{competence}}
+                            {{value}}
+                        </td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </table>
+            
+        </div>
+        
+        <div>Competences
+            <table class="competencesTable">
+                <tr>
+                    <td colspan="2">
+                        <label>Acrobatie</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.acrobatie" type="number" value="{{systemData.competences.acrobatie}}" placeholder="Acrobatie"/>
+                    </td>
+                    <td>
+                        <label>Langue:</label>
+                    </td>
+                    <td> 
+                        <input name="data.competences.langue.specialite" type="text" value="{{systemData.competences.langue.specialite}}" placeholder="Specialite"/>
+                    </td>
+                    <td>
+                        <input name="data.competences.langue.valeur" type="number" value="{{systemData.competences.langue.valeur}}" placeholder="Valeur"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Competence Magique</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Artisanat:</label>
+                    </td>
+                    <td> 
+                        <input name="data.competences.artisanat.specialite" type="text" value="{{systemData.competences.artisanat.specialite}}" placeholder="Specialite"/>
+                    </td>
+                    <td>
+                        <input name="data.competences.artisanat.valeur" type="number" value="{{systemData.competences.artisanat.valeur}}" placeholder="Valeur"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Larcins</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.larcins" type="number" value="{{systemData.competences.larcins}}" placeholder="Larcins"/>
+                    </td>
+                    <td >
+                        <label>Galdr*</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMagique.galdr" type="number" value="{{systemData.competences.competenceMagique.galdr}}" placeholder="Galdr*"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Arts:</label>
+                    </td>
+                    <td> 
+                        <input name="data.competences.arts.specialite" type="text" value="{{systemData.competences.arts.specialite}}" placeholder="Specialite"/>
+                    </td>
+                    <td>
+                        <input name="data.competences.arts.valeur" type="number" value="{{systemData.competences.arts.valeur}}" placeholder="Valeur"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Médecine*</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.medecine" type="number" value="{{systemData.competences.medecine}}" placeholder="Médecine*"/>
+                    </td>
+                    <td >
+                        <label>Runes*</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMagique.runes" type="number" value="{{systemData.competences.competenceMagique.runes}}" placeholder="Runes*"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Attelage</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.attelage" type="number" value="{{systemData.competences.attelage}}" placeholder="Attelage"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Mouvement</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.mouvement" type="number" value="{{systemData.competences.mouvement}}" placeholder="Mouvement"/>
+                    </td>
+                    <td>
+                        <label>Sejdr*</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMagique.sejdr" type="number" value="{{systemData.competences.competenceMagique.sejdr}}" placeholder="Sejdr*"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Chercher</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.chercher" type="number" value="{{systemData.competences.chercher}}" placeholder="Chercher"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Navigation</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.navigation" type="number" value="{{systemData.competences.navigation}}" placeholder="Navigation"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Competence Martiale</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Chevaucher</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.chevaucher" type="number" value="{{systemData.competences.chevaucher}}" placeholder="Chevaucher"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Natation</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.natation" type="number" value="{{systemData.competences.natation}}" placeholder="Natation"/>
+                    </td>
+                    <td>
+                        <label>Armes courtes</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.armesCourtes" type="number" value="{{systemData.competences.competenceMartiale.armesCourtes}}" placeholder="Courtes"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Commerce</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.commerce" type="number" value="{{systemData.competences.commerce}}" placeholder="Commerce"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Négociation</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.negociation" type="number" value="{{systemData.competences.negociation}}" placeholder="Négociation"/>
+                    </td>
+                    <td>
+                        <label>Armes longues</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.armesLongues" type="number" value="{{systemData.competences.competenceMartiale.armesLongues}}" placeholder="Longues"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Discretion</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.discretion" type="number" value="{{systemData.competences.discretion}}" placeholder="Discretion"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Sagas</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.sagas" type="number" value="{{systemData.competences.sagas}}" placeholder="Sagas"/>
+                    </td>
+                    <td>
+                        <label>Armes à deux mains</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.armesDeuxMains" type="number" value="{{systemData.competences.competenceMartiale.armesDeuxMains}}" placeholder="Deux Mains"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Eloquence</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.eloquence" type="number" value="{{systemData.competences.eloquence}}" placeholder="Eloquence"/>
+                    </td>
+                    <td>
+                        <label>Savoir:</label>
+                    </td>
+                    <td> 
+                        <input name="data.competences.savoir.specialite" type="text" value="{{systemData.competences.savoir.specialite}}" placeholder="Specialite"/>
+                    </td>
+                    <td>
+                        <input name="data.competences.savoir.valeur" type="number" value="{{systemData.competences.savoir.valeur}}" placeholder="Valeur"/>
+                    </td>
+                    <td>
+                        <label>Armes d'hast</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.armesHast" type="number" value="{{systemData.competences.competenceMartiale.armesHast}}" placeholder="Hast"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Empathie</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.empathie" type="number" value="{{systemData.competences.empathie}}" placeholder="Empathie"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Séduction</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.seduction" type="number" value="{{systemData.competences.seduction}}" placeholder="Séduction"/>
+                    </td>
+                    <td>
+                        <label>Armes de tir</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.armesTir" type="number" value="{{systemData.competences.competenceMartiale.armesTir}}" placeholder="Tir"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Escalade</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.escalade" type="number" value="{{systemData.competences.escalade}}" placeholder="Escalade"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Superstition</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.superstition" type="number" value="{{systemData.competences.superstition}}" placeholder="Superstition"/>
+                    </td>
+                    <td>
+                        <label>Lancer</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.lancer" type="number" value="{{systemData.competences.competenceMartiale.lancer}}" placeholder="Lancer"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Esquive</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.esquive" type="number" value="{{systemData.competences.esquive}}" placeholder="Esquive"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Survie</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.survie" type="number" value="{{systemData.competences.survie}}" placeholder="Survie"/>
+                    </td>
+                    <td>
+                        <label>Lutte</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.lutte" type="number" value="{{systemData.competences.competenceMartiale.lutte}}" placeholder="Lutte"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Herboristerie</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.herboristerie" type="number" value="{{systemData.competences.herboristerie}}" placeholder="Herboristerie"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Tactique</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.tactique" type="number" value="{{systemData.competences.tactique}}" placeholder="Tactique"/>
+                    </td>
+                    <td>
+                        <label>Armes improvisées</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.competenceMartiale.armesImprovisees" type="number" value="{{systemData.competences.competenceMartiale.armesImprovisees}}" placeholder="Improvisées"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Intimidation</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.intimidation" type="number" value="{{systemData.competences.intimidation}}" placeholder="Intimidation"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Traditions</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.traditions" type="number" value="{{systemData.competences.traditions}}" placeholder="Traditions"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Jeux</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.jeux" type="number" value="{{systemData.competences.jeux}}" placeholder="Jeux"/>
+                    </td>
+                    <td colspan="2">
+                        <label>Vigilance</label>
+                    </td>
+                    <td>
+                        <input name="data.competences.vigilance" type="number" value="{{systemData.competences.vigilance}}" placeholder="Vigilance"/>
+                    </td>
+                </tr>
+            </table>
         </div>
     </body>
 </form>
