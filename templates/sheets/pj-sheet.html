@@ -244,14 +244,30 @@
         <div>Competences
             <table class="">
                 {{#each systemData.competence as |page key|}}
+                    {{#each page as |value competence|}}
                     <tr>
-                        {{#each page as |competence value|}}
-                        <td>
-                            {{competence}}
-                            {{value}}
-                        </td>
-                        {{/each}}
+                        {{#if (notMagicOrMartial (competence))}}
+                            {{#if (isObject (value))}}
+                                <td>
+                                    <label>{{competence}}</label>
+                                </td>
+                                <td>
+                                    <input name="data.competence.{{key}}.{{competence}}.specialite" type="text" value="{{value.specialite}}" placeholder="Specialite"/>
+                                </td>
+                                <td>
+                                    <input name="data.competence.{{key}}.{{competence}}.valeur" type="number" value="{{value.valeur}}" placeholder="Valeur"/>
+                                </td>
+                            {{else}}
+                                <td colspan="2">
+                                    <label>{{competence}}</label>
+                                </td>
+                                <td>
+                                    <input name="data.competence.{{key}}.{{competence}}" type="number" value="{{value}}" placeholder="{{competence}}"/>
+                                </td>
+                            {{/if}}
+                        {{/if}}
                     </tr>
+                    {{/each}}
                 {{/each}}
             </table>
             
