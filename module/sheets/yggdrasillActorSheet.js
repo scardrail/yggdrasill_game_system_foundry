@@ -32,7 +32,14 @@ export default class YggdrasillActorSheet extends ActorSheet {
     super.activateListeners(html);
 
     // Everything below here is only needed if the sheet is editable
-    if ( !this.isEditable ) return;
+    // if ( !this.isEditable ) return;
+    html.find('.rollable').click(this._onRoll.bind(this));
     
   }
+  _onRoll(event){
+      console.log(event)
+      const dataSet = event.target.dataset["dice"];
+      console.log(dataSet)
+  }
+
 }

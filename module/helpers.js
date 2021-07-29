@@ -5,24 +5,25 @@ export const registerHandlebarsHelpers = function () {
     });
 
     Handlebars.registerHelper('isObject', function (val) {
-        console.log("Yggdrasill | isObject | "+val);
         let result = val instanceof Object 
-        console.log("Yggdrasill | isObject | "+result);
         return result;
     });
 
+    Handlebars.registerHelper('nbItem', function (list) {
+        console.log("Yggdrasill | nbItem | list:"+list[0].specialite);
+  
+        console.log("Yggdrasill | nbItem | list.length:"+list.length);
+        if (list) return list.length;
+        else return 0;
+    });
+
     Handlebars.registerHelper('notMagicOrMartial', function (val) {
-        console.log("Yggdrasill | notMagicOrMartial | "+val);
         let isNotMagic = val !== "competenceMagique";
-        console.log("Yggdrasill | notMagicOrMartial | isNotMagic:"+isNotMagic);
         let isNotMartial = val !== "competenceMartiale";
-        console.log("Yggdrasill | notMagicOrMartial | isNotMartial:"+isNotMartial);
         var orStatement = true;
         if(!isNotMagic || !isNotMartial){
             orStatement = !orStatement;
         }
-        console.log("Yggdrasill | notMagicOrMartial | orStatement:"+orStatement);
-
         return orStatement;
     });
 

@@ -12,8 +12,6 @@ Hooks.once("init", () => {
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("yggdrasill", YggdrasillActorSheet, {makeDefault: true});
 
-    
-
     // Register Handlebars helpers
     registerHandlebarsHelpers();
 });

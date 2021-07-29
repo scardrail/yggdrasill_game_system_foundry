@@ -63,14 +63,14 @@
     "competence":{
       "page1":{
         "acrobatie":0,
-        "artisanat" :{
-          "specialite":"",
+        "artisanat" :[{
+          "specialite":"test",
           "valeur":0
-        },
-        "arts" :{
-          "specialite":"",
+        }],
+        "arts" :[{
+          "specialite":"aa",
           "valeur":0
-        },
+        }],
         "attelage":0,
         "chercher":0,
         "chevaucher":0,
@@ -85,10 +85,13 @@
         "jeux":0
       },
       "page2":{
-        "langue" :{
+        "langue" :[{
           "specialite":"",
           "valeur":0
-        },
+        },{
+          "specialite":"",
+          "valeur":0
+        }],
         "larcins":0,
         "medecine":0,
         "mouvement":0,
@@ -96,10 +99,13 @@
         "natation":0,
         "negociation":0,
         "sagas":0,
-        "savoir" :{
+        "savoir" :[{
           "specialite":"",
           "valeur":0
-        },
+        },{
+          "specialite":"",
+          "valeur":0
+        }],
         "seduction":0,
         "superstition":0,
         "survie":0,

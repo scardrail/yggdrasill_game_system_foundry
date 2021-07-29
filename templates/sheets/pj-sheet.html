@@ -245,28 +245,37 @@
             <table class="">
                 {{#each systemData.competence as |page key|}}
                     {{#each page as |value competence|}}
-                    <tr>
                         {{#if (notMagicOrMartial (competence))}}
                             {{#if (isObject (value))}}
-                                <td>
+                            <tr>
+                                <td rowspan="{{nbItem (value)}}">
                                     <label>{{competence}}</label>
                                 </td>
-                                <td>
-                                    <input name="data.competence.{{key}}.{{competence}}.specialite" type="text" value="{{value.specialite}}" placeholder="Specialite"/>
-                                </td>
-                                <td>
-                                    <input name="data.competence.{{key}}.{{competence}}.valeur" type="number" value="{{value.valeur}}" placeholder="Valeur"/>
-                                </td>
+                                {{#each value as |content cle|}}
+                                    <td>
+                                        <label>{{cle}}</label>
+                                        <label>{{content.specialite}}</label>
+                                        <label>{{content.valeur}}</label>
+                                        <label>{{specialite}}</label>
+                                        <label>{{valeur}}</label>
+                                        <input name='data.competence.{{key}}.{{competence}}.specialite' type="text" value="{{content.specialite}}" placeholder="Specialite"/>
+                                    </td>
+                                    <td>
+                                        <input name='data.competence.{{key}}.{{competence}}.valeur' type="number" value="{{content.valeur}}" placeholder="Valeur"/>
+                                    </td>
+                                </tr>
+                                {{/each}}
                             {{else}}
-                                <td colspan="2">
-                                    <label>{{competence}}</label>
-                                </td>
-                                <td>
-                                    <input name="data.competence.{{key}}.{{competence}}" type="number" value="{{value}}" placeholder="{{competence}}"/>
-                                </td>
+                                <tr>
+                                    <td colspan="2">
+                                        <label>{{competence}}</label>
+                                    </td>
+                                    <td>
+                                        <input name="data.competence.{{key}}.{{competence}}" type="number" value="{{value}}" placeholder="{{competence}}"/>
+                                    </td>
+                                </tr>
                             {{/if}}
                         {{/if}}
-                    </tr>
                     {{/each}}
                 {{/each}}
             </table>
@@ -277,7 +286,7 @@
             <table class="competencesTable">
                 <tr>
                     <td colspan="2">
-                        <label>Acrobatie</label>
+                        <label class="rollable" data-dice="{{systemData.competences.acrobatie}}">Acrobatie</label>
                     </td>
                     <td>
                         <input name="data.competences.acrobatie" type="number" value="{{systemData.competences.acrobatie}}" placeholder="Acrobatie"/>
