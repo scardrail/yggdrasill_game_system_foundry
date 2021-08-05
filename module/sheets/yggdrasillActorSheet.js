@@ -1,16 +1,16 @@
 export default class YggdrasillActorSheet extends ActorSheet {
     static get defaultOptions(){
         return mergeObject(super.defaultOptions, {
-            template: `systems/yggdrasill/templates/sheets/${this.actor.data.type}-sheet.hbs`,
-            classes: ["yggdrasill", "sheet", `${this.actor.data.type}`]
+            template: "systems/yggdrasill/templates/sheets/importantCharacter-sheet.hbs",
+            classes: ["yggdrasill", "sheet", "importantCharacter"]
         })
     }
 
-    get template(){
-        console.log(`Yggdrasill | Récupération du fichier actor hbs ${this.actor.data.type}-sheet.hbs`);
+    // get template(){
+    //     console.log(`Yggdrasill | Récupération du fichier actor hbs ${this.actor.data.type}-sheet.hbs`);
 
-        return `systems/yggdrasill/templates/sheets/${this.actor.data.type}-sheet.hbs`;
-    }
+    //     return `systems/yggdrasill/templates/sheets/${this.actor.data.type}-sheet.hbs`;
+    // }
 
     getData(){
         const data = super.getData();

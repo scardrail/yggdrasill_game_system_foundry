@@ -85,13 +85,18 @@
           "protection":0,
           "magic":0,
           "ttlDm":0
+        },
+        "transport":{
+          "value":0,
+          "sr10":0,
+          "sr14":0
+        },
+        "spaceReq": {
+          "value":0,
+          "max":0
         }
       },
       "lifePoints": {
-        "value":0,
-        "max":0
-      },
-      "spaceReq": {
         "value":0,
         "max":0
       },

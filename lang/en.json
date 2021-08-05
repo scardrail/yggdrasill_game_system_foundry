@@ -36,6 +36,49 @@
             "rangeM": "Medium range",
             "rangeL": "Large range",
             "rangeE": "Extreme range"
+        },
+        "character":{
+            "age": "Age",
+            "kingdom": "Kingdom",
+            "archetype": "Archetype",
+            "profession": "Profession",
+            "size": "Size",
+            "weight": "Weight",
+            "flair": "Flair",
+            "weakness": "Weakness",
+            "background": "Background",
+            "renown":"Renown",
+            "richness":"Richness"
+        },
+        "characteristics":{
+            "primary":{
+                "body":"Body",
+                "power": "Power",
+                "vigour":"Vigour",
+                "agility":"Agility",
+                "spirit":"Spirit",
+                "intelect":"Intelect",
+                "perception":"Perception",
+                "tenacity":"Tenacity",
+                "soul":"Soul",
+                "charisma":"Charisma",
+                "instinct":"Instinct",
+                "communication":"Communication"
+            },
+            "secondary":{
+                "ini":"INI",
+                "reaction":"REA",
+                "spaceReq":"ENC",
+                "protection":"Prot.",
+                "magic":"Magic",
+                "ttlIni":"Total",
+                "dp":"DP",
+                "base":"Base",
+                "ttlDp":"Total",
+                "dm":"DM",
+                "ttlDm":"Total",
+                "transport":"TRAN"
+            }
         }
     }
 }

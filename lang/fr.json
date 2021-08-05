@@ -35,6 +35,49 @@
             "rangeM": "Portée moyenne",
             "rangeL": "Portée longue",
             "rangeE": "Portée extrème"
+        },
+        "character":{
+            "age": "Age",
+            "kingdom": "Royaume",
+            "archetype": "Archétype",
+            "profession": "Profession",
+            "size": "Taille",
+            "weight": "Poids",
+            "flair": "Don",
+            "weakness": "Faiblesse",
+            "background": "Background",
+            "renown":"Renommée",
+            "richness":"Richesse"
+        },
+        "characteristics":{
+            "primary":{
+                "body":"Corps",
+                "power": "Puissance",
+                "vigour":"Vigueur",
+                "agility":"Agilité",
+                "spirit":"Esprit",
+                "intelect":"Intelect",
+                "perception":"Perception",
+                "tenacity":"Tenacité",
+                "soul":"Ame",
+                "charisma":"Charisme",
+                "instinct":"Instinct",
+                "communication":"Communication"
+            },
+            "secondary":{
+                "ini":"INI",
+                "reaction":"REA",
+                "spaceReq":"ENC",
+                "protection":"Prot.",
+                "magic":"Magie",
+                "ttlIni":"Total",
+                "dp":"DP",
+                "base":"Base",
+                "ttlDp":"Total",
+                "dm":"DM",
+                "ttlDm":"Total",
+                "transport":"DEP"
+            }
         }
     }
 }
