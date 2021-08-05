@@ -1,0 +1,41 @@
+{
+    "yggdrasill": {
+        "item": {
+            "qty": "Quantity:",
+            "qtyMax": "Quantity:",
+            "price": "Price :"
+        },
+        "equipment": {
+            "enc": "Encombrement :",
+            "solidity": "Solidity :",
+            "equiped": "Equipped ?",
+            "ranged": "A distance ?",
+            "equipable": "Equipable ?",
+            "stackable": "Empilable ?",
+            "unique": "Unique ?",
+            "2Handed": "Two handed ?",
+            "equipment": "Equipment ?",
+            "weapon": "Weapon ?",
+            "protection": "Protection?",
+            "pieceProtec" : "Piece of armour?"
+        },
+        "category": {
+            "wShort": "Short weapon",
+            "wLong": "Long weapon",
+            "wTwoHands": "Two-handed weapon",
+            "wHast": "Hast weapon",
+            "wThrow": "Throwing weapon",
+            "wShot": "Shooting weapon"
+        },
+        "weapon": {
+            "category" : "Weapon's category :",
+            "subType" : "Weapon type :",
+            "hands": "Hands number :",
+            "dmgBase": "Basic damage :",
+            "rangeC": "Short range",
+            "rangeM": "Medium range",
+            "rangeL": "Large range",
+            "rangeE": "Extreme range"
+        }
+    }
+}

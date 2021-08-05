@@ -63,14 +63,14 @@
     "competence":{
       "page1":{
         "acrobatie":0,
-        "artisanat" :[{
-          "specialite":"test",
+        "artisanat" :{
+          "specialite":"",
           "valeur":0
-        }],
-        "arts" :[{
-          "specialite":"aa",
+        },
+        "arts" :{
+          "specialite":"",
           "valeur":0
-        }],
+        },
         "attelage":0,
         "chercher":0,
         "chevaucher":0,
@@ -85,13 +85,10 @@
         "jeux":0
       },
       "page2":{
-        "langue" :[{
+        "langue" :{
           "specialite":"",
           "valeur":0
-        },{
-          "specialite":"",
-          "valeur":0
-        }],
+        },
         "larcins":0,
         "medecine":0,
         "mouvement":0,
@@ -99,13 +96,10 @@
         "natation":0,
         "negociation":0,
         "sagas":0,
-        "savoir" :[{
+        "savoir" :{
           "specialite":"",
           "valeur":0
-        },{
-          "specialite":"",
-          "valeur":0
-        }],
+        },
         "seduction":0,
         "superstition":0,
         "survie":0,
@@ -215,7 +209,35 @@
   }
 },
 "Item": {
-  "types": ["cac","dist","bouclier","armure"],
+  "types": ["cac","dist","bouclier","armure","arme","protection"],
+  "templates":{
+    "base":{
+      "description" : "description",
+      "source" : ""
+    },
+    "item":{
+      "qty" : 1,
+      "qtyMax" : null,
+      "price" : 0
+    },
+    "equipment":{
+      "enc" : 0,
+      "solidity" : 0,
+      "equiped" : false,
+      "properties": {
+        "ranged": false,
+        "equipable": false,
+        "stackable": false,
+        "unique" : false,
+        "2Handed" : false,
+        "equipment" : false,
+        "weapon" : false,
+        "protection" : false,
+        "pieceProtec" : false
+      }
+    }
+  },
+
   "cac": {
     "attributes": {},
     "description": "",
@@ -252,6 +274,28 @@
     "encombrement": 0,
     "valeur": 0,
     "pièce": false
+  },
+  "arme":{
+    "templates": [
+      "base",
+      "item",
+      "equipment"
+    ],
+    "subType" : "wLong",
+    "hands": 1,
+    "dmgBase": 0,
+    "rangeC": 0,
+    "rangeM": 0,
+    "rangeL": 0,
+    "rangeE": 0
+  },
+  "protection":{
+    "templates": [
+      "base",
+      "item",
+      "equipment"
+    ],
+    "defBase" : 0
   }
 }
 }

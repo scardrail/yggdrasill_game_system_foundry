@@ -7,6 +7,7 @@ export default class YggdrasillItemSheet extends ItemSheet {
 
     getData(){
         const data = super.getData();
+        data.config = CONFIG.yggdrasill;
         console.log(data);
         return data;
     }

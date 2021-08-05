@@ -5,13 +5,12 @@ export const registerHandlebarsHelpers = function () {
     });
 
     Handlebars.registerHelper('isObject', function (val) {
-        let result = val instanceof Object 
+        let result = val instanceof Object
         return result;
     });
 
     Handlebars.registerHelper('nbItem', function (list) {
         console.log("Yggdrasill | nbItem | list:"+list[0].specialite);
-  
         console.log("Yggdrasill | nbItem | list.length:"+list.length);
         if (list) return list.length;
         else return 0;

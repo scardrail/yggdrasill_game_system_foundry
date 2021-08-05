@@ -13,9 +13,20 @@
     "module/yggdrasill.js"
   ],
   "styles": [
-    "styles/yggdrasill.css"
+    "yggdrasill.css"
   ],
-  "languages": [],
+  "languages": [
+    {
+      "lang" : "fr",
+      "name" : "Français",
+      "path" : "lang/fr.json"
+    },
+    {
+      "lang" : "en",
+      "name" : "English",
+      "path" : "lang/en.json"
+    }
+  ],
   "packs": [],
   "system": [],
   "dependencies": [],
