@@ -1,25 +1,35 @@
 {
     "yggdrasill": {
+        "tabs":{
+            "carac":"Characteristics",
+            "cpt":"Competences",
+            "equipmt":"Equipment",
+            "fight":"Fight",
+            "magic":"magic",
+            "story":"story"
+        },
         "item": {
-            "qty": "Quantity:",
-            "qtyMax": "Quantity:",
-            "price": "Price :"
+            "qty": "Quantity",
+            "qtyMax": "Quantity",
+            "price": "Price",
+            "property":"Property"
         },
         "equipment": {
-            "enc": "Encombrement :",
-            "solidity": "Solidity :",
+            "enc": "Space requirement",
+            "solidity": "Solidity",
             "equiped": "Equipped ?",
-            "ranged": "A distance ?",
+            "ranged": "Ranged ?",
             "equipable": "Equipable ?",
-            "stackable": "Empilable ?",
+            "stackable": "Stackable ?",
             "unique": "Unique ?",
             "2Handed": "Two handed ?",
             "equipment": "Equipment ?",
             "weapon": "Weapon ?",
             "protection": "Protection?",
-            "pieceProtec" : "Piece of armour?"
+            "pieceProtec": "Piece of armour?",
+            "defBase": "Protection"
         },
-        "category": {
+        "wCategory": {
             "wShort": "Short weapon",
             "wLong": "Long weapon",
             "wTwoHands": "Two-handed weapon",
@@ -27,11 +37,19 @@
             "wThrow": "Throwing weapon",
             "wShot": "Shooting weapon"
         },
+        "pCategory": {
+            "shield": "Shield",
+            "armor": "Armor",
+            "pieceArmor": "Armor pieces"
+        },
         "weapon": {
-            "category" : "Weapon's category :",
-            "subType" : "Weapon type :",
-            "hands": "Hands number :",
-            "dmgBase": "Basic damage :",
+            "category": "Weapon's category:",
+            "subType": "Weapon type",
+            "pSubType": "Type of protection",
+            "hands": "Hands number",
+            "dmgBase": "Basic damage",
+            "range":"Ranged weapon",
+            "melee":"Melee weapon",
             "rangeC": "Short range",
             "rangeM": "Medium range",
             "rangeL": "Large range",
@@ -39,6 +57,7 @@
         },
         "character":{
             "age": "Age",
+            "ageUnit":"years Old",
             "kingdom": "Kingdom",
             "archetype": "Archetype",
             "profession": "Profession",
@@ -48,6 +67,7 @@
             "weakness": "Weakness",
             "background": "Background",
             "renown":"Renown",
+            "legendPt":"Legend points",
             "richness":"Richness"
         },
         "characteristics":{

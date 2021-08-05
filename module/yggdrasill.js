@@ -1,8 +1,18 @@
 import YggdrasillItemSheet from "./sheets/yggdrasillItemSheet.js";
-import YggdrasillActorSheet from "./sheets/yggdrasillActorSheet.js";
+import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
 
-import { registerHandlebarsHelpers } from "./helpers.js";
+import { registerHandlebarsHelpers} from "./helpers.js";
 import {yggdrasill} from "./config.js";
+
+async function preloadHandlebarsTemplates() {
+    const templatePaths = [
+        "systems/yggdrasill/templates/partials/character-description-block.hbs",
+        "systems/yggdrasill/templates/partials/character-primCarac-block.hbs",
+        "systems/yggdrasill/templates/partials/character-secCarac-block.hbs",
+        "systems/yggdrasill/templates/partials/character-thirdCarac-block.hbs"
+    ];
+    return loadTemplates(templatePaths);
+}
 
 Hooks.once("init", () => {
     console.log("Yggdrasill | Initialisation du système Yggdrasill");
@@ -17,4 +27,5 @@ Hooks.once("init", () => {
     CONFIG.yggdrasill = yggdrasill;
     // Register Handlebars helpers
     registerHandlebarsHelpers();
+    preloadHandlebarsTemplates();
 });

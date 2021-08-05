@@ -13,6 +13,7 @@
       "weakness": "",
       "background": "",
       "renown":0,
+      "legendPt":0,
       "richness":{
         "gold": 0,
         "silver": 0,
@@ -24,43 +25,43 @@
       "primCarac": {
         "body":{
           "power": {
-            "value":0,
+            "value":1,
             "mod":0
           },
           "vigour":{
-            "value":0,
+            "value":1,
             "mod":0
           },
           "agility":{
-            "value":0,
+            "value":1,
             "mod":0
           }
         },
         "spirit":{
           "intelect":{
-            "value":0,
+            "value":1,
             "mod":0
           },
           "perception":{
-            "value":0,
+            "value":1,
             "mod":0
           },
           "tenacity":{
-            "value":0,
+            "value":1,
             "mod":0
           }
         },
         "soul":{
           "charisma":{
-            "value":0,
+            "value":1,
             "mod":0
           },
           "instinct":{
-            "value":0,
+            "value":1,
             "mod":0
           },
           "communication":{
-            "value":0,
+            "value":1,
             "mod":0
           }
         }
@@ -93,7 +94,8 @@
         },
         "spaceReq": {
           "value":0,
-          "max":0
+          "min3":0,
+          "plus1":0
         }
       },
       "lifePoints": {
@@ -187,6 +189,9 @@
       "item",
       "equipment"
     ],
+    "properties": {
+      "weapon" : true
+    },
     "subType" : "wLong",
     "hands": 1,
     "dmgBase": 0,
@@ -201,7 +206,14 @@
       "item",
       "equipment"
     ],
-    "defBase" : 0
+    "properties": {
+      "protection" : true
+    },
+    "pSubType":"armor",
+    "defBase" : {
+      "value":0,
+      "mod":0
+    }
   }
 }
 }

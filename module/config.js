@@ -1,10 +1,15 @@
 export const yggdrasill = {};
 
 yggdrasill.weaponTypes = {
-    wShort: "yggdrasill.category.wShort",
-    wLong: "yggdrasill.category.wLong",
-    wTwoHands: "yggdrasill.category.wTwoHands",
-    wHast: "yggdrasill.category.wHast",
-    wThrow: "yggdrasill.category.wThrow",
-    wShot: "yggdrasill.category.wShot"
+    wShort: "yggdrasill.wCategory.wShort",
+    wLong: "yggdrasill.wCategory.wLong",
+    wTwoHands: "yggdrasill.wCategory.wTwoHands",
+    wHast: "yggdrasill.wCategory.wHast",
+    wThrow: "yggdrasill.wCategory.wThrow",
+    wShot: "yggdrasill.wCategory.wShot"
+};
+yggdrasill.protectionTypes = {
+    shield: "yggdrasill.pCategory.shield",
+    armor: "yggdrasill.pCategory.armor",
+    pieceArmor: "yggdrasill.pCategory.pieceArmor"
 };

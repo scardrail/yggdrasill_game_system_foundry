@@ -58,4 +58,10 @@ export const registerHandlebarsHelpers = function () {
     Handlebars.registerHelper('equals', function (val1, val2) {
         return val1 == val2;
     });
+    Handlebars.registerHelper('or', function (val1, val2) {
+        return val1 || val2;
+    });
+    Handlebars.registerHelper('not', function (cond) {
+        return !cond;
+    });
 }

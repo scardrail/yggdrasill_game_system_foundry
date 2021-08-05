@@ -1,25 +1,35 @@
 {
     "yggdrasill":{
+        "tabs":{
+            "carac" : "Caractéristiques",
+            "cpt" : "Compétences",
+            "equipmt" : "Equipement",
+            "fight" : "Martial",
+            "magic" : "Magie",
+            "story" : "Histoire"
+        },
         "item": {
-            "qty": "Quantitée :",
-            "qtyMax": "Quantitée :",
-            "price": "Prix :"
+            "qty": "Quantitée ",
+            "qtyMax": "Quantitée",
+            "price": "Prix",
+            "property":"Proptiétés"
         },
         "equipment": {
-            "enc" : "Encombrement :",
-            "solidity" : "Solidité :",
-            "equiped" : "Equipé ?",
+            "enc": "Encombrement",
+            "solidity": "Solidité",
+            "equiped": "Equipé ?",
             "ranged": "A distance ?",
             "equipable": "Equipable ?",
             "stackable": "Empilable ?",
-            "unique" : "Unique ?",
-            "2Handed" : "A deux mains ?",
-            "equipment" : "Equipement ?",
-            "weapon" : "Arme ?",
-            "protection" : "Protection ?",
-            "pieceProtec" : "Pièce d'armure ?"
+            "unique": "Unique ?",
+            "2Handed": "A deux mains ?",
+            "equipment": "Equipement ?",
+            "weapon": "Arme ?",
+            "protection": "Protection ?",
+            "pieceProtec": "Pièce d'armure ?",
+            "defBase": "Protection"
         },
-        "category" :{
+        "wCategory":{
             "wShort": "Arme courte",
             "wLong": "Arme longue",
             "wTwoHands": "Arme à deux mains",
@@ -27,10 +37,18 @@
             "wThrow": "Arme de jet",
             "wShot": "Arme de tir"
         },
+        "pCategory": {
+            "shield": "Bouclier",
+            "armor": "Armure",
+            "pieceArmor": "Pièces d'armure"
+        },
         "weapon": {
-            "subType" : "Type de l'arme :",
-            "hands": "Nombre de mains :",
-            "dmgBase": "Dégâts de base :",
+            "subType": "Type de l'arme",
+            "pSubType": "Type de la protection",
+            "hands": "Nombre de mains",
+            "dmgBase": "Dégâts de base",
+            "range":"Arme à distance",
+            "melee":"Au corps à corps",
             "rangeC": "Portée courte",
             "rangeM": "Portée moyenne",
             "rangeL": "Portée longue",
@@ -38,6 +56,7 @@
         },
         "character":{
             "age": "Age",
+            "ageUnit":"ans",
             "kingdom": "Royaume",
             "archetype": "Archétype",
             "profession": "Profession",
@@ -47,6 +66,7 @@
             "weakness": "Faiblesse",
             "background": "Background",
             "renown":"Renommée",
+            "legendPt":"Points de Légende",
             "richness":"Richesse"
         },
         "characteristics":{
