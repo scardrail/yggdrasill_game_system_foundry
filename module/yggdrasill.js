@@ -9,7 +9,9 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/character-description-block.hbs",
         "systems/yggdrasill/templates/partials/character-primCarac-block.hbs",
         "systems/yggdrasill/templates/partials/character-secCarac-block.hbs",
-        "systems/yggdrasill/templates/partials/character-thirdCarac-block.hbs"
+        "systems/yggdrasill/templates/partials/character-thirdCarac-block.hbs",
+        "systems/yggdrasill/templates/partials/character-weapons-block.hbs",
+        "systems/yggdrasill/templates/partials/weapon-card.hbs"
     ];
     return loadTemplates(templatePaths);
 }

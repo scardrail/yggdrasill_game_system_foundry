@@ -12,7 +12,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
     getData(){
         const data = super.getData();
         data.config = CONFIG.yggdrasill;
-        // data.weapons = data.item.filter(function(item) {return item.type == "arme"});
+        data.weapons = data.items.filter(function(item) {return item.type == "arme"});
         console.log(data);
         return data;
     }
