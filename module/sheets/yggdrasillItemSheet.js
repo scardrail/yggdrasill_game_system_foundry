@@ -1,4 +1,12 @@
 export default class YggdrasillItemSheet extends ItemSheet {
+    static get defaultOptions(){
+        return mergeObject(super.defaultOptions, {
+            with: 530,
+            height: 400,
+            classes: ["yggdrasill", "sheet", "item  "]
+        })
+    }
+
     get template(){
         console.log(`Yggdrasill | Récupération du fichier html ${this.item.data.type}-sheet.html`);
 

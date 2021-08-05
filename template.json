@@ -1,215 +1,154 @@
 {
 "Actor": {
-  "types": ["pj","pnj"],
-  "pj": {
-    "attributes": {},
-    "age": 0,
-    "royaume": "Dannois",
-    "archetype": "",
-    "profession": "",
-    "taille": "",
-    "poids": "",
-    "don": "",
-    "faiblesse": "",
-    "attributs": {
-      "corps":{
-        "puissance":0,
-        "vigueur":0,
-        "agilité":0
+  "types": ["pj","pnj","extra","creature"],
+  "templates":{
+    "commonStats":{
+      "age": 0,
+      "kingdom": "Dannois",
+      "archetype": "",
+      "profession": "",
+      "size": "",
+      "weight": "",
+      "flair": "",
+      "weakness": "",
+      "background": "",
+      "renown":0,
+      "richness":{
+        "gold": 0,
+        "silver": 0,
+        "copper": 0
       },
-      "esprit":{
-        "intelect":0,
-        "perception":0,
-        "tenacite":0
-      },
-      "ame":{
-        "charisme":0,
-        "instinct":0,
-        "communication":0
-      }
+      "isNPC":true
     },
-    "ini":{
-      "reaction":0,
-      "encombrement":0,
-      "protection":0,
-      "magie":0,
-      "ttlIni":0
-    },
-    "dp":{
-      "base":0,
-      "encombrement":0,
-      "protection":0,
-      "magie":0,
-      "ttlDp":0
-    },
-    "dm":{
-      "base":0,
-      "protection":0,
-      "magie":0,
-      "ttlDm":0
-    },
-    "encombrement": 0,
-    "capaEncombrement": 0,
-    "deplacement":0,
-    "renommee":0,
-    "pdv": 0,
-    "actions": 0,
-    "reserve": 0,
-    "richesses":{
-      "or": 0,
-      "argent": 0,
-      "cuivre": 0
-    },
-    "competence":{
-      "page1":{
-        "acrobatie":0,
-        "artisanat" :{
-          "specialite":"",
-          "valeur":0
+    "importantCharacter":{
+      "primCarac": {
+        "body":{
+          "power": {
+            "value":0,
+            "mod":0
+          },
+          "vigour":{
+            "value":0,
+            "mod":0
+          },
+          "agility":{
+            "value":0,
+            "mod":0
+          }
         },
-        "arts" :{
-          "specialite":"",
-          "valeur":0
+        "spirit":{
+          "intelect":{
+            "value":0,
+            "mod":0
+          },
+          "perception":{
+            "value":0,
+            "mod":0
+          },
+          "tenacity":{
+            "value":0,
+            "mod":0
+          }
         },
-        "attelage":0,
-        "chercher":0,
-        "chevaucher":0,
-        "commerce":0,
-        "discretion":0,
-        "eloquence":0,
-        "empathie":0,
-        "escalade":0,
-        "esquive":0,
-        "herboristerie":0,
-        "intimidation":0,
-        "jeux":0
-      },
-      "page2":{
-        "langue" :{
-          "specialite":"",
-          "valeur":0
-        },
-        "larcins":0,
-        "medecine":0,
-        "mouvement":0,
-        "navigation":0,
-        "natation":0,
-        "negociation":0,
-        "sagas":0,
-        "savoir" :{
-          "specialite":"",
-          "valeur":0
-        },
-        "seduction":0,
-        "superstition":0,
-        "survie":0,
-        "tactique":0,
-        "traditions":0,
-        "vigilance":0
-      },
-      "page3":{
-        "competenceMagique":{
-          "galdr":0,
-          "runes":0,
-          "sejdr":0
-        },
-        "competenceMartiale":{
-          "armesCourtes":0,
-          "armesLongues":0,
-          "armesDeuxMains":0,
-          "armesHast":0,
-          "armesTir":0,
-          "lancer":0,
-          "lutte":0,
-          "armesImprovisees":0
+        "soul":{
+          "charisma":{
+            "value":0,
+            "mod":0
+          },
+          "instinct":{
+            "value":0,
+            "mod":0
+          },
+          "communication":{
+            "value":0,
+            "mod":0
+          }
         }
+      },
+      "secCarac": {
+        "ini":{
+          "reaction":0,
+          "spaceReq":0,
+          "protection":0,
+          "magic":0,
+          "ttlIni":0
+        },
+        "dp":{
+          "base":0,
+          "spaceReq":0,
+          "protection":0,
+          "magic":0,
+          "ttlDp":0
+        },
+        "dm":{
+          "base":0,
+          "protection":0,
+          "magic":0,
+          "ttlDm":0
+        }
+      },
+      "lifePoints": {
+        "value":0,
+        "max":0
+      },
+      "spaceReq": {
+        "value":0,
+        "max":0
+      },
+      "actions": {
+        "value":0,
+        "max":0
+      },
+      "reserve": {
+        "value":0,
+        "max":0
       }
     },
-    "competences":{
-      "acrobatie":0,
-      "artisanat" :{
-        "specialite":"",
-        "valeur":0
+    "extraCharacter":{
+      "type":"bondi",
+      "conflict":{
+        "offensive":0,
+        "defensive":0
       },
-      "arts" :{
-        "specialite":"",
-        "valeur":0
+      "relational":0,
+      "physic":0,
+      "mental":0,
+      "mystic":{
+        "offensive":0,
+        "defensive":0
       },
-      "attelage":0,
-      "chercher":0,
-      "chevaucher":0,
-      "commerce":0,
-      "discretion":0,
-      "eloquence":0,
-      "empathie":0,
-      "escalade":0,
-      "esquive":0,
-      "herboristerie":0,
-      "intimidation":0,
-      "jeux":0,
-      "langue" :{
-        "specialite":"",
-        "valeur":0
-      },
-      "larcins":0,
-      "medecine":0,
-      "mouvement":0,
-      "navigation":0,
-      "natation":0,
-      "negociation":0,
-      "sagas":0,
-      "savoir" :{
-        "specialite":"",
-        "valeur":0
-      },
-      "seduction":0,
-      "superstition":0,
-      "survie":0,
-      "tactique":0,
-      "traditions":0,
-      "vigilance":0,
-      "competenceMagique":{
-        "galdr":0,
-        "runes":0,
-        "sejdr":0
-      },
-      "competenceMartiale":{
-        "armesCourtes":0,
-        "armesLongues":0,
-        "armesDeuxMains":0,
-        "armesHast":0,
-        "armesTir":0,
-        "lancer":0,
-        "lutte":0,
-        "armesImprovisees":0
-      }
-    },
-    "armes":[],
-    "armures":[],
-    "sejdr":[],
-    "runes":[],
-    "galdr":{
-      "malediction":[],
-      "illusion":[],
-      "charme":[]
-    },
-    "prouesses martiales":[],
-    "equipement":[]
-
+      "vitality":0,
+      "lifeStatus":"alive"
+    }
+  },
+  "pj": {
+    "templates":[
+      "commonStats",
+      "importantCharacter"
+    ],
+    "isNPC":false
   },
   "pnj": {
-    "attributes": {},
-    "description": "",
-    "conflit": [0,0],
-    "mental": 0,
-    "relationel": 0,
-    "mystique": [0,0],
-    "physique": 0,
-    "vitalite": 0
+    "templates":[
+      "commonStats",
+      "importantCharacter"
+    ]
+  },
+  "extra": {
+    "templates":[
+      "commonStats",
+      "extraCharacter"
+    ]
+  },
+  "creature": {
+    "templates":[
+      "commonStats",
+      "extraCharacter"
+    ]
   }
 },
 "Item": {
-  "types": ["cac","dist","bouclier","armure","arme","protection"],
+  "types": ["arme","protection"],
   "templates":{
     "base":{
       "description" : "description",
@@ -236,44 +175,6 @@
         "pieceProtec" : false
       }
     }
-  },
-
-  "cac": {
-    "attributes": {},
-    "description": "",
-    "degats": 0,
-    "solidite": 0,
-    "encombrement": 0,
-    "valeur": 0
-  },
-  "dist": {
-    "attributes": {},
-    "description": "",
-    "degats": 0,
-    "solidite": 0,
-    "encombrement": 0,
-    "porteec": 0,
-    "porteeM": 0,
-    "porteeL": 0,
-    "porteee": 0,
-    "valeur": 0
-  },
-  "bouclier": {
-    "attributes": {},
-    "description": "",
-    "defensePhys": 0,
-    "solidite": 0,
-    "encombrementO": 0,
-    "encombrementI": 0,
-    "valeur": 0
-  },
-  "armure": {
-    "attributes": {},
-    "description": "",
-    "protection": 0,
-    "encombrement": 0,
-    "valeur": 0,
-    "pièce": false
   },
   "arme":{
     "templates": [
