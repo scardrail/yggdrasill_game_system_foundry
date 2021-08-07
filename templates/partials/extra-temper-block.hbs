@@ -1,0 +1,51 @@
+<section class="extraTemper-list">
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.temper.name"}}</th>
+            <th>{{localize "yggdrasill.temper.caracName"}}</th>
+            <th>{{localize "yggdrasill.temper.modifier"}}</th>
+            <th>{{localize "yggdrasill.temper.caracName"}}</th>
+            <th>{{localize "yggdrasill.temper.modifier"}}</th>
+            <th>{{localize "yggdrasill.temper.caracName"}}</th>
+            <th>{{localize "yggdrasill.temper.modifier"}}</th>
+        </tr>
+        {{#each tempers as |temper id|}}<tr>
+            <td>{{name}}</td>
+            <td>{{localize (lookup ../config.extraCarac data.caracUp.name)}}</td>
+            {{#if (eqAnd data.caracUp.name "conflict" data.caracUp.name "mystic")}}
+                <td>
+                    {{data.caracUp.modifier}}/{{data.caracUp.sndModifier}}
+                </td>
+            {{else}}
+                <td>
+                    {{data.caracUp.modifier}}
+                </td>
+            {{/if}}
+            {{#if (upperEq data.nbCaracUp 2)}}
+            <td>{{localize (lookup ../config.extraCarac data.sndCaracUp.name)}}</td>
+                {{#if (eqAnd data.sndCaracUp.name "conflict" data.sndCaracUp.name "mystic")}}
+                    <td>
+                        {{data.sndCaracUp.modifier}}/{{data.sndCaracUp.sndModifier}}
+                    </td>
+                {{else}}
+                    <td>
+                        {{data.sndCaracUp.modifier}}
+                    </td>
+                {{/if}}
+                {{#if (upperEq data.nbCaracUp 3)}}
+                    <td>{{localize (lookup ../config.extraCarac data.thrdCaracUp.name)}}</td>
+                    {{#if (eqAnd data.thrdCaracUp.name "conflict" data.thrdCaracUp.name "mystic")}}
+                        <td>
+                            {{data.thrdCaracUp.modifier}}/{{data.thrdCaracUp.sndModifier}}
+                        </td>
+                    {{else}}
+                        <td>
+                            {{data.thrdCaracUp.modifier}}
+                        </td>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </tr>
+        {{/each}}
+    </table>
+</section>

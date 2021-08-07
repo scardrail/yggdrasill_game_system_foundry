@@ -1,7 +1,12 @@
 <section class="competence-list">
     <table>
         <tr>
-            <th>{{localize "yggdrasill.competence.name"}}</th>
+            <th>
+                <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+                {{localize "yggdrasill.competence.name"}}
+            </th>
             <th>{{localize "yggdrasill.competence.value"}}</th>
         </tr>
         {{#each competences as |competence id|}}

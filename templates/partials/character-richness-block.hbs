@@ -14,6 +14,7 @@
             </tr>
         </table>
         <table>
+            {{#if (or (eq actor.type "pj") (eq actor.type "pnj"))}}
             <tr>
                 <th >{{localize "yggdrasill.character.lifePt"}}</th>
             </tr>
@@ -24,6 +25,22 @@
                     </div>
                 </td>
             </tr>
+            {{else}}
+            <tr>
+                <th >{{localize "yggdrasill.character.lifeStatus"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="data.lifeStatus" style="width:100%">
+                        {{#select data.data.lifeStatus}}
+                        {{#each config.charactersStatus as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            {{/if}}
         </table>
     </div>
 </section>

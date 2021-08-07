@@ -111,8 +111,35 @@ yggdrasill.aettPrints = {
     exNegative: "yggdrasill.aett.print.exNegative",
     negative: "yggdrasill.aett.print.negative",
 };
+yggdrasill.charactersStatus = {
+    frisky: "yggdrasill.charactersStatus.frisky",
+    injured: "yggdrasill.charactersStatus.injured",
+    dead: "yggdrasill.charactersStatus.dead"
+};
+yggdrasill.extraTypes = {
+    berserkr: "yggdrasill.extraTypes.berserkr",
+    bondi: "yggdrasill.extraTypes.bondi",
+    hirdmen: "yggdrasill.extraTypes.hirdmen",
+    merchant: "yggdrasill.extraTypes.merchant",
+    noble: "yggdrasill.extraTypes.noble",
+    farmer: "yggdrasill.extraTypes.farmer",
+    pirate: "yggdrasill.extraTypes.pirate",
+    scalde: "yggdrasill.extraTypes.scalde",
+    thulr: "yggdrasill.extraTypes.thulr",
+    volva: "yggdrasill.extraTypes.volva"
+};
 yggdrasill.aettGods = {
     freyr: "yggdrasill.aett.god.freyr",
     heimdall: "yggdrasill.aett.god.heimdall",
     tyr: "yggdrasill.aett.god.tyr"
+};
+yggdrasill.extraCarac = {
+    conflict: "yggdrasill.extra.conflict",
+    relational: "yggdrasill.extra.relational",
+    physic: "yggdrasill.extra.physic",
+    mental: "yggdrasill.extra.mental",
+    mystic: "yggdrasill.extra.mystic",
+    vitality: "yggdrasill.extra.vitality",
+    damage: "yggdrasill.extra.damage",
+    none: "yggdrasill.extra.none"
 };

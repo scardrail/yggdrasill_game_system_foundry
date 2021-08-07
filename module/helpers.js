@@ -58,11 +58,27 @@ export const registerHandlebarsHelpers = function () {
     Handlebars.registerHelper('equals', function (val1, val2) {
         return val1 == val2;
     });
+    Handlebars.registerHelper('upper', function (val1, val2) {
+        return val1 > val2;
+    });
+    Handlebars.registerHelper('lower', function (val1, val2) {
+        return val1 < val2;
+    });
+    Handlebars.registerHelper('upperEq', function (val1, val2) {
+        return val1 >= val2;
+    });
+    Handlebars.registerHelper('lowerEq', function (val1, val2) {
+        return val1 <= val2;
+    });
     Handlebars.registerHelper('or', function (val1, val2) {
         return val1 || val2;
     });
     Handlebars.registerHelper('and', function (val1, val2) {
         return val1 && val2;
+    });
+    
+    Handlebars.registerHelper('eqAnd', function (val1, val2, val3, val4) {
+        return val1 == val2 || val3 == val4;
     });
     Handlebars.registerHelper('not', function (cond) {
         return !cond;
@@ -72,5 +88,19 @@ export const registerHandlebarsHelpers = function () {
     });
     Handlebars.registerHelper('andNot', function (val1, val2) {
         return !val1 && !val2;
+    });
+
+    Handlebars.registerHelper('times', function(n, block) {
+        var accum = '';
+        for(var i = 0; i < n; ++i)
+            accum += block.fn(i);
+        return accum;
+    });
+
+    Handlebars.registerHelper('for', function(from, to, incr, block) {
+        var accum = '';
+        for(var i = from; i < to; i += incr)
+            accum += block.fn(i);
+        return accum;
     });
 }

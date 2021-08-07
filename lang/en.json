@@ -1,6 +1,10 @@
 {
     "yggdrasill": {
         "description":"Description",
+        "sheet":{
+            "addCpt":"Add a competence",
+            "newCpt":"New competence"
+        },
         "tabs":{
             "carac":"Characteristics",
             "cpt":"Competences",
@@ -167,6 +171,7 @@
             "renown":"Renown",
             "legendPt":"Legend points",
             "lifePt":"Life points",
+            "lifeStatus":"Life status",
             "richness":"Richness",
             "gold":"Gold",
             "silver":"Silver",
@@ -204,6 +209,40 @@
                 "ttlDm":"Total",
                 "transport":"TRAN"
             }
+        },
+        "charactersStatus":{
+            "frisky":"Frisky",
+            "injured":"Injured",
+            "dead":"Dead"
+        },
+        "extra":{
+            "type":"Extra type",
+            "conflict":"Conflit",
+            "relational":"Relational",
+            "physic":"Physic",
+            "mental":"Mental",
+            "mystic":"Mystic",
+            "vitality":"Vitality",
+            "damage":"Damage",
+            "none":" "
+        },
+        "extraTypes":{
+            "berserkr":"Berserkr",
+            "bondi":"bondi",
+            "hirdmen":"hirdmen",
+            "merchant":"Merchant",
+            "noble":"Noble",
+            "farmer":"Farmer",
+            "pirate":"Pirate",
+            "scalde":"Scalde",
+            "thulr":"Thulr",
+            "volva":"Volva"
+        },
+        "temper":{
+            "name":"Temper name",
+            "modifier":"Modificateur",
+            "nbCaracUp": "Number updated Caracs",
+            "caracName": "Carac Name"
         },
         "aett":{
             "exclusiv":"Exclusiv ?",

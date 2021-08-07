@@ -19,10 +19,13 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/character-objects-block.hbs",
         "systems/yggdrasill/templates/partials/character-competences-block.hbs",
         "systems/yggdrasill/templates/partials/character-aett-block.hbs",
+        "systems/yggdrasill/templates/partials/extra-carac-block.hbs",
+        "systems/yggdrasill/templates/partials/extra-temper-block.hbs",
         "systems/yggdrasill/templates/partials/weapon-card.hbs",
         "systems/yggdrasill/templates/partials/armor-card.hbs",
         "systems/yggdrasill/templates/partials/object-card.hbs",
-        "systems/yggdrasill/templates/partials/competence-card.hbs"
+        "systems/yggdrasill/templates/partials/competence-card.hbs",
+        "systems/yggdrasill/templates/partials/temper-card.hbs"
     ];
     return loadTemplates(templatePaths);
 }

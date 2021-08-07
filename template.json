@@ -15,7 +15,7 @@
       "renown":0,
       "legendPt":0,
       "richness":{
-        " ": 0,
+        "gold": 0,
         "silver": 0,
         "copper": 0
       },
@@ -131,7 +131,7 @@
         "defensive":0
       },
       "vitality":0,
-      "lifeStatus":"alive"
+      "lifeStatus":"frisky"
     }
   },
   "pj": {
@@ -161,7 +161,18 @@
   }
 },
 "Item": {
-  "types": ["arme","protection","object","competence","martialCpt","sejdrCpt","galdrCpt","runeCpt","aett"],
+  "types": [
+    "arme",
+    "protection",
+    "object",
+    "competence",
+    "martialCpt",
+    "sejdrCpt",
+    "galdrCpt",
+    "runeCpt",
+    "aett",
+    "temper"
+  ],
   "templates":{
     "base":{
       "description" : "description",
@@ -326,6 +337,31 @@
     "secPrint":{
       "type":"negativ",
       "description":"description"
+    }
+  },
+  "temper":{
+    "templates": [
+      "base"
+    ],
+    "dmg":{
+      "base":0,
+      "mod":0
+    },
+    "nbCaracUp":2,
+    "caracUp":{
+      "name":"none",
+      "modifier":0,
+      "sndModifier":0
+    },
+    "sndCaracUp":{
+      "name":"none",
+      "modifier":0,
+      "sndModifier":0
+    },
+    "thrdCaracUp":{
+      "name":"none",
+      "modifier":0,
+      "sndModifier":0
     }
   }
 }
