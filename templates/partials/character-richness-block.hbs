@@ -1,0 +1,29 @@
+<section class="richness-list">
+    <div class="richness-tables" style="display: grid; grid-template-columns:1fr 180px; gap:5px;">
+        <table>
+            <tr>
+                <th colspan="6">{{localize "yggdrasill.character.richness"}}</th>
+            </tr>
+            <tr>
+                <td>{{localize "yggdrasill.character.gold"}}</td>
+                <td><input name="data.richness.gold" type="number" value="{{data.data.richness.gold}}" data-type="Number"></td>
+                <td>{{localize "yggdrasill.character.silver"}}</td>
+                <td><input name="data.richness.silver" type="number" value="{{data.data.richness.silver}}" data-type="Number"></td>
+                <td>{{localize "yggdrasill.character.copper"}}</td>
+                <td><input name="data.richness.copper" type="number" value="{{data.data.richness.copper}}" data-type="Number"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th >{{localize "yggdrasill.character.lifePt"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                        <input name="data.lifePoints.value" type="number" value="{{data.data.lifePoints.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.lifePoints.max}}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

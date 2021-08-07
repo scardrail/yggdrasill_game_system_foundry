@@ -1,5 +1,16 @@
 <section class="weapon-list">
-    {{#each weapons as |weapon id|}}
-        {{> "systems/yggdrasill/templates/partials/weapon-card.hbs"}}
-    {{/each}}
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.weapon.name"}}</th>
+            <th>{{localize "yggdrasill.weapon.dmgBase"}}</th>
+            <th>{{localize "yggdrasill.equipment.solidity"}}</th>
+            <th>{{localize "yggdrasill.equipment.enc"}}</th>
+            <th></th>
+            <th>{{localize "yggdrasill.weapon.rangeConcat"}}</th>
+            <th>{{localize "yggdrasill.item.price"}}</th>
+        </tr>
+        {{#each weapons as |weapon id|}}
+            {{> "systems/yggdrasill/templates/partials/weapon-card.hbs"}}
+        {{/each}}
+    </table>
 </section>

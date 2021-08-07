@@ -1,0 +1,77 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <div class="sheet-content">
+        <h3>
+            {{localize "yggdrasill.magicCpt.effects"}}:
+        </h3>
+        {{editor content=data.data.effects target="data.effects" button=true owner=owner editable=editable}}
+        <h3>
+            {{localize "yggdrasill.magicCpt.invertEffects"}}:
+        </h3>
+        {{editor content=data.data.invertEffects target="data.invertEffects" button=true owner=owner editable=editable}}
+        <h3>
+            {{localize "yggdrasill.magicCpt.type"}}
+        </h3>
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.type"}}</th>
+                <td>
+                    <select name="data.type" style="width:100%">
+                        {{#select data.data.type}}
+                        {{#each config.sejdrTypes as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.level"}}</th>
+                <td>
+                    <input name="data.level" type="number" min="1" max="5" value="{{data.data.level}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.positivenessN"}}</th>
+                <td>
+                    <select name="data.positiveness" style="width:100%">
+                        {{#select data.data.positiveness}}
+                        {{#each config.magicPositiveness as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.preparation"}}</th>
+                <td>
+                    <input name="data.preparation.value" style="width:50%" type="number" value="{{data.data.preparation.value}}" data-type="Number"><select name="data.preparation.unit" style="width:50%">
+                        {{#select data.data.preparation.unit}}
+                        {{#each config.magicDuration as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.modifier"}}</th>
+                <td>
+                    <input name="data.modifier" type="number" min="-15" step="3" max="0" value="{{data.data.modifier}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.zone"}}</th>
+                <td>
+                    <input name="data.zone" type="text" value="{{data.data.zone}}" data-type="Text">
+                </td>
+            </tr>
+        </table>
+        </div>
+</form>

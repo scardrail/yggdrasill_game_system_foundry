@@ -1,0 +1,32 @@
+<section class="actAndFuror-list">
+    <div class="actAndFuror-tables" style="display: grid; grid-template-columns:1fr 180px; gap:5px;">
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.character.actions"}}</th>
+                <th>{{localize "yggdrasill.character.actionsMod"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                        <input name="data.actions.value" type="number" min="0" max="{{data.data.actions.max}}" value="{{data.data.actions.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.actions.max}}</p>
+                    </div>
+                </td>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.actions.modifier}}</p>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th >{{localize "yggdrasill.character.reserve"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                        <input name="data.reserve.value" type="number" min="0" max="{{data.data.actions.max}}" value="{{data.data.reserve.max}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.reserve.max}}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

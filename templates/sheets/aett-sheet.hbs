@@ -1,0 +1,58 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <div class="sheet-content">
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.item.property"}}</th>
+                <td>
+                    <label class="checkbox"> <input type="checkbox" name="data.properties.exclusiv" {{checked data.data.properties.exclusiv}}> {{localize "yggdrasill.aett.exclusiv"}}</label>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.aett.number"}}</th>
+                <td>
+                    <input name="data.number" type="number" min="1" max="8" value="{{data.data.number}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.aett.godN"}}</th>
+                <td>
+                    <select name="data.god" style="width:100%">
+                        {{#select data.data.god}}
+                        {{#each config.aettGods as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <h3>
+            {{localize "yggdrasill.aett.printN"}} <select name="data.print.type">
+                        {{#select data.data.print.type}}
+                        {{#each config.aettPrints as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select> :
+        </h3>
+        {{editor content=data.data.print.description target="data.print.description" button=true owner=owner editable=editable}}
+        {{#if (not data.data.properties.exclusiv)}}
+        <h3>
+            {{localize "yggdrasill.aett.printN"}} <select name="data.secPrint.type">
+                        {{#select data.data.secPrint.type}}
+                        {{#each config.aettPrints as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select> :
+        </h3>
+        {{editor content=data.data.secPrint.description target="data.secPrint.description" button=true owner=owner editable=editable}}
+        {{/if}}
+    </div>
+</form>

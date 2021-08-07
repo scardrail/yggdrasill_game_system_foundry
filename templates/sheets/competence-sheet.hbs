@@ -1,0 +1,37 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <div class="sheet-content">
+        <h3>
+            {{localize "yggdrasill.description"}}
+        </h3>
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+        <h3>
+            {{localize "yggdrasill.competence.type"}}
+        </h3>
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.competence.type"}}</th>
+                <td>
+                    <select name="data.type" style="width:100%">
+                        {{#select data.data.type}}
+                        {{#each config.competenceTypes as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.competence.value"}}</th>
+                <td>
+                    <input name="data.value" type="number" value="{{data.data.value}}" data-type="Number">
+                </td>
+            </tr>
+        </table>
+        </div>
+</form>

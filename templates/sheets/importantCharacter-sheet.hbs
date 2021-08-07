@@ -4,9 +4,12 @@
             <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
         </h1>
     </header>
-    <div class="description" style="display: grid; grid-template-columns:1fr 180px; gap:5px; padding:15px">
+    <div class="description" style="display: grid; grid-template-columns:1fr 180px; gap:5px; padding: 0px 15px 0px 15px;">
         {{> "systems/yggdrasill/templates/partials/character-description-block.hbs"}}
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="180" width="180" />
+    </div>
+    <div class="richness" style="padding: 0px 15px 0px 15px;">
+        {{> "systems/yggdrasill/templates/partials/character-richness-block.hbs"}}
     </div>
     {{#if (or (eq actor.type "pj") (eq actor.type "pnj"))}}
         <div>
@@ -21,7 +24,7 @@
             <section class="sheet-body">
                 {{!-- Stats Tab --}}
                 <div class="tab stats" data-group="primary" data-tab="carac">
-                    <div class="primCarac" style="padding:15px">
+                    <div class="primCarac" style="padding: 0px 15px 0px 15px;">
                         {{> "systems/yggdrasill/templates/partials/character-primCarac-block.hbs"}}
                     </div>
                     <div class="secCarac" style="display: grid; grid-template-columns:1fr 250px; gap:5px; padding:15px">
@@ -31,25 +34,49 @@
                 </div>
                 {{!-- Competences Tab --}}
                 <div class="tab cpt" data-group="primary" data-tab="cpt">
-                    CPT
+                    <div class="competencesBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-competences-block.hbs"}}
+                    </div>
                 </div>
                 {{!-- Equipment Tab --}}
                 <div class="tab equipmt" data-group="primary" data-tab="equipmt">
-                    <div class="primCarac" style="padding:15px">
+                    <div class="weaponsBloc" style="padding: 0px 15px 0px 15px;">
                         {{> "systems/yggdrasill/templates/partials/character-weapons-block.hbs"}}
+                    </div>
+                    <div class="protectionsBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-armors-block.hbs"}}
+                    </div>
+                    <div class="objectsBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-objects-block.hbs"}}
                     </div>
                 </div>
                 {{!-- Fight Tab --}}
                 <div class="tab fight" data-group="primary" data-tab="fight">
-                    Fight
+                    <div class="actAndFurorBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-actAndFuror-block.hbs"}}
+                    </div>
+                    <div class="weaponsBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-weapons-block.hbs"}}
+                    </div>
+                    <div class="martialCptBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-martialCpt-block.hbs"}}
+                    </div>
                 </div>
                 {{!-- Magic Tab --}}
                 <div class="tab magic" data-group="primary" data-tab="magic">
-                    Magic
+                    <div class="magicsBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-magics-block.hbs"}}
+                    </div>
                 </div>
                 {{!-- Story Tab --}}
                 <div class="tab story" data-group="primary" data-tab="story">
-                    Story
+                    <div class="aettBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-aett-block.hbs"}}
+                    </div>
+                    <h3>
+                        {{localize "yggdrasill.character.background"}}
+                    </h3>
+                    {{editor content=data.data.background target="data.background" button=true owner=owner editable=editable}}
                 </div>
             </section>
         </div>

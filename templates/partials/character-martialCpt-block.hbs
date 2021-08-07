@@ -1,0 +1,21 @@
+<section class="martial-list">
+    <h3>
+        {{localize "yggdrasill.martialCpt.type"}}
+    </h3>
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.martialCpt.name"}}</th>
+            <th>{{localize "yggdrasill.martialCpt.level"}}</th>
+            <th>{{localize "yggdrasill.martialCpt.modifier"}}</th>
+            <th>{{localize "yggdrasill.description"}}</th>
+        </tr>
+        {{#each martialCpt as |martial id|}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{data.level}}</td>
+                <td>{{data.modifier}}</td>
+                <td>{{data.description}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</section>

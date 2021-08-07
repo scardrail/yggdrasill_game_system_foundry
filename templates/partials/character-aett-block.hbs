@@ -1,0 +1,38 @@
+<section class="aett-list">
+    <table>
+        <tr>
+            {{#each config.aettGods as |name type|}}
+            <th>{{localize name}}</th>
+            {{/each}}
+        </tr>
+        <tr>
+            <td>
+                <select name="data.aett.freyr" style="width:100%">
+                    {{#select data.data.aett.freyr}}
+                    {{#each config.freyrsAett as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </td>
+            <td>
+                <select name="data.aett.heimdall" style="width:100%">
+                    {{#select data.data.aett.heimdall}}
+                    {{#each config.heimdallsAett as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </td>
+            <td>
+                <select name="data.aett.tyr" style="width:100%">
+                    {{#select data.data.aett.tyr}}
+                    {{#each config.tyrsAett as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </td>
+        </tr>
+    </table>
+</section>

@@ -1,0 +1,12 @@
+<section class="object-list">
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.item.name"}}</th>
+            <th>{{localize "yggdrasill.item.qty"}}</th>
+            <th>{{localize "yggdrasill.item.price"}}</th>
+        </tr>
+        {{#each objects as |object id|}}
+            {{> "systems/yggdrasill/templates/partials/object-card.hbs"}}
+        {{/each}}
+    </table>
+</section>

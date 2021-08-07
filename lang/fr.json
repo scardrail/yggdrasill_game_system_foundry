@@ -1,5 +1,6 @@
 {
     "yggdrasill":{
+        "description":"Description",
         "tabs":{
             "carac" : "Caractéristiques",
             "cpt" : "Compétences",
@@ -9,6 +10,8 @@
             "story" : "Histoire"
         },
         "item": {
+            "name":"Nom de l'objet",
+            "oSubType": "Type de l'objet",
             "qty": "Quantitée ",
             "qtyMax": "Quantitée",
             "price": "Prix",
@@ -29,6 +32,83 @@
             "pieceProtec": "Pièce d'armure ?",
             "defBase": "Protection"
         },
+        "weapon": {
+            "name":"Armes",
+            "subType": "Type de l'arme",
+            "pName":"Nom de la protection",
+            "pSubType": "Type de la protection",
+            "hands": "Nombre de mains",
+            "dmgBase": "Dégâts de base",
+            "range":"Arme à distance",
+            "melee":"Au corps à corps",
+            "rangeC": "Portée courte",
+            "rangeM": "Portée moyenne",
+            "rangeL": "Portée longue",
+            "rangeE": "Portée extrème",
+            "rangeConcat": "Portée (C/M/L/E)"
+        },
+        "competence":{
+            "name":"Nom",
+            "value":"Valeur",
+            "type":"Type de la compétence"
+        },
+        "martialCpt":{
+            "name":"Nom",
+            "level":"Niveau",
+            "type":"Type de prouesse martiale",
+            "weapons":"Armes",
+            "prerequisitesCpt":"Prérequis",
+            "modifier":"Modificateur",
+            "lvlVariable":"Niveau variable",
+            "prerequisitesLvl":{
+                "newbie":"Novice",
+                "confirmed":"Confirmé",
+                "expert":"Expert",
+                "none":" "
+            }
+        },
+        "magicCpt":{
+            "name":"Nom",
+            "sejdr":"Sejdr",
+            "galdr":"Galdr",
+            "rune":"Runes",
+            "level":"Niveau",
+            "type":"Type de magie",
+            "sejdrTypes":{
+                "divination":"Divination",
+                "healing":"Guérison",
+                "elements":"Maîtrise des éléments",
+                "curse":"Malédiction"
+            },
+            "galdrTypes":{
+                "illusions":"Illusions",
+                "charms":"Charmes",
+                "curses":"Malédictions"
+            },
+            "positivenessN":"Positivité",
+            "positiveness":{
+                "positive":"Positif",
+                "neutral":"Neutre",
+                "negative":"Négatif"
+            },
+            "durationN":"Durée",
+            "duration":{
+                "action":"Action",
+                "turn":"Tour",
+                "minute":"Minute",
+                "hour":"Heure"
+            },
+            "preparation":"Preparation",
+            "modifier":"Modificateur",
+            "zone":"Zone",
+            "effects":"Effets",
+            "invertEffects":"Effets Inversés",
+            "difficultyLevel":"SD",
+            "targets":"Cibles",
+            "dommain":"Dommaine",
+            "positiveEffect":"Effet positif",
+            "negativeEffect":"Effet négatif"
+        },
         "wCategory":{
             "wShort": "Arme courte",
             "wLong": "Arme longue",
@@ -42,17 +122,28 @@
             "armor": "Armure",
             "pieceArmor": "Pièces d'armure"
         },
-        "weapon": {
-            "subType": "Type de l'arme",
-            "pSubType": "Type de la protection",
-            "hands": "Nombre de mains",
-            "dmgBase": "Dégâts de base",
-            "range":"Arme à distance",
-            "melee":"Au corps à corps",
-            "rangeC": "Portée courte",
-            "rangeM": "Portée moyenne",
-            "rangeL": "Portée longue",
-            "rangeE": "Portée extrème"
+        "oCategory": {
+            "clothe": "Vêtement",
+            "fabric": "Tissu",
+            "accessory": "Accessoires",
+            "jewellery": "Bijoux",
+            "animal": "Animal",
+            "furniture": "Mobilier",
+            "tableware": "Vaisselle",
+            "food": "Aliment",
+            "drink": "Boisson",
+            "other": "Autre"
+        },
+        "cCategory": {
+            "base": "Basique",
+            "magic": "Magique",
+            "martial": "Martiale"
+        },
+        "cmCategory": {
+            "attack":"Prouesses d'attaque",
+            "ranged":"Prouesses d'attaque à distance",
+            "defense":"Prouesses défensives",
+            "utilitary":"Prouesses utilitaires"
         },
         "character":{
             "age": "Age",
@@ -67,7 +158,14 @@
             "background": "Background",
             "renown":"Renommée",
             "legendPt":"Points de Légende",
-            "richness":"Richesse"
+            "lifePt":"Points de vie",
+            "richness":"Richesse",
+            "gold":"Or",
+            "silver":"Argent",
+            "copper":"Cuivre",
+            "actions":"Actions",
+            "reserve":"Furor",
+            "actionsMod":"Mod."
         },
         "characteristics":{
             "primary":{
@@ -97,6 +195,53 @@
                 "dm":"DM",
                 "ttlDm":"Total",
                 "transport":"DEP"
+            }
+        },
+        "aett":{
+            "exclusiv":"Exclusive ?",
+            "number":"Nombre",
+            "godN":"Dieu",
+            "god":{
+                "freyr":"Freyr",
+                "heimdall":"Heimdall",
+                "tyr":"Tyr"
+            },
+            "printN":"Tirage",
+            "print":{
+                "exPositive":"exclusivement positif",
+                "positive":"positif",
+                "exNegative":"exclusivement negatif",
+                "negative":"negatif"
+            },
+            "freyr":{
+                "fehu":"Fehu",
+                "uruz":"Uruz",
+                "thurz":"Thurz",
+                "ansuz":"Ansuz",
+                "reith":"Reith",
+                "kaun":"Kaun",
+                "gebo":"Gebô",
+                "wunjo":"Wunjô"
+            },
+            "heimdall":{
+                "hagal":"Hagal",
+                "nauthr":"Nauthr",
+                "isa":"Isa",
+                "jera":"Jerà",
+                "iwaz":"Iwaz",
+                "perth":"Perth",
+                "algiz":"Algiz",
+                "sol":"Sôl"
+            },
+            "tyr":{
+                "tiwaz":"Tiwaz",
+                "bjarken":"Bjarken",
+                "ehwaz":"Ehwaz",
+                "mathr":"Mathr",
+                "logr":"Lôgr",
+                "ingvi":"Ingvi",
+                "dagaz":"Dagaz",
+                "othal":"Othal"
             }
         }
     }

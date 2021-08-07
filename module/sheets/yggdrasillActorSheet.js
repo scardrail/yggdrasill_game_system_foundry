@@ -13,6 +13,13 @@ export default class YggdrasillActorSheet extends ActorSheet {
         const data = super.getData();
         data.config = CONFIG.yggdrasill;
         data.weapons = data.items.filter(function(item) {return item.type == "arme"});
+        data.armors = data.items.filter(function(item) {return item.type == "protection"});
+        data.objects = data.items.filter(function(item) {return item.type == "object"});
+        data.competences = data.items.filter(function(item) {return item.type == "competence"});
+        data.martialCpt = data.items.filter(function(item) {return item.type == "martialCpt"});
+        data.sejdrCpt = data.items.filter(function(item) {return item.type == "sejdrCpt"});
+        data.galdrCpt = data.items.filter(function(item) {return item.type == "galdrCpt"});
+        data.runeCpt = data.items.filter(function(item) {return item.type == "runeCpt"});
         console.log(data);
         return data;
     }

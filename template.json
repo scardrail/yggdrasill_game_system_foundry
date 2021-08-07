@@ -11,11 +11,11 @@
       "weight": "",
       "flair": "",
       "weakness": "",
-      "background": "",
+      "background": "Background",
       "renown":0,
       "legendPt":0,
       "richness":{
-        "gold": 0,
+        " ": 0,
         "silver": 0,
         "copper": 0
       },
@@ -104,11 +104,17 @@
       },
       "actions": {
         "value":0,
-        "max":0
+        "max":0,
+        "modifier":0
       },
       "reserve": {
         "value":0,
         "max":0
+      },
+      "aett":{
+        "freyr":"fehu",
+        "heimdall":"hagal",
+        "tyr":"tiwaz"
       }
     },
     "extraCharacter":{
@@ -155,7 +161,7 @@
   }
 },
 "Item": {
-  "types": ["arme","protection"],
+  "types": ["arme","protection","object","competence","martialCpt","sejdrCpt","galdrCpt","runeCpt","aett"],
   "templates":{
     "base":{
       "description" : "description",
@@ -180,6 +186,15 @@
         "weapon" : false,
         "protection" : false,
         "pieceProtec" : false
+      }
+    },
+    "cptSpe":{
+      "level":1
+    },
+    "cptMagic":{
+      "duration":{
+        "value":0,
+        "unit":"action"
       }
     }
   },
@@ -213,6 +228,104 @@
     "defBase" : {
       "value":0,
       "mod":0
+    }
+  },
+  "object":{
+    "templates": [
+      "base",
+      "item"
+    ],
+    "properties": {
+      "stackable": false,
+      "unique" : false
+    },
+    "oSubType":"clothe",
+    "enc" : 0
+  },
+  "competence":{
+    "templates": [
+      "base"
+    ],
+    "value":0,
+    "type":"base"
+  },
+  "martialCpt":{
+    "templates": [
+      "base",
+      "cptSpe"
+    ],
+    "properties":{
+      "attack":false,
+      "ranged":false,
+      "defense":false,
+      "utilitary":false,
+      "variableLevel":false
+    },
+    "type":"attack",
+    "weapons":"allMelee",
+    "prerequisitesCpt":"martial",
+    "prerequisitesLvl":"newbie",
+    "modifier":-3,
+    "varLevel":{
+      "value":1,
+      "max":4
+    },
+    "varModifier":{
+      "value":-3,
+      "max":-12
+    }
+  },
+  "sejdrCpt":{
+    "templates": [
+      "base",
+      "cptSpe",
+      "cptMagic"
+    ],
+    "type":"divination",
+    "positiveness":"positive",
+    "preparation":{
+      "value":0,
+      "unit":"action"
+    },
+    "modifier":-3,
+    "zone":"",
+    "effects":"",
+    "invertEffects":""
+  },
+  "galdrCpt":{
+    "templates": [
+      "base",
+      "cptSpe"
+    ],
+    "type":"illusions",
+    "difficultyLevel":3
+  },
+  "runeCpt":{
+    "templates": [
+      "base",
+      "cptSpe"
+    ],
+    "dommain":"",
+    "positiveEffect":"",
+    "negativeEffect":"",
+    "targets":"Une personne"
+  },
+  "aett":{
+    "templates": [
+      "base"
+    ],
+    "properties":{
+      "exclusiv":false
+    },
+    "number":1,
+    "god":"freyr",
+    "print":{
+      "type":"positiv",
+      "description":"description"
+    },
+    "secPrint":{
+      "type":"negativ",
+      "description":"description"
     }
   }
 }

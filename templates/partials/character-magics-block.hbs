@@ -1,0 +1,59 @@
+<section class="magic-list">
+    <h3>
+        {{localize "yggdrasill.magicCpt.sejdr"}}
+    </h3>
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.magicCpt.name"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.level"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.modifier"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.preparation"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.zone"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.effects"}}</th>
+        </tr>
+        {{#each sejdrCpt as |sejdr id|}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{data.level}}</td>
+                <td>{{data.modifier}}</td>
+                <td>{{data.preparation.value}} {{localize (lookup ../config.magicDuration data.preparation.unit)}}</td>
+                <td>{{data.zone}}</td>
+                <td>{{data.effects}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    <h3>
+        {{localize "yggdrasill.magicCpt.galdr"}}
+    </h3>
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.magicCpt.difficultyLevel"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.dommain"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.type"}}</th>
+        </tr>
+        {{#each galdrCpt as |galdr id|}}
+            <tr>
+                <td>{{data.difficultyLevel}}</td>
+                <td>{{name}}</td>
+                <td>{{localize (lookup ../config.galdrTypes data.type)}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    <h3>
+        {{localize "yggdrasill.magicCpt.rune"}}
+    </h3>
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.magicCpt.name"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.level"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.dommain"}}</th>
+        </tr>
+        {{#each runeCpt as |rune id|}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{data.level}}</td>
+                <td>{{data.dommain}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</section>

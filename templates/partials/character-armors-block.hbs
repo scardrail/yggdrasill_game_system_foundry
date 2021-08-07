@@ -1,0 +1,15 @@
+<section class="armor-list">
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.weapon.pName"}}</th>
+            <th>{{localize "yggdrasill.equipment.pieceProtec"}}</th>
+            <th>{{localize "yggdrasill.equipment.defBase"}}</th>
+            <th>{{localize "yggdrasill.equipment.solidity"}}</th>
+            <th>{{localize "yggdrasill.equipment.enc"}}</th>
+            <th>{{localize "yggdrasill.item.price"}}</th>
+        </tr>
+        {{#each armors as |armor id|}}
+            {{> "systems/yggdrasill/templates/partials/armor-card.hbs"}}
+        {{/each}}
+    </table>
+</section>

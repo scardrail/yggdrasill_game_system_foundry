@@ -1,0 +1,11 @@
+<section class="competence-list">
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.competence.name"}}</th>
+            <th>{{localize "yggdrasill.competence.value"}}</th>
+        </tr>
+        {{#each competences as |competence id|}}
+            {{> "systems/yggdrasill/templates/partials/competence-card.hbs"}}
+        {{/each}}
+    </table>
+</section>

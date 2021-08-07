@@ -1,0 +1,41 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <div class="sheet-content">
+        <h3>
+            {{localize "yggdrasill.magicCpt.positiveEffect"}}:
+        </h3>
+        {{editor content=data.data.positiveEffect target="data.positiveEffect" button=true owner=owner editable=editable}}
+        <h3>
+            {{localize "yggdrasill.magicCpt.negativeEffect"}}:
+        </h3>
+        {{editor content=data.data.negativeEffect target="data.negativeEffect" button=true owner=owner editable=editable}}
+        <h3>
+            {{localize "yggdrasill.magicCpt.type"}}
+        </h3>
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.level"}}</th>
+                <td>
+                    <input name="data.level" type="number" min="1" max="5" value="{{data.data.level}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.targets"}}</th>
+                <td>
+                    <input name="data.targets" type="text" value="{{data.data.targets}}" data-type="Text">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.dommain"}}</th>
+                <td>
+                    <input name="data.dommain" type="text" value="{{data.data.dommain}}" data-type="Text">
+                </td>
+            </tr>
+        </table>
+        </div>
+</form>

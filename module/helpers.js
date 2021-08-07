@@ -61,7 +61,16 @@ export const registerHandlebarsHelpers = function () {
     Handlebars.registerHelper('or', function (val1, val2) {
         return val1 || val2;
     });
+    Handlebars.registerHelper('and', function (val1, val2) {
+        return val1 && val2;
+    });
     Handlebars.registerHelper('not', function (cond) {
         return !cond;
+    });
+    Handlebars.registerHelper('orNot', function (val1, val2) {
+        return !val1 || !val2;
+    });
+    Handlebars.registerHelper('andNot', function (val1, val2) {
+        return !val1 && !val2;
     });
 }

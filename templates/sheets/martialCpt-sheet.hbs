@@ -1,0 +1,76 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <div class="sheet-content">
+        <h3>
+            {{localize "yggdrasill.description"}}
+        </h3>
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+        <h3>
+            {{localize "yggdrasill.martialCpt.type"}}
+        </h3>
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.item.property"}}</th>
+                <td>
+                    {{#if (andNot data.data.properties.defense data.data.properties.utilitary)}}
+                        <label class="checkbox"> <input type="checkbox" name="data.properties.attack" {{checked data.data.properties.attack}}> {{localize "yggdrasill.martialCpt.properties.attack"}}</label>
+                    {{/if}}
+                    {{#if (andNot data.data.properties.attack data.data.properties.utilitary)}}
+                        <label class="checkbox"> <input type="checkbox" name="data.properties.defense" {{checked data.data.properties.defense}}> {{localize "yggdrasill.martialCpt.properties.defense"}}</label>
+                    {{/if}}
+                    {{#if (andNot data.data.properties.attack data.data.properties.defense)}}
+                        <label class="checkbox"> <input type="checkbox" name="data.properties.utilitary" {{checked data.data.properties.utilitary}}> {{localize "yggdrasill.martialCpt.properties.utilitary"}}</label>
+                    {{/if}}
+                    <label class="checkbox"> <input type="checkbox" name="data.properties.variableLevel" {{checked data.data.properties.variableLevel}}> {{localize "yggdrasill.martialCpt.properties.variableLevel"}}</label>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.martialCpt.type"}}</th>
+                <td>
+                    <select name="data.type" style="width:100%">
+                        {{#select data.data.type}}
+                        {{#each config.cptMartialTypes as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.martialCpt.level"}}</th>
+                <td>
+                    <input name="data.level" type="number" min="1" max="4"  value="{{data.data.level}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.martialCpt.weapons"}}</th>
+                <td>
+                    <input name="data.weapons" type="text" value="{{data.data.weapons}}" data-type="Text">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.martialCpt.prerequisitesCpt"}}</th>
+                <td>
+                    <input name="data.prerequisitesCpt" style="width:50%" type="text" value="{{data.data.prerequisitesCpt}}" data-type="Text"><select name="data.prerequisitesLvl" style="width:50%">
+                        {{#select data.data.prerequisitesLvl}}
+                        {{#each config.cmPrerequisitesLvl as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.martialCpt.modifier"}}</th>
+                <td>
+                    <input name="data.modifier" type="number" min="-12" step="3" max="0" value="{{data.data.modifier}}" data-type="Number">
+                </td>
+            </tr>
+        </table>
+        </div>
+</form>
