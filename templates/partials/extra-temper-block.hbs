@@ -1,6 +1,11 @@
 <section class="extraTemper-list">
     <table>
         <tr>
+            <th colspan="2">
+                <a class="item-create" data-type="temper" title="{{localize "yggdrasill.sheet.addTemper"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
             <th>{{localize "yggdrasill.temper.name"}}</th>
             <th>{{localize "yggdrasill.temper.caracName"}}</th>
             <th>{{localize "yggdrasill.temper.modifier"}}</th>
@@ -9,7 +14,18 @@
             <th>{{localize "yggdrasill.temper.caracName"}}</th>
             <th>{{localize "yggdrasill.temper.modifier"}}</th>
         </tr>
-        {{#each tempers as |temper id|}}<tr>
+        {{#each tempers as |temper id|}}
+        <tr class="temper-item item" data-item-id="{{_id}}">
+            <td>
+                <a class="item-edit" title="{{localize "yggdrasill.sheet.editTemper"}}">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteTemper"}}">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
             <td>{{name}}</td>
             <td>{{localize (lookup ../config.extraCarac data.caracUp.name)}}</td>
             {{#if (eqAnd data.caracUp.name "conflict" data.caracUp.name "mystic")}}

@@ -25,10 +25,27 @@
             "addMart":"Add a martial prowess",
             "editMart":"Edit a martial prowess",
             "deleteMart":"Delete a martial prowess",
-            "new-martialCpt":"New martial prowess"
+            "new-martialCpt":"New martial prowess",
         
+            "addSejdr":"Add a sejdr",
+            "editSejdr":"Edit a sejdr",
+            "deleteSejdr":"Delete a sejdr",
+            "new-sejdrCpt":"New sejdr",
         
+            "addGaldr":"Add a galdr",
+            "editGaldr":"Edit a galdr",
+            "deleteGaldr":"Delete a galdr",
+            "new-galdrCpt":"New galdr",
         
+            "addRune":"Add a rune",
+            "editRune":"Edit a rune",
+            "deleteRune":"Delete a rune",
+            "new-runeCpt":"New rune"  ,
+        
+            "addTemper":"Add a temper",
+            "editTemper":"Edit a temper",
+            "deleteTemper":"Delete a temper",
+            "new-temper":"New temper"      
         },
         "tabs":{
             "carac":"Characteristics",

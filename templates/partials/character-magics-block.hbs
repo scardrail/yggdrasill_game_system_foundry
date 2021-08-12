@@ -10,15 +10,30 @@
             <th>{{localize "yggdrasill.magicCpt.preparation"}}</th>
             <th>{{localize "yggdrasill.magicCpt.zone"}}</th>
             <th>{{localize "yggdrasill.magicCpt.effects"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="sejdrCpt" title="{{localize "yggdrasill.sheet.addSejdr"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each sejdrCpt as |sejdr id|}}
-            <tr>
+            <tr class="sejdrCpt-item item" data-item-id="{{_id}}">
                 <td>{{name}}</td>
                 <td>{{data.level}}</td>
                 <td>{{data.modifier}}</td>
                 <td>{{data.preparation.value}} {{localize (lookup ../config.magicDuration data.preparation.unit)}}</td>
                 <td>{{data.zone}}</td>
                 <td>{{data.effects}}</td>
+                <td>
+                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editSejdr"}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteSejdr"}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         {{/each}}
     </table>
@@ -30,12 +45,27 @@
             <th>{{localize "yggdrasill.magicCpt.difficultyLevel"}}</th>
             <th>{{localize "yggdrasill.magicCpt.dommain"}}</th>
             <th>{{localize "yggdrasill.magicCpt.type"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="galdrCpt" title="{{localize "yggdrasill.sheet.addGaldr"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each galdrCpt as |galdr id|}}
-            <tr>
+            <tr class="galdrCpt-item item" data-item-id="{{_id}}">
                 <td>{{data.difficultyLevel}}</td>
                 <td>{{name}}</td>
                 <td>{{localize (lookup ../config.galdrTypes data.type)}}</td>
+                <td>
+                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editGaldr"}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteGaldr"}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         {{/each}}
     </table>
@@ -47,12 +77,27 @@
             <th>{{localize "yggdrasill.magicCpt.name"}}</th>
             <th>{{localize "yggdrasill.magicCpt.level"}}</th>
             <th>{{localize "yggdrasill.magicCpt.dommain"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="runeCpt" title="{{localize "yggdrasill.sheet.addRune"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each runeCpt as |rune id|}}
-            <tr>
+            <tr class="runeCpt-item item" data-item-id="{{_id}}">
                 <td>{{name}}</td>
                 <td>{{data.level}}</td>
                 <td>{{data.dommain}}</td>
+                <td>
+                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editRune"}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteRune"}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         {{/each}}
     </table>

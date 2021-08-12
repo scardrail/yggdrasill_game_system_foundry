@@ -20,9 +20,27 @@
             "addMart":"Ajout d'une prouesse martiale",
             "editMart":"Editer une prouesse martiale",
             "deleteMart":"Suprimer une prouesse martiale",
-            "new-martialCpt":"Nouvelle prouesse martiale"
+            "new-martialCpt":"Nouvelle prouesse martiale",
         
+            "addSejdr":"Ajout d'un sort de sejdr",
+            "editSejdr":"Editer un sort de sejdr",
+            "deleteSejdr":"Suprimer un sort de sejdr",
+            "new-sejdrCpt":"Nouveau sort de sejdr",
         
+            "addGaldr":"Ajout d'un sort de galdr",
+            "editGaldr":"Editer un sort de galdr",
+            "deleteGaldr":"Suprimer un sort de galdr",
+            "new-galdrCpt":"Nouveau sort de galdr",
+        
+            "addRune":"Ajout d'une rune",
+            "editRune":"Editer une rune",
+            "deleteRune":"Suprimer une rune",
+            "new-runeCpt":"Nouvelle rune",
+        
+            "addTemper":"Ajout d'un caractère",
+            "editTemper":"Editer un caractère",
+            "deleteTemper":"Suprimer un caractère",
+            "new-temper":"Nouveau caractère"
         },
         "tabs":{
             "carac" : "Caractéristiques",
