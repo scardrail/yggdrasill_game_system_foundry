@@ -1,11 +1,15 @@
 <tr class="weapon-item item" data-item-id="{{_id}}">
     <td>{{name}}</td>
     <td>{{data.dmgBase}}</td>
-    <td>{{data.solidity}}</td>
+    <td>
+        <input class="weapon-solidity inline-edit" data-field="data.solidity" type="number" min="0" value="{{data.solidity}}"/>
+        </td>
     <td>{{data.enc}}</td>
     <td></td>
     <td>{{data.rangeC}}/{{data.rangeM}}/{{data.rangeL}}/{{data.rangeE}}</td>
-    <td>{{data.price}}</td>
+    <td>
+        <input class="weapon-price inline-edit" data-field="data.price" type="number" min="0" value="{{data.price}}"/>
+        </td>
     <td>
         <a class="item-edit" title="{{localize "yggdrasill.sheet.editWpn"}}">
             <i class="fas fa-edit"></i>

@@ -10,7 +10,19 @@
             "addWpn":"Add a weapon",
             "editWpn":"Edit a weapon",
             "deleteWpn":"Delete a weapon",
-            "new-arme":"New weapon"
+            "new-arme":"New weapon",
+        
+            "addProt":"Add a protection",
+            "editProt":"Edit a protection",
+            "deleteProt":"Delete a protection",
+            "new-protection":"New protection",
+        
+            "addObj":"Add a object",
+            "editObj":"Edit a object",
+            "deleteObj":"Delete a object",
+            "new-object":"New object"
+        
+        
         },
         "tabs":{
             "carac":"Characteristics",

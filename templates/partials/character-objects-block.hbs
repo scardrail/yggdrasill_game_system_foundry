@@ -4,6 +4,11 @@
             <th>{{localize "yggdrasill.item.name"}}</th>
             <th>{{localize "yggdrasill.item.qty"}}</th>
             <th>{{localize "yggdrasill.item.price"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="object" title="{{localize "yggdrasill.sheet.addObj"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each objects as |object id|}}
             {{> "systems/yggdrasill/templates/partials/cards/object-card.hbs"}}

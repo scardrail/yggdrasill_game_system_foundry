@@ -7,6 +7,11 @@
             <th>{{localize "yggdrasill.equipment.solidity"}}</th>
             <th>{{localize "yggdrasill.equipment.enc"}}</th>
             <th>{{localize "yggdrasill.item.price"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="protection" title="{{localize "yggdrasill.sheet.addWpn"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each armors as |armor id|}}
             {{> "systems/yggdrasill/templates/partials/cards/armor-card.hbs"}}

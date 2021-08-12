@@ -10,7 +10,12 @@
             "addWpn":"Ajout de arme",
             "editWpn":"Editer une arme",
             "deleteWpn":"Suprimer une arme",
-            "new-arme":"Nouvelle arme"
+            "new-arme":"Nouvelle arme",
+        
+            "addObj":"Ajout de objet",
+            "editObj":"Editer une objet",
+            "deleteObj":"Suprimer une objet",
+            "new-object":"Nouvelle objet"
         
         },
         "tabs":{

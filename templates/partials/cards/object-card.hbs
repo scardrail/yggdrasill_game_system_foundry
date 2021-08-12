@@ -1,5 +1,19 @@
-<tr>
+<tr class="object-item item" data-item-id="{{_id}}">
     <td>{{name}}</td>
-    <td>{{data.qty}}</td>
-    <td>{{data.price}}</td>
+    <td>
+        <input class="object-qty inline-edit" data-field="data.qty" type="number" min="0" value="{{data.qty}}"/>
+        </td>
+    <td>
+        <input class="object-price inline-edit" data-field="data.price" type="number" min="0" value="{{data.price}}"/>
+        </td>
+    <td>
+        <a class="item-edit" title="{{localize "yggdrasill.sheet.editObj"}}">
+            <i class="fas fa-edit"></i>
+        </a>
+    </td>
+    <td>
+        <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteObj"}}">
+            <i class="fas fa-trash"></i>
+        </a>
+    </td>
 </tr>
