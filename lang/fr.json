@@ -15,7 +15,13 @@
             "addObj":"Ajout de objet",
             "editObj":"Editer une objet",
             "deleteObj":"Suprimer une objet",
-            "new-object":"Nouvelle objet"
+            "new-object":"Nouvelle objet",
+        
+            "addMart":"Ajout d'une prouesse martiale",
+            "editMart":"Editer une prouesse martiale",
+            "deleteMart":"Suprimer une prouesse martiale",
+            "new-martialCpt":"Nouvelle prouesse martiale"
+        
         
         },
         "tabs":{

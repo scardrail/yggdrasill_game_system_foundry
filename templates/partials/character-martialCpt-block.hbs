@@ -8,13 +8,28 @@
             <th>{{localize "yggdrasill.martialCpt.level"}}</th>
             <th>{{localize "yggdrasill.martialCpt.modifier"}}</th>
             <th>{{localize "yggdrasill.description"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="martialCpt" title="{{localize "yggdrasill.sheet.addMart"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each martialCpt as |martial id|}}
-            <tr>
+            <tr class="martialCpt-item item" data-item-id="{{_id}}">
                 <td>{{name}}</td>
                 <td>{{data.level}}</td>
                 <td>{{data.modifier}}</td>
                 <td>{{data.description}}</td>
+                <td>
+                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editMart"}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteMart"}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         {{/each}}
     </table>

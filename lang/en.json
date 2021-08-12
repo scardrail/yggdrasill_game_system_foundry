@@ -20,7 +20,13 @@
             "addObj":"Add a object",
             "editObj":"Edit a object",
             "deleteObj":"Delete a object",
-            "new-object":"New object"
+            "new-object":"New object",
+        
+            "addMart":"Add a martial prowess",
+            "editMart":"Edit a martial prowess",
+            "deleteMart":"Delete a martial prowess",
+            "new-martialCpt":"New martial prowess"
+        
         
         
         },
