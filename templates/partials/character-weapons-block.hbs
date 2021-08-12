@@ -8,6 +8,11 @@
             <th></th>
             <th>{{localize "yggdrasill.weapon.rangeConcat"}}</th>
             <th>{{localize "yggdrasill.item.price"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="arme" title="{{localize "yggdrasill.sheet.addWpn"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each weapons as |weapon id|}}
             {{> "systems/yggdrasill/templates/partials/cards/weapon-card.hbs"}}

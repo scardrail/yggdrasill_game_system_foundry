@@ -1,4 +1,4 @@
-<tr>
+<tr class="weapon-item item" data-item-id="{{_id}}">
     <td>{{name}}</td>
     <td>{{data.dmgBase}}</td>
     <td>{{data.solidity}}</td>
@@ -6,4 +6,14 @@
     <td></td>
     <td>{{data.rangeC}}/{{data.rangeM}}/{{data.rangeL}}/{{data.rangeE}}</td>
     <td>{{data.price}}</td>
+    <td>
+        <a class="item-edit" title="{{localize "yggdrasill.sheet.editWpn"}}">
+            <i class="fas fa-edit"></i>
+        </a>
+    </td>
+    <td>
+        <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteWpn"}}">
+            <i class="fas fa-trash"></i>
+        </a>
+    </td>
 </tr>

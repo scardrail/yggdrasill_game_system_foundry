@@ -5,7 +5,12 @@
             "addCpt":"Add a competence",
             "editCpt":"Edit a competence",
             "deleteCpt":"Delete a competence",
-            "newCpt":"New competence"
+            "new-competence":"New competence",
+            
+            "addWpn":"Add a weapon",
+            "editWpn":"Edit a weapon",
+            "deleteWpn":"Delete a weapon",
+            "new-arme":"New weapon"
         },
         "tabs":{
             "carac":"Characteristics",

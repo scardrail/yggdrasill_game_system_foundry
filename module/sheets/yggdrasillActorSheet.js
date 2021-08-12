@@ -40,8 +40,11 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
         let options = {};
 
+        let itemName = "yggdrasill.sheet.new";
+        itemName = itemName.concat('-', element.dataset.type);
+
         let itemData = {
-            name: game.i18n.localize("yggdrasill.sheet.newCpt"),
+            name: game.i18n.localize(itemName),
             type: element.dataset.type
         };
 
