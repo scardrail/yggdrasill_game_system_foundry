@@ -2,15 +2,17 @@
     <table>
         <tr>
             <th>
-                <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
-                    <i class="fas fa-plus"></i>
-                </a>
                 {{localize "yggdrasill.competence.name"}}
             </th>
             <th>{{localize "yggdrasill.competence.value"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
         </tr>
         {{#each competences as |competence id|}}
-            {{> "systems/yggdrasill/templates/partials/competence-card.hbs"}}
+            {{> "systems/yggdrasill/templates/partials/cards/competence-card.hbs"}}
         {{/each}}
     </table>
 </section>

@@ -2,8 +2,10 @@
     "yggdrasill":{
         "description":"Description",
         "sheet":{
-            "addCpt":"Ajout de competence",
-            "newCpt":"Nouvelle competence"
+            "addCpt":"Ajout de compétence",
+            "editCpt":"Editer une compétence",
+            "deleteCpt":"Suprimer une compétence",
+            "newCpt":"Nouvelle compétence"
         },
         "tabs":{
             "carac" : "Caractéristiques",

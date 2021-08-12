@@ -3,6 +3,8 @@
         "description":"Description",
         "sheet":{
             "addCpt":"Add a competence",
+            "editCpt":"Edit a competence",
+            "deleteCpt":"Delete a competence",
             "newCpt":"New competence"
         },
         "tabs":{
