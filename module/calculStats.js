@@ -3,12 +3,7 @@ export function setExtraCaracs(data){
 
     data = setTempersModifications(data);    
     data = setRollableStats(data);
-    
-    if(data.data.data.conflict.offensive.roll >=10){
-        data.data.data.actions.max = 3;
-    }
-
-    data.data.data.actions.modifier = data.data.data.actions.value * -3;
+    data = setActionsModifications(data);
     
     return data;
 }
@@ -57,5 +52,16 @@ export function setRollableStats(data){
             }
         }
     };
+    return data;
+}
+
+export function setActionsModifications(data){
+
+    if(data.data.data.conflict.offensive.roll >=10){
+        data.data.data.actions.max = 3;
+    }
+
+    data.data.data.actions.modifier = data.data.data.actions.value * -3;
+    
     return data;
 }
