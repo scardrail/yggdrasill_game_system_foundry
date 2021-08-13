@@ -116,17 +116,14 @@ export default class YggdrasillActorSheet extends ActorSheet {
     }
 
     _onTaskCheck(event) {
-        const itemId = event.currentTarget.closest(".item").dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        const actor = this.actor.data;
-
         Dice.TaskCheck({
-            actionValue: item.data.data.value,
-            nbDiceKept: actor.data.nbDiceKept,
-            nbDiceFuror: actor.data.nbDiceFuror.value,
-            destinyDice: 0,
-            caracValue: actor.data.primCarac.body.power.value,
-            modifier: actor.data.rollModifier + actor.data.primCarac.body.power.mod
+            actionValue: event.currentTarget.dataset.actionValue,
+            nbDiceKept: event.currentTarget.dataset.nbDiceKept,
+            nbDiceFuror: event.currentTarget.dataset.nbDiceFuror,
+            destinyDice: event.currentTarget.dataset.destinyDice,
+            caracValue: event.currentTarget.dataset.caracValue,
+            modifier: event.currentTarget.dataset.modifier,
+            actor: this.actor.data
         })
     }
 

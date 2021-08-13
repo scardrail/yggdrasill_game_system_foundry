@@ -1,12 +1,26 @@
 export async function TaskCheck({
-    actionValue = null,
+    caracValue = null,
     nbDiceKept = null,
+    actionValue = null,
     nbDiceFuror = null,
     destinyDice = null,
-    caracValue = null,
-    modifier = null
+    modifier = null,
+    actor = null
 } = {}) {
-    let rollFormula = "(@caracValue)d10kh(@nbDiceKept)x10 + (@destinyDice)d10 + (@nbDiceFuror)d10 + @actionValue + @modifier";
+    console.log("Yggdrasill || caracValue " + caracValue);
+    console.log("Yggdrasill || nbDiceKept " + nbDiceKept);
+    console.log("Yggdrasill || actionValue " + actionValue);
+    console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
+    console.log("Yggdrasill || destinyDice " + destinyDice);
+    console.log("Yggdrasill || modifier " + modifier);
+    console.log("Yggdrasill || actor :");
+    console.log(actor);
+    let rollFormula = "(@caracValue)d10kh(@nbDiceKept)x10";
+    if (actionValue != 0) rollFormula += " + @actionValue";
+    if (modifier != 0) rollFormula += " + @modifier";
+    if (destinyDice != 0) rollFormula += " + (@destinyDice)d10";
+    if (nbDiceFuror != 0) rollFormula += " + (@nbDiceFuror)d10";
+
     let rollData = {
         // actionValue: item.data.data.value,
         // nbDiceKept: actor.data.nbDiceKept,
@@ -14,15 +28,13 @@ export async function TaskCheck({
         // destinyDice: 0,
         // caracValue: actor.data.primCarac.body.power.value,
         // modifier: actor.data.rollModifier + actor.data.primCarac.body.power.mod
-        actionValue = actionValue,
-        nbDiceKept = nbDiceKept,
-        nbDiceFuror = nbDiceFuror,
-        destinyDice = destinyDice,
-        caracValue = caracValue,
-        modifier = modifier,
+        actionValue: actionValue,
+        nbDiceKept: nbDiceKept,
+        nbDiceFuror: nbDiceFuror,
+        destinyDice: destinyDice,
+        caracValue: caracValue,
+        modifier: modifier,
     };
-
-    if (actor.data.isDestinyRoll) rollData.destinyDice = 1;
 
     if (actor.data.isInitiated && (item.type == "sejdrCpt" || item.type == "galdrCpt" || item.type == "runeCpt")) {
         actor.data.nbDiceFuror.minMax = actor.data.primCarac.spirit.tenacity;
@@ -46,6 +58,8 @@ export async function TaskCheck({
         speaker: ChatMessage.getSpeaker(),
     };
     new Roll(rollFormula, rollData).roll().toMessage(messageData);
+    // let myroll = new Roll(rollFormula, rollData).roll().toMessage(messageData);
+    // console.log(myroll);
     actor.data.nbDiceFuror.value = 0;
 
 }
