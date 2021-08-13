@@ -1,0 +1,33 @@
+<section class="extra-martial-list">
+    <div class="extra-martial-tables" style="display: grid; grid-template-columns:1fr 180px; gap:5px;">
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.character.actions"}}</th>
+                <th>{{localize "yggdrasill.character.actionsMod"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                        <input name="data.actions.value" type="number" min="0" max="{{data.data.actions.max}}" value="{{data.data.actions.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.actions.max}}</p>
+                    </div>
+                </td>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.actions.modifier}}</p>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th colspan="2">{{localize "yggdrasill.extra.fight"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <a class="item-roll" data-extra=true data-value={{data.data.conflict.offensive}} data-modifier={{data.data.actions.modifier}}>Attaque</a>
+                </td>
+                <td>
+                    <a class="item-roll" data-extra=true data-value={{data.data.conflict.defensive}} data-modifier={{data.data.actions.modifier}}>Défense</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

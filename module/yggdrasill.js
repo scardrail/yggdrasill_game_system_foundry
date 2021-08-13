@@ -1,11 +1,15 @@
-import YggdrasillItemSheet from "./sheets/yggdrasillItemSheet.js";
-import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
-
 import { registerHandlebarsHelpers} from "./helpers.js";
 import {yggdrasill} from "./config.js";
 
+import yggdrasillActor from "./yggdrasillActor.js";
+
+import YggdrasillItemSheet from "./sheets/yggdrasillItemSheet.js";
+import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
+
 async function preloadHandlebarsTemplates() {
     const templatePaths = [
+        "templates/dice/roll.html",
+        
         "systems/yggdrasill/templates/partials/character-description-block.hbs",
         "systems/yggdrasill/templates/partials/character-richness-block.hbs",
         "systems/yggdrasill/templates/partials/character-primCarac-block.hbs",
@@ -21,11 +25,14 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/character-aett-block.hbs",
         "systems/yggdrasill/templates/partials/extra-carac-block.hbs",
         "systems/yggdrasill/templates/partials/extra-temper-block.hbs",
+        "systems/yggdrasill/templates/partials/extra-martial-block.hbs",
         "systems/yggdrasill/templates/partials/cards/weapon-card.hbs",
         "systems/yggdrasill/templates/partials/cards/armor-card.hbs",
         "systems/yggdrasill/templates/partials/cards/object-card.hbs",
         "systems/yggdrasill/templates/partials/cards/competence-card.hbs",
-        "systems/yggdrasill/templates/partials/cards/temper-card.hbs"
+        "systems/yggdrasill/templates/partials/cards/temper-card.hbs",
+        "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs"
+        
     ];
     return loadTemplates(templatePaths);
 }

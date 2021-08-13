@@ -1,3 +1,4 @@
+import * as Dice from "../dice.js"
 export default class YggdrasillActorSheet extends ActorSheet {
     static get defaultOptions(){
         return mergeObject(super.defaultOptions, {
@@ -10,8 +11,10 @@ export default class YggdrasillActorSheet extends ActorSheet {
     };
 
     getData(){
-        const data = super.getData();
+        let data = super.getData();
+
         data.config = CONFIG.yggdrasill;
+        
         data.weapons = data.items.filter(function(item) {return item.type == "arme"});
         data.armors = data.items.filter(function(item) {return item.type == "protection"});
         data.objects = data.items.filter(function(item) {return item.type == "object"});
@@ -21,7 +24,9 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.sejdrCpt = data.items.filter(function(item) {return item.type == "sejdrCpt"});
         data.galdrCpt = data.items.filter(function(item) {return item.type == "galdrCpt"});
         data.runeCpt = data.items.filter(function(item) {return item.type == "runeCpt"});
+        
         console.log(data);
+
         return data;
     }
 
@@ -36,7 +41,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
         }
 
         //if is editable
-        if(this.actor.owner){
+        if(this.actor.isOwner){
+            html.find(".item-roll").click(this._onItemRoll.bind(this));
         }
 
         super.activateListeners(html);
@@ -90,5 +96,19 @@ export default class YggdrasillActorSheet extends ActorSheet {
         itemId = itemId instanceof Array ? itemId : [itemId];
 
         return this.actor.deleteEmbeddedDocuments("Item", itemId, options);
+    }
+
+    _onItemRoll(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        console.log(element.dataset.modifier);
+        
+        Dice.TaskCheck(
+            {
+                actionValue: element.dataset.value, 
+                actionsMod: element.dataset.modifier, 
+                extra:element.dataset.extra
+            }
+        )
     }
 }
