@@ -1,8 +1,6 @@
 import { registerHandlebarsHelpers} from "./helpers.js";
 import {yggdrasill} from "./config.js";
 
-import yggdrasillActor from "./yggdrasillActor.js";
-
 import YggdrasillItemSheet from "./sheets/yggdrasillItemSheet.js";
 import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
 
@@ -48,6 +46,7 @@ Hooks.once("init", () => {
 
     //register Handlebars config
     CONFIG.yggdrasill = yggdrasill;
+
     // Register Handlebars helpers
     registerHandlebarsHelpers();
     preloadHandlebarsTemplates();

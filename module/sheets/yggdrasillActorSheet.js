@@ -1,4 +1,5 @@
 import * as Dice from "../dice.js"
+import * as calculStats from "../calculStats.js"
 export default class YggdrasillActorSheet extends ActorSheet {
     static get defaultOptions(){
         return mergeObject(super.defaultOptions, {
@@ -24,6 +25,10 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.sejdrCpt = data.items.filter(function(item) {return item.type == "sejdrCpt"});
         data.galdrCpt = data.items.filter(function(item) {return item.type == "galdrCpt"});
         data.runeCpt = data.items.filter(function(item) {return item.type == "runeCpt"});
+        
+        if (data.actor.type == "extra" || data.actor.type == "creature"){
+            data = calculStats.setExtraCaracs(data);
+        }      
         
         console.log(data);
 
