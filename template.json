@@ -25,7 +25,8 @@
         "max":0,
         "modifier":0
       },
-      "isNPC":true
+      "isNPC":true,
+      "isCaracUpdated":false
     },
     "importantCharacter":{
       "primCarac": {
@@ -121,17 +122,54 @@
     "extraCharacter":{
       "type":"bondi",
       "conflict":{
-        "offensive":0,
-        "defensive":0
+        "offensive":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
+        "defensive":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        }
       },
-      "relational":0,
-      "physic":0,
-      "mental":0,
+      "relational":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
+      "physic":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
+      "mental":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
       "mystic":{
-        "offensive":0,
-        "defensive":0
+        "offensive":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
+        "defensive":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        }
       },
-      "vitality":0,
+      "vitality":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
+      "none":{
+          "value":0,
+          "mod":0,
+          "roll":0
+        },
       "lifeStatus":"frisky"
     }
   },

@@ -38,14 +38,14 @@ async function preloadHandlebarsTemplates() {
 Hooks.once("init", () => {
     console.log("Yggdrasill | Initialisation du système Yggdrasill");
 
+    //register Handlebars config
+    CONFIG.yggdrasill = yggdrasill;
+
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("yggdrasill", YggdrasillItemSheet, {makeDefault: true});
 
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("yggdrasill", YggdrasillActorSheet, {makeDefault: true});
-
-    //register Handlebars config
-    CONFIG.yggdrasill = yggdrasill;
 
     // Register Handlebars helpers
     registerHandlebarsHelpers();
