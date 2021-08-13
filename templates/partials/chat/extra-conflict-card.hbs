@@ -1,2 +1,12 @@
 {{> "templates/dice/roll.html"}}
-<h1>COUCOU</h1>
+<div>
+    action : {{actionType}}
+</div>
+{{#if (eq actionType "offensive")}}
+
+    <div>
+        <button type="button">
+            <i class="fas fa-bahai"></i>{{localize "yggdrasill.chat.actions.damages"}}
+        </button>
+    </div>
+{{/if}}

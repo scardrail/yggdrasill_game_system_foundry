@@ -18,7 +18,9 @@
                 <a data-tab="cpt">{{ localize "yggdrasill.tabs.cpt" }}</a>
                 <a data-tab="equipmt">{{ localize "yggdrasill.tabs.equipmt" }}</a>
                 <a data-tab="fight">{{ localize "yggdrasill.tabs.fight" }}</a>
-                <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
+                {{#if data.data.isInitiated}}
+                    <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
+                {{/if}}
                 <a data-tab="story">{{ localize "yggdrasill.tabs.story" }}</a>
             </nav>
             <section class="sheet-body">
@@ -72,6 +74,9 @@
                 <div class="tab story" data-group="primary" data-tab="story">
                     <div class="aettBloc" style="padding: 0px 15px 0px 15px;">
                         {{> "systems/yggdrasill/templates/partials/character-aett-block.hbs"}}
+                    </div>
+                    <div class="paramsBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-parameters-block.hbs"}}
                     </div>
                     <h3>
                         {{localize "yggdrasill.character.background"}}

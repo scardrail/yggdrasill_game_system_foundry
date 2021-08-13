@@ -1,410 +1,450 @@
 {
-"Actor": {
-  "types": ["pj","pnj","extra","creature"],
-  "templates":{
-    "commonStats":{
-      "age": 0,
-      "kingdom": "Dannois",
-      "archetype": "",
-      "profession": "",
-      "size": "",
-      "weight": "",
-      "flair": "",
-      "weakness": "",
-      "background": "Background",
-      "renown":0,
-      "legendPt":0,
-      "richness":{
-        "gold": 0,
-        "silver": 0,
-        "copper": 0
-      },
-      "dmgMod": 0,
-      "actions": {
-        "value":0,
-        "max":0,
-        "modifier":0
-      },
-      "isNPC":true,
-      "isCaracUpdated":false
-    },
-    "importantCharacter":{
-      "primCarac": {
-        "body":{
-          "power": {
-            "value":1,
-            "mod":0
-          },
-          "vigour":{
-            "value":1,
-            "mod":0
-          },
-          "agility":{
-            "value":1,
-            "mod":0
-          }
+    "Actor": {
+        "types": ["pj", "pnj", "extra", "creature"],
+        "templates": {
+            "commonStats": {
+                "age": 0,
+                "kingdom": "Dannois",
+                "archetype": "",
+                "profession": "",
+                "size": "",
+                "weight": "",
+                "flair": "",
+                "weakness": "",
+                "background": "Background",
+                "renown": 0,
+                "legendPt": 0,
+                "richness": {
+                    "gold": 0,
+                    "silver": 0,
+                    "copper": 0
+                },
+                "dmgMod": 0,
+                "actions": {
+                    "value": 0,
+                    "max": 0,
+                    "modifier": 0
+                },
+                "isNPC": true,
+                "isCaracUpdated": false,
+                "rollModifier": 0
+            },
+            "importantCharacter": {
+                "primCarac": {
+                    "body": {
+                        "power": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        },
+                        "vigour": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        },
+                        "agility": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        }
+                    },
+                    "spirit": {
+                        "intelect": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        },
+                        "perception": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        },
+                        "tenacity": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        }
+                    },
+                    "soul": {
+                        "charisma": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        },
+                        "instinct": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        },
+                        "communication": {
+                            "value": 1,
+                            "mod": 0,
+                            "roll": 0
+                        }
+                    }
+                },
+                "valPrimCaracMax": 5,
+                "secCarac": {
+                    "ini": {
+                        "reaction": 0,
+                        "spaceReq": 0,
+                        "protection": 0,
+                        "magic": 0
+                    },
+                    "ttlIni": 0,
+                    "dp": {
+                        "base": 0,
+                        "spaceReq": 0,
+                        "protection": 0,
+                        "magic": 0
+                    },
+                    "ttlDp": 0,
+                    "dm": {
+                        "base": 0,
+                        "protection": 0,
+                        "magic": 0
+                    },
+                    "ttlDm": 0,
+                    "transport": {
+                        "value": 0,
+                        "run": 0,
+                        "runTime": "",
+                        "sprint": 0,
+                        "sprintTime": ""
+                    },
+                    "spaceReq": {
+                        "value": 0,
+                        "max": 0,
+                        "modifier": 0,
+                        "status": "free",
+                        "troubled": 0,
+                        "crowded": 0,
+                        "overloaded": 0
+                    }
+                },
+                "lifePoints": {
+                    "value": 0,
+                    "max": 0,
+                    "min": 0,
+                    "frisky": 0,
+                    "injured": 0,
+                    "bruised": 0,
+                    "unconscious": 0,
+                    "dead": 0,
+                    "indestructible": 0,
+                    "status": "frisky",
+                    "modifier": 0,
+                    "isWeary": false,
+                    "wearyTime": ""
+                },
+                "reserve": {
+                    "value": 0,
+                    "max": 0
+                },
+                "aett": {
+                    "freyr": "fehu",
+                    "heimdall": "hagal",
+                    "tyr": "tiwaz"
+                },
+                "isDead": false,
+                "isBerserk": false,
+                "isInitiated": false,
+                "isInFuror": false,
+                "isDestinyRoll": false,
+                "nbDiceFuror": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0,
+                    "minMax": 0
+                },
+                "nbDiceKept": 2
+            },
+            "extraCharacter": {
+                "type": "bondi",
+                "conflict": {
+                    "offensive": {
+                        "value": 0,
+                        "mod": 0,
+                        "roll": 0
+                    },
+                    "defensive": {
+                        "value": 0,
+                        "mod": 0,
+                        "roll": 0
+                    }
+                },
+                "relational": {
+                    "value": 0,
+                    "mod": 0,
+                    "roll": 0
+                },
+                "physic": {
+                    "value": 0,
+                    "mod": 0,
+                    "roll": 0
+                },
+                "mental": {
+                    "value": 0,
+                    "mod": 0,
+                    "roll": 0
+                },
+                "mystic": {
+                    "offensive": {
+                        "value": 0,
+                        "mod": 0,
+                        "roll": 0
+                    },
+                    "defensive": {
+                        "value": 0,
+                        "mod": 0,
+                        "roll": 0
+                    }
+                },
+                "vitality": {
+                    "value": 0,
+                    "mod": 0,
+                    "roll": 0
+                },
+                "none": {
+                    "value": 0,
+                    "mod": 0,
+                    "roll": 0
+                },
+                "lifeStatus": "frisky"
+            }
         },
-        "spirit":{
-          "intelect":{
-            "value":1,
-            "mod":0
-          },
-          "perception":{
-            "value":1,
-            "mod":0
-          },
-          "tenacity":{
-            "value":1,
-            "mod":0
-          }
+        "pj": {
+            "templates": [
+                "commonStats",
+                "importantCharacter"
+            ],
+            "isNPC": false
         },
-        "soul":{
-          "charisma":{
-            "value":1,
-            "mod":0
-          },
-          "instinct":{
-            "value":1,
-            "mod":0
-          },
-          "communication":{
-            "value":1,
-            "mod":0
-          }
+        "pnj": {
+            "templates": [
+                "commonStats",
+                "importantCharacter"
+            ]
+        },
+        "extra": {
+            "templates": [
+                "commonStats",
+                "extraCharacter"
+            ],
+            "actions": {
+                "max": 2
+            }
+        },
+        "creature": {
+            "templates": [
+                "commonStats",
+                "extraCharacter"
+            ]
         }
-      },
-      "secCarac": {
-        "ini":{
-          "reaction":0,
-          "spaceReq":0,
-          "protection":0,
-          "magic":0,
-          "ttlIni":0
+    },
+    "Item": {
+        "types": [
+            "arme",
+            "protection",
+            "object",
+            "competence",
+            "martialCpt",
+            "sejdrCpt",
+            "galdrCpt",
+            "runeCpt",
+            "aett",
+            "temper"
+        ],
+        "templates": {
+            "base": {
+                "description": "description",
+                "source": ""
+            },
+            "item": {
+                "qty": 1,
+                "qtyMax": null,
+                "price": 0
+            },
+            "equipment": {
+                "enc": 0,
+                "solidity": 0,
+                "equiped": false,
+                "properties": {
+                    "ranged": false,
+                    "equipable": false,
+                    "stackable": false,
+                    "unique": false,
+                    "2Handed": false,
+                    "equipment": false,
+                    "weapon": false,
+                    "protection": false,
+                    "pieceProtec": false
+                }
+            },
+            "cptSpe": {
+                "level": 1
+            },
+            "cptMagic": {
+                "duration": {
+                    "value": 0,
+                    "unit": "action"
+                }
+            }
         },
-        "dp":{
-          "base":0,
-          "spaceReq":0,
-          "protection":0,
-          "magic":0,
-          "ttlDp":0
+        "arme": {
+            "templates": [
+                "base",
+                "item",
+                "equipment"
+            ],
+            "properties": {
+                "weapon": true
+            },
+            "subType": "wLong",
+            "hands": 1,
+            "dmgBase": 0,
+            "rangeC": 0,
+            "rangeM": 0,
+            "rangeL": 0,
+            "rangeE": 0
         },
-        "dm":{
-          "base":0,
-          "protection":0,
-          "magic":0,
-          "ttlDm":0
+        "protection": {
+            "templates": [
+                "base",
+                "item",
+                "equipment"
+            ],
+            "properties": {
+                "protection": true
+            },
+            "pSubType": "armor",
+            "defBase": {
+                "value": 0,
+                "mod": 0
+            }
         },
-        "transport":{
-          "value":0,
-          "sr10":0,
-          "sr14":0
+        "object": {
+            "templates": [
+                "base",
+                "item"
+            ],
+            "properties": {
+                "stackable": false,
+                "unique": false
+            },
+            "oSubType": "clothe",
+            "enc": 0
         },
-        "spaceReq": {
-          "value":0,
-          "min3":0,
-          "plus1":0
+        "competence": {
+            "templates": [
+                "base"
+            ],
+            "value": 0,
+            "type": "base"
+        },
+        "martialCpt": {
+            "templates": [
+                "base",
+                "cptSpe"
+            ],
+            "properties": {
+                "attack": false,
+                "ranged": false,
+                "defense": false,
+                "utilitary": false,
+                "variableLevel": false
+            },
+            "type": "attack",
+            "weapons": "allMelee",
+            "prerequisitesCpt": "martial",
+            "prerequisitesLvl": "newbie",
+            "modifier": -3,
+            "varLevel": {
+                "value": 1,
+                "max": 4
+            },
+            "varModifier": {
+                "value": -3,
+                "max": -12
+            }
+        },
+        "sejdrCpt": {
+            "templates": [
+                "base",
+                "cptSpe",
+                "cptMagic"
+            ],
+            "type": "divination",
+            "positiveness": "positive",
+            "preparation": {
+                "value": 0,
+                "unit": "action"
+            },
+            "modifier": -3,
+            "zone": "",
+            "effects": "",
+            "invertEffects": ""
+        },
+        "galdrCpt": {
+            "templates": [
+                "base",
+                "cptSpe"
+            ],
+            "type": "illusions",
+            "difficultyLevel": 3
+        },
+        "runeCpt": {
+            "templates": [
+                "base",
+                "cptSpe"
+            ],
+            "dommain": "",
+            "positiveEffect": "",
+            "negativeEffect": "",
+            "targets": "Une personne"
+        },
+        "aett": {
+            "templates": [
+                "base"
+            ],
+            "properties": {
+                "exclusiv": false
+            },
+            "number": 1,
+            "god": "freyr",
+            "print": {
+                "type": "positiv",
+                "description": "description"
+            },
+            "secPrint": {
+                "type": "negativ",
+                "description": "description"
+            }
+        },
+        "temper": {
+            "templates": [
+                "base"
+            ],
+            "dmg": {
+                "base": 0,
+                "mod": 0
+            },
+            "nbCaracUp": 2,
+            "caracUp": {
+                "name": "none",
+                "modifier": 0,
+                "sndModifier": 0
+            },
+            "sndCaracUp": {
+                "name": "none",
+                "modifier": 0,
+                "sndModifier": 0
+            },
+            "thrdCaracUp": {
+                "name": "none",
+                "modifier": 0,
+                "sndModifier": 0
+            }
         }
-      },
-      "lifePoints": {
-        "value":0,
-        "max":0
-      },
-      "reserve": {
-        "value":0,
-        "max":0
-      },
-      "aett":{
-        "freyr":"fehu",
-        "heimdall":"hagal",
-        "tyr":"tiwaz"
-      }
-    },
-    "extraCharacter":{
-      "type":"bondi",
-      "conflict":{
-        "offensive":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-        "defensive":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        }
-      },
-      "relational":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-      "physic":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-      "mental":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-      "mystic":{
-        "offensive":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-        "defensive":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        }
-      },
-      "vitality":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-      "none":{
-          "value":0,
-          "mod":0,
-          "roll":0
-        },
-      "lifeStatus":"frisky"
     }
-  },
-  "pj": {
-    "templates":[
-      "commonStats",
-      "importantCharacter"
-    ],
-    "isNPC":false
-  },
-  "pnj": {
-    "templates":[
-      "commonStats",
-      "importantCharacter"
-    ]
-  },
-  "extra": {
-    "templates":[
-      "commonStats",
-      "extraCharacter"
-    ],
-    "actions": {
-      "max":2
-    }
-  },
-  "creature": {
-    "templates":[
-      "commonStats",
-      "extraCharacter"
-    ]
-  }
-},
-"Item": {
-  "types": [
-    "arme",
-    "protection",
-    "object",
-    "competence",
-    "martialCpt",
-    "sejdrCpt",
-    "galdrCpt",
-    "runeCpt",
-    "aett",
-    "temper"
-  ],
-  "templates":{
-    "base":{
-      "description" : "description",
-      "source" : ""
-    },
-    "item":{
-      "qty" : 1,
-      "qtyMax" : null,
-      "price" : 0
-    },
-    "equipment":{
-      "enc" : 0,
-      "solidity" : 0,
-      "equiped" : false,
-      "properties": {
-        "ranged": false,
-        "equipable": false,
-        "stackable": false,
-        "unique" : false,
-        "2Handed" : false,
-        "equipment" : false,
-        "weapon" : false,
-        "protection" : false,
-        "pieceProtec" : false
-      }
-    },
-    "cptSpe":{
-      "level":1
-    },
-    "cptMagic":{
-      "duration":{
-        "value":0,
-        "unit":"action"
-      }
-    }
-  },
-  "arme":{
-    "templates": [
-      "base",
-      "item",
-      "equipment"
-    ],
-    "properties": {
-      "weapon" : true
-    },
-    "subType" : "wLong",
-    "hands": 1,
-    "dmgBase": 0,
-    "rangeC": 0,
-    "rangeM": 0,
-    "rangeL": 0,
-    "rangeE": 0
-  },
-  "protection":{
-    "templates": [
-      "base",
-      "item",
-      "equipment"
-    ],
-    "properties": {
-      "protection" : true
-    },
-    "pSubType":"armor",
-    "defBase" : {
-      "value":0,
-      "mod":0
-    }
-  },
-  "object":{
-    "templates": [
-      "base",
-      "item"
-    ],
-    "properties": {
-      "stackable": false,
-      "unique" : false
-    },
-    "oSubType":"clothe",
-    "enc" : 0
-  },
-  "competence":{
-    "templates": [
-      "base"
-    ],
-    "value":0,
-    "type":"base"
-  },
-  "martialCpt":{
-    "templates": [
-      "base",
-      "cptSpe"
-    ],
-    "properties":{
-      "attack":false,
-      "ranged":false,
-      "defense":false,
-      "utilitary":false,
-      "variableLevel":false
-    },
-    "type":"attack",
-    "weapons":"allMelee",
-    "prerequisitesCpt":"martial",
-    "prerequisitesLvl":"newbie",
-    "modifier":-3,
-    "varLevel":{
-      "value":1,
-      "max":4
-    },
-    "varModifier":{
-      "value":-3,
-      "max":-12
-    }
-  },
-  "sejdrCpt":{
-    "templates": [
-      "base",
-      "cptSpe",
-      "cptMagic"
-    ],
-    "type":"divination",
-    "positiveness":"positive",
-    "preparation":{
-      "value":0,
-      "unit":"action"
-    },
-    "modifier":-3,
-    "zone":"",
-    "effects":"",
-    "invertEffects":""
-  },
-  "galdrCpt":{
-    "templates": [
-      "base",
-      "cptSpe"
-    ],
-    "type":"illusions",
-    "difficultyLevel":3
-  },
-  "runeCpt":{
-    "templates": [
-      "base",
-      "cptSpe"
-    ],
-    "dommain":"",
-    "positiveEffect":"",
-    "negativeEffect":"",
-    "targets":"Une personne"
-  },
-  "aett":{
-    "templates": [
-      "base"
-    ],
-    "properties":{
-      "exclusiv":false
-    },
-    "number":1,
-    "god":"freyr",
-    "print":{
-      "type":"positiv",
-      "description":"description"
-    },
-    "secPrint":{
-      "type":"negativ",
-      "description":"description"
-    }
-  },
-  "temper":{
-    "templates": [
-      "base"
-    ],
-    "dmg":{
-      "base":0,
-      "mod":0
-    },
-    "nbCaracUp":2,
-    "caracUp":{
-      "name":"none",
-      "modifier":0,
-      "sndModifier":0
-    },
-    "sndCaracUp":{
-      "name":"none",
-      "modifier":0,
-      "sndModifier":0
-    },
-    "thrdCaracUp":{
-      "name":"none",
-      "modifier":0,
-      "sndModifier":0
-    }
-  }
-}
 }

@@ -1,44 +1,46 @@
 import * as Dice from "../dice.js"
 import * as calculStats from "../calculStats.js"
 export default class YggdrasillActorSheet extends ActorSheet {
-    static get defaultOptions(){
+    static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             with: 840,
             height: 800,
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "carac"}],
+            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "carac" }],
             template: "systems/yggdrasill/templates/sheets/importantCharacter-sheet.hbs",
             classes: ["yggdrasill", "sheet", "importantCharacter"]
         })
     };
 
-    getData(){
+    getData() {
         let data = super.getData();
 
         data.config = CONFIG.yggdrasill;
-        
-        data.weapons = data.items.filter(function(item) {return item.type == "arme"});
-        data.armors = data.items.filter(function(item) {return item.type == "protection"});
-        data.objects = data.items.filter(function(item) {return item.type == "object"});
-        data.competences = data.items.filter(function(item) {return item.type == "competence"});
-        data.tempers = data.items.filter(function(item) {return item.type == "temper"});
-        data.martialCpt = data.items.filter(function(item) {return item.type == "martialCpt"});
-        data.sejdrCpt = data.items.filter(function(item) {return item.type == "sejdrCpt"});
-        data.galdrCpt = data.items.filter(function(item) {return item.type == "galdrCpt"});
-        data.runeCpt = data.items.filter(function(item) {return item.type == "runeCpt"});
-        
-        if (data.actor.type == "extra" || data.actor.type == "creature"){
+
+        data.weapons = data.items.filter(function(item) { return item.type == "arme" });
+        data.armors = data.items.filter(function(item) { return item.type == "protection" });
+        data.objects = data.items.filter(function(item) { return item.type == "object" });
+        data.competences = data.items.filter(function(item) { return item.type == "competence" });
+        data.tempers = data.items.filter(function(item) { return item.type == "temper" });
+        data.martialCpt = data.items.filter(function(item) { return item.type == "martialCpt" });
+        data.sejdrCpt = data.items.filter(function(item) { return item.type == "sejdrCpt" });
+        data.galdrCpt = data.items.filter(function(item) { return item.type == "galdrCpt" });
+        data.runeCpt = data.items.filter(function(item) { return item.type == "runeCpt" });
+
+        if (data.actor.type == "extra" || data.actor.type == "creature") {
             data = calculStats.setExtraCaracs(data);
-        }      
-        
+        } else {
+            data = calculStats.setCharacterCaracs(data);
+        }
+
         console.log(data);
 
         return data;
     }
 
-    activateListeners(html){
+    activateListeners(html) {
 
         //if is editable
-        if(this.isEditable){
+        if (this.isEditable) {
             html.find(".item-create").click(this._onItemCreate.bind(this));
             html.find(".item-edit").click(this._onItemEdit.bind(this));
             html.find(".item-delete").click(this._onItemDelete.bind(this));
@@ -46,14 +48,15 @@ export default class YggdrasillActorSheet extends ActorSheet {
         }
 
         //if is editable
-        if(this.actor.isOwner){
+        if (this.actor.isOwner) {
             html.find(".item-roll").click(this._onItemRoll.bind(this));
+            html.find(".task-check").click(this._onTaskCheck.bind(this));
         }
 
         super.activateListeners(html);
     }
 
-    _onItemCreate(event){
+    _onItemCreate(event) {
         event.preventDefault();
         let element = event.currentTarget;
 
@@ -71,28 +74,30 @@ export default class YggdrasillActorSheet extends ActorSheet {
         return this.actor.createEmbeddedDocuments("Item", itemData, options);
     }
 
-    _onSkillEdit(event){
+    _onSkillEdit(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let itemId = element.closest(".item").dataset.itemId;
-        let item =  this.actor.items.get(itemId);
+        let item = this.actor.items.get(itemId);
         let field = element.dataset.field;
 
-        return item.update({ [field] : element.value });
+        return item.update({
+            [field]: element.value
+        });
 
     }
 
-    _onItemEdit(event){
+    _onItemEdit(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let itemId = element.closest(".item").dataset.itemId;
-        let item =  this.actor.items.get(itemId);
+        let item = this.actor.items.get(itemId);
 
         item.sheet.render(true);
 
     }
 
-    _onItemDelete(event){
+    _onItemDelete(event) {
         event.preventDefault();
         let element = event.currentTarget;
         let itemId = element.closest(".item").dataset.itemId;
@@ -103,17 +108,61 @@ export default class YggdrasillActorSheet extends ActorSheet {
         return this.actor.deleteEmbeddedDocuments("Item", itemId, options);
     }
 
-    _onItemRoll(event){
-        event.preventDefault();
-        let element = event.currentTarget;
-        console.log(element.dataset.modifier);
-        
-        Dice.TaskCheck(
-            {
-                actionValue: element.dataset.value, 
-                actionsMod: element.dataset.modifier, 
-                extra:element.dataset.extra
-            }
-        )
+    _onItemRoll(event) {
+        const itemId = event.currentTarget.closest(".item").dataset.itemId;
+        const item = this.actor.items.get(itemId);
+
+        item.roll();
+    }
+
+    _onTaskCheck(event) {
+        const itemId = event.currentTarget.closest(".item").dataset.itemId;
+        const item = this.actor.items.get(itemId);
+        const actor = this.actor.data;
+
+        Dice.TaskCheck({
+            actionValue: item.data.data.value,
+            nbDiceKept: actor.data.nbDiceKept,
+            nbDiceFuror: actor.data.nbDiceFuror.value,
+            destinyDice: 0,
+            caracValue: actor.data.primCarac.body.power.value,
+            modifier: actor.data.rollModifier + actor.data.primCarac.body.power.mod
+        })
+    }
+
+    _onFurorCheck(event) {
+        const actor = this.actor.data;
+        let rollFormula = "";
+        let sr = {};
+        if (element.dataset.type == "enter") {
+            sr = {
+                "frisky": 14,
+                "injured": 19,
+                "bruised": 25
+            };
+            rollFormula = "(@caracValue)d10kh(@nbDiceKept)x10+@modifiercs>=@sr";
+        } else {
+            sr = {
+                "frisky": 5,
+                "injured": 7,
+                "bruised": 10
+            };
+            rollFormula = "((@caracValue)d10kh(@nbDiceKept)x10+@actionValue+@modifier)cs>=(@sr+@usedFurorDices)";
+        }
+        let rollData = {
+            actionValue: actor.data.secCarac.ttlDm,
+            sr: sr[actor.data.lifePoints.status],
+            usedFurorDices: actor.data.reserve.max - actor.data.reserve.value,
+            nbDiceKept: actor.data.nbDiceKept,
+            caracValue: actor.data.primCarac.spirit.intelect.value,
+            modifier: actor.data.rollModifier + actor.data.primCarac.spirit.intelect.mod,
+        };
+
+
+        let messageData = {
+            speaker: ChatMessage.getSpeaker(),
+        };
+        new Roll(rollFormula, rollData).roll().toMessage(messageData);
+
     }
 }

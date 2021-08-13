@@ -2,9 +2,9 @@
     <table>
         <tr>
             <td></td>
-            <td>0</td>
-            <td>SR 10</td>
-            <td>SR 14</td>
+            <td>Base</td>
+            <td>{{localize "yggdrasill.character.run"}}</td>
+            <td>{{localize "yggdrasill.character.sprint"}}</td>
         </tr>
         <tr>
             <th>{{localize "yggdrasill.characteristics.secondary.transport"}}</th>
@@ -13,19 +13,16 @@
                 data-dtype="Number" />
             </td>
             <td>
-                <input name="data.secCarac.transport.sr10" type="number" value="{{data.data.secCarac.transport.sr10}}"
-                data-dtype="Number" />
+                {{data.data.secCarac.transport.run}}
             </td>
             <td>
-                <input name="data.secCarac.transport.sr14" type="number" value="{{data.data.secCarac.transport.sr14}}"
-                data-dtype="Number" />
+                {{data.data.secCarac.transport.sprint}}
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td>-3</td>
-            <td>+1 Niv</td>
+            <td colspan="2"></td>
+            <td>{{localize "yggdrasill.character.status"}}</td>
+            <td>{{localize "yggdrasill.character.actionsMod"}}</td>
         </tr>
         <tr>
             <th>{{localize "yggdrasill.characteristics.secondary.spaceReq"}}</th>
@@ -33,13 +30,10 @@
                 <input name="data.secCarac.spaceReq.value" type="number" value="{{data.data.secCarac.spaceReq.value}}"
                 data-dtype="Number" />
             </td>
-            <td>
-                <input name="data.secCarac.spaceReq.min3" type="number" value="{{data.data.secCarac.spaceReq.min3}}"
-                data-dtype="Number" />
+            <td>{{localize (lookup config.importantCharacEncStatus data.data.secCarac.spaceReq.status)}}
             </td>
             <td>
-                <input name="data.secCarac.spaceReq.plus1" type="number" value="{{data.data.secCarac.spaceReq.plus1}}"
-                data-dtype="Number" />
+                {{data.data.secCarac.spaceReq.modifier}}
             </td>
         </tr>
     </table>

@@ -1,62 +1,71 @@
 {
-    "yggdrasill":{
-        "description":"Description",
-        "sheet":{
-            "addCpt":"Ajout de compétence",
-            "editCpt":"Editer une compétence",
-            "deleteCpt":"Suprimer une compétence",
-            "new-competence":"Nouvelle compétence",
-            
-            "addWpn":"Ajout de arme",
-            "editWpn":"Editer une arme",
-            "deleteWpn":"Suprimer une arme",
-            "new-arme":"Nouvelle arme",
-        
-            "addObj":"Ajout de objet",
-            "editObj":"Editer une objet",
-            "deleteObj":"Suprimer une objet",
-            "new-object":"Nouvelle objet",
-        
-            "addMart":"Ajout d'une prouesse martiale",
-            "editMart":"Editer une prouesse martiale",
-            "deleteMart":"Suprimer une prouesse martiale",
-            "new-martialCpt":"Nouvelle prouesse martiale",
-        
-            "addSejdr":"Ajout d'un sort de sejdr",
-            "editSejdr":"Editer un sort de sejdr",
-            "deleteSejdr":"Suprimer un sort de sejdr",
-            "new-sejdrCpt":"Nouveau sort de sejdr",
-        
-            "addGaldr":"Ajout d'un sort de galdr",
-            "editGaldr":"Editer un sort de galdr",
-            "deleteGaldr":"Suprimer un sort de galdr",
-            "new-galdrCpt":"Nouveau sort de galdr",
-        
-            "addRune":"Ajout d'une rune",
-            "editRune":"Editer une rune",
-            "deleteRune":"Suprimer une rune",
-            "new-runeCpt":"Nouvelle rune",
-        
-            "addTemper":"Ajout d'un caractère",
-            "editTemper":"Editer un caractère",
-            "deleteTemper":"Suprimer un caractère",
-            "new-temper":"Nouveau caractère"
+    "yggdrasill": {
+        "description": "Description",
+        "sheet": {
+            "addCpt": "Ajout de compétence",
+            "editCpt": "Editer une compétence",
+            "deleteCpt": "Suprimer une compétence",
+            "new-competence": "Nouvelle compétence",
+
+            "addWpn": "Ajout de arme",
+            "editWpn": "Editer une arme",
+            "deleteWpn": "Suprimer une arme",
+            "new-arme": "Nouvelle arme",
+
+            "addObj": "Ajout de objet",
+            "editObj": "Editer une objet",
+            "deleteObj": "Suprimer une objet",
+            "new-object": "Nouvelle objet",
+
+            "addMart": "Ajout d'une prouesse martiale",
+            "editMart": "Editer une prouesse martiale",
+            "deleteMart": "Suprimer une prouesse martiale",
+            "new-martialCpt": "Nouvelle prouesse martiale",
+
+            "addSejdr": "Ajout d'un sort de sejdr",
+            "editSejdr": "Editer un sort de sejdr",
+            "deleteSejdr": "Suprimer un sort de sejdr",
+            "new-sejdrCpt": "Nouveau sort de sejdr",
+
+            "addGaldr": "Ajout d'un sort de galdr",
+            "editGaldr": "Editer un sort de galdr",
+            "deleteGaldr": "Suprimer un sort de galdr",
+            "new-galdrCpt": "Nouveau sort de galdr",
+
+            "addRune": "Ajout d'une rune",
+            "editRune": "Editer une rune",
+            "deleteRune": "Suprimer une rune",
+            "new-runeCpt": "Nouvelle rune",
+
+            "addTemper": "Ajout d'un caractère",
+            "editTemper": "Editer un caractère",
+            "deleteTemper": "Suprimer un caractère",
+            "new-temper": "Nouveau caractère",
+
+
+            "durationN": "Durée",
+            "duration": {
+                "action": "Action",
+                "turn": "Tour",
+                "minute": "Minute",
+                "hour": "Heure"
+            }
         },
-        "tabs":{
-            "carac" : "Caractéristiques",
-            "cpt" : "Compétences",
-            "equipmt" : "Equipement",
-            "fight" : "Martial",
-            "magic" : "Magie",
-            "story" : "Histoire"
+        "tabs": {
+            "carac": "Caractéristiques",
+            "cpt": "Compétences",
+            "equipmt": "Equipement",
+            "fight": "Martial",
+            "magic": "Magie",
+            "story": "Histoire"
         },
         "item": {
-            "name":"Nom de l'objet",
+            "name": "Nom de l'objet",
             "oSubType": "Type de l'objet",
             "qty": "Quantitée ",
             "qtyMax": "Quantitée",
             "price": "Prix",
-            "property":"Proptiétés"
+            "property": "Proptiétés"
         },
         "equipment": {
             "enc": "Encombrement",
@@ -74,83 +83,83 @@
             "defBase": "Protection"
         },
         "weapon": {
-            "name":"Armes",
+            "name": "Armes",
             "subType": "Type de l'arme",
-            "pName":"Nom de la protection",
+            "pName": "Nom de la protection",
             "pSubType": "Type de la protection",
             "hands": "Nombre de mains",
             "dmgBase": "Dégâts de base",
-            "range":"Arme à distance",
-            "melee":"Au corps à corps",
+            "range": "Arme à distance",
+            "melee": "Au corps à corps",
             "rangeC": "Portée courte",
             "rangeM": "Portée moyenne",
             "rangeL": "Portée longue",
             "rangeE": "Portée extrème",
             "rangeConcat": "Portée (C/M/L/E)"
         },
-        "competence":{
-            "name":"Nom",
-            "value":"Valeur",
-            "type":"Type de la compétence"
+        "competence": {
+            "name": "Nom",
+            "value": "Valeur",
+            "type": "Type de la compétence"
         },
-        "martialCpt":{
-            "name":"Nom",
-            "level":"Niveau",
-            "type":"Type de prouesse martiale",
-            "weapons":"Armes",
-            "prerequisitesCpt":"Prérequis",
-            "modifier":"Modificateur",
-            "lvlVariable":"Niveau variable",
-            "prerequisitesLvl":{
-                "newbie":"Novice",
-                "confirmed":"Confirmé",
-                "expert":"Expert",
-                "none":" "
+        "martialCpt": {
+            "name": "Nom",
+            "level": "Niveau",
+            "type": "Type de prouesse martiale",
+            "weapons": "Armes",
+            "prerequisitesCpt": "Prérequis",
+            "modifier": "Modificateur",
+            "lvlVariable": "Niveau variable",
+            "prerequisitesLvl": {
+                "newbie": "Novice",
+                "confirmed": "Confirmé",
+                "expert": "Expert",
+                "none": " "
             }
         },
-        "magicCpt":{
-            "name":"Nom",
-            "sejdr":"Sejdr",
-            "galdr":"Galdr",
-            "rune":"Runes",
-            "level":"Niveau",
-            "type":"Type de magie",
-            "sejdrTypes":{
-                "divination":"Divination",
-                "healing":"Guérison",
-                "elements":"Maîtrise des éléments",
-                "curse":"Malédiction"
+        "magicCpt": {
+            "name": "Nom",
+            "sejdr": "Sejdr",
+            "galdr": "Galdr",
+            "rune": "Runes",
+            "level": "Niveau",
+            "type": "Type de magie",
+            "sejdrTypes": {
+                "divination": "Divination",
+                "healing": "Guérison",
+                "elements": "Maîtrise des éléments",
+                "curse": "Malédiction"
             },
-            "galdrTypes":{
-                "illusions":"Illusions",
-                "charms":"Charmes",
-                "curses":"Malédictions"
+            "galdrTypes": {
+                "illusions": "Illusions",
+                "charms": "Charmes",
+                "curses": "Malédictions"
             },
-            "positivenessN":"Positivité",
-            "positiveness":{
-                "positive":"Positif",
-                "neutral":"Neutre",
-                "negative":"Négatif"
+            "positivenessN": "Positivité",
+            "positiveness": {
+                "positive": "Positif",
+                "neutral": "Neutre",
+                "negative": "Négatif"
             },
-            "durationN":"Durée",
-            "duration":{
-                "action":"Action",
-                "turn":"Tour",
-                "minute":"Minute",
-                "hour":"Heure"
+            "durationN": "Durée",
+            "duration": {
+                "action": "Action",
+                "turn": "Tour",
+                "minute": "Minute",
+                "hour": "Heure"
             },
-            "preparation":"Preparation",
-            "modifier":"Modificateur",
-            "zone":"Zone",
-            "effects":"Effets",
-            "invertEffects":"Effets Inversés",
-            "difficultyLevel":"SD",
-            "targets":"Cibles",
-            "dommain":"Dommaine",
-            "positiveEffect":"Effet positif",
-            "negativeEffect":"Effet négatif"
+            "preparation": "Preparation",
+            "modifier": "Modificateur",
+            "zone": "Zone",
+            "effects": "Effets",
+            "invertEffects": "Effets Inversés",
+            "difficultyLevel": "SD",
+            "targets": "Cibles",
+            "dommain": "Dommaine",
+            "positiveEffect": "Effet positif",
+            "negativeEffect": "Effet négatif"
         },
-        "wCategory":{
+        "wCategory": {
             "wShort": "Arme courte",
             "wLong": "Arme longue",
             "wTwoHands": "Arme à deux mains",
@@ -181,14 +190,14 @@
             "martial": "Martiale"
         },
         "cmCategory": {
-            "attack":"Prouesses d'attaque",
-            "ranged":"Prouesses d'attaque à distance",
-            "defense":"Prouesses défensives",
-            "utilitary":"Prouesses utilitaires"
+            "attack": "Prouesses d'attaque",
+            "ranged": "Prouesses d'attaque à distance",
+            "defense": "Prouesses défensives",
+            "utilitary": "Prouesses utilitaires"
         },
-        "character":{
+        "character": {
             "age": "Age",
-            "ageUnit":"ans",
+            "ageUnit": "ans",
             "kingdom": "Royaume",
             "archetype": "Archétype",
             "profession": "Profession",
@@ -197,129 +206,169 @@
             "flair": "Don",
             "weakness": "Faiblesse",
             "background": "Background",
-            "renown":"Renommée",
-            "legendPt":"Points de Légende",
-            "lifePt":"Points de vie",
-            "lifeStatus":"État",
-            "richness":"Richesse",
-            "gold":"Or",
-            "silver":"Argent",
-            "copper":"Cuivre",
-            "actions":"Actions",
-            "reserve":"Furor",
-            "actionsMod":"Mod."
+            "renown": "Renommée",
+            "legendPt": "Points de Légende",
+            "lifePt": "Points de vie",
+            "lifeStatus": "État",
+            "richness": "Richesse",
+            "gold": "Or",
+            "silver": "Argent",
+            "copper": "Cuivre",
+            "actions": "Actions",
+            "reserve": "Furor",
+            "actionsMod": "Mod.",
+            "run": "Course",
+            "sprint": "Sprint",
+            "status": "Etat",
+            "modifier": "Modificateur",
+            "weary": "Epuisé",
+            "isBerserk": "Est un Berserker ? ",
+            "isInitiated": "Est un initié d'Odhinn ?"
         },
-        "characteristics":{
-            "primary":{
-                "body":"Corps",
+        "characteristics": {
+            "primary": {
+                "body": "Corps",
                 "power": "Puissance",
-                "vigour":"Vigueur",
-                "agility":"Agilité",
-                "spirit":"Esprit",
-                "intelect":"Intelect",
-                "perception":"Perception",
-                "tenacity":"Tenacité",
-                "soul":"Ame",
-                "charisma":"Charisme",
-                "instinct":"Instinct",
-                "communication":"Communication"
+                "vigour": "Vigueur",
+                "agility": "Agilité",
+                "spirit": "Esprit",
+                "intelect": "Intelect",
+                "perception": "Perception",
+                "tenacity": "Tenacité",
+                "soul": "Ame",
+                "charisma": "Charisme",
+                "instinct": "Instinct",
+                "communication": "Communication"
             },
-            "secondary":{
-                "ini":"INI",
-                "reaction":"REA",
-                "spaceReq":"ENC",
-                "protection":"Prot.",
-                "magic":"Magie",
-                "ttlIni":"Total",
-                "dp":"DP",
-                "base":"Base",
-                "ttlDp":"Total",
-                "dm":"DM",
-                "ttlDm":"Total",
-                "transport":"DEP"
+            "secondary": {
+                "ini": "INI",
+                "reaction": "REA",
+                "spaceReq": "ENC",
+                "protection": "Prot.",
+                "magic": "Magie",
+                "ttlIni": "Total",
+                "dp": "DP",
+                "base": "Base",
+                "ttlDp": "Total",
+                "dm": "DM",
+                "ttlDm": "Total",
+                "transport": "DEP"
             }
         },
-        "charactersStatus":{
-            "frisky":"Fringant",
-            "injured":"Blessé",
-            "dead":"Mort"
+        "charactersStatus": {
+            "frisky": "Fringant",
+            "injured": "Blessé",
+            "dead": "Mort"
         },
-        "extra":{
-            "type":"Type de figurant",
-            "conflict":"Conflit",
-            "relational":"Relationel",
-            "physic ":"Physique",
-            "mental":"Mental",
-            "mystic":"Mystique",
-            "vitality":"Vitalité",
-            "dmgMod":"Dégâts",
-            "none":" ",
-            "fight":"Combat"
+        "importantCharacStatus": {
+            "frisky": "Fringant",
+            "injured": "Blessé",
+            "bruised": "Meurtri",
+            "unconscious": "Inconscient",
+            "dead": "Mort",
+            "indestructible": "Indestructible"
         },
-        "extraTypes":{
-            "berserkr":"Berserkr",
-            "bondi":"bondi",
-            "hirdmen":"hirdmen",
-            "merchant":"Marchant",
-            "noble":"Noble",
-            "farmer":"Paysan",
-            "pirate":"Pirate",
-            "scalde":"Scalde",
-            "thulr":"Thulr",
-            "volva":"Volva"
+        "importantCharacEncStatus": {
+            "free": "A l'aise",
+            "troubled": "Gêné",
+            "crowded": "Encombré",
+            "overloaded": "Surchargé"
         },
-        "temper":{
-            "name":"Nom du caractère",
-            "modifier":"Modificateur",
+        "extra": {
+            "type": "Type de figurant",
+            "conflict": "Conflit",
+            "relational": "Relationel",
+            "physic ": "Physique",
+            "mental": "Mental",
+            "mystic": "Mystique",
+            "vitality": "Vitalité",
+            "dmgMod": "Dégâts",
+            "none": " ",
+            "fight": "Combat"
+        },
+        "extraTypes": {
+            "berserkr": "Berserkr",
+            "bondi": "bondi",
+            "hirdmen": "hirdmen",
+            "merchant": "Marchant",
+            "noble": "Noble",
+            "farmer": "Paysan",
+            "pirate": "Pirate",
+            "scalde": "Scalde",
+            "thulr": "Thulr",
+            "volva": "Volva"
+        },
+        "temper": {
+            "name": "Nom du caractère",
+            "modifier": "Modificateur",
             "nbCaracUp": "Nombre de caracs changées",
             "caracName": "Nom de la carac"
         },
-        "aett":{
-            "exclusiv":"Exclusive ?",
-            "number":"Nombre",
-            "godN":"Dieu",
-            "god":{
-                "freyr":"Freyr",
-                "heimdall":"Heimdall",
-                "tyr":"Tyr"
+        "aett": {
+            "exclusiv": "Exclusive ?",
+            "number": "Nombre",
+            "godN": "Dieu",
+            "god": {
+                "freyr": "Freyr",
+                "heimdall": "Heimdall",
+                "tyr": "Tyr"
             },
-            "printN":"Tirage",
-            "print":{
-                "exPositive":"exclusivement positif",
-                "positive":"positif",
-                "exNegative":"exclusivement negatif",
-                "negative":"negatif"
+            "printN": "Tirage",
+            "print": {
+                "exPositive": "exclusivement positif",
+                "positive": "positif",
+                "exNegative": "exclusivement negatif",
+                "negative": "negatif"
             },
-            "freyr":{
-                "fehu":"Fehu",
-                "uruz":"Uruz",
-                "thurz":"Thurz",
-                "ansuz":"Ansuz",
-                "reith":"Reith",
-                "kaun":"Kaun",
-                "gebo":"Gebô",
-                "wunjo":"Wunjô"
+            "freyr": {
+                "fehu": "Fehu",
+                "uruz": "Uruz",
+                "thurz": "Thurz",
+                "ansuz": "Ansuz",
+                "reith": "Reith",
+                "kaun": "Kaun",
+                "gebo": "Gebô",
+                "wunjo": "Wunjô"
             },
-            "heimdall":{
-                "hagal":"Hagal",
-                "nauthr":"Nauthr",
-                "isa":"Isa",
-                "jera":"Jerà",
-                "iwaz":"Iwaz",
-                "perth":"Perth",
-                "algiz":"Algiz",
-                "sol":"Sôl"
+            "heimdall": {
+                "hagal": "Hagal",
+                "nauthr": "Nauthr",
+                "isa": "Isa",
+                "jera": "Jerà",
+                "iwaz": "Iwaz",
+                "perth": "Perth",
+                "algiz": "Algiz",
+                "sol": "Sôl"
             },
-            "tyr":{
-                "tiwaz":"Tiwaz",
-                "bjarken":"Bjarken",
-                "ehwaz":"Ehwaz",
-                "mathr":"Mathr",
-                "logr":"Lôgr",
-                "ingvi":"Ingvi",
-                "dagaz":"Dagaz",
-                "othal":"Othal"
+            "tyr": {
+                "tiwaz": "Tiwaz",
+                "bjarken": "Bjarken",
+                "ehwaz": "Ehwaz",
+                "mathr": "Mathr",
+                "logr": "Lôgr",
+                "ingvi": "Ingvi",
+                "dagaz": "Dagaz",
+                "othal": "Othal"
+            }
+        },
+        "chat": {
+            "actions": {
+                "attack": "Attaque",
+                "defense": "Défense",
+                "damages": "Dégâts"
+            },
+            "category": {
+                "arme": "Arme",
+                "protection": "Protection",
+                "object": "Objet",
+                "competence": "Compétence",
+                "martialCpt": "Prouesse martiale",
+                "sejdrCpt": "Sejdr",
+                "galdrCpt": "Galdr",
+                "runeCpt": "Rune",
+                "temper": "Caractère"
             }
         }
+
     }
 }

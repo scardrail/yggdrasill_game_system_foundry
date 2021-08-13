@@ -64,11 +64,11 @@ yggdrasill.magicDuration = {
     minute: "yggdrasill.magicCpt.duration.minute",
     hour: "yggdrasill.magicCpt.duration.hour"
 };
-yggdrasill.magicDuration = {
-    action: "yggdrasill.magicCpt.duration.action",
-    turn: "yggdrasill.magicCpt.duration.turn",
-    minute: "yggdrasill.magicCpt.duration.minute",
-    hour: "yggdrasill.magicCpt.duration.hour"
+yggdrasill.duration = {
+    action: "yggdrasill.sheet.duration.action",
+    turn: "yggdrasill.sheet.duration.turn",
+    minute: "yggdrasill.sheet.duration.minute",
+    hour: "yggdrasill.sheet.duration.hour"
 };
 yggdrasill.freyrsAett = {
     fehu: "yggdrasill.aett.freyr.fehu",
@@ -116,6 +116,21 @@ yggdrasill.charactersStatus = {
     injured: "yggdrasill.charactersStatus.injured",
     dead: "yggdrasill.charactersStatus.dead"
 };
+yggdrasill.importantCharacStatus = {
+    frisky: "yggdrasill.importantCharacStatus.frisky",
+    injured: "yggdrasill.importantCharacStatus.injured",
+    bruised: "yggdrasill.importantCharacStatus.bruised",
+    unconscious: "yggdrasill.importantCharacStatus.unconscious",
+    dead: "yggdrasill.importantCharacStatus.dead",
+    indestructible: "yggdrasill.importantCharacStatus.indestructible"
+};
+yggdrasill.importantCharacEncStatus = {
+    free: "yggdrasill.importantCharacEncStatus.free",
+    troubled: "yggdrasill.importantCharacEncStatus.troubled",
+    crowded: "yggdrasill.importantCharacEncStatus.crowded",
+    overloaded: "yggdrasill.importantCharacEncStatus.overloaded"
+};
+
 yggdrasill.extraTypes = {
     berserkr: "yggdrasill.extraTypes.berserkr",
     bondi: "yggdrasill.extraTypes.bondi",
@@ -132,6 +147,17 @@ yggdrasill.aettGods = {
     freyr: "yggdrasill.aett.god.freyr",
     heimdall: "yggdrasill.aett.god.heimdall",
     tyr: "yggdrasill.aett.god.tyr"
+};
+yggdrasill.carac = {
+    power: "yggdrasill.characteristics.primary.power",
+    vigour: "yggdrasill.characteristics.primary.vigour",
+    agility: "yggdrasill.characteristics.primary.agility",
+    intelect: "yggdrasill.characteristics.primary.intelect",
+    perception: "yggdrasill.characteristics.primary.perception",
+    tenacity: "yggdrasill.characteristics.primary.tenacity",
+    charisma: "yggdrasill.characteristics.primary.charisma",
+    instinct: "yggdrasill.characteristics.primary.instinct",
+    communication: "yggdrasill.characteristics.primary.communication"
 };
 yggdrasill.extraCarac = {
     conflict: "yggdrasill.extra.conflict",

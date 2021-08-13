@@ -18,12 +18,17 @@
         </table>
         <table>
             <tr>
-                <th >{{localize "yggdrasill.character.reserve"}}</th>
+                <th>
+                    {{localize "yggdrasill.character.reserve"}}{{#if data.data.lifePoints.isWeary}}({{localize "yggdrasill.character.weary"}}){{else}}{{#if data.data.isBerserk}}<label 
+                    class="checkbox"> <input type="checkbox" name="data.isInFuror" {{checked data.data.isInFuror}}></label><label 
+                    class="checkbox"> <input type="checkbox" {{checked data.data.isInFuror}} disabled></label>{{/if}}{{/if}}
+                </th>
+                </th>
             </tr>
             <tr>
                 <td>
                     <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
-                        <input name="data.reserve.value" type="number" min="0" max="{{data.data.actions.max}}" value="{{data.data.reserve.max}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.reserve.max}}</p>
+                        <input name="data.reserve.value" type="number" min="0" max="{{data.data.reserve.max}}" value="{{data.data.reserve.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.reserve.max}}</p>
                     </div>
                 </td>
             </tr>

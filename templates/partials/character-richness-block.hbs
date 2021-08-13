@@ -16,14 +16,15 @@
         <table>
             {{#if (or (eq actor.type "pj") (eq actor.type "pnj"))}}
             <tr>
-                <th >{{localize "yggdrasill.character.lifePt"}}</th>
+                <th colspan="2">{{localize "yggdrasill.character.lifePt"}}</th>
             </tr>
             <tr>
                 <td>
                     <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
-                        <input name="data.lifePoints.value" type="number" value="{{data.data.lifePoints.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.lifePoints.max}}</p>
+                        <input name="data.lifePoints.value" type="number" max="{{data.data.lifePoints.max}}" min="{{data.data.lifePoints.min}}" value="{{data.data.lifePoints.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{data.data.lifePoints.max}}</p>
                     </div>
                 </td>
+                <td>{{localize (lookup config.importantCharacStatus data.data.lifePoints.status)}}</td>
             </tr>
             {{else}}
             <tr>

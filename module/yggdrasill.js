@@ -1,5 +1,7 @@
-import { registerHandlebarsHelpers} from "./helpers.js";
-import {yggdrasill} from "./config.js";
+import { registerHandlebarsHelpers } from "./helpers.js";
+import { yggdrasill } from "./config.js";
+
+import yggdrasillItem from "./yggdrasillItem.js";
 
 import YggdrasillItemSheet from "./sheets/yggdrasillItemSheet.js";
 import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
@@ -7,7 +9,7 @@ import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
 async function preloadHandlebarsTemplates() {
     const templatePaths = [
         "templates/dice/roll.html",
-        
+
         "systems/yggdrasill/templates/partials/character-description-block.hbs",
         "systems/yggdrasill/templates/partials/character-richness-block.hbs",
         "systems/yggdrasill/templates/partials/character-primCarac-block.hbs",
@@ -21,16 +23,20 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/character-objects-block.hbs",
         "systems/yggdrasill/templates/partials/character-competences-block.hbs",
         "systems/yggdrasill/templates/partials/character-aett-block.hbs",
+        "systems/yggdrasill/templates/partials/character-parameters-block.hbs",
         "systems/yggdrasill/templates/partials/extra-carac-block.hbs",
         "systems/yggdrasill/templates/partials/extra-temper-block.hbs",
         "systems/yggdrasill/templates/partials/extra-martial-block.hbs",
+
         "systems/yggdrasill/templates/partials/cards/weapon-card.hbs",
         "systems/yggdrasill/templates/partials/cards/armor-card.hbs",
         "systems/yggdrasill/templates/partials/cards/object-card.hbs",
         "systems/yggdrasill/templates/partials/cards/competence-card.hbs",
         "systems/yggdrasill/templates/partials/cards/temper-card.hbs",
-        "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs"
-        
+
+        "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs",
+        "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs"
+
     ];
     return loadTemplates(templatePaths);
 }
@@ -40,12 +46,13 @@ Hooks.once("init", () => {
 
     //register Handlebars config
     CONFIG.yggdrasill = yggdrasill;
+    CONFIG.Item.documentClass = yggdrasillItem;
 
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("yggdrasill", YggdrasillItemSheet, {makeDefault: true});
+    Items.registerSheet("yggdrasill", YggdrasillItemSheet, { makeDefault: true });
 
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("yggdrasill", YggdrasillActorSheet, {makeDefault: true});
+    Actors.registerSheet("yggdrasill", YggdrasillActorSheet, { makeDefault: true });
 
     // Register Handlebars helpers
     registerHandlebarsHelpers();
