@@ -265,8 +265,9 @@
             "mental":"Mental",
             "mystic":"Mystic",
             "vitality":"Vitality",
-            "damage":"Damage",
-            "none":" "
+            "dmgMod":"Damage",
+            "none":" ",
+            "fight":"Fight"
         },
         "extraTypes":{
             "berserkr":"Berserkr",

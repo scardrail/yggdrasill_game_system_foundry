@@ -140,6 +140,6 @@ yggdrasill.extraCarac = {
     mental: "yggdrasill.extra.mental",
     mystic: "yggdrasill.extra.mystic",
     vitality: "yggdrasill.extra.vitality",
-    damage: "yggdrasill.extra.damage",
+    dmgMod: "yggdrasill.extra.dmgMod",
     none: "yggdrasill.extra.none"
 };

@@ -19,6 +19,12 @@
         "silver": 0,
         "copper": 0
       },
+      "dmgMod": 0,
+      "actions": {
+        "value":0,
+        "max":0,
+        "modifier":0
+      },
       "isNPC":true
     },
     "importantCharacter":{
@@ -102,11 +108,6 @@
         "value":0,
         "max":0
       },
-      "actions": {
-        "value":0,
-        "max":0,
-        "modifier":0
-      },
       "reserve": {
         "value":0,
         "max":0
@@ -151,7 +152,10 @@
     "templates":[
       "commonStats",
       "extraCharacter"
-    ]
+    ],
+    "actions": {
+      "max":2
+    }
   },
   "creature": {
     "templates":[
