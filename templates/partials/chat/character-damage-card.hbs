@@ -1,8 +1,12 @@
-{{> "templates/dice/roll.html"}}
+
 <div>
-    <h1>{{localize "yggdrasill.weapon.name"}} : {{name}}</h1>
-    <p>{{localize "yggdrasill.chat.actions.damages"}} : {{item.data.dmgBase}} + {{actor.data.dmgMod}}</p>
-</div>
-<div>
-    {{data.dmgBase}}
+    <div class="card-header">
+    <h1>{{localize "yggdrasill.weapon.name"}} : {{item.name}}</h1>
+    </div>
+    <div class="card-content">
+    {{> "templates/dice/roll.html"}}
+    </div>
+    <div class="card-buttons">
+        <button type="button"><i class="fas fa-bahai"></i>{{localize "yggdrasill.chat.actions.damages"}} : {{item.data.dmgBase}} + {{actor.data.dmgMod}}</button>
+    </div>
 </div>

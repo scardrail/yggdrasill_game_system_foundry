@@ -99,10 +99,10 @@ export async function TaskCheck({
             config: CONFIG.yggdrasill,
             sound: CONFIG.sounds.dice
         };
+        chatData.roll = true;
 
         // Render the roll display template
         chatData.content = await renderTemplate(chatOptions.template, cardData);
-        chatData.roll = true;
 
         return ChatMessage.create(chatData);
 
