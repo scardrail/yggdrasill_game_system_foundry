@@ -121,6 +121,7 @@ function onCaracRoll(event) {
     if (card.dataset.type == "arme") {
         console.log("Yggdrasill || weapon");
         let weapon = attacker.items.get(card.dataset.itemId);
+        console.log(weapon.data.data.subType);
         competence = attacker.items.filter(function(item) { return item.data.data.identifier == weapon.data.data.subType });
         competenceValue = competence[0].data.data.value;
         item = weapon;
