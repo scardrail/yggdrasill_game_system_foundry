@@ -95,12 +95,15 @@
             "rangeM": "Portée moyenne",
             "rangeL": "Portée longue",
             "rangeE": "Portée extrème",
-            "rangeConcat": "Portée (C/M/L/E)"
+            "rangeConcat": "Portée (C/M/L/E)",
+            "power": "PUI ?",
+            "instinct": "INS ?"
         },
         "competence": {
             "name": "Nom",
             "value": "Valeur",
-            "type": "Type de la compétence"
+            "type": "Type de la compétence",
+            "identifier": "Identifiant de la compétence"
         },
         "martialCpt": {
             "name": "Nom",
@@ -355,7 +358,8 @@
             "actions": {
                 "attack": "Attaque",
                 "defense": "Défense",
-                "damages": "Dégâts"
+                "damages": "Dégâts",
+                "roll": "Roll !"
             },
             "category": {
                 "arme": "Arme",
@@ -367,6 +371,31 @@
                 "galdrCpt": "Galdr",
                 "runeCpt": "Rune",
                 "temper": "Caractère"
+            },
+            "other": {
+                "carac": "Carac :",
+                "furor": "Furor :",
+                "destiny": "Destin ?"
+            }
+        },
+        "attackTypes": {
+            "melee": {
+                "devastating": "Attaque dévastatrice",
+                "force": "Attaque en force",
+                "classic": "Attaque classique",
+                "precise": "Attaque précise",
+                "aimed": "Attaque visée"
+            },
+            "ranged": {
+                "stoppage": "Tir d'arrêt",
+                "impact": "Tir d'impact",
+                "iStoppage": "Tir d'arrêt avec l'INS",
+                "iImpact": "Tir d'impact avec l'INS",
+                "pStoppage": "Tir d'arrêt en PUI",
+                "pImpact": "Tir d'impact en PUI",
+                "landing": "Tir posé",
+                "precise": "Tir précis",
+                "aimed": "Tir visé"
             }
         }
 

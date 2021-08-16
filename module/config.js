@@ -149,6 +149,7 @@ yggdrasill.aettGods = {
     tyr: "yggdrasill.aett.god.tyr"
 };
 yggdrasill.carac = {
+    none: "yggdrasill.extra.none",
     power: "yggdrasill.characteristics.primary.power",
     vigour: "yggdrasill.characteristics.primary.vigour",
     agility: "yggdrasill.characteristics.primary.agility",
@@ -168,4 +169,56 @@ yggdrasill.extraCarac = {
     vitality: "yggdrasill.extra.vitality",
     dmgMod: "yggdrasill.extra.dmgMod",
     none: "yggdrasill.extra.none"
+};
+yggdrasill.meleeCarac = {
+    none: "yggdrasill.extra.none",
+    devastating: "yggdrasill.attackTypes.melee.devastating",
+    force: "yggdrasill.attackTypes.melee.force",
+    classic: "yggdrasill.attackTypes.melee.classic",
+    precise: "yggdrasill.attackTypes.melee.precise",
+    aimed: "yggdrasill.attackTypes.melee.aimed"
+};
+yggdrasill.meleeCoresp = {
+    none: "",
+    devastating: "power",
+    force: "power",
+    classic: "agility",
+    precise: "perception",
+    aimed: "perception"
+};
+yggdrasill.powerRangedCarac = {
+    none: "yggdrasill.extra.none",
+    pStoppage: "yggdrasill.attackTypes.ranged.pStoppage",
+    pImpact: "yggdrasill.attackTypes.ranged.pImpact",
+    landing: "yggdrasill.attackTypes.ranged.landing",
+    precise: "yggdrasill.attackTypes.ranged.precise",
+    aimed: "yggdrasill.attackTypes.ranged.aimed"
+};
+yggdrasill.instinctRangedCarac = {
+    none: "yggdrasill.extra.none",
+    iStoppage: "yggdrasill.attackTypes.ranged.iStoppage",
+    iImpact: "yggdrasill.attackTypes.ranged.iImpact",
+    landing: "yggdrasill.attackTypes.ranged.landing",
+    precise: "yggdrasill.attackTypes.ranged.precise",
+    aimed: "yggdrasill.attackTypes.ranged.aimed"
+};
+yggdrasill.rangedCarac = {
+    none: "yggdrasill.extra.none",
+    iStoppage: "yggdrasill.attackTypes.ranged.iStoppage",
+    iImpact: "yggdrasill.attackTypes.ranged.iImpact",
+    pStoppage: "yggdrasill.attackTypes.ranged.pStoppage",
+    pImpact: "yggdrasill.attackTypes.ranged.pImpact",
+    landing: "yggdrasill.attackTypes.ranged.landing",
+    precise: "yggdrasill.attackTypes.ranged.precise",
+    aimed: "yggdrasill.attackTypes.ranged.aimed"
+};
+yggdrasill.rangedCoresp = {
+    none: "",
+    iStoppage: "instinct",
+    iImpact: "instinct",
+    pStoppage: "power",
+    pImpact: "power",
+    landing: "agility",
+    precise: "perception",
+    aimed: "perception"
 };

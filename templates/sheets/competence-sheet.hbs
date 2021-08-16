@@ -26,6 +26,14 @@
                     </select>
                 </td>
             </tr>
+            {{#if (eq data.data.type "martial")}}
+                <tr>
+                    <th>{{localize "yggdrasill.competence.identifier"}}</th>
+                    <td>
+                        <input name="data.identifier" type="text" value="{{data.data.identifier}}">
+                    </td>
+                </tr>
+            {{/if}}
             <tr>
                 <th>{{localize "yggdrasill.competence.value"}}</th>
                 <td>

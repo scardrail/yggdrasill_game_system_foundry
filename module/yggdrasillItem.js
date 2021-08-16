@@ -11,7 +11,21 @@ export default class yggdrasillItem extends Item {
         "temper": "systems/yggdrasill/templates/partials/chat/character-temper-card.hbs"
     };
 
+    prepareData() {
+        super.prepareData();
+
+        let itemData = this.data;
+        let data = itemData.data;
+        if (itemData.type == "arme") {
+            if (data.subType == "wThrow" || data.subType == "wShot") {
+                data.properties.ranged = true;
+            } else {
+                data.properties.ranged = false;
+            }
+        }
+    }
     async roll() {
+
         let chatData = {
             user: game.user.id,
             speaker: ChatMessage.getSpeaker()
@@ -19,8 +33,11 @@ export default class yggdrasillItem extends Item {
 
         let cardData = {
             ...this.data,
-            owner: this.actor.id
+            owner: this.actor.id,
+            actor: this.actor.data,
+            config: CONFIG.yggdrasill
         }
+        console.log(this.actor.data);
 
         chatData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
 

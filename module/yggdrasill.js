@@ -1,7 +1,10 @@
 import { registerHandlebarsHelpers } from "./helpers.js";
 import { yggdrasill } from "./config.js";
 
+import * as Chat from "./chat.js";
+
 import yggdrasillItem from "./yggdrasillItem.js";
+import yggdrasillActor from "./yggdrasillActor.js";
 
 import YggdrasillItemSheet from "./sheets/yggdrasillItemSheet.js";
 import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
@@ -35,7 +38,9 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/cards/temper-card.hbs",
 
         "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs",
-        "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs"
+        "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs",
+        "systems/yggdrasill/templates/partials/chat/character-competence-card.hbs",
+        "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs"
 
     ];
     return loadTemplates(templatePaths);
@@ -47,6 +52,7 @@ Hooks.once("init", () => {
     //register Handlebars config
     CONFIG.yggdrasill = yggdrasill;
     CONFIG.Item.documentClass = yggdrasillItem;
+    CONFIG.Actor.documentClass = yggdrasillActor;
 
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("yggdrasill", YggdrasillItemSheet, { makeDefault: true });
@@ -58,3 +64,5 @@ Hooks.once("init", () => {
     registerHandlebarsHelpers();
     preloadHandlebarsTemplates();
 });
+
+Hooks.on("renderChatLog", (app, html, data) => Chat.addChatListeners(html));

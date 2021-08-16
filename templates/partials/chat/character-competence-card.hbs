@@ -1,7 +1,29 @@
-{{> "templates/dice/roll.html"}}
+<div class= "chat-card item competence" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
+    <div class= "card-content" >
+        <h1>{{localize "yggdrasill.competence.name"}} : {{name}}</h1>
+        <p>{{localize "yggdrasill.competence.value"}} : {{data.value}}</p>
+        <div class="card-params">
+            <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                <h3>{{localize "yggdrasill.chat.other.carac"}}</h3><select class="carac" data-type="{{type}}" data-owner-id="{{owner}}" name="data.caracUsed" style="width:100%">
+                {{#select actor.data.caracUsed}}
+                    {{#each config.carac as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+            </div>
+            <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
+                <h3>{{localize "yggdrasill.chat.other.furor"}}</h3><input class="furor" data-owner-id="{{owner}}" name="data.nbDiceFuror.value" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.nbDiceFuror.max}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.max}}</p>
+            </div>
+            <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
+                <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    
+
+            </div>
+        </div>
+    </div>
+    <div class="card-buttons">
+        <button type="button" class="roll">{{localize "yggdrasill.chat.actions.roll"}}</button>
+    </div>
+    
+
 <div>
-    <h2>{{localize "yggdrasill.competence.name"}} : {{name}}</h2>
-</div>
-<div>
-    {{data.value}}
-</div>

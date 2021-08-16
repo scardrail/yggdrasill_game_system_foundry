@@ -100,12 +100,15 @@
             "rangeM": "Medium range",
             "rangeL": "Large range",
             "rangeE": "Extreme range",
-            "rangeConcat": "Range (C/M/L/E)"
+            "rangeConcat": "Range (C/M/L/E)",
+            "power": "POW ?",
+            "instinct": "INS ?"
         },
         "competence": {
             "name": "Name",
             "value": "Value",
-            "type": "Type of the competence"
+            "type": "Type of the competence",
+            "identifier": "Identifier of the competence"
         },
         "martialCpt": {
             "name": "Name",
@@ -367,7 +370,8 @@
             "actions": {
                 "attack": "Attack",
                 "defense": "Defense",
-                "damages": "Damages"
+                "damages": "Damages",
+                "roll": "Roll !"
             },
             "category": {
                 "arme": "Weapon",
@@ -380,6 +384,29 @@
                 "runeCpt": "Rune",
                 "aett": "Aett",
                 "temper": "Temper"
+            },
+            "other": {
+                "carac": "Carac :",
+                "furor": "Furor :",
+                "destiny": "Destiny ?"
+            }
+        },
+        "attackTypes": {
+            "melee": {
+                "devastating": "Devastating attack",
+                "force": "Attack in force",
+                "classic": "Classic attack",
+                "precise": "Precise attack",
+                "aimed": "Aimed attack"
+            },
+            "ranged": {
+                "iStoppage": "Stoppage shot with INS",
+                "iImpact": "Impact shot with INS",
+                "pStoppage": "Stoppage shot with POW",
+                "pImpact": "Impact shot with POW",
+                "landing": "Landing shot",
+                "precise": "Precise shot",
+                "aimed": "Aimed shot"
             }
         }
     }

@@ -1,11 +1,12 @@
 export async function TaskCheck({
-    caracValue = null,
-    nbDiceKept = null,
-    actionValue = null,
-    nbDiceFuror = null,
-    destinyDice = null,
-    modifier = null,
-    actor = null
+    caracValue = 0,
+    nbDiceKept = 0,
+    actionValue = 0,
+    nbDiceFuror = 0,
+    destinyDice = 0,
+    modifier = 0,
+    actor = null,
+    item = null
 } = {}) {
     console.log("Yggdrasill || caracValue " + caracValue);
     console.log("Yggdrasill || nbDiceKept " + nbDiceKept);
@@ -22,12 +23,6 @@ export async function TaskCheck({
     if (nbDiceFuror != 0) rollFormula += " + (@nbDiceFuror)d10";
 
     let rollData = {
-        // actionValue: item.data.data.value,
-        // nbDiceKept: actor.data.nbDiceKept,
-        // nbDiceFuror: actor.data.nbDiceFuror.value,
-        // destinyDice: 0,
-        // caracValue: actor.data.primCarac.body.power.value,
-        // modifier: actor.data.rollModifier + actor.data.primCarac.body.power.mod
         actionValue: actionValue,
         nbDiceKept: nbDiceKept,
         nbDiceFuror: nbDiceFuror,
@@ -37,7 +32,7 @@ export async function TaskCheck({
     };
 
     if (actor.data.isInitiated && (item.type == "sejdrCpt" || item.type == "galdrCpt" || item.type == "runeCpt")) {
-        actor.data.nbDiceFuror.minMax = actor.data.primCarac.spirit.tenacity;
+        actor.data.nbDiceFuror.max = actor.data.primCarac.spirit.tenacity;
         actor.data.nbDiceFuror.min = 1;
         actor.data.secCarac.dp.magic = 0;
         actor.data.secCarac.dm.magic = 0;
@@ -52,14 +47,47 @@ export async function TaskCheck({
         if (element.dataset.type == "defensive") rollData.nbDiceKept = 1;
         actor.data.isInFuror = true;
     }
-    if (actor.data.isInFuror && actor.data.nbDiceFuror.value > actor.data.nbDiceFuror.minMax) actor.data.nbDiceFuror.minMax = actor.data.nbDiceFuror.value;
+    if (actor.data.isInFuror && actor.data.nbDiceFuror.value > actor.data.nbDiceFuror.min) actor.data.nbDiceFuror.minMax = actor.data.nbDiceFuror.value;
 
     let messageData = {
         speaker: ChatMessage.getSpeaker(),
     };
-    new Roll(rollFormula, rollData).roll().toMessage(messageData);
-    // let myroll = new Roll(rollFormula, rollData).roll().toMessage(messageData);
-    // console.log(myroll);
-    actor.data.nbDiceFuror.value = 0;
+    // if (item.type == "arme") {
+    //     let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
+    //     console.log(item);
+    //     console.log(actor);
 
+
+
+    //     let rollResult = new Roll(rollFormula, rollData).roll()
+
+    //     let renderedRoll = await rollResult.render({ template: chatTemplate });
+
+    //     console.log(renderedRoll)
+    //     let chatData = {
+    //         user: game.user.id,
+    //         speaker: ChatMessage.getSpeaker(),
+    //         content: renderedRoll,
+    //         item: item,
+    //         owner: actor.id,
+    //         actor: actor,
+    //         config: CONFIG.yggdrasill
+
+    //     }
+    //     rollResult.toMessage(chatData);
+
+
+    // } else {
+    new Roll(rollFormula, rollData).roll().toMessage(messageData);
+    actor.data = resetingValues(actor.data);
+    // }
+}
+
+function resetingValues(data) {
+    data.nbDiceFuror.value = 0;
+    data.caracUsed.name = "";
+    data.caracUsed.value = 0;
+    data.isDestinyRoll = false;
+
+    return data;
 }

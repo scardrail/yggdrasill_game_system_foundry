@@ -1,12 +1,30 @@
 <tr class="weapon-item item" data-item-id="{{_id}}">
     <td><a><p class="item-roll">{{name}}</p></a></td>
     <td>{{data.dmgBase}}</td>
+    {{#if data.properties.ranged}}
+        {{#if (not data.properties.instinct)}}
+            <td><label class="checkbox"><input class="weapon-power inline-edit" data-field="data.properties.power" type="checkbox" {{checked  data.properties.power}}></label></td>   
+        {{else}}
+            <td> </td>
+        {{/if}}
+        {{#if (not data.properties.power)}}
+            <td><label class="checkbox"><input class="weapon-instinct inline-edit" data-field="data.properties.instinct" type="checkbox" {{checked  data.properties.instinct}}></label></td>    
+        {{else}}
+            <td> </td>
+        {{/if}}
+    {{else}}
+    <td> </td>
+    <td> </td>
+    {{/if}}
     <td>
         <input class="weapon-solidity inline-edit" data-field="data.solidity" type="number" min="0" value="{{data.solidity}}"/>
         </td>
     <td>{{data.enc}}</td>
-    <td></td>
+    {{#if data.properties.ranged}}
     <td>{{data.rangeC}}/{{data.rangeM}}/{{data.rangeL}}/{{data.rangeE}}</td>
+    {{else}}
+    <td> </td>
+    {{/if}}
     <td>
         <input class="weapon-price inline-edit" data-field="data.price" type="number" min="0" value="{{data.price}}"/>
         </td>

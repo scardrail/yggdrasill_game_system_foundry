@@ -154,10 +154,15 @@
                 "nbDiceFuror": {
                     "value": 0,
                     "min": 0,
-                    "max": 0,
-                    "minMax": 0
+                    "max": 0
                 },
-                "nbDiceKept": 2
+                "enemyArmorMod": 0,
+                "nbDiceKept": 2,
+                "caracUsed": {
+                    "name": "",
+                    "value": 0,
+                    "mod": 0
+                }
             },
             "extraCharacter": {
                 "type": "bondi",
@@ -278,7 +283,9 @@
                     "equipment": false,
                     "weapon": false,
                     "protection": false,
-                    "pieceProtec": false
+                    "pieceProtec": false,
+                    "power": false,
+                    "instinct": false
                 }
             },
             "cptSpe": {
@@ -340,7 +347,8 @@
                 "base"
             ],
             "value": 0,
-            "type": "base"
+            "type": "base",
+            "identifier": ""
         },
         "martialCpt": {
             "templates": [

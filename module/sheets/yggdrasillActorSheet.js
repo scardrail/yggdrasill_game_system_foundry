@@ -9,7 +9,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             template: "systems/yggdrasill/templates/sheets/importantCharacter-sheet.hbs",
             classes: ["yggdrasill", "sheet", "importantCharacter"]
         })
-    };
+    }
 
     getData() {
         let data = super.getData();
@@ -27,9 +27,9 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.runeCpt = data.items.filter(function(item) { return item.type == "runeCpt" });
 
         if (data.actor.type == "extra" || data.actor.type == "creature") {
-            data = calculStats.setExtraCaracs(data);
+            data.data.data = calculStats.setExtraCaracs(data.data.data);
         } else {
-            data = calculStats.setCharacterCaracs(data);
+            // data.data.data = calculStats.setCharacterCaracs(data.data.data);
         }
 
         console.log(data);
@@ -80,9 +80,12 @@ export default class YggdrasillActorSheet extends ActorSheet {
         let itemId = element.closest(".item").dataset.itemId;
         let item = this.actor.items.get(itemId);
         let field = element.dataset.field;
-
+        let value = element.value
+        if (element.type == "checkbox") {
+            value = element.checked;
+        }
         return item.update({
-            [field]: element.value
+            [field]: value
         });
 
     }

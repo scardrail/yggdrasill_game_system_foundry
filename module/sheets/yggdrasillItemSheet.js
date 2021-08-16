@@ -1,5 +1,5 @@
 export default class YggdrasillItemSheet extends ItemSheet {
-    static get defaultOptions(){
+    static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 600,
             height: 570,
@@ -7,15 +7,17 @@ export default class YggdrasillItemSheet extends ItemSheet {
         })
     }
 
-    get template(){
+    get template() {
         console.log(`Yggdrasill | Récupération du fichier hbs ${this.item.data.type}-sheet.hbs`);
 
         return `systems/yggdrasill/templates/sheets/${this.item.data.type}-sheet.hbs`;
     }
 
-    getData(){
+    getData() {
         const data = super.getData();
         data.config = CONFIG.yggdrasill;
+
+
         console.log(data);
         return data;
     }
