@@ -5,6 +5,7 @@ export async function TaskCheck({
     nbDiceFuror = 0,
     destinyDice = 0,
     modifier = 0,
+    attackType = null,
     actor = null,
     item = null
 } = {}) {
@@ -43,16 +44,16 @@ export async function TaskCheck({
     }
 
     if (actor.data.isBerserk && actor.data.nbDiceFuror.value > 0) {
-        if (!(actor.data.isInFuror)) actor.data.primCarac.perception.mod += -3;
-        if (element.dataset.type == "defensive") rollData.nbDiceKept = 1;
+        if (!(actor.data.isInFuror)) actor.data.primCarac.spirit.perception.mod += -3;
+        if (attackType == "defensive") rollData.nbDiceKept = 1;
         actor.data.isInFuror = true;
     }
     if (actor.data.isInFuror && actor.data.nbDiceFuror.value > actor.data.nbDiceFuror.min) actor.data.nbDiceFuror.minMax = actor.data.nbDiceFuror.value;
 
     let messageData = {
-        speaker: ChatMessage.getSpeaker(),
+        speaker: ChatMessage.getSpeaker()
     };
-    if (item.type == "arme") {
+    if (item.type == "arme" && !(actor.data.caracUsed.isDefensive)) {
         let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
         console.log(item);
         console.log(actor);
@@ -104,20 +105,72 @@ export async function TaskCheck({
         // Render the roll display template
         chatData.content = await renderTemplate(chatOptions.template, cardData);
 
+        actor.data = resetingValues(actor.data);
         return ChatMessage.create(chatData);
 
 
     } else {
-        new Roll(rollFormula, rollData).roll().toMessage(messageData);
+        // new Roll(rollFormula, rollData).roll().toMessage(messageData);
+        let chatTemplate = "templates/dice/roll.html";
+        console.log(item);
+        console.log(actor);
+
+        let chatOptions = {};
+
+        chatOptions = foundry.utils.mergeObject({
+            user: game.user.id,
+            flavor: null,
+            template: chatTemplate,
+            blind: false
+        }, chatOptions);
+        const isPrivate = false;
+
+        let rollResult = new Roll(rollFormula, rollData).roll()
+
+        // Execute the roll, if needed
+        if (!rollResult._evaluated) rollResult.evaluate();
+
+        let cardData = {
+            formula: isPrivate ? "???" : rollResult._formula,
+            flavor: isPrivate ? null : chatOptions.flavor,
+            user: chatOptions.user,
+            tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+            total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100
+        }
+
+        console.log(rollResult)
+
+        // Define chat data
+        const chatData = {
+            formula: isPrivate ? "???" : rollResult._formula,
+            flavor: isPrivate ? null : chatOptions.flavor,
+            user: chatOptions.user,
+            tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+            total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+            item: item,
+            owner: actor.id,
+            actor: actor,
+            config: CONFIG.yggdrasill,
+            sound: CONFIG.sounds.dice
+        };
+        chatData.roll = true;
+
+        // Render the roll display template
+        chatData.content = await renderTemplate(chatOptions.template, cardData);
+
         actor.data = resetingValues(actor.data);
+        return ChatMessage.create(chatData);
     }
+
 }
 
 function resetingValues(data) {
+    console.log("Yggdrasill || resetingValues")
     data.nbDiceFuror.value = 0;
     data.caracUsed.name = "";
     data.caracUsed.value = 0;
     data.isDestinyRoll = false;
+    data.caracUsed.isDefensive = false;
 
     return data;
 }

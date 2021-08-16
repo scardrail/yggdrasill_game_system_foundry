@@ -7,6 +7,6 @@
     {{> "templates/dice/roll.html"}}
     </div>
     <div class="card-buttons">
-        <button type="button"><i class="fas fa-bahai"></i>{{localize "yggdrasill.chat.actions.damages"}} : {{item.data.dmgBase}} + {{actor.data.dmgMod}}</button>
+        <button type="button"><i class="fas fa-bahai"></i>{{localize "yggdrasill.chat.actions.damages"}} : {{add item.data.dmgBase actor.data.dmgMod}} ({{item.data.dmgBase}} + {{actor.data.dmgMod}})</button>
     </div>
 </div>

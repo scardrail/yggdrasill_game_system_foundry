@@ -65,4 +65,8 @@ Hooks.once("init", () => {
     preloadHandlebarsTemplates();
 });
 
-Hooks.on("renderChatLog", (app, html, data) => Chat.addChatListeners(html));
+Hooks.on("renderChatLog", (app, html, data) => {
+    Chat.addChatListeners(html);
+
+    preloadHandlebarsTemplates();
+});

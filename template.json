@@ -161,7 +161,9 @@
                 "caracUsed": {
                     "name": "",
                     "value": 0,
-                    "mod": 0
+                    "mod": 0,
+                    "isOffensive": false,
+                    "isDefensive": false
                 }
             },
             "extraCharacter": {

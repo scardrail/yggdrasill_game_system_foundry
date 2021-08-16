@@ -15,6 +15,14 @@ export const registerHandlebarsHelpers = function() {
         else return 0;
     });
 
+    Handlebars.registerHelper('isOffensive', function(owner) {
+        let attacker = game.actors.get(owner);
+        let val = attacker.data.data.caracUsed.isOffensive;
+        console.log("Yggdrasill | isOffensive | val : " + val);
+        return val;
+    });
+
+
     Handlebars.registerHelper('notMagicOrMartial', function(val) {
         let isNotMagic = val !== "competenceMagique";
         let isNotMartial = val !== "competenceMartiale";

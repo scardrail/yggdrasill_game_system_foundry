@@ -1,8 +1,8 @@
 <div class= "chat-card item weapon" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
     <div class= "card-content" >
         <h1>{{localize "yggdrasill.weapon.name"}} : {{name}}</h1>
-        <p>{{localize "yggdrasill.chat.actions.damages"}} : {{data.dmgBase}}</p>
         <div class="card-params">
+            <p>{{localize "yggdrasill.chat.actions.damages"}} : {{data.dmgBase}}</p>
             {{#if data.properties.ranged}}
                 {{#if data.properties.power}}
                     <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
@@ -52,7 +52,6 @@
             </div>
             <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
                 <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    
-
             </div>
         </div>
     </div>

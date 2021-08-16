@@ -88,7 +88,7 @@
             "pName": "Nom de la protection",
             "pSubType": "Type de la protection",
             "hands": "Nombre de mains",
-            "dmgBase": "Dégâts de base",
+            "dmgBase": "Dégâts",
             "range": "Arme à distance",
             "melee": "Au corps à corps",
             "rangeC": "Portée courte",
@@ -222,6 +222,7 @@
             "actionsMod": "Mod.",
             "run": "Course",
             "sprint": "Sprint",
+            "parade": "Parade",
             "status": "Etat",
             "modifier": "Modificateur",
             "weary": "Epuisé",
@@ -384,18 +385,18 @@
                 "force": "Attaque en force",
                 "classic": "Attaque classique",
                 "precise": "Attaque précise",
-                "aimed": "Attaque visée"
+                "aimed": "Attaque visée",
+                "parade": "Parade"
             },
             "ranged": {
-                "stoppage": "Tir d'arrêt",
-                "impact": "Tir d'impact",
                 "iStoppage": "Tir d'arrêt avec l'INS",
                 "iImpact": "Tir d'impact avec l'INS",
                 "pStoppage": "Tir d'arrêt en PUI",
                 "pImpact": "Tir d'impact en PUI",
                 "landing": "Tir posé",
                 "precise": "Tir précis",
-                "aimed": "Tir visé"
+                "aimed": "Tir visé",
+                "parade": "Parade"
             }
         }
 

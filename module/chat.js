@@ -4,6 +4,24 @@ export function addChatListeners(html) {
     html.on('change', '.furor', onSetNbDiceFuror);
     html.on('change', '.destiny', onSetIfDestinyDice);
     html.on('change', '.carac', onSetCarac);
+    html.on('change', '.off', onSetOffensive);
+    html.on('change', '.def', onSetDefensive);
+}
+
+function onSetOffensive(event) {
+    const element = event.currentTarget.closest(".off");
+    let offensive = element.checked;
+    console.log(offensive);
+    let attacker = game.actors.get(element.dataset.ownerId);
+    attacker.data.data.caracUsed.isOffensive = offensive;
+    console.log(attacker);
+}
+
+function onSetDefensive(event) {
+    const element = event.currentTarget.closest(".def");
+    let defensive = element.checked;
+    let attacker = game.actors.get(element.dataset.ownerId);
+    attacker.data.data.caracUsed.isDefensive = defensive;
 }
 
 function onSetCarac(event) {
@@ -58,8 +76,11 @@ function onSetCarac(event) {
                 attacker.data.data.enemyArmorMod = -(caracValue * 3);
                 caracMod += -caracValue;
                 break;
+            case 'parade':
+                attacker.data.data.caracUsed.isDefensive = true;
+                break;
             default:
-                console.log(`Sorry, we are out of ${expr}.`);
+                console.log(`Sorry, we are out of ${secCarac}.`);
         }
     }
 
@@ -91,6 +112,7 @@ function onCaracRoll(event) {
     let caracValue = 0;
     let caracMod = 0;
     let destinyDice = 0;
+    let attackType = null;
 
     let item = {};
 
@@ -124,10 +146,10 @@ function onCaracRoll(event) {
             destinyDice: destinyDice,
             caracValue: caracValue,
             modifier: caracMod,
+            attackType: attackType,
             actor: attacker.data,
             item: item.data
         })
-
     }
 
 

@@ -237,6 +237,7 @@
             "sprint": "Sprint",
             "weary": "weary",
             "status": "Status",
+            "parade": "Parade",
             "isBerserk": "Is a Berserker ? ",
             "isInitiated": "Is initated by Odhinn ?"
         },
@@ -397,7 +398,8 @@
                 "force": "Attack in force",
                 "classic": "Classic attack",
                 "precise": "Precise attack",
-                "aimed": "Aimed attack"
+                "aimed": "Aimed attack",
+                "parade": "Parade"
             },
             "ranged": {
                 "iStoppage": "Stoppage shot with INS",
@@ -406,7 +408,8 @@
                 "pImpact": "Impact shot with POW",
                 "landing": "Landing shot",
                 "precise": "Precise shot",
-                "aimed": "Aimed shot"
+                "aimed": "Aimed shot",
+                "parade": "Parade"
             }
         }
     }

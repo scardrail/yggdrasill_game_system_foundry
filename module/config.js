@@ -176,7 +176,8 @@ yggdrasill.meleeCarac = {
     force: "yggdrasill.attackTypes.melee.force",
     classic: "yggdrasill.attackTypes.melee.classic",
     precise: "yggdrasill.attackTypes.melee.precise",
-    aimed: "yggdrasill.attackTypes.melee.aimed"
+    aimed: "yggdrasill.attackTypes.melee.aimed",
+    parade: "yggdrasill.attackTypes.melee.parade"
 };
 yggdrasill.meleeCoresp = {
     none: "",
@@ -184,7 +185,8 @@ yggdrasill.meleeCoresp = {
     force: "power",
     classic: "agility",
     precise: "perception",
-    aimed: "perception"
+    aimed: "perception",
+    parade: "agility"
 };
 yggdrasill.powerRangedCarac = {
     none: "yggdrasill.extra.none",
@@ -192,7 +194,8 @@ yggdrasill.powerRangedCarac = {
     pImpact: "yggdrasill.attackTypes.ranged.pImpact",
     landing: "yggdrasill.attackTypes.ranged.landing",
     precise: "yggdrasill.attackTypes.ranged.precise",
-    aimed: "yggdrasill.attackTypes.ranged.aimed"
+    aimed: "yggdrasill.attackTypes.ranged.aimed",
+    parade: "yggdrasill.attackTypes.ranged.parade"
 };
 yggdrasill.instinctRangedCarac = {
     none: "yggdrasill.extra.none",
@@ -200,7 +203,8 @@ yggdrasill.instinctRangedCarac = {
     iImpact: "yggdrasill.attackTypes.ranged.iImpact",
     landing: "yggdrasill.attackTypes.ranged.landing",
     precise: "yggdrasill.attackTypes.ranged.precise",
-    aimed: "yggdrasill.attackTypes.ranged.aimed"
+    aimed: "yggdrasill.attackTypes.ranged.aimed",
+    parade: "yggdrasill.attackTypes.ranged.parade"
 };
 yggdrasill.rangedCarac = {
     none: "yggdrasill.extra.none",
@@ -210,7 +214,8 @@ yggdrasill.rangedCarac = {
     pImpact: "yggdrasill.attackTypes.ranged.pImpact",
     landing: "yggdrasill.attackTypes.ranged.landing",
     precise: "yggdrasill.attackTypes.ranged.precise",
-    aimed: "yggdrasill.attackTypes.ranged.aimed"
+    aimed: "yggdrasill.attackTypes.ranged.aimed",
+    parade: "yggdrasill.attackTypes.ranged.parade"
 };
 yggdrasill.rangedCoresp = {
     none: "",
@@ -220,5 +225,6 @@ yggdrasill.rangedCoresp = {
     pImpact: "power",
     landing: "agility",
     precise: "perception",
-    aimed: "perception"
+    aimed: "perception",
+    parade: "agility"
 };
