@@ -52,35 +52,65 @@ export async function TaskCheck({
     let messageData = {
         speaker: ChatMessage.getSpeaker(),
     };
-    // if (item.type == "arme") {
-    //     let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
-    //     console.log(item);
-    //     console.log(actor);
+    if (item.type == "arme") {
+        let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
+        console.log(item);
+        console.log(actor);
+
+        let chatOptions = {};
+
+        chatOptions = foundry.utils.mergeObject({
+            user: game.user.id,
+            flavor: null,
+            template: chatTemplate,
+            blind: false
+        }, chatOptions);
+        const isPrivate = false;
+
+        let rollResult = new Roll(rollFormula, rollData).roll()
+
+        // Execute the roll, if needed
+        if (!rollResult._evaluated) rollResult.evaluate();
+
+        let cardData = {
+            formula: isPrivate ? "???" : rollResult._formula,
+            flavor: isPrivate ? null : chatOptions.flavor,
+            user: chatOptions.user,
+            tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+            total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+            item: item,
+            owner: actor.id,
+            actor: actor,
+            config: CONFIG.yggdrasill
+        }
+
+        console.log(rollResult)
+
+        // Define chat data
+        const chatData = {
+            formula: isPrivate ? "???" : rollResult._formula,
+            flavor: isPrivate ? null : chatOptions.flavor,
+            user: chatOptions.user,
+            tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+            total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+            item: item,
+            owner: actor.id,
+            actor: actor,
+            config: CONFIG.yggdrasill,
+            sound: CONFIG.sounds.dice
+        };
+
+        // Render the roll display template
+        chatData.content = await renderTemplate(chatOptions.template, cardData);
+        chatData.roll = true;
+
+        return ChatMessage.create(chatData);
 
 
-
-    //     let rollResult = new Roll(rollFormula, rollData).roll()
-
-    //     let renderedRoll = await rollResult.render({ template: chatTemplate });
-
-    //     console.log(renderedRoll)
-    //     let chatData = {
-    //         user: game.user.id,
-    //         speaker: ChatMessage.getSpeaker(),
-    //         content: renderedRoll,
-    //         item: item,
-    //         owner: actor.id,
-    //         actor: actor,
-    //         config: CONFIG.yggdrasill
-
-    //     }
-    //     rollResult.toMessage(chatData);
-
-
-    // } else {
-    new Roll(rollFormula, rollData).roll().toMessage(messageData);
-    actor.data = resetingValues(actor.data);
-    // }
+    } else {
+        new Roll(rollFormula, rollData).roll().toMessage(messageData);
+        actor.data = resetingValues(actor.data);
+    }
 }
 
 function resetingValues(data) {
