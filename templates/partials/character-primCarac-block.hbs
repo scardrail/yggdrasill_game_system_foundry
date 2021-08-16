@@ -10,9 +10,9 @@
                 
                 {{#if (upper data.data.nbDiceKept 0)}}
                 <a><p class="task-check" 
-                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
-                data-carac-value="{{data.data.primCarac.body.power.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.body.power.mod}}"
+                data-nb-dice-kept="{{actor.data.data.nbDiceKept}}" 
+                data-carac-value="{{actor.data.data.primCarac.body.power.value}}" 
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.body.power.mod}}"
                 >{{localize "yggdrasill.characteristics.primary.power"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.power"}}</p>
@@ -27,7 +27,7 @@
                 <a><p class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.spirit.intelect.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.spirit.intelect.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.spirit.intelect.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.intelect"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.intelect"}}</p>
@@ -42,7 +42,7 @@
                 <a><p class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.soul.charisma.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.soul.charisma.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.soul.charisma.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.charisma"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.charisma"}}</p>
@@ -59,7 +59,7 @@
                 <a><p class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.body.vigour.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.body.vigour.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.body.vigour.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.vigour"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.vigour"}}</p>
@@ -71,11 +71,11 @@
             </td>
             <td>
                 {{#if (upper data.data.nbDiceKept 0)}}
-                <a><p class="task-check" 
-                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
-                data-carac-value="{{data.data.primCarac.spirit.perception.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.spirit.perception.mod}}"
-                 >{{localize "yggdrasill.characteristics.primary.perception"}}</p></a>
+                    <a><p class="task-check" 
+                    data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                    data-carac-value="{{data.data.primCarac.spirit.perception.value}}" 
+                    data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.spirit.perception.mod}}"
+                    >{{localize "yggdrasill.characteristics.primary.perception"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.perception"}}</p>
                 {{/if}}
@@ -89,7 +89,7 @@
                 <a><p class="task-check" 
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.soul.instinct.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.soul.instinct.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.soul.instinct.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.instinct"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.instinct"}}</p>
@@ -106,7 +106,7 @@
                 <a><p class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.body.agility.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.body.agility.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.body.agility.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.agility"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.agility"}}</p>
@@ -121,7 +121,7 @@
                 <a><p class="task-check" 
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.spirit.tenacity.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.spirit.tenacity.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.spirit.tenacity.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.tenacity"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.tenacity"}}</p>
@@ -136,7 +136,7 @@
                 <a><p class="task-check" 
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
                 data-carac-value="{{data.data.primCarac.soul.communication.value}}" 
-                data-modifier="{{add data.data.rollModifier data.data.primCarac.soul.communication.mod}}"
+                data-modifier="{{add (add data.data.actions.modifier data.data.rollModifier) data.data.primCarac.soul.communication.mod}}"
                  >{{localize "yggdrasill.characteristics.primary.communication"}}</p></a>
                 {{else}}
                     <p>{{localize "yggdrasill.characteristics.primary.communication"}}</p>

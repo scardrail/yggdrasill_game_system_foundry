@@ -26,7 +26,7 @@
                     </select>
                 </td>
             </tr>
-            {{#if (eq data.data.type "martial")}}
+            {{#if (or (eq data.data.type "martial") (eq data.data.type "magic"))}}
                 <tr>
                     <th>{{localize "yggdrasill.competence.identifier"}}</th>
                     <td>

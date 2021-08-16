@@ -31,6 +31,7 @@ export async function TaskCheck({
         caracValue: caracValue,
         modifier: modifier,
     };
+    if (item == null) item = { type: "" };
 
     if (actor.data.isInitiated && (item.type == "sejdrCpt" || item.type == "galdrCpt" || item.type == "runeCpt")) {
         actor.data.nbDiceFuror.max = actor.data.primCarac.spirit.tenacity;
@@ -110,8 +111,19 @@ export async function TaskCheck({
 
 
     } else {
-        // new Roll(rollFormula, rollData).roll().toMessage(messageData);
-        let chatTemplate = "templates/dice/roll.html";
+        console.log("Yggdrasill ||" + item.type);
+        console.log(item);
+        console.log(actor);
+        let chatTemplate = ""
+        if (item.type == "sejdrCpt") {
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-sejdrCpt-card.hbs";
+        } else if (item.type == "galdrCpt") {
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-galdrCpt-card.hbs";
+        } else if (item.type == "runeCpt") {
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-runeCpt-card.hbs";
+        } else {
+            chatTemplate = "templates/dice/roll.html";
+        }
         console.log(item);
         console.log(actor);
 
@@ -129,14 +141,65 @@ export async function TaskCheck({
 
         // Execute the roll, if needed
         if (!rollResult._evaluated) rollResult.evaluate();
+        let cardData = {}
+        if (item.type == "sejdrCpt") {
+            let mr = Math.round(rollResult._total * 100) / 100 - 14;
+            let durationValue = "";
+            console.log("Yggdrasill || _total" + rollResult._total);
+            console.log("Yggdrasill || mr" + mr);
+            if (mr >= 0 && mr <= 5) {
+                durationValue = "[[1d5]]" + game.i18n.localize("yggdrasill.sheet.duration.action");
+            } else if (mr >= 6 && mr <= 10) {
+                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.sheet.duration.turn");
 
-        let cardData = {
-            formula: isPrivate ? "???" : rollResult._formula,
-            flavor: isPrivate ? null : chatOptions.flavor,
-            user: chatOptions.user,
-            tooltip: isPrivate ? "" : await rollResult.getTooltip(),
-            total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100
+            } else if (mr >= 11 && mr <= 15) {
+                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.sheet.duration.minute");
+
+            } else if (mr >= 16 && mr <= 25) {
+                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.sheet.duration.hour");
+
+            } else if (mr >= 26) {
+                durationValue = "[[1d5]]" + game.i18n.localize("yggdrasill.sheet.duration.day");
+
+            } else {
+                durationValue = game.i18n.localize("yggdrasill.sheet.failure");
+            }
+            item.data.durationValue = durationValue;
+            cardData = {
+                formula: isPrivate ? "???" : rollResult._formula,
+                flavor: isPrivate ? null : chatOptions.flavor,
+                user: chatOptions.user,
+                tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+                total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+                mr: mr,
+                item: item,
+                owner: actor.id,
+                actor: actor,
+                config: CONFIG.yggdrasill
+            }
+
+        } else if (item.type == "galdrCpt") {
+            cardData = {
+                formula: isPrivate ? "???" : rollResult._formula,
+                flavor: isPrivate ? null : chatOptions.flavor,
+                user: chatOptions.user,
+                tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+                total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+                item: item,
+                owner: actor.id,
+                actor: actor,
+                config: CONFIG.yggdrasill
+            }
+        } else {
+            cardData = {
+                formula: isPrivate ? "???" : rollResult._formula,
+                flavor: isPrivate ? null : chatOptions.flavor,
+                user: chatOptions.user,
+                tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+                total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100
+            }
         }
+
 
         console.log(rollResult)
 
@@ -166,6 +229,7 @@ export async function TaskCheck({
 
 function resetingValues(data) {
     console.log("Yggdrasill || resetingValues")
+        // data.reserve.value -= data.nbDiceFuror.value;
     data.nbDiceFuror.value = 0;
     data.caracUsed.name = "";
     data.caracUsed.value = 0;

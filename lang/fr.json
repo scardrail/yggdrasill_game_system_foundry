@@ -43,12 +43,14 @@
             "new-temper": "Nouveau caractère",
 
 
+            "failure": "Echec",
             "durationN": "Durée",
             "duration": {
                 "action": "Action",
                 "turn": "Tour",
                 "minute": "Minute",
-                "hour": "Heure"
+                "hour": "Heure",
+                "day": "Jours"
             }
         },
         "tabs": {
@@ -138,6 +140,101 @@
                 "charms": "Charmes",
                 "curses": "Malédictions"
             },
+            "galdrDuration": {
+                "action": {
+                    "value": "[[1d5]] Action",
+                    "sd": 3
+                },
+                "turn": {
+                    "value": "[[1d10]] Tour",
+                    "sd": 6
+                },
+                "minute": {
+                    "value": "[[1d10]] Minute",
+                    "sd": 9
+                },
+                "hour": {
+                    "value": "[[1d10]] Heure",
+                    "sd": 12
+                },
+                "day": {
+                    "value": "[[1d5]] Jour",
+                    "sd": 15
+                }
+            },
+            "galdrTargets": {
+                "illusions": {
+                    "action": {
+                        "value": "cm3 (Chat, balle, épée,...)",
+                        "size": 10,
+                        "sd": 3
+                    },
+                    "turn": {
+                        "value": "cm3 (Tabouret, enfant,...)",
+                        "size": 50,
+                        "sd": 6
+                    },
+                    "minute": {
+                        "value": "m3 (Homme, 2 enfants,...)",
+                        "size": 1,
+                        "sd": 9
+                    },
+                    "hour": {
+                        "value": "m3 (Charette, 2 cavaliers,...)",
+                        "size": 5,
+                        "sd": 12
+                    },
+                    "day": {
+                        "value": "m3 (Maison, kraken, bateau,...)",
+                        "size": 10,
+                        "sd": 15
+                    }
+                },
+                "charms": {
+                    "action": {
+                        "value": "1",
+                        "sd": 3
+                    },
+                    "turn": {
+                        "value": "2 à 4",
+                        "sd": 6
+                    },
+                    "minute": {
+                        "value": "5 à 9",
+                        "sd": 9
+                    },
+                    "hour": {
+                        "value": "10 à 49",
+                        "sd": 12
+                    },
+                    "day": {
+                        "value": "50 et +",
+                        "sd": 15
+                    }
+                },
+                "curses": {
+                    "action": {
+                        "value": "1",
+                        "sd": 3
+                    },
+                    "turn": {
+                        "value": "2 à 4",
+                        "sd": 6
+                    },
+                    "minute": {
+                        "value": "5 à 9",
+                        "sd": 9
+                    },
+                    "hour": {
+                        "value": "10 à 49",
+                        "sd": 12
+                    },
+                    "day": {
+                        "value": "50 et +",
+                        "sd": 15
+                    }
+                }
+            },
             "positivenessN": "Positivité",
             "positiveness": {
                 "positive": "Positif",
@@ -149,7 +246,8 @@
                 "action": "Action",
                 "turn": "Tour",
                 "minute": "Minute",
-                "hour": "Heure"
+                "hour": "Heure",
+                "day": "Jour"
             },
             "preparation": "Preparation",
             "modifier": "Modificateur",

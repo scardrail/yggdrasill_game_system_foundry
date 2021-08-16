@@ -1,0 +1,16 @@
+<div class= "chat-card item sejdrCpt" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
+    <div class= "card-content" >
+        <h1>{{localize "yggdrasill.competence.name"}} : {{name}}</h1>
+        <div class="card-params">
+            <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
+                <h3>{{localize "yggdrasill.chat.other.furor"}}</h3><input class="furor" data-owner-id="{{owner}}" name="data.nbDiceFuror.value" type="number" min="1" max="{{actor.data.primCarac.soul.instinct.value}}" value="1" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p>
+            </div>
+            <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
+                <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    
+            </div>
+        </div>
+    </div>
+    <div class="card-buttons">
+        <button type="button" class="roll">{{localize "yggdrasill.chat.actions.roll"}}</button>
+    </div>
+<div>

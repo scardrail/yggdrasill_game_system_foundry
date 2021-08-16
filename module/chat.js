@@ -113,6 +113,7 @@ function onCaracRoll(event) {
     let caracMod = 0;
     let destinyDice = 0;
     let attackType = null;
+    let cptNeeded = true;
 
     let item = {};
 
@@ -125,19 +126,29 @@ function onCaracRoll(event) {
         competence = attacker.items.filter(function(item) { return item.data.data.identifier == weapon.data.data.subType });
         competenceValue = competence[0].data.data.value;
         item = weapon;
-    } else {
+    } else if (card.dataset.type == "sejdrCpt" || card.dataset.type == "galdrCpt" || card.dataset.type == "runeCpt") {
+        console.log("Yggdrasill || " + card.dataset.type);
+        if (attacker.data.data.nbDiceFuror.value <= 0) attacker.data.data.nbDiceFuror.value = 1;
+        cptNeeded = false;
+        let sejdrCpt = attacker.items.get(card.dataset.itemId);
+        competence = attacker.items.filter(function(item) { return item.data.data.identifier == sejdrCpt.type });
+        console.log(competence);
+        competenceValue = competence[0].data.data.value;
+        attacker.data.data.caracUsed.value = attacker.data.data.primCarac.soul.instinct.value;
+        item = sejdrCpt;
+    } else if (card.dataset.type == "competence") {
         console.log("Yggdrasill || competence");
         competence = attacker.items.get(card.dataset.itemId);
         competenceValue = competence.data.data.value;
         item = competence;
     }
-    if (attacker.data.data.caracUsed.value == 0) {
+    if (attacker.data.data.caracUsed.value == 0 && cptNeeded) {
         event.currentTarget.style.borderColor = "red";
         console.log("Yggdrasill || ROLL : choose a caracteristic");
 
     } else {
         caracValue = attacker.data.data.caracUsed.value;
-        caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.rollModifier;
+        caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.rollModifier + attacker.data.data.actions.modifier;
         event.currentTarget.style.borderColor = "black";
         event.currentTarget.setAttribute("disabled", "");
         Dice.TaskCheck({

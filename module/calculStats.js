@@ -71,6 +71,7 @@ export function setCharacterCaracs(data) {
 
     let caracs = setCaracsDictionary(data);
 
+    data = setAction(data, caracs);
     data = setFuror(data, caracs);
     data = setLifepoints(data, caracs);
     data = setSecCaracs(data, caracs);
@@ -97,6 +98,34 @@ function setCaracsDictionary(data) {
     caracs.communication = data.primCarac.soul.communication.value;
 
     return caracs;
+}
+
+function setAction(data, caracs) {
+
+    data.actions.max = caracs.agility + 1;
+
+    switch (data.actions.value) {
+        case 1:
+            data.actions.modifier = 0;
+            break;
+        case 2:
+            data.actions.modifier = -2;
+            break;
+        case 3:
+            data.actions.modifier = -5;
+            break;
+        case 4:
+            data.actions.modifier = -10;
+            break;
+        case 5:
+            data.actions.modifier = -15;
+            break;
+        case 6:
+            data.actions.modifier = -20;
+            break;
+    }
+
+    return data;
 }
 
 function setFuror(data, caracs) {

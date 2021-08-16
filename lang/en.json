@@ -47,12 +47,14 @@
             "deleteTemper": "Delete a temper",
             "new-temper": "New temper",
 
+            "failure": "Failure",
             "durationN": "Duration",
             "duration": {
                 "action": "Action",
                 "turn": "Turn",
                 "minute": "Minute",
-                "hour": "Hour"
+                "hour": "Hour",
+                "day": "Day"
             }
         },
         "tabs": {
@@ -150,6 +152,101 @@
                 "charms": "Charms",
                 "curses": "Curses"
             },
+            "galdrTargets": {
+                "illusions": {
+                    "action": {
+                        "value": "cm3 (Cat, ball, sword,...)",
+                        "size": 10,
+                        "sd": 3
+                    },
+                    "turn": {
+                        "value": "cm3 (Stool, child,...)",
+                        "size": 50,
+                        "sd": 6
+                    },
+                    "minute": {
+                        "value": "m3 (Man, 2 children,...)",
+                        "size": 1,
+                        "sd": 9
+                    },
+                    "hour": {
+                        "value": "m3 (Charette, 2 horsemen,...)",
+                        "size": 5,
+                        "sd": 12
+                    },
+                    "day": {
+                        "value": "m3 (House, kraken, boat,...)",
+                        "size": 10,
+                        "sd": 15
+                    }
+                },
+                "charms": {
+                    "action": {
+                        "value": "1",
+                        "sd": 3
+                    },
+                    "turn": {
+                        "value": "2 to 4",
+                        "sd": 6
+                    },
+                    "minute": {
+                        "value": "5 to 9",
+                        "sd": 9
+                    },
+                    "hour": {
+                        "value": "10 to 49",
+                        "sd": 12
+                    },
+                    "day": {
+                        "value": "50 and +",
+                        "sd": 15
+                    }
+                },
+                "curses": {
+                    "action": {
+                        "value": "1",
+                        "sd": 3
+                    },
+                    "turn": {
+                        "value": "2 to 4",
+                        "sd": 6
+                    },
+                    "minute": {
+                        "value": "5 to 9",
+                        "sd": 9
+                    },
+                    "hour": {
+                        "value": "10 to 49",
+                        "sd": 12
+                    },
+                    "day": {
+                        "value": "50 and +",
+                        "sd": 15
+                    }
+                }
+            },
+            "galdrDuration": {
+                "action": {
+                    "value": "[[1d5]] Action",
+                    "sd": 3
+                },
+                "turn": {
+                    "value": "[[1d10]] Turn",
+                    "sd": 6
+                },
+                "minute": {
+                    "value": "[[1d10]] Minute",
+                    "sd": 9
+                },
+                "hour": {
+                    "value": "[[1d10]] Hour",
+                    "sd": 12
+                },
+                "day": {
+                    "value": "[[1d5]] Day",
+                    "sd": 15
+                }
+            },
             "positivenessN": "Positiveness",
             "positiveness": {
                 "positive": "Positive",
@@ -161,7 +258,8 @@
                 "action": "Action",
                 "turn": "Turn",
                 "minute": "Minute",
-                "hour": "Hour"
+                "hour": "Hour",
+                "day": "Day"
             },
             "preparation": "Preparation",
             "modifier": "Modifier",

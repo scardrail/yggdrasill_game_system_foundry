@@ -48,7 +48,7 @@
                 </div>
             {{/if}}
             <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
-                <h3>Furor :</h3><input class="furor" data-owner-id="{{owner}}" data-ranged=false name="data.nbDiceFuror.value" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.nbDiceFuror.max}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.max}}</p>
+                <h3>Furor :</h3><input class="furor" data-owner-id="{{owner}}" data-ranged=false name="data.nbDiceFuror.value" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.nbDiceFuror.max}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p>
             </div>
             <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
                 <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    

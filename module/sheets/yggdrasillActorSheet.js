@@ -119,6 +119,12 @@ export default class YggdrasillActorSheet extends ActorSheet {
     }
 
     _onTaskCheck(event) {
+        let item = {};
+        try {
+            item = this.actor.items.get(event.currentTarget.dataset.itemId).data;
+        } catch (e) {
+            item = null
+        }
         Dice.TaskCheck({
             actionValue: event.currentTarget.dataset.actionValue,
             nbDiceKept: event.currentTarget.dataset.nbDiceKept,
@@ -126,7 +132,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
             destinyDice: event.currentTarget.dataset.destinyDice,
             caracValue: event.currentTarget.dataset.caracValue,
             modifier: event.currentTarget.dataset.modifier,
-            actor: this.actor.data
+            actor: this.actor.data,
+            item: item,
         })
     }
 
@@ -155,9 +162,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
             usedFurorDices: actor.data.reserve.max - actor.data.reserve.value,
             nbDiceKept: actor.data.nbDiceKept,
             caracValue: actor.data.primCarac.spirit.intelect.value,
-            modifier: actor.data.rollModifier + actor.data.primCarac.spirit.intelect.mod,
+            modifier: actor.data.rollModifier + actor.data.primCarac.spirit.intelect.mod + actor.data.actions.modifier,
         };
-
 
         let messageData = {
             speaker: ChatMessage.getSpeaker(),

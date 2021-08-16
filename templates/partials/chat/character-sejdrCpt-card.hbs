@@ -1,7 +1,15 @@
 {{> "templates/dice/roll.html"}}
 <div>
-    <h2>{{localize "yggdrasill.sejdrCpt.name"}} : {{name}}</h2>
+    <h2>{{localize "yggdrasill.magicCpt.name"}} : {{item.name}}</h2>
+
+    {{localize "yggdrasill.magicCpt.preparation"}} :  {{item.data.preparation.value}} {{localize (lookup config.magicDuration item.data.preparation.unit)}}
 </div>
 <div>
-    {{data.dmgBase}}
+    {{localize "yggdrasill.magicCpt.durationN"}} :  {{item.data.durationValue}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.zone"}} :  {{item.data.zone}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.effects"}} :  {{item.data.effects}}
 </div>
