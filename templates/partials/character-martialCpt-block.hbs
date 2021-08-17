@@ -4,8 +4,9 @@
     </h3>
     <table>
         <tr>
-            <th>{{localize "yggdrasill.martialCpt.name"}}</th>
+            <th colspan="2">{{localize "yggdrasill.martialCpt.name"}}</th>
             <th>{{localize "yggdrasill.martialCpt.level"}}</th>
+            <th>{{localize "yggdrasill.martialCpt.type"}}</th>
             <th>{{localize "yggdrasill.martialCpt.modifier"}}</th>
             <th>{{localize "yggdrasill.description"}}</th>
             <th colspan="2">
@@ -16,20 +17,45 @@
         </tr>
         {{#each martialCpt as |martial id|}}
             <tr class="martialCpt-item item" data-item-id="{{_id}}">
+                <td>
+                    {{#if   (not 
+                                (and
+                                    (or 
+                                        (or 
+                                            (and ../actor.data.data.martialCpt.isMcptAttackUsed (eq data.type "attack")
+                                            ) 
+                                            (and ../actor.data.data.martialCpt.isMcptDefenseUsed (eq data.type "defense")
+                                            )
+                                        )
+                                        (and ../actor.data.data.martialCpt.isMcptUtilitaryUsed (eq data.type "utility")
+                                        )
+                                    )
+                                    (not data.properties.isChecked)
+                                )
+                            )
+                    }}
+                    <label class="checkbox"><input class="martialCpt-isChecked inline-edit" data-field="data.properties.isChecked" type="checkbox" {{checked  data.properties.isChecked}}></label>
+                
+                    {{/if}}
+                </td>
                 <td>{{name}}</td>
                 <td>{{data.level}}</td>
+                <td>{{localize (add "yggdrasill.cmCategory." data.type)}}</td>
                 <td>{{data.modifier}}</td>
-                <td>{{data.description}}</td>
-                <td>
-                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editMart"}}">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </td>
-                <td>
-                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteMart"}}">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                </td>
+                <td>{{data.resume}}</td>
+                
+                {{#if (not data.properties.isChecked) }}
+                    <td>
+                        <a class="item-edit" title="{{localize "yggdrasill.sheet.editMart"}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteMart"}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                {{/if}}
             </tr>
         {{/each}}
     </table>

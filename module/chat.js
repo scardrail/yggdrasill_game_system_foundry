@@ -132,6 +132,7 @@ function onSetCarac(event) {
                 break;
             case 'aimed':
                 attacker.data.data.enemyArmorMod = -(caracValue * 3);
+                attacker.data.data.dmgMod = (caracValue * 3)
                 caracMod += -caracValue;
                 break;
             case 'parade':
@@ -182,7 +183,12 @@ function onCaracRoll(event) {
         let weapon = attacker.items.get(card.dataset.itemId);
         console.log(weapon.data.data.subType);
         competence = attacker.items.filter(function(item) { return item.data.data.identifier == weapon.data.data.subType });
-        competenceValue = competence[0].data.data.value;
+        try {
+            competenceValue = competence[0].data.data.value;
+        } catch (e) {
+            competenceValue = 0;
+        }
+
         item = weapon;
     } else if (card.dataset.type == "sejdrCpt" || card.dataset.type == "galdrCpt" || card.dataset.type == "runeCpt") {
         console.log("Yggdrasill || " + card.dataset.type);
@@ -224,7 +230,7 @@ function onCaracRoll(event) {
         console.log(attacker);
         let isConflict = false
         caracValue = attacker.data.data.caracUsed.value;
-        caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.rollModifier + attacker.data.data.actions.modifier;
+        caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.rollModifier + attacker.data.data.actions.modifier + attacker.data.data.martialCpt.mod;
         event.currentTarget.style.borderColor = "black";
         event.currentTarget.setAttribute("disabled", "");
         Dice.TaskCheck({

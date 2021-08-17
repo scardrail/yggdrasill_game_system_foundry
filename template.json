@@ -188,6 +188,13 @@
                     "mod": 0,
                     "isOffensive": false,
                     "isDefensive": false
+                },
+                "martialCpt": {
+                    "isMcptAttackUsed": false,
+                    "isMcptDefenseUsed": false,
+                    "isMcptUtilitaryUsed": false,
+                    "dmgMod": 0,
+                    "mod": 0
                 }
             },
             "extraCharacter": {
@@ -386,13 +393,18 @@
                 "ranged": false,
                 "defense": false,
                 "utilitary": false,
-                "variableLevel": false
+                "variableLevel": false,
+                "isUsed": false,
+                "isUnavailable": false,
+                "isChecked": false
             },
             "type": "attack",
             "weapons": "allMelee",
             "prerequisitesCpt": "martial",
             "prerequisitesLvl": "newbie",
             "modifier": -3,
+            "dmgMod": 0,
+            "resume": "",
             "varLevel": {
                 "value": 1,
                 "max": 4

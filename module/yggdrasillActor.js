@@ -4,8 +4,11 @@ export default class yggdrasillActor extends Actor {
         super.prepareData();
 
         let actorData = this.data;
-        let data = actorData.data;
         if (actorData.type == "pj" || actorData.type == "pnj") {
+            try {
+                actorData = calculStats.setMartialCpt(actorData);
+            } finally {}
+            let data = actorData.data;
             data = calculStats.setCharacterCaracs(data);
         }
     }

@@ -71,6 +71,8 @@ export function setCharacterCaracs(data) {
 
     let caracs = setCaracsDictionary(data);
 
+    console.log(data);
+
     data = setAction(data, caracs);
     data = setFuror(data, caracs);
     data = setLifepoints(data, caracs);
@@ -246,4 +248,42 @@ function sum(obj) {
         }
     }
     return sum;
+}
+
+
+export function setMartialCpt(actorData) {
+    console.log(actorData);
+    try {
+        let item = actorData.items.filter(function(item) { return item.data.data.properties.isChecked });
+        let competenceModifier = item[0].data.data.modifier;
+        let competenceDmgMod = item[0].data.data.dmgMod;
+        let competenceType = item[0].data.data.type;
+
+        actorData.data.martialCpt.mod = competenceModifier;
+        switch (competenceType) {
+            case "attack":
+                actorData.data.martialCpt.dmgMod = competenceDmgMod;
+                actorData.data.martialCpt.isMcptAttackUsed = true;
+                break;
+            case "defense":
+                actorData.data.martialCpt.isMcptDefenseUsed = true;
+                break;
+            case "utilitary":
+                actorData.data.martialCpt.isMcptUtilitaryUsed = true;
+                break;
+            default:
+                break;
+        }
+        console.log(actorData);
+
+    } catch (e) {
+        actorData.data.martialCpt.isMcptAttackUsed = false;
+        actorData.data.martialCpt.isMcptDefenseUsed = false;
+        actorData.data.martialCpt.isMcptUtilitaryUsed = false;
+        actorData.data.martialCpt.mod = 0;
+        actorData.data.martialCpt.dmgMod = 0;
+
+        console.log("No checked MrtialCpt " + e);
+    }
+    return actorData;
 }

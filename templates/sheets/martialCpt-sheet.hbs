@@ -71,6 +71,20 @@
                     <input name="data.modifier" type="number" min="-12" step="3" max="0" value="{{data.data.modifier}}" data-type="Number">
                 </td>
             </tr>
+            {{#if data.data.properties.attack}} 
+                <tr>
+                    <th>{{localize "yggdrasill.extra.dmgMod"}}</th>
+                    <td>
+                        <input name="data.dmgMod" type="number" min="0" value="{{data.data.dmgMod}}" data-type="Number">
+                    </td>
+                </tr>
+            {{/if}}
+            <tr>
+                <th>{{localize "yggdrasill.description"}}</th>
+                <td>
+                    <input name="data.resume" type="text" value="{{data.data.resume}}" data-type="Text">
+                </td>
+            </tr>
         </table>
         </div>
 </form>

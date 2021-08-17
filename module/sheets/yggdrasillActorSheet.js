@@ -48,6 +48,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         if (this.actor.isOwner) {
             html.find(".item-roll").click(this._onItemRoll.bind(this));
             html.find(".task-check").click(this._onTaskCheck.bind(this));
+
         }
 
         super.activateListeners(html);
