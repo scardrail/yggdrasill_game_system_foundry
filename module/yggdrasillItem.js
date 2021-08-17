@@ -6,8 +6,8 @@ export default class yggdrasillItem extends Item {
         "competence": "systems/yggdrasill/templates/partials/chat/character-competence-card.hbs",
         "martialCpt": "systems/yggdrasill/templates/partials/chat/character-martialCpt-card.hbs",
         "sejdrCpt": "systems/yggdrasill/templates/partials/chat/character-magicCpt-card.hbs",
-        "galdrCpt": "systems/yggdrasill/templates/partials/chat/character-galdrCpt-card.hbs",
-        "runeCpt": "systems/yggdrasill/templates/partials/chat/character-runeCpt-card.hbs",
+        "galdrCpt": "systems/yggdrasill/templates/partials/chat/character-magicCpt-card.hbs",
+        "runeCpt": "systems/yggdrasill/templates/partials/chat/character-magicCpt-card.hbs",
         "temper": "systems/yggdrasill/templates/partials/chat/character-temper-card.hbs"
     };
 

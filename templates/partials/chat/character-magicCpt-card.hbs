@@ -9,6 +9,70 @@
                 <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    
             </div>
         </div>
+        {{#if (eq type "galdrCpt") }}
+            <div class="galdr-params">
+                <div class="galdr-targets" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <h3>{{localize "yggdrasill.magicCpt.zoneTargets"}} :</h3><select class="targets" data-type="{{type}}" data-sub-type="{{data.type}}" data-owner-id="{{owner}}" data-name="{{add path ".value"}}" data-sd="{{add path ".sd"}}" name="data.magicCpt.galdrCpt.galdrTargets.value" style="width:100%">
+                        {{#if (eq data.type "illusions") }}
+                            {{#select actor.data.magicCpt.galdrCpt.galdrTargets.value}}
+                                {{#each config.galdrTargets.illusions as |path key|}}
+                                    <option value="{{key}}">{{localize (add path ".size")}}{{localize (add path ".value")}} | {{localize "yggdrasill.magicCpt.difficultyLevel"}} : {{localize (add path ".sd")}}</option>
+                                {{/each}}
+                            {{/select}}
+                        {{else}}
+                            {{#if (eq data.key "charms") }}
+                                {{#select actor.data.magicCpt.galdrCpt.galdrTargets.value}}
+                                    {{#each config.galdrTargets.charms as |path key|}}
+                                        <option value="{{key}}">{{localize (add path ".value")}} | {{localize "yggdrasill.magicCpt.difficultyLevel"}} : {{localize (add path ".sd")}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            {{else}}
+                                {{#select actor.data.magicCpt.galdrCpt.galdrTargets.value}}
+                                    {{#each config.galdrTargets.curses as |path key|}}
+                                        <option value="{{key}}">{{localize (add path ".value")}} | {{localize "yggdrasill.magicCpt.difficultyLevel"}} : {{localize (add path ".sd")}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            {{/if}}
+                        {{/if}}
+                    </select>
+                </div>
+                <div class="galdr-duration" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <h3>{{localize "yggdrasill.magicCpt.durationN"}} :</h3><select class="duration" data-key="{{key}}" data-owner-id="{{owner}}" path="data.magicCpt.galdrCpt.galdrDuration.value" style="width:100%">
+                        {{#select actor.data.magicCpt.galdrCpt.galdrDuration.value}}
+                            {{#each config.galdrDuration as |path key|}}
+                                <option value="{{key}}">{{localize (add path ".value")}} | {{localize "yggdrasill.magicCpt.difficultyLevel"}} : {{localize (add path ".sd")}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+        {{/if}}
+        {{#if (eq type "runeCpt") }}
+            <div class="rune-params">
+                {{!-- <div class="rune-duration" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <h3>{{localize "yggdrasill.magicCpt.durationN"}} :</h3><select class="duration" data-key="{{key}}" data-owner-id="{{owner}}" path="data.runeCpt.durationN" style="width:100%">
+                        {{#select actor.data.magicCpt.runeCpt.durationN}}
+                            {{#each config.magicDuration as |path key|}}
+                                <option value="{{key}}">{{subs 6 ../actor.data.primCarac.body.agility.value}} {{localize path}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div> --}}
+                <div class="rune-support" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <h3>{{localize "yggdrasill.magicCpt.support"}} :</h3><select class="support" data-key="{{key}}" data-owner-id="{{owner}}" path="data.magicCpt.runeCpt.support" style="width:100%">
+                        {{#select actor.data.magicCpt.runeCpt.support}}
+                            {{#each config.runeSupport as |path key|}}
+                                <option value="{{key}}">{{localize (add path ".value")}} | {{localize "yggdrasill.magicCpt.difficultyLevel"}} : {{localize (add path ".sd")}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                
+                <div class="rune-power" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <h3>{{localize "yggdrasill.magicCpt.power"}}</h3><input class="power" data-owner-id="{{owner}}" name="actor.data.magicCpt.runeCpt.power" type="number" min="1" max="15" value="1" data-type="Number" style="text-align: right;">
+                </div>
+            </div>
+        {{/if}}
     </div>
     <div class="card-buttons">
         <button type="button" class="roll">{{localize "yggdrasill.chat.actions.roll"}}</button>

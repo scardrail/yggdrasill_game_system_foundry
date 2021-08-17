@@ -141,95 +141,124 @@
                 "curses": "Malédictions"
             },
             "galdrDuration": {
+                "none": {
+                    "value": " ",
+                    "dice": " ",
+                    "unit": " ",
+                    "sd": " "
+                },
                 "action": {
-                    "value": "[[1d5]] Action",
+                    "value": "1d5 Action",
+                    "dice": "[[1d5]]",
+                    "unit": "Action",
                     "sd": 3
                 },
                 "turn": {
-                    "value": "[[1d10]] Tour",
+                    "value": "1d10 Tour",
+                    "dice": "[[1d10]]",
+                    "unit": "Tour",
                     "sd": 6
                 },
                 "minute": {
-                    "value": "[[1d10]] Minute",
+                    "value": "1d10 Minute",
+                    "dice": "[[1d10]]",
+                    "unit": "Minute",
                     "sd": 9
                 },
                 "hour": {
-                    "value": "[[1d10]] Heure",
+                    "value": "1d10 Heure",
+                    "dice": "[[1d10]]",
+                    "unit": "Heure",
                     "sd": 12
                 },
                 "day": {
-                    "value": "[[1d5]] Jour",
+                    "value": "1d5 Jour",
+                    "dice": "[[1d5]]",
+                    "unit": "Jour",
                     "sd": 15
                 }
             },
             "galdrTargets": {
                 "illusions": {
-                    "action": {
+                    "none": {
+                        "value": " ",
+                        "size": 0,
+                        "sd": " "
+                    },
+                    "xs": {
                         "value": "cm3 (Chat, balle, épée,...)",
                         "size": 10,
                         "sd": 3
                     },
-                    "turn": {
+                    "s": {
                         "value": "cm3 (Tabouret, enfant,...)",
                         "size": 50,
                         "sd": 6
                     },
-                    "minute": {
+                    "m": {
                         "value": "m3 (Homme, 2 enfants,...)",
                         "size": 1,
                         "sd": 9
                     },
-                    "hour": {
+                    "l": {
                         "value": "m3 (Charette, 2 cavaliers,...)",
                         "size": 5,
                         "sd": 12
                     },
-                    "day": {
+                    "xl": {
                         "value": "m3 (Maison, kraken, bateau,...)",
                         "size": 10,
                         "sd": 15
                     }
                 },
                 "charms": {
-                    "action": {
+                    "none": {
+                        "value": " ",
+                        "sd": " "
+                    },
+                    "xs": {
                         "value": "1",
                         "sd": 3
                     },
-                    "turn": {
+                    "s": {
                         "value": "2 à 4",
                         "sd": 6
                     },
-                    "minute": {
+                    "m": {
                         "value": "5 à 9",
                         "sd": 9
                     },
-                    "hour": {
+                    "l": {
                         "value": "10 à 49",
                         "sd": 12
                     },
-                    "day": {
+                    "xl": {
                         "value": "50 et +",
                         "sd": 15
                     }
                 },
                 "curses": {
-                    "action": {
+                    "none": {
+                        "value": " ",
+                        "sd": " "
+                    },
+                    "xs": {
                         "value": "1",
                         "sd": 3
                     },
-                    "turn": {
+                    "s": {
                         "value": "2 à 4",
                         "sd": 6
                     },
-                    "minute": {
+                    "m": {
                         "value": "5 à 9",
                         "sd": 9
                     },
-                    "hour": {
+                    "l": {
                         "value": "10 à 49",
                         "sd": 12
                     },
-                    "day": {
+                    "xl": {
                         "value": "50 et +",
                         "sd": 15
                     }
@@ -249,6 +278,46 @@
                 "hour": "Heure",
                 "day": "Jour"
             },
+            "power": "Puissance",
+            "support": "Support",
+            "runeSupport": {
+                "none": {
+                    "value": " ",
+                    "sd": " ",
+                    "effectsDuration": "",
+                    "castDuration": ""
+                },
+                "skin": {
+                    "value": "Peau",
+                    "sd": 3,
+                    "effectsDuration": "Heures",
+                    "castDuration": "Action"
+                },
+                "cloth": {
+                    "value": "Tissu",
+                    "sd": 6,
+                    "effectsDuration": "Jours",
+                    "castDuration": "Tour"
+                },
+                "leather": {
+                    "value": "Cuir",
+                    "sd": 9,
+                    "effectsDuration": "Semaines",
+                    "castDuration": "Minute"
+                },
+                "wood": {
+                    "value": "Bois",
+                    "sd": 12,
+                    "effectsDuration": "Mois",
+                    "castDuration": "Heure"
+                },
+                "stoneMetal": {
+                    "value": "Pierre, Métal",
+                    "sd": 15,
+                    "effectsDuration": "Années",
+                    "castDuration": "Jour"
+                }
+            },
             "preparation": "Preparation",
             "modifier": "Modificateur",
             "zone": "Zone",
@@ -256,6 +325,7 @@
             "invertEffects": "Effets Inversés",
             "difficultyLevel": "SD",
             "targets": "Cibles",
+            "zoneTargets": "Zone / Cibles",
             "dommain": "Dommaine",
             "positiveEffect": "Effet positif",
             "negativeEffect": "Effet négatif"

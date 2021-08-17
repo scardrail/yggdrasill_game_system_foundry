@@ -1,7 +1,15 @@
 {{> "templates/dice/roll.html"}}
 <div>
-    <h2>{{localize "yggdrasill.galdrCpt.name"}} : {{name}}</h2>
+    <h2>{{localize "yggdrasill.magicCpt.dommain"}} : {{item.name}}</h2>
+
+    <h2>{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{actor.data.magicCpt.galdrCpt.difficultyLevelSum}}</h2>
 </div>
 <div>
-    {{data.dmgBase}}
+    {{localize "yggdrasill.magicCpt.durationN"}} :  {{actor.data.magicCpt.galdrCpt.galdrDuration.dice}} {{actor.data.magicCpt.galdrCpt.galdrDuration.unit}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.zoneTargets"}} : {{#if (not (eq actor.data.magicCpt.galdrCpt.galdrTargets.size "0"))}} {{actor.data.magicCpt.galdrCpt.galdrTargets.size}} {{/if}} {{actor.data.magicCpt.galdrCpt.galdrTargets.value}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.effects"}} :  {{item.data.effects}}
 </div>

@@ -27,7 +27,31 @@
                 },
                 "isNPC": true,
                 "isCaracUpdated": false,
-                "rollModifier": 0
+                "rollModifier": 0,
+                "magicCpt": {
+                    "galdrCpt": {
+                        "difficultyLevelSum": 3,
+                        "galdrDuration": {
+                            "value": "",
+                            "dice": "",
+                            "unit": "",
+                            "sd": 3
+                        },
+                        "galdrTargets": {
+                            "value": "",
+                            "size": 0,
+                            "sd": 3
+                        }
+                    },
+                    "runeCpt": {
+                        "difficultyLevelSum": 0,
+                        "sd": { "support": 0, "power": 1, "level": 0 },
+                        "power": 1,
+                        "effectsDuration": "",
+                        "castDuration": "",
+                        "support": ""
+                    }
+                }
             },
             "importantCharacter": {
                 "primCarac": {

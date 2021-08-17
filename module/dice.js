@@ -178,7 +178,7 @@ export async function TaskCheck({
                 config: CONFIG.yggdrasill
             }
 
-        } else if (item.type == "galdrCpt") {
+        } else {
             cardData = {
                 formula: isPrivate ? "???" : rollResult._formula,
                 flavor: isPrivate ? null : chatOptions.flavor,
@@ -189,14 +189,6 @@ export async function TaskCheck({
                 owner: actor.id,
                 actor: actor,
                 config: CONFIG.yggdrasill
-            }
-        } else {
-            cardData = {
-                formula: isPrivate ? "???" : rollResult._formula,
-                flavor: isPrivate ? null : chatOptions.flavor,
-                user: chatOptions.user,
-                tooltip: isPrivate ? "" : await rollResult.getTooltip(),
-                total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100
             }
         }
 

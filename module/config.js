@@ -59,10 +59,12 @@ yggdrasill.magicPositiveness = {
     negative: "yggdrasill.magicCpt.positiveness.negative"
 };
 yggdrasill.magicDuration = {
+    none: "yggdrasill.extra.none",
     action: "yggdrasill.magicCpt.duration.action",
     turn: "yggdrasill.magicCpt.duration.turn",
     minute: "yggdrasill.magicCpt.duration.minute",
-    hour: "yggdrasill.magicCpt.duration.hour"
+    hour: "yggdrasill.magicCpt.duration.hour",
+    day: "yggdrasill.magicCpt.duration.day"
 };
 yggdrasill.duration = {
     action: "yggdrasill.sheet.duration.action",
@@ -227,4 +229,47 @@ yggdrasill.rangedCoresp = {
     precise: "perception",
     aimed: "perception",
     parade: "agility"
+};
+yggdrasill.galdrTargets = {
+    illusions: {
+        none: "yggdrasill.magicCpt.galdrTargets.illusions.none",
+        xs: "yggdrasill.magicCpt.galdrTargets.illusions.xs",
+        s: "yggdrasill.magicCpt.galdrTargets.illusions.s",
+        m: "yggdrasill.magicCpt.galdrTargets.illusions.m",
+        l: "yggdrasill.magicCpt.galdrTargets.illusions.l",
+        xl: "yggdrasill.magicCpt.galdrTargets.illusions.xl",
+    },
+    charms: {
+        none: "yggdrasill.magicCpt.galdrTargets.charms.none",
+        xs: "yggdrasill.magicCpt.galdrTargets.charms.xs",
+        s: "yggdrasill.magicCpt.galdrTargets.charms.s",
+        m: "yggdrasill.magicCpt.galdrTargets.charms.m",
+        l: "yggdrasill.magicCpt.galdrTargets.charms.l",
+        xl: "yggdrasill.magicCpt.galdrTargets.charms.xl",
+    },
+    curses: {
+        none: "yggdrasill.magicCpt.galdrTargets.curses.none",
+        xs: "yggdrasill.magicCpt.galdrTargets.curses.xs",
+        s: "yggdrasill.magicCpt.galdrTargets.curses.s",
+        m: "yggdrasill.magicCpt.galdrTargets.curses.m",
+        l: "yggdrasill.magicCpt.galdrTargets.curses.l",
+        xl: "yggdrasill.magicCpt.galdrTargets.curses.xl",
+    },
+};
+yggdrasill.galdrDuration = {
+    none: "yggdrasill.magicCpt.galdrDuration.none",
+    action: "yggdrasill.magicCpt.galdrDuration.action",
+    turn: "yggdrasill.magicCpt.galdrDuration.turn",
+    minute: "yggdrasill.magicCpt.galdrDuration.minute",
+    hour: "yggdrasill.magicCpt.galdrDuration.hour",
+    day: "yggdrasill.magicCpt.galdrDuration.day"
+};
+
+yggdrasill.runeSupport = {
+    none: "yggdrasill.magicCpt.runeSupport.none",
+    skin: "yggdrasill.magicCpt.runeSupport.skin",
+    cloth: "yggdrasill.magicCpt.runeSupport.cloth",
+    leather: "yggdrasill.magicCpt.runeSupport.leather",
+    wood: "yggdrasill.magicCpt.runeSupport.wood",
+    stoneMetal: "yggdrasill.magicCpt.runeSupport.stoneMetal"
 };

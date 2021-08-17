@@ -63,6 +63,11 @@ export const registerHandlebarsHelpers = function() {
     });
 
 
+    Handlebars.registerHelper('subs', function(val1, val2) {
+        var substract = 0;
+        substract = parseInt(val1) - parseInt(val2);
+        return substract;
+    });
     Handlebars.registerHelper('add', function(val1, val2) {
         var addition = 0;
         addition = val1 + val2;

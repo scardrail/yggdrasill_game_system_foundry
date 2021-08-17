@@ -1,7 +1,18 @@
 {{> "templates/dice/roll.html"}}
 <div>
-    <h2>{{localize "yggdrasill.runeCpt.name"}} : {{name}}</h2>
+    <h2>{{localize "yggdrasill.magicCpt.name"}} : {{item.name}}</h2>
+
+    <h2>{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{actor.data.magicCpt.runeCpt.difficultyLevelSum}}</h2>
 </div>
 <div>
-    {{data.dmgBase}}
+    {{localize "yggdrasill.magicCpt.durationN"}} :  {{actor.data.magicCpt.runeCpt.castDuration}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.power"}} : {{actor.data.magicCpt.runeCpt.power}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.durationN"}} :  {{actor.data.magicCpt.runeCpt.effectsDuration}}
+</div>
+<div>
+    {{localize "yggdrasill.magicCpt.support"}} :  {{actor.data.magicCpt.runeCpt.support}}
 </div>

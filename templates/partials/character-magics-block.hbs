@@ -19,12 +19,6 @@
         {{#each sejdrCpt as |sejdr id|}}
             <tr class="sejdrCpt-item item" data-item-id="{{_id}}">
                 <td><a><p class="item-roll">{{name}}</p></a></td>
-                {{!-- <td><a><p class="task-check" 
-                data-item-id="{{_id}}" 
-                data-nb-dice-kept="{{../data.data.nbDiceKept}}"
-                data-carac-value="{{../data.data.primCarac.soul.instinct.value}}" 
-                data-modifier="{{add (add ../data.data.actions.modifier ../data.data.rollModifier) (add ../data.data.primCarac.body.power.mod data.modifier)}}"
-                >{{name}}</p></a></td> --}}
                 <td>{{data.level}}</td>
                 <td>{{data.modifier}}</td>
                 <td>{{data.preparation.value}} {{localize (lookup ../config.magicDuration data.preparation.unit)}}</td>
@@ -60,7 +54,7 @@
         {{#each galdrCpt as |galdr id|}}
             <tr class="galdrCpt-item item" data-item-id="{{_id}}">
                 <td>{{data.difficultyLevel}}</td>
-                <td>{{name}}</td>
+                <td><a><p class="item-roll">{{name}}</p></a></td>
                 <td>{{localize (lookup ../config.galdrTypes data.type)}}</td>
                 <td>
                     <a class="item-edit" title="{{localize "yggdrasill.sheet.editGaldr"}}">
@@ -91,7 +85,7 @@
         </tr>
         {{#each runeCpt as |rune id|}}
             <tr class="runeCpt-item item" data-item-id="{{_id}}">
-                <td>{{name}}</td>
+                <td><a><p class="item-roll">{{name}}</p></a></td>
                 <td>{{data.level}}</td>
                 <td>{{data.dommain}}</td>
                 <td>
