@@ -5,6 +5,8 @@ export async function TaskCheck({
     nbDiceFuror = 0,
     destinyDice = 0,
     modifier = 0,
+    isConflict = false,
+    isOffensive = false,
     attackType = null,
     actor = null,
     item = null
@@ -15,9 +17,19 @@ export async function TaskCheck({
     console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
     console.log("Yggdrasill || destinyDice " + destinyDice);
     console.log("Yggdrasill || modifier " + modifier);
+    console.log("Yggdrasill || isConflict " + isConflict);
+    console.log("Yggdrasill || isOffensive " + isOffensive);
+    console.log("Yggdrasill || attackType " + attackType);
     console.log("Yggdrasill || actor :");
     console.log(actor);
+
     let rollFormula = "(@caracValue)d10kh(@nbDiceKept)x10";
+    let isBlind = false;
+    if (actor.type == "extra" || actor.type == "creature") {
+        rollFormula = "(@caracValue)d10";
+        isBlind = true;
+    }
+
     if (actionValue != 0) rollFormula += " + @actionValue";
     if (modifier != 0) rollFormula += " + @modifier";
     if (destinyDice != 0) rollFormula += " + (@destinyDice)d10";
@@ -31,6 +43,7 @@ export async function TaskCheck({
         caracValue: caracValue,
         modifier: modifier,
     };
+
     if (item == null) item = { type: "" };
 
     if (actor.data.isInitiated && (item.type == "sejdrCpt" || item.type == "galdrCpt" || item.type == "runeCpt")) {
@@ -65,7 +78,7 @@ export async function TaskCheck({
             user: game.user.id,
             flavor: null,
             template: chatTemplate,
-            blind: false
+            blind: isBlind
         }, chatOptions);
         const isPrivate = false;
 
@@ -121,7 +134,17 @@ export async function TaskCheck({
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-galdrCpt-card.hbs";
         } else if (item.type == "runeCpt") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-runeCpt-card.hbs";
+        } else if (isConflict == "true") {
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs";
+            if (isOffensive == "true") {
+                console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
+                actor.data.dmgMod = "[[1d10]] + " + actor.data.physic.roll + " + MR";
+            } else {
+                console.log("Yggdrasill |0| isConflict " + isConflict);
+                actor.data.dmgMod = 0;
+            }
         } else {
+            console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
             chatTemplate = "templates/dice/roll.html";
         }
         console.log(item);
@@ -133,7 +156,7 @@ export async function TaskCheck({
             user: game.user.id,
             flavor: null,
             template: chatTemplate,
-            blind: false
+            blind: isBlind
         }, chatOptions);
         const isPrivate = false;
 
@@ -192,8 +215,7 @@ export async function TaskCheck({
             }
         }
 
-
-        console.log(rollResult)
+        console.log(rollResult);
 
         // Define chat data
         const chatData = {
@@ -212,21 +234,25 @@ export async function TaskCheck({
 
         // Render the roll display template
         chatData.content = await renderTemplate(chatOptions.template, cardData);
+        console.log(actor.data.dmgMod);
 
-        actor.data = resetingValues(actor.data);
+        actor.data = resetingValues(actor.data, actor.type);
         return ChatMessage.create(chatData);
     }
 
 }
 
-function resetingValues(data) {
-    console.log("Yggdrasill || resetingValues")
-        // data.reserve.value -= data.nbDiceFuror.value;
-    data.nbDiceFuror.value = 0;
-    data.caracUsed.name = "";
-    data.caracUsed.value = 0;
-    data.isDestinyRoll = false;
-    data.caracUsed.isDefensive = false;
+function resetingValues(data, type) {
+    console.log("Yggdrasill || resetingValues");
+    if (type == "pj" || type == "pnj") {
+        data.nbDiceFuror.value = 0;
+        data.caracUsed.name = "";
+        data.caracUsed.value = 0;
+        data.isDestinyRoll = false;
+        data.caracUsed.isDefensive = false;
+    } else {
+        data.dmgMod = 0;
+    }
 
     return data;
 }

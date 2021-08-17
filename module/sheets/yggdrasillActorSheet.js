@@ -27,11 +27,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.runeCpt = data.items.filter(function(item) { return item.type == "runeCpt" });
 
         if (data.actor.type == "extra" || data.actor.type == "creature") {
-            data.data.data = calculStats.setExtraCaracs(data.data.data);
-        } else {
-            // data.data.data = calculStats.setCharacterCaracs(data.data.data);
+            data = calculStats.setExtraCaracs(data);
         }
-
         console.log(data);
 
         return data;
@@ -119,12 +116,24 @@ export default class YggdrasillActorSheet extends ActorSheet {
     }
 
     _onTaskCheck(event) {
+        let isConflict = false
+        let isOffensive = false
         let item = {};
         try {
             item = this.actor.items.get(event.currentTarget.dataset.itemId).data;
         } catch (e) {
             item = null
         }
+        try {
+            isConflict = event.currentTarget.dataset.conflict;
+            isOffensive = event.currentTarget.dataset.offensive;
+            this.actor.data.data.physic.roll = event.currentTarget.dataset.physic;
+            console.log(isConflict);
+            console.log(isOffensive);
+        } catch (e) {
+
+        }
+
         Dice.TaskCheck({
             actionValue: event.currentTarget.dataset.actionValue,
             nbDiceKept: event.currentTarget.dataset.nbDiceKept,
@@ -132,6 +141,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
             destinyDice: event.currentTarget.dataset.destinyDice,
             caracValue: event.currentTarget.dataset.caracValue,
             modifier: event.currentTarget.dataset.modifier,
+            isConflict: isConflict,
+            isOffensive: isOffensive,
             actor: this.actor.data,
             item: item,
         })

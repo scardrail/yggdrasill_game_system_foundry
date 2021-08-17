@@ -22,10 +22,26 @@
             </tr>
             <tr>
                 <td>
-                    <a class="item-roll" data-extra=true data-action="offensive" data-value={{data.data.conflict.offensive.roll}} data-modifier={{data.data.actions.modifier}}>Attaque</a>
+                    <a><p class="task-check"
+                    data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                    data-carac-value=2
+                    data-conflict="true"
+                    data-offensive="true"
+                    data-physic={{data.data.physic.roll}}
+                    data-action-value="{{data.data.conflict.offensive.roll}}" 
+                    data-modifier="{{data.data.actions.modifier}}"
+                    >{{localize "yggdrasill.chat.actions.attack"}}</p></a>
                 </td>
                 <td>
-                    <a class="item-roll" data-extra=true data-action="defensive" data-value={{data.data.conflict.defensive.roll}} data-modifier={{data.data.actions.modifier}}>Défense</a>
+                    <a><p class="task-check"
+                    data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                    data-carac-value=2
+                    data-conflict="true"
+                    data-offensive="false"
+                    data-physic={{data.data.physic.roll}}
+                    data-action-value="{{data.data.conflict.defensive.roll}}" 
+                    data-modifier="{{data.data.actions.modifier}}"
+                    >{{localize "yggdrasill.chat.actions.defense"}}</p></a>
                 </td>
             </tr>
         </table>

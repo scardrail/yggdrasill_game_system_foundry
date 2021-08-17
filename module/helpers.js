@@ -74,6 +74,8 @@ export const registerHandlebarsHelpers = function() {
         return addition;
     });
     Handlebars.registerHelper('equals', function(val1, val2) {
+        console.log(val1);
+        console.log(val2);
         return val1 == val2;
     });
     Handlebars.registerHelper('upper', function(val1, val2) {
@@ -99,6 +101,8 @@ export const registerHandlebarsHelpers = function() {
         return val1 == val2 || val3 == val4;
     });
     Handlebars.registerHelper('not', function(cond) {
+        console.log(cond);
+        console.log(!cond);
         return !cond;
     });
     Handlebars.registerHelper('orNot', function(val1, val2) {

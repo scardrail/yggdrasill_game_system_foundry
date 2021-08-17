@@ -7,7 +7,6 @@ export default class yggdrasillActor extends Actor {
         let data = actorData.data;
         if (actorData.type == "pj" || actorData.type == "pnj") {
             data = calculStats.setCharacterCaracs(data);
-
         }
     }
 }

@@ -1,12 +1,6 @@
 {{> "templates/dice/roll.html"}}
-<div>
-    action : {{actionType}}
-</div>
-{{#if (eq actionType "offensive")}}
-
+{{#if (not (equals actor.data.dmgMod "0"))}}
     <div>
-        <button type="button">
-            <i class="fas fa-bahai"></i>{{localize "yggdrasill.chat.actions.damages"}}
-        </button>
+        <h2>{{localize "yggdrasill.chat.actions.damages"}} :  {{actor.data.dmgMod}}</h2>
     </div>
 {{/if}}

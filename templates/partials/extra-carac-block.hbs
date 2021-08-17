@@ -16,7 +16,12 @@
                 </div>
             </td>
             <td>
-                <a><h3 class="item-roll" data-extra=true data-value={{data.data.relational.roll}}>{{localize "yggdrasill.extra.relational"}}</h3></a>
+                <a><h3 class="task-check"
+                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                data-carac-value=1
+                data-action-value="{{data.data.relational.roll}}" 
+                data-modifier="{{data.data.actions.modifier}}"
+                >{{localize "yggdrasill.extra.relational"}}</h3></a>
             </td>
             <td>
                 <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
@@ -25,7 +30,12 @@
                 </div>
             </td>
             <td>
-                <a><h3 class="item-roll" data-extra=true data-value={{data.data.physic.roll}}>{{localize "yggdrasill.extra.physic"}}</h3></a>
+                <a><h3 class="task-check"
+                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                data-carac-value=1
+                data-action-value="{{data.data.physic.roll}}" 
+                data-modifier="{{data.data.actions.modifier}}"
+                >{{localize "yggdrasill.extra.physic"}}</h3></a>
             </td>
             <td>
                 <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
@@ -36,8 +46,13 @@
         </tr>
         <tr>
             <td>
-                <a><h3 class="item-roll" data-extra=true data-value={{data.data.mental.roll}}>{{localize "yggdrasill.extra.mental"}}</h3></a>
-            </td>
+                <a><h3 class="task-check"
+                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                data-carac-value=1
+                data-action-value="{{data.data.mental.roll}}" 
+                data-modifier="{{data.data.actions.modifier}}"
+                >{{localize "yggdrasill.extra.mental"}}</h3></a>
+                </td>
             <td>
                 <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                     <input name="data.mental.value" type="number" min="0"value="{{data.data.mental.value}}"
@@ -59,7 +74,12 @@
                 </div>
             </td>
             <td>
-                <a><h3 class="item-roll" data-extra=true data-value={{data.data.vitality.roll}}>{{localize "yggdrasill.extra.vitality"}}</h3></a>
+                <a><h3 class="task-check"
+                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                data-carac-value=1
+                data-action-value="{{data.data.vitality.roll}}" 
+                data-modifier="{{data.data.actions.modifier}}"
+                >{{localize "yggdrasill.extra.vitality"}}</h3></a>
             </td>
             <td>
                 <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">

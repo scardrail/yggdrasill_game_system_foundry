@@ -222,6 +222,7 @@ function onCaracRoll(event) {
     } else {
         console.log("Yggdrasill || attacker");
         console.log(attacker);
+        let isConflict = false
         caracValue = attacker.data.data.caracUsed.value;
         caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.rollModifier + attacker.data.data.actions.modifier;
         event.currentTarget.style.borderColor = "black";
@@ -233,6 +234,7 @@ function onCaracRoll(event) {
             destinyDice: destinyDice,
             caracValue: caracValue,
             modifier: caracMod,
+            isConflict: isConflict,
             attackType: attackType,
             actor: attacker.data,
             item: item.data
