@@ -221,27 +221,33 @@ export async function TaskCheck({
 
 
         let nbicesForFail = 0;
-        let criticalFailures = "false";
-        switch (rollResult.terms[0].number) {
-            case 1:
-                nbicesForFail = 1;
-                break;
-
-            case 2:
-                nbicesForFail = 2;
-                break;
-
-            default:
-                nbicesForFail = 3;
-                break;
-        }
+        let criticalFailures = false;
         let results = [];
-        rollResult.terms[0].results.forEach(element => {
-            results.push(element.result);
+        rollResult.terms.forEach(element => {
+
+            switch (element.number) {
+                case 1:
+                    nbicesForFail = 1;
+                    break;
+
+                case 2:
+                    nbicesForFail = 2;
+                    break;
+
+                default:
+                    nbicesForFail = 3;
+                    break;
+            }
+            try {
+                element.results.forEach(el => {
+                    results.push(el.result);
+                });
+                if (countOccurrences(results, 1) >= nbicesForFail) criticalFailures = true;
+                results = [];
+            } catch (error) {
+                console.log(error);
+            }
         });
-        console.log(results);
-        console.log(countOccurrences(results, 1));
-        if (countOccurrences(results, 1) >= nbicesForFail) criticalFailures = "true";
         console.log("Yggdrasill || is criticalFailures : " + criticalFailures);
 
         // Define chat data
@@ -267,10 +273,23 @@ export async function TaskCheck({
 
         actor.data = resetingValues(actor.data, actor.type);
         let message = ChatMessage.create(chatData);
-        console.log(message);
+        if (criticalFailures) await rollCriticalFail();
         return message;
     }
 
+}
+
+async function rollCriticalFail() {
+    let table = game.tables.filter(function(table) { return table._id == "UnAwWsx5UK6Y6rVJ" });
+    table = table[0];
+    console.log(table);
+    const defaultResults = await table.roll();
+    console.log(defaultResults);
+    let messageData = {
+        roll: defaultResults.roll,
+        speaker: ChatMessage.getSpeaker()
+    };
+    table.toMessage(defaultResults.results, messageData);
 }
 
 function resetingValues(data, type) {

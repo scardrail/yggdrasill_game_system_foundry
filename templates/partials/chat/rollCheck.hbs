@@ -6,10 +6,10 @@
         <div class="dice-formula">{{formula}}</div>
         {{{tooltip}}}
         {{owner}}
-        {{#if (eq criticalFailures "false")}}
-        <h4 class="dice-total">{{total}}</h4>
+        {{#if (not criticalFailures)}}
+            <h4 class="dice-total">{{total}}</h4>
         {{else}}
-        <h4 class="dice-total" style="font-weight: bold !important; color: red !important;">{{total}}</h4>
+            <h4 class="dice-total" style="font-weight: bold !important; color: red !important;">{{total}}</h4>
         {{/if}}
     </div>
 </div>
