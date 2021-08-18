@@ -147,6 +147,8 @@ function onSetCarac(event) {
     attacker.data.data.caracUsed.name = carac;
     attacker.data.data.caracUsed.value = caracValue;
     attacker.data.data.caracUsed.mod = caracMod;
+
+    attacker.data.data.dmgMod += attacker.data.data.martialCpt.dmgMod;
 }
 
 function onSetNbDiceFuror(event) {
@@ -198,10 +200,15 @@ function onCaracRoll(event) {
         competence = attacker.items.filter(function(item) { return item.data.data.identifier == cpt.type });
         console.log(cpt);
         console.log(competence);
-        competenceValue = competence[0].data.data.value;
+        try {
+            competenceValue = competence[0].data.data.value;
+        } catch (e) {
+            competenceValue = 0;
+        }
         switch (card.dataset.type) {
             case "sejdrCpt":
                 attacker.data.data.caracUsed.value = attacker.data.data.primCarac.soul.instinct.value;
+                attacker.data.data.caracUsed.mod = cpt.data.data.modifier;
                 break;
             case "galdrCpt":
                 attacker.data.data.caracUsed.value = attacker.data.data.primCarac.soul.charisma.value;

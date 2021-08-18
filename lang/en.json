@@ -156,7 +156,7 @@
                 "illusions": {
                     "none": {
                         "value": " ",
-                        "size": 0,
+                        "size": " ",
                         "sd": " "
                     },
                     "xs": {

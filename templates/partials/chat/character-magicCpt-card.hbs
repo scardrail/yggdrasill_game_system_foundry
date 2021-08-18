@@ -49,15 +49,6 @@
         {{/if}}
         {{#if (eq type "runeCpt") }}
             <div class="rune-params">
-                {{!-- <div class="rune-duration" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
-                    <h3>{{localize "yggdrasill.magicCpt.durationN"}} :</h3><select class="duration" data-key="{{key}}" data-owner-id="{{owner}}" path="data.runeCpt.durationN" style="width:100%">
-                        {{#select actor.data.magicCpt.runeCpt.durationN}}
-                            {{#each config.magicDuration as |path key|}}
-                                <option value="{{key}}">{{subs 6 ../actor.data.primCarac.body.agility.value}} {{localize path}}</option>
-                            {{/each}}
-                        {{/select}}
-                    </select>
-                </div> --}}
                 <div class="rune-support" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                     <h3>{{localize "yggdrasill.magicCpt.support"}} :</h3><select class="support" data-key="{{key}}" data-owner-id="{{owner}}" path="data.magicCpt.runeCpt.support" style="width:100%">
                         {{#select actor.data.magicCpt.runeCpt.support}}

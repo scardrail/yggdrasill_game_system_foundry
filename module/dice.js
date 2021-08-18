@@ -145,7 +145,7 @@ export async function TaskCheck({
             }
         } else {
             console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
-            chatTemplate = "templates/dice/roll.html";
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/rollCheck.hbs";
         }
         console.log(item);
         console.log(actor);
@@ -217,6 +217,33 @@ export async function TaskCheck({
 
         console.log(rollResult);
 
+        const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+
+
+        let nbicesForFail = 0;
+        let criticalFailures = "false";
+        switch (rollResult.terms[0].number) {
+            case 1:
+                nbicesForFail = 1;
+                break;
+
+            case 2:
+                nbicesForFail = 2;
+                break;
+
+            default:
+                nbicesForFail = 3;
+                break;
+        }
+        let results = [];
+        rollResult.terms[0].results.forEach(element => {
+            results.push(element.result);
+        });
+        console.log(results);
+        console.log(countOccurrences(results, 1));
+        if (countOccurrences(results, 1) >= nbicesForFail) criticalFailures = "true";
+        console.log("Yggdrasill || is criticalFailures : " + criticalFailures);
+
         // Define chat data
         const chatData = {
             formula: isPrivate ? "???" : rollResult._formula,
@@ -224,6 +251,7 @@ export async function TaskCheck({
             user: chatOptions.user,
             tooltip: isPrivate ? "" : await rollResult.getTooltip(),
             total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+            criticalFailures: criticalFailures,
             item: item,
             owner: actor.id,
             actor: actor,
@@ -232,12 +260,15 @@ export async function TaskCheck({
         };
         chatData.roll = true;
 
+
+        cardData.criticalFailures = criticalFailures;
         // Render the roll display template
         chatData.content = await renderTemplate(chatOptions.template, cardData);
-        console.log(actor.data.dmgMod);
 
         actor.data = resetingValues(actor.data, actor.type);
-        return ChatMessage.create(chatData);
+        let message = ChatMessage.create(chatData);
+        console.log(message);
+        return message;
     }
 
 }

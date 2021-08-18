@@ -254,7 +254,11 @@ function sum(obj) {
 export function setMartialCpt(actorData) {
     console.log(actorData);
     try {
-        let item = actorData.items.filter(function(item) { return item.data.data.properties.isChecked });
+
+        let item = actorData.items.filter(function(item) { return item.type == "martialCpt" });
+        console.log(item);
+        item = item.filter(function(item) { return item.data.data.properties.isChecked });
+        console.log(item);
         let competenceModifier = item[0].data.data.modifier;
         let competenceDmgMod = item[0].data.data.dmgMod;
         let competenceType = item[0].data.data.type;

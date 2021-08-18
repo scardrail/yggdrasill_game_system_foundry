@@ -11,7 +11,6 @@ import YggdrasillActorSheet from "./sheets/YggdrasillActorSheet.js";
 
 async function preloadHandlebarsTemplates() {
     const templatePaths = [
-        "templates/dice/roll.html",
 
         "systems/yggdrasill/templates/partials/character-description-block.hbs",
         "systems/yggdrasill/templates/partials/character-richness-block.hbs",
@@ -36,6 +35,8 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/cards/object-card.hbs",
         "systems/yggdrasill/templates/partials/cards/competence-card.hbs",
         "systems/yggdrasill/templates/partials/cards/temper-card.hbs",
+
+        "systems/yggdrasill/templates/partials/chat/rollCheck.hbs",
 
         "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs",
         "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs",
