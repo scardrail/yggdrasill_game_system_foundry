@@ -11,5 +11,9 @@
     {{localize "yggdrasill.magicCpt.zone"}} :  {{item.data.zone}}
 </div>
 <div>
-    {{localize "yggdrasill.magicCpt.effects"}} :  {{item.data.effects}}
+    {{#if (eq actor.data.magicCpt.sejdrCpt.positiveness "positive")}}
+        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.effects}}}
+    {{else}}
+        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.invertEffects}}}
+    {{/if}}
 </div>

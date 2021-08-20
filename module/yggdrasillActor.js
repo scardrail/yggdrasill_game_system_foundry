@@ -10,6 +10,8 @@ export default class yggdrasillActor extends Actor {
             } finally {}
             let data = actorData.data;
             data = calculStats.setCharacterCaracs(data);
+        } else {
+            actorData = calculStats.setExtraCaracs(actorData);
         }
     }
 }

@@ -223,31 +223,29 @@ export async function TaskCheck({
         let nbicesForFail = 0;
         let criticalFailures = false;
         let results = [];
-        rollResult.terms.forEach(element => {
 
-            switch (element.number) {
-                case 1:
-                    nbicesForFail = 1;
-                    break;
+        switch (rollResult.terms[0].number) {
+            case 1:
+                nbicesForFail = 1;
+                break;
 
-                case 2:
-                    nbicesForFail = 2;
-                    break;
+            case 2:
+                nbicesForFail = 2;
+                break;
 
-                default:
-                    nbicesForFail = 3;
-                    break;
-            }
-            try {
-                element.results.forEach(el => {
-                    results.push(el.result);
-                });
-                if (countOccurrences(results, 1) >= nbicesForFail) criticalFailures = true;
-                results = [];
-            } catch (error) {
-                console.log(error);
-            }
-        });
+            default:
+                nbicesForFail = 3;
+                break;
+        }
+        try {
+            rollResult.terms[0].results.forEach(el => {
+                results.push(el.result);
+            });
+            if (countOccurrences(results, 1) >= nbicesForFail) criticalFailures = true;
+            results = [];
+        } catch (error) {
+            console.log(error);
+        }
         console.log("Yggdrasill || is criticalFailures : " + criticalFailures);
 
         // Define chat data
@@ -300,6 +298,8 @@ function resetingValues(data, type) {
         data.caracUsed.value = 0;
         data.isDestinyRoll = false;
         data.caracUsed.isDefensive = false;
+        data.magicCpt.sejdrCpt.positiveness = "none";
+        data.magicCpt.runeCpt.positiveness = "none";
     } else {
         data.dmgMod = 0;
     }

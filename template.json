@@ -4,22 +4,25 @@
         "templates": {
             "commonStats": {
                 "age": 0,
-                "kingdom": "Dannois",
-                "archetype": "",
-                "profession": "",
-                "size": "",
-                "weight": "",
-                "flair": "",
-                "weakness": "",
+                "kingdom": " ",
+                "archetype": " ",
+                "profession": " ",
+                "size": " ",
+                "weight": " ",
+                "flair": " ",
+                "weakness": " ",
                 "background": "Background",
                 "renown": 0,
                 "legendPt": 0,
+                "ttlIni": 0,
                 "richness": {
                     "gold": 0,
                     "silver": 0,
                     "copper": 0
                 },
                 "dmgMod": 0,
+                "ttlProtec": 0,
+                "protecMod": 0,
                 "actions": {
                     "value": 1,
                     "max": 0,
@@ -29,6 +32,9 @@
                 "isCaracUpdated": false,
                 "rollModifier": 0,
                 "magicCpt": {
+                    "sejdrCpt": {
+                        "positiveness": "none"
+                    },
                     "galdrCpt": {
                         "difficultyLevelSum": 3,
                         "galdrDuration": {
@@ -44,6 +50,7 @@
                         }
                     },
                     "runeCpt": {
+                        "positiveness": "none",
                         "difficultyLevelSum": 0,
                         "sd": { "support": 0, "power": 1, "level": 0 },
                         "power": 1,
@@ -248,7 +255,8 @@
                     "mod": 0,
                     "roll": 0
                 },
-                "lifeStatus": "frisky"
+                "lifeStatus": "frisky",
+                "nbCaracUp": 2
             }
         },
         "pj": {
@@ -445,6 +453,7 @@
                 "cptSpe"
             ],
             "dommain": "",
+            "positiveness": "positive",
             "positiveEffect": "",
             "negativeEffect": "",
             "targets": "Une personne"
@@ -476,6 +485,11 @@
                 "mod": 0
             },
             "nbCaracUp": 2,
+            "caracs": [{
+                "name": "none",
+                "modifier": 0,
+                "sndModifier": 0
+            }],
             "caracUp": {
                 "name": "none",
                 "modifier": 0,

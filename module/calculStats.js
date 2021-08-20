@@ -4,52 +4,61 @@ export function setExtraCaracs(data) {
     data = setTempersModifications(data);
     data = setRollableStats(data);
     data = setActionsModifications(data);
+    data.data = setInitiative(data.data, data.data.physic.roll);
 
     return data;
 }
 
-function setTempersModifications(data) {
-    data.tempers.forEach(temper => {
-        for (var i = 0; i <= temper.data.nbCaracUp; i++) {
-            console.log(temper.data.caracUp);
-            if (i == 1) {
-                if (temper.data.caracUp.name == "conflict" || temper.data.caracUp.name == "mystic") {
-                    data.data.data[temper.data.caracUp.name].offensive.mod += temper.data.caracUp.modifier;
-                    data.data.data[temper.data.caracUp.name].defensive.mod += temper.data.caracUp.sndModifier;
-                } else {
-                    data.data.data[temper.data.caracUp.name].mod += temper.data.caracUp.modifier;
-                }
-            }
-            if (i == 2) {
-                if (temper.data.sndCaracUp.name == "conflict" || temper.data.sndCaracUp.name == "mystic") {
-                    data.data.data[temper.data.sndCaracUp.name].offensive.mod += temper.data.sndCaracUp.modifier;
-                    data.data.data[temper.data.sndCaracUp.name].defensive.mod += temper.data.sndCaracUp.sndModifier;
-                } else {
-                    data.data.data[temper.data.sndCaracUp.name].mod += temper.data.sndCaracUp.modifier;
-                }
-            }
-            if (i == 3) {
-                if (temper.data.thrdCaracUp.name == "conflict" || temper.data.thrdCaracUp.name == "mystic") {
-                    data.data.data[temper.data.thrdCaracUp.name].offensive.mod += temper.data.thrdCaracUp.modifier;
-                    data.data.data[temper.data.thrdCaracUp.name].defensive.mod += temper.data.thrdCaracUp.sndModifier;
-                } else {
-                    data.data.data[temper.data.thrdCaracUp.name].mod += temper.data.thrdCaracUp.modifier;
-                }
-            }
-        }
-    });
 
+function setTempersModifications(data) {
+    console.log(data);
+    try {
+        let tempers = data.items.filter(function(item) { return item.type == "temper" });
+        console.log(tempers);
+        tempers.forEach(temper => {
+            for (var i = 0; i <= temper.data.data.nbCaracUp; i++) {
+                console.log(temper.data.data.caracUp);
+                if (i == 1) {
+                    if (temper.data.data.caracUp.name == "conflict" || temper.data.data.caracUp.name == "mystic") {
+                        data.data[temper.data.data.caracUp.name].offensive.mod += temper.data.data.caracUp.modifier;
+                        data.data[temper.data.data.caracUp.name].defensive.mod += temper.data.data.caracUp.sndModifier;
+                    } else {
+                        data.data[temper.data.data.caracUp.name].mod += temper.data.data.caracUp.modifier;
+                    }
+                }
+                if (i == 2) {
+                    if (temper.data.data.sndCaracUp.name == "conflict" || temper.data.data.sndCaracUp.name == "mystic") {
+                        data.data[temper.data.data.sndCaracUp.name].offensive.mod += temper.data.data.sndCaracUp.modifier;
+                        data.data[temper.data.data.sndCaracUp.name].defensive.mod += temper.data.data.sndCaracUp.sndModifier;
+                    } else {
+                        data.data[temper.data.data.sndCaracUp.name].mod += temper.data.data.sndCaracUp.modifier;
+                    }
+                }
+                if (i == 3) {
+                    if (temper.data.data.thrdCaracUp.name == "conflict" || temper.data.data.thrdCaracUp.name == "mystic") {
+                        data.data[temper.data.data.thrdCaracUp.name].offensive.mod += temper.data.data.thrdCaracUp.modifier;
+                        data.data[temper.data.data.thrdCaracUp.name].defensive.mod += temper.data.data.thrdCaracUp.sndModifier;
+                    } else {
+                        data.data[temper.data.data.thrdCaracUp.name].mod += temper.data.data.thrdCaracUp.modifier;
+                    }
+                }
+            }
+        });
+    } catch (e) {
+        console.log("No tempers " + e);
+    }
     return data;
 }
 
 function setRollableStats(data) {
-    for (const [key, value] of Object.entries(data.config.extraCarac)) {
+    console.log(data);
+    for (const [key, value] of Object.entries(CONFIG.yggdrasill.extraCarac)) {
         if (!(key == 'none' || key == 'dmgMod')) {
             if (!(key == 'conflict' || key == 'mystic')) {
-                data.data.data[key].roll = data.data.data[key].value + data.data.data[key].mod
+                data.data[key].roll = data.data[key].value + data.data[key].mod
             } else {
-                data.data.data[key].offensive.roll = data.data.data[key].offensive.value + data.data.data[key].offensive.mod
-                data.data.data[key].defensive.roll = data.data.data[key].defensive.value + data.data.data[key].defensive.mod
+                data.data[key].offensive.roll = data.data[key].offensive.value + data.data[key].offensive.mod
+                data.data[key].defensive.roll = data.data[key].defensive.value + data.data[key].defensive.mod
             }
         }
     };
@@ -58,11 +67,11 @@ function setRollableStats(data) {
 
 function setActionsModifications(data) {
 
-    if (data.data.data.conflict.offensive.roll >= 10) {
-        data.data.data.actions.max = 3;
+    if (data.data.conflict.offensive.roll >= 10) {
+        data.data.actions.max = 3;
     }
 
-    data.data.data.actions.modifier = data.data.data.actions.value * -3;
+    data.data.actions.modifier = data.data.actions.value * -3;
 
     return data;
 }
@@ -77,6 +86,7 @@ export function setCharacterCaracs(data) {
     data = setFuror(data, caracs);
     data = setLifepoints(data, caracs);
     data = setSecCaracs(data, caracs);
+    data = setInitiative(data, data.secCarac.ttlIni);
 
     if (!(data.isInFuror)) {
         data.rollModifier = (data.lifePoints.modifier + data.secCarac.spaceReq.modifier);
@@ -248,6 +258,11 @@ function sum(obj) {
         }
     }
     return sum;
+}
+
+function setInitiative(data, value) {
+    data.ttlIni = value;
+    return data;
 }
 
 

@@ -455,6 +455,7 @@
             "mystic": "Mystique",
             "vitality": "Vitalité",
             "dmgMod": "Dégâts",
+            "protecMod": "Protection",
             "none": " ",
             "fight": "Combat"
         },

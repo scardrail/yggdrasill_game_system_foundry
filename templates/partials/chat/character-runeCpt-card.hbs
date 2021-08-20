@@ -5,7 +5,7 @@
     <h2>{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{actor.data.magicCpt.runeCpt.difficultyLevelSum}}</h2>
 </div>
 <div>
-    {{localize "yggdrasill.magicCpt.durationN"}} :  {{actor.data.magicCpt.runeCpt.castDuration}}
+    {{localize "yggdrasill.magicCpt.preparation"}} :  {{actor.data.magicCpt.runeCpt.castDuration}}
 </div>
 <div>
     {{localize "yggdrasill.magicCpt.power"}} : {{actor.data.magicCpt.runeCpt.power}}
@@ -15,4 +15,11 @@
 </div>
 <div>
     {{localize "yggdrasill.magicCpt.support"}} :  {{actor.data.magicCpt.runeCpt.support}}
+</div>
+<div>
+    {{#if (eq actor.data.magicCpt.runeCpt.positiveness "positive")}}
+        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.positiveEffect}}}
+    {{else}}
+        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.negativeEffect}}}
+    {{/if}}
 </div>

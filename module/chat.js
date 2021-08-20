@@ -10,6 +10,25 @@ export function addChatListeners(html) {
     html.on('change', '.duration', onSetDuration);
     html.on('change', '.support', onSetSupport);
     html.on('change', '.power', onSetPower);
+    html.on('change', '.positiveness', onSetPositiveness);
+}
+
+
+function onSetPositiveness(event) {
+    const element = event.currentTarget.closest(".positiveness");
+    let positiveness = element.value;
+    let type = element.dataset.type;
+
+    let attacker = game.actors.get(element.dataset.ownerId);
+
+    console.log(attacker);
+    console.log(element);
+    console.log(positiveness);
+
+    if (type == "sejdrCpt") attacker.data.data.magicCpt.sejdrCpt.positiveness = positiveness;
+    else attacker.data.data.magicCpt.runeCpt.positiveness = positiveness;
+
+    console.log(attacker);
 }
 
 function onSetPower(event) {

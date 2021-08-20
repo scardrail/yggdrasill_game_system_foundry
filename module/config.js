@@ -48,6 +48,11 @@ yggdrasill.sejdrTypes = {
     elements: "yggdrasill.magicCpt.sejdrTypes.elements",
     curse: "yggdrasill.magicCpt.sejdrTypes.curse"
 };
+yggdrasill.runePositiveness = {
+    none: "yggdrasill.extra.none",
+    positive: "yggdrasill.magicCpt.positiveness.positive",
+    negative: "yggdrasill.magicCpt.positiveness.negative"
+};
 yggdrasill.galdrTypes = {
     illusions: "yggdrasill.magicCpt.galdrTypes.illusions",
     charms: "yggdrasill.magicCpt.galdrTypes.charms",
@@ -170,6 +175,7 @@ yggdrasill.extraCarac = {
     mystic: "yggdrasill.extra.mystic",
     vitality: "yggdrasill.extra.vitality",
     dmgMod: "yggdrasill.extra.dmgMod",
+    // protecMod: "yggdrasill.extra.protecMod",
     none: "yggdrasill.extra.none"
 };
 yggdrasill.meleeCarac = {

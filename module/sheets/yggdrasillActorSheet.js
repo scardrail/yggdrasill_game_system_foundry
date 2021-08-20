@@ -26,10 +26,10 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.galdrCpt = data.items.filter(function(item) { return item.type == "galdrCpt" });
         data.runeCpt = data.items.filter(function(item) { return item.type == "runeCpt" });
 
-        if (data.actor.type == "extra" || data.actor.type == "creature") {
-            data = calculStats.setExtraCaracs(data);
-        }
-        console.log(data);
+        // if (data.actor.type == "extra" || data.actor.type == "creature") {
+        //     data = calculStats.setExtraCaracs(data);
+        // }
+        // console.log(data);
 
         return data;
     }

@@ -9,6 +9,19 @@
                 <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    
             </div>
         </div>
+        {{#if (or (eq type "sejdrCpt") (eq type "runeCpt")) }}
+            <div class="sejdr-params">
+                <div class="sejdr-positiveness" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <h3>{{localize "yggdrasill.magicCpt.positivenessN"}} :</h3><select class="positiveness" data-type="{{type}}" data-key="{{positiv}}" data-path="{{path}}" data-owner-id="{{owner}}" style="width:100%">
+                        {{#select actor.data.magicCpt.sejdrCpt.positiveness}}
+                            {{#each config.runePositiveness as |path positiv|}}
+                                <option value="{{positiv}}">{{localize path}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+        {{/if}}
         {{#if (eq type "galdrCpt") }}
             <div class="galdr-params">
                 <div class="galdr-targets" style="display: grid; grid-template-columns:1fr 50%; gap:2px;">

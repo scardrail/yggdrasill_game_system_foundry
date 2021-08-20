@@ -461,6 +461,7 @@
             "mystic": "Mystic",
             "vitality": "Vitality",
             "dmgMod": "Damage",
+            "protecMod": "Protection",
             "none": " ",
             "fight": "Fight"
         },
