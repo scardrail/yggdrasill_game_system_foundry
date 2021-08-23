@@ -7,12 +7,10 @@
                 </a>
             </th>
             <th>{{localize "yggdrasill.temper.name"}}</th>
+            {{#times data.data.nbCaracUp}}
             <th>{{localize "yggdrasill.temper.caracName"}}</th>
             <th>{{localize "yggdrasill.temper.modifier"}}</th>
-            <th>{{localize "yggdrasill.temper.caracName"}}</th>
-            <th>{{localize "yggdrasill.temper.modifier"}}</th>
-            <th>{{localize "yggdrasill.temper.caracName"}}</th>
-            <th>{{localize "yggdrasill.temper.modifier"}}</th>
+            {{/times}}
         </tr>
         {{#each tempers as |temper id|}}
         <tr class="temper-item item" data-item-id="{{_id}}">
@@ -27,40 +25,18 @@
                 </a>
             </td>
             <td>{{name}}</td>
-            <td>{{localize (lookup ../config.extraCarac data.caracUp.name)}}</td>
-            {{#if (eqAnd data.caracUp.name "conflict" data.caracUp.name "mystic")}}
-                <td>
-                    {{data.caracUp.modifier}}/{{data.caracUp.sndModifier}}
-                </td>
-            {{else}}
-                <td>
-                    {{data.caracUp.modifier}}
-                </td>
-            {{/if}}
-            {{#if (upperEq data.nbCaracUp 2)}}
-            <td>{{localize (lookup ../config.extraCarac data.sndCaracUp.name)}}</td>
-                {{#if (eqAnd data.sndCaracUp.name "conflict" data.sndCaracUp.name "mystic")}}
+            {{#each data.caracs as |carac id|}}
+                <td>{{localize (lookup ../../config.extraCarac carac.name)}}</td>
+                {{#if (eqOr carac.name "conflict" carac.name "mystic")}}
                     <td>
-                        {{data.sndCaracUp.modifier}}/{{data.sndCaracUp.sndModifier}}
+                        {{carac.modifier}}/{{carac.sndModifier}}
                     </td>
                 {{else}}
                     <td>
-                        {{data.sndCaracUp.modifier}}
+                        {{carac.modifier}}
                     </td>
                 {{/if}}
-                {{#if (upperEq data.nbCaracUp 3)}}
-                    <td>{{localize (lookup ../config.extraCarac data.thrdCaracUp.name)}}</td>
-                    {{#if (eqAnd data.thrdCaracUp.name "conflict" data.thrdCaracUp.name "mystic")}}
-                        <td>
-                            {{data.thrdCaracUp.modifier}}/{{data.thrdCaracUp.sndModifier}}
-                        </td>
-                    {{else}}
-                        <td>
-                            {{data.thrdCaracUp.modifier}}
-                        </td>
-                    {{/if}}
-                {{/if}}
-            {{/if}}
+            {{/each}}
         </tr>
         {{/each}}
     </table>

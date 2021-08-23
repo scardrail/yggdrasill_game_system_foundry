@@ -256,7 +256,7 @@
                     "roll": 0
                 },
                 "lifeStatus": "frisky",
-                "nbCaracUp": 2
+                "nbCaracUp": 1
             }
         },
         "pj": {
@@ -484,23 +484,13 @@
                 "base": 0,
                 "mod": 0
             },
-            "nbCaracUp": 2,
+            "nbCaracUp": 1,
             "caracs": [{
                 "name": "none",
                 "modifier": 0,
                 "sndModifier": 0
             }],
             "caracUp": {
-                "name": "none",
-                "modifier": 0,
-                "sndModifier": 0
-            },
-            "sndCaracUp": {
-                "name": "none",
-                "modifier": 0,
-                "sndModifier": 0
-            },
-            "thrdCaracUp": {
                 "name": "none",
                 "modifier": 0,
                 "sndModifier": 0

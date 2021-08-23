@@ -144,8 +144,14 @@ export async function TaskCheck({
                 actor.data.dmgMod = 0;
             }
         } else {
-            console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
-            chatTemplate = "systems/yggdrasill/templates/partials/chat/rollCheck.hbs";
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
+
+
+            chatData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
+
+            chatData.roll = true;
+
+            return ChatMessage.create(chatData);
         }
         console.log(item);
         console.log(actor);

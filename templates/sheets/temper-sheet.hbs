@@ -6,77 +6,34 @@
         </h1>
     </header>
     <div class="sheet-content">
-        <table>
+        <table class="cacacs-up">
             <tr>
                 <th>{{localize "yggdrasill.temper.nbCaracUp"}}</th>
                 <td>
-                    <input name="data.nbCaracUp" type="number" min="1" max="3" value="{{data.data.nbCaracUp}}" data-type="Number">
+                    <input class="nbCaracs-edit" name="data.nbCaracUp" type="number" min="1" value="{{data.data.nbCaracUp}}" data-type="Number">
                 </td>
             </tr>
+            {{#data.data.caracs}}
             <tr>
                 <th>{{localize "yggdrasill.temper.caracName"}}</th>
                 <td>
-                    <select name="data.caracUp.name" style="width:100%">
-                        {{#select data.data.caracUp.name}}
-                        {{#each config.extraCarac as |name type|}}
+                    <select  class="temper-name inline-edit" data-field="name" data-identifier="{{@index}}" value={{type}}  style="width:100%">
+                        {{#select name}}
+                        {{#each ../config.extraCarac as |name type|}}
                         <option value="{{type}}">{{localize name}}</option>
                         {{/each}}
                         {{/select}}
                     </select>
                 </td>
-                <td>
-                    <input name="data.caracUp.modifier" type="number"  value="{{data.data.caracUp.modifier}}" data-type="Number">
-                </td>
-                {{#if (eqAnd data.data.caracUp.name "conflict" data.data.caracUp.name "mystic")}}
+                <td><input type="number" class="temper-modifier inline-edit" data-field="modifier" data-identifier="{{@index}}" value={{modifier}} data-type="Number"></td>
+                
+                {{#if (eqOr name "conflict" name "mystic")}}
                     <td>
-                        <input name="data.caracUp.sndModifier" type="number"  value="{{data.data.caracUp.sndModifier}}" data-type="Number">
+                        <input type="number" class="temper-sndModifier inline-edit" data-field="sndModifier" data-identifier="{{@index}}" value={{sndModifier}} data-type="Number">
                     </td>
                 {{/if}}
             </tr>
-            {{#if (upperEq data.data.nbCaracUp 2)}}
-            <tr>
-                <th>{{localize "yggdrasill.temper.caracName"}}</th>
-                <td>
-                    <select name="data.sndCaracUp.name" style="width:100%">
-                        {{#select data.data.sndCaracUp.name}}
-                        {{#each config.extraCarac as |name type|}}
-                        <option value="{{type}}">{{localize name}}</option>
-                        {{/each}}
-                        {{/select}}
-                    </select>
-                </td>
-                <td>
-                    <input name="data.sndCaracUp.modifier" type="number"  value="{{data.data.sndCaracUp.modifier}}" data-type="Number">
-                </td>
-                {{#if (eqAnd data.data.sndCaracUp.name "conflict" data.data.sndCaracUp.name "mystic")}}
-                    <td>
-                        <input name="data.sndCaracUp.sndModifier" type="number"  value="{{data.data.sndCaracUp.sndModifier}}" data-type="Number">
-                    </td>
-                {{/if}}
-            </tr>
-            {{#if (upperEq data.data.nbCaracUp 3)}}
-            <tr>
-                <th>{{localize "yggdrasill.temper.caracName"}}</th>
-                <td>
-                    <select name="data.thrdCaracUp.name" style="width:100%">
-                        {{#select data.data.thrdCaracUp.name}}
-                        {{#each config.extraCarac as |name type|}}
-                        <option value="{{type}}">{{localize name}}</option>
-                        {{/each}}
-                        {{/select}}
-                    </select>
-                </td>
-                <td>
-                    <input name="data.thrdCaracUp.modifier" type="number"  value="{{data.data.thrdCaracUp.modifier}}" data-type="Number">
-                </td>
-                {{#if (eqAnd data.data.thrdCaracUp.name "conflict" data.data.thrdCaracUp.name "mystic")}}
-                    <td>
-                        <input name="data.thrdCaracUp.sndModifier" type="number"  value="{{data.data.thrdCaracUp.sndModifier}}" data-type="Number">
-                    </td>
-                {{/if}}
-            </tr>
-            {{/if}}
-            {{/if}}
+            {{/data.data.caracs}}
         </table>
         <h3>
             {{localize "yggdrasill.description"}}

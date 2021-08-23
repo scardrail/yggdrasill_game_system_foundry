@@ -1,3 +1,4 @@
+import * as calculStats from "./calculStats.js"
 export default class yggdrasillItem extends Item {
     chatTemplate = {
         "arme": "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs",
@@ -23,6 +24,10 @@ export default class yggdrasillItem extends Item {
                 data.properties.ranged = false;
             }
         }
+
+        // if (itemData.type == "temper") {
+        //     data = calculStats.setItemTempersCaracs(data);
+        // }
     }
     async roll() {
 

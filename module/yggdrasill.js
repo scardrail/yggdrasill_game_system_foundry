@@ -37,6 +37,7 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/cards/temper-card.hbs",
 
         "systems/yggdrasill/templates/partials/chat/rollCheck.hbs",
+        "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs",
 
         "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs",
         "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs",

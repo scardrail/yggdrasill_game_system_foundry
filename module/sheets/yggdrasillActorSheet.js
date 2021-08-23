@@ -29,7 +29,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         // if (data.actor.type == "extra" || data.actor.type == "creature") {
         //     data = calculStats.setExtraCaracs(data);
         // }
-        // console.log(data);
+        console.log(data);
 
         return data;
     }
@@ -82,6 +82,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         if (element.type == "checkbox") {
             value = element.checked;
         }
+        console.log(item);
         return item.update({
             [field]: value
         });

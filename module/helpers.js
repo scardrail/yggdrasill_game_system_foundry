@@ -95,7 +95,7 @@ export const registerHandlebarsHelpers = function() {
         return val1 && val2;
     });
 
-    Handlebars.registerHelper('eqAnd', function(val1, val2, val3, val4) {
+    Handlebars.registerHelper('eqOr', function(val1, val2, val3, val4) {
         return val1 == val2 || val3 == val4;
     });
     Handlebars.registerHelper('not', function(cond) {
@@ -110,8 +110,12 @@ export const registerHandlebarsHelpers = function() {
 
     Handlebars.registerHelper('times', function(n, block) {
         var accum = '';
-        for (var i = 0; i < n; ++i)
-            accum += block.fn(i);
+        for (var i = 0; i < n; ++i) {
+            block.data.index = i;
+            block.data.first = i === 0;
+            block.data.last = i === (n - 1);
+            accum += block.fn(this);
+        }
         return accum;
     });
 
