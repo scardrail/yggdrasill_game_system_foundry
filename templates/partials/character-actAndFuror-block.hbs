@@ -1,5 +1,5 @@
 <section class="actAndFuror-list">
-    <div class="actAndFuror-tables" style="display: grid; grid-template-columns:1fr 180px; gap:5px;">
+    <div class="actAndFuror-tables" style="display: grid; grid-template-columns:repeat(2, 1fr) 180px; gap:5px;">
         <table>
             <tr>
                 <th>{{localize "yggdrasill.character.actions"}}</th>
@@ -13,6 +13,16 @@
                 </td>
                 <td>
                     <p style="margin: 0.35em 0;">{{data.data.actions.modifier}}</p>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.characteristics.secondary.protection"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.protection}}</p>
                 </td>
             </tr>
         </table>

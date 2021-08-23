@@ -59,7 +59,8 @@
             "equipmt": "Equipement",
             "fight": "Martial",
             "magic": "Magie",
-            "story": "Histoire"
+            "story": "Histoire",
+            "stats": "Stats"
         },
         "item": {
             "name": "Nom de l'objet",

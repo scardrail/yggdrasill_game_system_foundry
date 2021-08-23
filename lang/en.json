@@ -63,7 +63,8 @@
             "equipmt": "Equipment",
             "fight": "Fight",
             "magic": "magic",
-            "story": "story"
+            "story": "story",
+            "stats": "stats"
         },
         "item": {
             "name": "Name of the object",

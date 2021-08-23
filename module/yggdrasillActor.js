@@ -9,6 +9,9 @@ export default class yggdrasillActor extends Actor {
             try {
                 actorData = calculStats.setMartialCpt(actorData);
             } finally {}
+            try {
+                actorData = calculStats.setProtection(actorData);
+            } finally {}
             let data = actorData.data;
             data = calculStats.setCharacterCaracs(data);
         } else {

@@ -8,91 +8,108 @@
         {{> "systems/yggdrasill/templates/partials/character-description-block.hbs"}}
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="180" width="180" />
     </div>
-    <div class="richness" style="padding: 0px 15px 0px 15px;">
-        {{> "systems/yggdrasill/templates/partials/character-richness-block.hbs"}}
-    </div>
-    {{#if (or (eq actor.type "pj") (eq actor.type "pnj"))}}
-        <div>
+    {{#if owner}}
+        <div class="richness" style="padding: 0px 15px 0px 15px;">
+            {{> "systems/yggdrasill/templates/partials/character-richness-block.hbs"}}
+        </div>
+        {{#if (or (eq actor.type "pj") (eq actor.type "pnj"))}}
+            <div>
+                <nav class="sheet-tabs" data-group="primary">
+                    <a data-tab="carac">{{ localize "yggdrasill.tabs.carac" }}</a>
+                    <a data-tab="cpt">{{ localize "yggdrasill.tabs.cpt" }}</a>
+                    <a data-tab="equipmt">{{ localize "yggdrasill.tabs.equipmt" }}</a>
+                    <a data-tab="fight">{{ localize "yggdrasill.tabs.fight" }}</a>
+                    {{#if data.data.isInitiated}}
+                        <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
+                    {{/if}}
+                    <a data-tab="story">{{ localize "yggdrasill.tabs.story" }}</a>
+                </nav>
+                <section class="sheet-body">
+                    {{!-- Stats Tab --}}
+                    <div class="tab stats" data-group="primary" data-tab="carac">
+                        <div class="primCarac" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-primCarac-block.hbs"}}
+                        </div>
+                        <div class="secCarac" style="display: grid; grid-template-columns:1fr 250px; gap:5px; padding:15px">
+                            {{> "systems/yggdrasill/templates/partials/character-secCarac-block.hbs"}}
+                            {{> "systems/yggdrasill/templates/partials/character-thirdCarac-block.hbs"}}
+                        </div>
+                    </div>
+                    {{!-- Competences Tab --}}
+                    <div class="tab cpt" data-group="primary" data-tab="cpt">
+                        <div class="competencesBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-competences-block.hbs"}}
+                        </div>
+                    </div>
+                    {{!-- Equipment Tab --}}
+                    <div class="tab equipmt" data-group="primary" data-tab="equipmt">
+                        <div class="weaponsBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-weapons-block.hbs"}}
+                        </div>
+                        <div class="protectionsBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-armors-block.hbs"}}
+                        </div>
+                        <div class="objectsBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-objects-block.hbs"}}
+                        </div>
+                    </div>
+                    {{!-- Fight Tab --}}
+                    <div class="tab fight" data-group="primary" data-tab="fight">
+                        <div class="actAndFurorBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-actAndFuror-block.hbs"}}
+                        </div>
+                        <div class="weaponsBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-weapons-block.hbs"}}
+                        </div>
+                        <div class="martialCptBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-martialCpt-block.hbs"}}
+                        </div>
+                    </div>
+                    {{!-- Magic Tab --}}
+                    <div class="tab magic" data-group="primary" data-tab="magic">
+                        <div class="magicsBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-magics-block.hbs"}}
+                        </div>
+                    </div>
+                    {{!-- Story Tab --}}
+                    <div class="tab story" data-group="primary" data-tab="story">
+                        <div class="aettBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-aett-block.hbs"}}
+                        </div>
+                        <div class="paramsBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-parameters-block.hbs"}}
+                        </div>
+                        <h3>
+                            {{localize "yggdrasill.character.background"}}
+                        </h3>
+                        {{editor content=data.data.background target="data.background" button=true owner=owner editable=editable}}
+                    </div>
+                </section>
+            </div>
+        {{else}}
             <nav class="sheet-tabs" data-group="primary">
-                <a data-tab="carac">{{ localize "yggdrasill.tabs.carac" }}</a>
-                <a data-tab="cpt">{{ localize "yggdrasill.tabs.cpt" }}</a>
-                <a data-tab="equipmt">{{ localize "yggdrasill.tabs.equipmt" }}</a>
-                <a data-tab="fight">{{ localize "yggdrasill.tabs.fight" }}</a>
-                {{#if data.data.isInitiated}}
-                    <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
-                {{/if}}
+                <a data-tab="stats">{{ localize "yggdrasill.tabs.stats" }}</a>
                 <a data-tab="story">{{ localize "yggdrasill.tabs.story" }}</a>
             </nav>
             <section class="sheet-body">
                 {{!-- Stats Tab --}}
-                <div class="tab stats" data-group="primary" data-tab="carac">
-                    <div class="primCarac" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-primCarac-block.hbs"}}
-                    </div>
-                    <div class="secCarac" style="display: grid; grid-template-columns:1fr 250px; gap:5px; padding:15px">
-                        {{> "systems/yggdrasill/templates/partials/character-secCarac-block.hbs"}}
-                        {{> "systems/yggdrasill/templates/partials/character-thirdCarac-block.hbs"}}
-                    </div>
-                </div>
-                {{!-- Competences Tab --}}
-                <div class="tab cpt" data-group="primary" data-tab="cpt">
-                    <div class="competencesBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-competences-block.hbs"}}
-                    </div>
-                </div>
-                {{!-- Equipment Tab --}}
-                <div class="tab equipmt" data-group="primary" data-tab="equipmt">
-                    <div class="weaponsBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-weapons-block.hbs"}}
-                    </div>
-                    <div class="protectionsBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-armors-block.hbs"}}
-                    </div>
-                    <div class="objectsBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-objects-block.hbs"}}
-                    </div>
-                </div>
-                {{!-- Fight Tab --}}
-                <div class="tab fight" data-group="primary" data-tab="fight">
-                    <div class="actAndFurorBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-actAndFuror-block.hbs"}}
-                    </div>
-                    <div class="weaponsBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-weapons-block.hbs"}}
-                    </div>
-                    <div class="martialCptBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-martialCpt-block.hbs"}}
-                    </div>
-                </div>
-                {{!-- Magic Tab --}}
-                <div class="tab magic" data-group="primary" data-tab="magic">
-                    <div class="magicsBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-magics-block.hbs"}}
-                    </div>
+                <div class="tab stats"  data-group="primary" data-tab="stats">
+                    {{> "systems/yggdrasill/templates/partials/extra-martial-block.hbs"}}
+                    {{> "systems/yggdrasill/templates/partials/extra-carac-block.hbs"}}
+                    {{> "systems/yggdrasill/templates/partials/extra-temper-block.hbs"}}
                 </div>
                 {{!-- Story Tab --}}
                 <div class="tab story" data-group="primary" data-tab="story">
-                    <div class="aettBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-aett-block.hbs"}}
-                    </div>
-                    <div class="paramsBloc" style="padding: 0px 15px 0px 15px;">
-                        {{> "systems/yggdrasill/templates/partials/character-parameters-block.hbs"}}
-                    </div>
                     <h3>
                         {{localize "yggdrasill.character.background"}}
                     </h3>
                     {{editor content=data.data.background target="data.background" button=true owner=owner editable=editable}}
                 </div>
             </section>
-        </div>
+        {{/if}}
     {{else}}
-        <section class="sheet-content">
-            {{!-- Stats Tab --}}
-            <div class="extra-stats" style="padding:15px">
-                {{> "systems/yggdrasill/templates/partials/extra-martial-block.hbs"}}
-                {{> "systems/yggdrasill/templates/partials/extra-carac-block.hbs"}}
-                {{> "systems/yggdrasill/templates/partials/extra-temper-block.hbs"}}
-            </div>
-        </section>
+        {{#if (not limited)}}
+            {{editor content=data.data.background target="data.background" button=true owner=owner editable=editable}}
+        {{/if}}
     {{/if}}
 </form>

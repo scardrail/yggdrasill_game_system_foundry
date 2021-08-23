@@ -115,6 +115,7 @@
                     }
                 },
                 "valPrimCaracMax": 5,
+                "protection": 0,
                 "secCarac": {
                     "ini": {
                         "reaction": 0,

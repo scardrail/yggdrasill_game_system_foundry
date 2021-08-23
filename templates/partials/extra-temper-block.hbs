@@ -23,8 +23,14 @@
                 <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteTemper"}}">
                     <i class="fas fa-trash"></i>
                 </a>
+            </td>            
+            <td>
+                <div class="competence_name">{{name}}
+                    <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                        <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                    </span>
+                </div>
             </td>
-            <td>{{name}}</td>
             {{#each data.caracs as |carac id|}}
                 <td>{{localize (lookup ../../config.extraCarac carac.name)}}</td>
                 {{#if (eqOr carac.name "conflict" carac.name "mystic")}}

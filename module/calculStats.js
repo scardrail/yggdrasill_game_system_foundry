@@ -21,8 +21,6 @@ function setTempersModifications(data) {
             if (temper.data.data.nbCaracUp > data.data.nbCaracUp) data.data.nbCaracUp = temper.data.data.nbCaracUp;
         });
         console.log(data.data.nbCaracUp);
-
-        data = old(data, tempers);
         data = newTM(data, tempers);
 
     } catch (e) {
@@ -42,41 +40,6 @@ function newTM(data, tempers) {
             }
         })
     });
-    return data;
-}
-
-
-function old(data, tempers) {
-    tempers.forEach(temper => {
-        for (var i = 0; i <= temper.data.data.nbCaracUp; i++) {
-            console.log(temper.data.data.caracUp);
-            if (i == 1) {
-                if (temper.data.data.caracUp.name == "conflict" || temper.data.data.caracUp.name == "mystic") {
-                    data.data[temper.data.data.caracUp.name].offensive.mod += temper.data.data.caracUp.modifier;
-                    data.data[temper.data.data.caracUp.name].defensive.mod += temper.data.data.caracUp.sndModifier;
-                } else {
-                    data.data[temper.data.data.caracUp.name].mod += temper.data.data.caracUp.modifier;
-                }
-            }
-            if (i == 2) {
-                if (temper.data.data.sndCaracUp.name == "conflict" || temper.data.data.sndCaracUp.name == "mystic") {
-                    data.data[temper.data.data.sndCaracUp.name].offensive.mod += temper.data.data.sndCaracUp.modifier;
-                    data.data[temper.data.data.sndCaracUp.name].defensive.mod += temper.data.data.sndCaracUp.sndModifier;
-                } else {
-                    data.data[temper.data.data.sndCaracUp.name].mod += temper.data.data.sndCaracUp.modifier;
-                }
-            }
-            if (i == 3) {
-                if (temper.data.data.thrdCaracUp.name == "conflict" || temper.data.data.thrdCaracUp.name == "mystic") {
-                    data.data[temper.data.data.thrdCaracUp.name].offensive.mod += temper.data.data.thrdCaracUp.modifier;
-                    data.data[temper.data.data.thrdCaracUp.name].defensive.mod += temper.data.data.thrdCaracUp.sndModifier;
-                } else {
-                    data.data[temper.data.data.thrdCaracUp.name].mod += temper.data.data.thrdCaracUp.modifier;
-                }
-            }
-        }
-    });
-
     return data;
 }
 
@@ -293,6 +256,41 @@ function sum(obj) {
 function setInitiative(data, value) {
     data.ttlIni = value;
     return data;
+}
+
+export function setProtection(actorData) {
+
+    console.log(actorData);
+    try {
+        let items = actorData.items.filter(function(item) { return item.type == "protection" });
+        console.log(items);
+        let protection = 0;
+        let protectionShield = 0;
+        let enc = 0;
+        items.forEach(item => {
+            if (item.data.data.pSubType != "shield") {
+                protection += item.data.data.defBase.value;
+            } else {
+                protectionShield += item.data.data.defBase.value;
+            }
+
+            enc += item.data.data.enc;
+        });
+
+        console.log(protection);
+        console.log(protectionShield);
+        console.log(enc);
+
+        actorData.data.protection = protection;
+        actorData.data.secCarac.dp.protection = protectionShield;
+        actorData.data.secCarac.dp.spaceReq = -enc;
+        actorData.data.secCarac.ini.spaceReq = -enc;
+        actorData.data.secCarac.spaceReq.value = enc;
+    } catch (e) {
+        console.log("No Protection " + e);
+    }
+    console.log(actorData);
+    return actorData;
 }
 
 
