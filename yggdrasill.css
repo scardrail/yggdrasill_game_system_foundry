@@ -22,3 +22,86 @@
 .yggdrasill.sheet.importantCharacter .sheet-body .editor {
   height: 300px;
 }
+.yggdrasill.sheet.importantCharacter .competence_name {
+  font-weight: bold;
+}
+.yggdrasill.sheet.importantCharacter .competence_name .comp_tooltiptext {
+  visibility: hidden;
+  width: calc(50%);
+  background-color: #4d2b11ec;
+  background-size: cover;
+  color: wheat;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 10;
+  bottom: 10%;
+  right: 0;
+  margin-left: 0px;
+  opacity: 0;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .comp_tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .comp_tooltiptext p {
+  margin: 0 10px 0 10px;
+  text-shadow: initial;
+  cursor: auto;
+  font-weight: 100;
+  line-height: 18px;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .comp_tooltiptext h3 {
+  margin: 0 5px 0 5px;
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 12px;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .comp_tooltiptext h1 {
+  margin: 0 5px 0 5px;
+  font-weight: 700;
+  line-height: 18px;
+  font-size: 16px;
+  border-bottom: 1px solid #000000;
+}
+.yggdrasill.sheet.importantCharacter .competence_name .compspe_tooltiptext {
+  visibility: hidden;
+  width: 445px;
+  background-color: #4f7783ec;
+  background-size: cover;
+  color: #fffdea;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 10;
+  top: 0%;
+  left: 0%;
+  margin-left: -465px;
+  opacity: 0;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .compspe_tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .compspe_tooltiptext p {
+  margin: 0 10px 0 10px;
+  text-shadow: initial;
+  cursor: auto;
+  font-weight: 100;
+  line-height: 18px;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .compspe_tooltiptext h3 {
+  margin: 0 5px 0 5px;
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 12px;
+}
+.yggdrasill.sheet.importantCharacter .competence_name:hover .compspe_tooltiptext h1 {
+  margin: 0 5px 0 5px;
+  font-weight: 700;
+  line-height: 18px;
+  font-size: 16px;
+  border-bottom: 1px solid #000000;
+}

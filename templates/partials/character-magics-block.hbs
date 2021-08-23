@@ -18,7 +18,21 @@
         </tr>
         {{#each sejdrCpt as |sejdr id|}}
             <tr class="sejdrCpt-item item" data-item-id="{{_id}}">
-                <td><a><p class="item-roll">{{name}}</p></a></td>
+                <td>
+                    <div class="competence_name">
+                    <a><p class="item-roll">{{name}}</p></a>
+                        <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                            <h1>{{name}} :</h1><p>
+                                <h3>
+                                    {{localize "yggdrasill.magicCpt.effects"}}:
+                                </h3>{{{data.effects}}}</p>
+                                <p>
+                                <h3>
+                                    {{localize "yggdrasill.magicCpt.invertEffects"}}:
+                                </h3>{{{data.invertEffects}}}</p>
+                        </span>
+                    </div>
+                </td>
                 <td>{{data.level}}</td>
                 <td>{{data.modifier}}</td>
                 <td>{{data.preparation.value}} {{localize (lookup ../config.magicDuration data.preparation.unit)}}</td>
@@ -54,7 +68,14 @@
         {{#each galdrCpt as |galdr id|}}
             <tr class="galdrCpt-item item" data-item-id="{{_id}}">
                 <td>{{data.difficultyLevel}}</td>
-                <td><a><p class="item-roll">{{name}}</p></a></td>
+                <td>
+                    <div class="competence_name">
+                    <a><p class="item-roll">{{name}}</p></a>
+                        <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                            <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                        </span>
+                    </div>
+                </td>
                 <td>{{localize (lookup ../config.galdrTypes data.type)}}</td>
                 <td>
                     <a class="item-edit" title="{{localize "yggdrasill.sheet.editGaldr"}}">
@@ -85,7 +106,21 @@
         </tr>
         {{#each runeCpt as |rune id|}}
             <tr class="runeCpt-item item" data-item-id="{{_id}}">
-                <td><a><p class="item-roll">{{name}}</p></a></td>
+                <td>
+                    <div class="competence_name">
+                    <a><p class="item-roll">{{name}}</p></a>
+                        <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                            <h1>{{name}} :</h1><p>
+                                <h3>
+                                    {{localize "yggdrasill.magicCpt.positiveEffect"}}:
+                                </h3>{{{data.positiveEffect}}}</p>
+                                <p>
+                                <h3>
+                                    {{localize "yggdrasill.magicCpt.negativeEffect"}}:
+                                </h3>{{{data.negativeEffect}}}</p>
+                        </span>
+                    </div>
+                </td>
                 <td>{{data.level}}</td>
                 <td>{{data.dommain}}</td>
                 <td>

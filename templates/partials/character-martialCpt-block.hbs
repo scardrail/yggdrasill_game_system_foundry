@@ -38,7 +38,13 @@
                 
                     {{/if}}
                 </td>
-                <td>{{name}}</td>
+                <td>
+                    <div class="competence_name">{{name}}
+                        <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                            <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                        </span>
+                    </div>
+                </td>
                 <td>{{data.level}}</td>
                 <td>{{localize (add "yggdrasill.cmCategory." data.type)}}</td>
                 <td>{{data.modifier}}</td>
