@@ -425,6 +425,23 @@
                 "dm": "DM",
                 "ttlDm": "Total",
                 "transport": "DEP"
+            },
+            "primaryDetailed": {
+                "body": {
+                    "power": "Puissance",
+                    "vigour": "Vigueur",
+                    "agility": "Agilité"
+                },
+                "spirit": {
+                    "intelect": "Intelect",
+                    "perception": "Perception",
+                    "tenacity": "Tenacité"
+                },
+                "soul": {
+                    "charisma": "Charisme",
+                    "instinct": "Instinct",
+                    "communication": "Communication"
+                }
             }
         },
         "charactersStatus": {

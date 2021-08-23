@@ -431,6 +431,23 @@
                 "dm": "DM",
                 "ttlDm": "Total",
                 "transport": "TRAN"
+            },
+            "primaryDetailed": {
+                "body": {
+                    "power": "Power",
+                    "vigour": "Vigour",
+                    "agility": "Agility"
+                },
+                "spirit": {
+                    "intelect": "Intelect",
+                    "perception": "Perception",
+                    "tenacity": "Tenacity"
+                },
+                "soul": {
+                    "charisma": "Charisma",
+                    "instinct": "Instinct",
+                    "communication": "Communication"
+                }
             }
         },
         "charactersStatus": {

@@ -5,6 +5,7 @@ export async function TaskCheck({
     nbDiceFuror = 0,
     destinyDice = 0,
     modifier = 0,
+    isCpt = false,
     isConflict = false,
     isOffensive = false,
     attackType = null,
@@ -17,6 +18,7 @@ export async function TaskCheck({
     console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
     console.log("Yggdrasill || destinyDice " + destinyDice);
     console.log("Yggdrasill || modifier " + modifier);
+    console.log("Yggdrasill || isCpt " + isCpt);
     console.log("Yggdrasill || isConflict " + isConflict);
     console.log("Yggdrasill || isOffensive " + isOffensive);
     console.log("Yggdrasill || attackType " + attackType);
@@ -144,14 +146,7 @@ export async function TaskCheck({
                 actor.data.dmgMod = 0;
             }
         } else {
-            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
-
-
-            chatData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
-
-            chatData.roll = true;
-
-            return ChatMessage.create(chatData);
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/rollCheck.hbs";
         }
         console.log(item);
         console.log(actor);
@@ -255,7 +250,7 @@ export async function TaskCheck({
         console.log("Yggdrasill || is criticalFailures : " + criticalFailures);
 
         // Define chat data
-        const chatData = {
+        let chatData = {
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,

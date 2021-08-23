@@ -246,7 +246,14 @@ function onCaracRoll(event) {
         competence = attacker.items.get(card.dataset.itemId);
         competenceValue = competence.data.data.value;
         item = competence;
+    } else if (card.dataset.type == "basicCarac") {
+        console.log("Yggdrasill || competence de base");
+        let carac = card.dataset.carac;
+        var listPath = carac.split(".");
+        console.log("Yggdrasill || carac" + listPath[0] + " " + listPath[1]);
+        attacker.data.data.caracUsed.value = attacker.data.data.primCarac[listPath[0]][listPath[1]].value;
     }
+
     if (attacker.data.data.caracUsed.value == 0 && cptNeeded) {
         event.currentTarget.style.borderColor = "red";
         console.log("Yggdrasill || ROLL : choose a caracteristic");

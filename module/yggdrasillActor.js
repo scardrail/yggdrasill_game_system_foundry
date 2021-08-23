@@ -1,5 +1,6 @@
 import * as calculStats from "./calculStats.js"
 export default class yggdrasillActor extends Actor {
+
     prepareData() {
         super.prepareData();
 

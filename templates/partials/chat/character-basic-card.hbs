@@ -1,9 +1,13 @@
-<div class= "chat-card item sejdrCpt" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
+<div class= "chat-card item basicCarac" data-type="basicCarac" data-carac="{{carac}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
     <div class= "card-content" >
-        <h1>{{localize "yggdrasill.competence.name"}} : {{name}}</h1>
+        <h1>{{localize "yggdrasill.competence.name"}} : {{localize (add "yggdrasill.characteristics.primaryDetailed." carac)}}</h1>
         <div class="card-params">
             <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
-                <h3>{{localize "yggdrasill.chat.other.furor"}}</h3><input class="furor" data-owner-id="{{owner}}" name="data.nbDiceFuror.value" type="number" min="1" max="{{actor.data.primCarac.soul.instinct.value}}" value="1" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p>
+                {{#if (upper actor.data.nbDiceFuror.max actor.data.reserve.value)}}
+                    <h3>{{localize "yggdrasill.chat.other.furor"}}</h3><input class="furor" data-owner-id="{{owner}}" name="data.nbDiceFuror.value" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.reserve.value}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p>
+                {{else}}
+                    <h3>{{localize "yggdrasill.chat.other.furor"}}</h3><input class="furor" data-owner-id="{{owner}}" name="data.nbDiceFuror.value" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.nbDiceFuror.max}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p> 
+                {{/if}}
             </div>
             <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
                 <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    

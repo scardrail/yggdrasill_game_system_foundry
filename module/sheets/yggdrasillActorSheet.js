@@ -47,6 +47,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         //if is editable
         if (this.actor.isOwner) {
             html.find(".item-roll").click(this._onItemRoll.bind(this));
+            html.find(".carac-roll").click(this._onCptRoll.bind(this));
             html.find(".task-check").click(this._onTaskCheck.bind(this));
 
         }
@@ -117,15 +118,45 @@ export default class YggdrasillActorSheet extends ActorSheet {
         item.roll();
     }
 
+    async _onCptRoll(event) {
+        let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
+        let carac = event.currentTarget.dataset.carac;
+
+        let chatData = {
+            user: game.user.id,
+            speaker: ChatMessage.getSpeaker()
+        };
+
+        let cardData = {
+            ...this.data,
+            owner: this.actor.id,
+            actor: this.actor.data,
+            carac: carac,
+            config: CONFIG.yggdrasill
+        }
+        console.log(this.actor.data);
+
+        chatData.content = await renderTemplate(chatTemplate, cardData);
+
+        chatData.roll = true;
+
+        return ChatMessage.create(chatData);
+    }
+
     _onTaskCheck(event) {
-        let isConflict = false
-        let isOffensive = false
+        let isCpt = false;
+        let isConflict = false;
+        let isOffensive = false;
         let item = {};
         try {
             item = this.actor.items.get(event.currentTarget.dataset.itemId).data;
         } catch (e) {
             item = null
         }
+        try {
+            isCpt = event.currentTarget.dataset.competence;
+            console.log(isCpt);
+        } catch (e) {}
         try {
             isConflict = event.currentTarget.dataset.conflict;
             isOffensive = event.currentTarget.dataset.offensive;
@@ -143,6 +174,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             destinyDice: event.currentTarget.dataset.destinyDice,
             caracValue: event.currentTarget.dataset.caracValue,
             modifier: event.currentTarget.dataset.modifier,
+            isCpt: isCpt,
             isConflict: isConflict,
             isOffensive: isOffensive,
             actor: this.actor.data,
