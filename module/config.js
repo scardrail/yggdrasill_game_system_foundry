@@ -45,6 +45,7 @@ yggdrasill.cmPrerequisitesLvl = {
 };
 yggdrasill.sejdrTypes = {
     divination: "yggdrasill.magicCpt.sejdrTypes.divination",
+    powerTransm: "yggdrasill.magicCpt.sejdrTypes.powerTransm",
     healing: "yggdrasill.magicCpt.sejdrTypes.healing",
     elements: "yggdrasill.magicCpt.sejdrTypes.elements",
     curse: "yggdrasill.magicCpt.sejdrTypes.curse"

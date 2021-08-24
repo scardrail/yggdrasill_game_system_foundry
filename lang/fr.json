@@ -132,6 +132,7 @@
             "type": "Type de magie",
             "sejdrTypes": {
                 "divination": "Divination",
+                "powerTransm": "Transmission de forces",
                 "healing": "Guérison",
                 "elements": "Maîtrise des éléments",
                 "curse": "Malédiction"
