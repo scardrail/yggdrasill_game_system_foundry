@@ -26,7 +26,47 @@
             "path": "lang/en.json"
         }
     ],
-    "packs": [],
+    "packs": [{
+            "name": "journal",
+            "label": "Handouts (Yggdrasill)",
+            "system": "yggdrasill",
+            "path": "packs/journal.db",
+            "entity": "JournalEntry",
+            "tag": "journalentry"
+        },
+        {
+            "name": "actors",
+            "label": "Actors (Yggdrasill)",
+            "system": "yggdrasill",
+            "path": "packs/actors.db",
+            "entity": "Actor",
+            "tag": "actors"
+        },
+        {
+            "name": "scenes",
+            "label": "Scenes (Yggdrasill)",
+            "system": "yggdrasill",
+            "path": "packs/scenes.db",
+            "entity": "Scene",
+            "tag": "scenes"
+        },
+        {
+            "label": "Extra's",
+            "name": "extras",
+            "system": "yggdrasill",
+            "path": "packs/extras.db",
+            "entity": "Actor",
+            "tag": "extras"
+        },
+        {
+            "label": "Creatures",
+            "name": "creatures",
+            "system": "yggdrasill",
+            "path": "packs/creatures.db",
+            "entity": "Actor",
+            "tag": "creatures"
+        }
+    ],
     "system": [],
     "dependencies": [],
     "socket": false,
