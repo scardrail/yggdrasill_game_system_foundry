@@ -22,6 +22,9 @@
                     {{#if data.data.isInitiated}}
                         <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
                     {{/if}}
+                    {{#if  (eq actor.type "pnj")}}
+                        <a data-tab="power">{{ localize "yggdrasill.tabs.power" }}</a>
+                    {{/if}}
                     <a data-tab="story">{{ localize "yggdrasill.tabs.story" }}</a>
                 </nav>
                 <section class="sheet-body">
@@ -71,6 +74,12 @@
                             {{> "systems/yggdrasill/templates/partials/character-magics-block.hbs"}}
                         </div>
                     </div>
+                    {{!-- Powers Tab --}}
+                    <div class="tab equipmt" data-group="primary" data-tab="power">
+                        <div class="powersBloc" style="padding: 0px 15px 0px 15px;">
+                            {{> "systems/yggdrasill/templates/partials/character-powers-block.hbs"}}
+                        </div>
+                    </div>
                     {{!-- Story Tab --}}
                     <div class="tab story" data-group="primary" data-tab="story">
                         <div class="aettBloc" style="padding: 0px 15px 0px 15px;">
@@ -90,6 +99,9 @@
             <nav class="sheet-tabs" data-group="primary">
                 <a data-tab="stats">{{ localize "yggdrasill.tabs.stats" }}</a>
                 <a data-tab="story">{{ localize "yggdrasill.tabs.story" }}</a>
+                {{#if  (eq actor.type "creature")}}
+                    <a data-tab="power">{{ localize "yggdrasill.tabs.power" }}</a>
+                {{/if}}
             </nav>
             <section class="sheet-body">
                 {{!-- Stats Tab --}}
@@ -104,6 +116,12 @@
                         {{localize "yggdrasill.character.background"}}
                     </h3>
                     {{editor content=data.data.background target="data.background" button=true owner=owner editable=editable}}
+                </div>
+                {{!-- Powers Tab --}}
+                <div class="tab equipmt" data-group="primary" data-tab="power">
+                    <div class="powersBloc" style="padding: 0px 15px 0px 15px;">
+                        {{> "systems/yggdrasill/templates/partials/character-powers-block.hbs"}}
+                    </div>
                 </div>
             </section>
         {{/if}}

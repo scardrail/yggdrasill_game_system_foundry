@@ -17,6 +17,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.config = CONFIG.yggdrasill;
 
         data.weapons = data.items.filter(function(item) { return item.type == "arme" });
+        data.powers = data.items.filter(function(item) { return item.type == "power" });
         data.armors = data.items.filter(function(item) { return item.type == "protection" });
         data.objects = data.items.filter(function(item) { return item.type == "object" });
         data.competences = data.items.filter(function(item) { return item.type == "competence" });
@@ -25,10 +26,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.sejdrCpt = data.items.filter(function(item) { return item.type == "sejdrCpt" });
         data.galdrCpt = data.items.filter(function(item) { return item.type == "galdrCpt" });
         data.runeCpt = data.items.filter(function(item) { return item.type == "runeCpt" });
-
-        // if (data.actor.type == "extra" || data.actor.type == "creature") {
-        //     data = calculStats.setExtraCaracs(data);
-        // }
         console.log(data);
 
         return data;

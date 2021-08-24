@@ -1,0 +1,33 @@
+<section class="power-list">
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.power.name"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="power" title="{{localize "yggdrasill.sheet.addPow"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
+        </tr>
+        {{#each powers as |power id|}}
+            <tr class="power-item item" data-item-id="{{_id}}">
+                <td>
+                    <div class="competence_name">{{name}}
+                        <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                            <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editPow"}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deletePow"}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</section>

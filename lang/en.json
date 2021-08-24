@@ -17,6 +17,11 @@
             "deleteProt": "Delete a protection",
             "new-protection": "New protection",
 
+            "addPow": "Add a power",
+            "editPow": "Edit a power",
+            "deletePow": "Delete a power",
+            "new-power": "New power",
+
             "addObj": "Add a object",
             "editObj": "Edit a object",
             "deleteObj": "Delete a object",
@@ -64,6 +69,7 @@
             "fight": "Fight",
             "magic": "magic",
             "story": "story",
+            "power": "Power",
             "stats": "stats"
         },
         "item": {
@@ -73,6 +79,9 @@
             "qtyMax": "Quantity",
             "price": "Price",
             "property": "Property"
+        },
+        "power": {
+            "name": "Name of the power"
         },
         "equipment": {
             "enc": "Space requirement",

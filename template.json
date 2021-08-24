@@ -298,6 +298,7 @@
         "types": [
             "arme",
             "protection",
+            "power",
             "object",
             "competence",
             "martialCpt",
@@ -361,6 +362,11 @@
             "rangeM": 0,
             "rangeL": 0,
             "rangeE": 0
+        },
+        "power": {
+            "templates": [
+                "base"
+            ]
         },
         "protection": {
             "templates": [

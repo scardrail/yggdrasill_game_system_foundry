@@ -12,6 +12,16 @@
             "deleteWpn": "Suprimer une arme",
             "new-arme": "Nouvelle arme",
 
+            "addProt": "Ajout de protection",
+            "editProt": "Editer une protection",
+            "deleteProt": "Suprimer une protection",
+            "new-protection": "Nouvelle protection",
+
+            "addPow": "Ajout de pouvoir",
+            "editPow": "Editer un pouvoir",
+            "deletePow": "Suprimer un pouvoir",
+            "new-power": "Nouveau pouvoir",
+
             "addObj": "Ajout de objet",
             "editObj": "Editer une objet",
             "deleteObj": "Suprimer une objet",
@@ -60,6 +70,7 @@
             "fight": "Martial",
             "magic": "Magie",
             "story": "Histoire",
+            "power": "Pouvoir",
             "stats": "Stats"
         },
         "item": {
@@ -69,6 +80,9 @@
             "qtyMax": "Quantitée",
             "price": "Prix",
             "property": "Proptiétés"
+        },
+        "power": {
+            "name": "Nom du pouvoir"
         },
         "equipment": {
             "enc": "Encombrement",
