@@ -6,7 +6,8 @@ yggdrasill.weaponTypes = {
     wTwoHands: "yggdrasill.wCategory.wTwoHands",
     wHast: "yggdrasill.wCategory.wHast",
     wThrow: "yggdrasill.wCategory.wThrow",
-    wShot: "yggdrasill.wCategory.wShot"
+    wShot: "yggdrasill.wCategory.wShot",
+    wImpro: "yggdrasill.wCategory.wImpro"
 };
 yggdrasill.protectionTypes = {
     shield: "yggdrasill.pCategory.shield",
