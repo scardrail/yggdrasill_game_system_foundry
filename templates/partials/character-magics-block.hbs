@@ -7,9 +7,9 @@
             <th>{{localize "yggdrasill.magicCpt.name"}}</th>
             <th>{{localize "yggdrasill.magicCpt.level"}}</th>
             <th>{{localize "yggdrasill.magicCpt.modifier"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.type"}}</th>
             <th>{{localize "yggdrasill.magicCpt.preparation"}}</th>
             <th>{{localize "yggdrasill.magicCpt.zone"}}</th>
-            <th>{{localize "yggdrasill.magicCpt.effects"}}</th>
             <th colspan="2">
                 <a class="item-create" data-type="sejdrCpt" title="{{localize "yggdrasill.sheet.addSejdr"}}">
                     <i class="fas fa-plus"></i>
@@ -35,9 +35,9 @@
                 </td>
                 <td>{{data.level}}</td>
                 <td>{{data.modifier}}</td>
+                <td>{{localize (lookup ../config.sejdrTypes data.type)}}</td>
                 <td>{{data.preparation.value}} {{localize (lookup ../config.magicDuration data.preparation.unit)}}</td>
                 <td>{{data.zone}}</td>
-                <td>{{{data.effects}}}</td>
                 <td>
                     <a class="item-edit" title="{{localize "yggdrasill.sheet.editSejdr"}}">
                         <i class="fas fa-edit"></i>
