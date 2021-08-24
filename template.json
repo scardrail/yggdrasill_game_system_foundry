@@ -279,6 +279,7 @@
                 "extraCharacter"
             ],
             "actions": {
+                "value": 0,
                 "max": 2
             }
         },
@@ -286,7 +287,11 @@
             "templates": [
                 "commonStats",
                 "extraCharacter"
-            ]
+            ],
+            "actions": {
+                "value": 0,
+                "max": 2
+            }
         }
     },
     "Item": {

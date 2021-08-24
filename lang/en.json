@@ -343,7 +343,8 @@
             "wTwoHands": "Two-handed weapon",
             "wHast": "Hast weapon",
             "wThrow": "Throwing weapon",
-            "wShot": "Shooting weapon"
+            "wShot": "Shooting weapon",
+            "wImpro": "Improvised weapon"
         },
         "pCategory": {
             "shield": "Shield",

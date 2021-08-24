@@ -337,7 +337,8 @@
             "wTwoHands": "Arme à deux mains",
             "wHast": "Arme d'hast",
             "wThrow": "Arme de jet",
-            "wShot": "Arme de tir"
+            "wShot": "Arme de tir",
+            "wImpro": "Arme improvisée"
         },
         "pCategory": {
             "shield": "Bouclier",
