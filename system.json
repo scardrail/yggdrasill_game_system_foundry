@@ -65,6 +65,102 @@
             "path": "packs/creatures.db",
             "entity": "Actor",
             "tag": "creatures"
+        },
+        {
+            "label": "Character tempers",
+            "name": "character-tempers",
+            "system": "yggdrasill",
+            "path": "packs/character-tempers.db",
+            "entity": "Items",
+            "tag": "character-tempers"
+        },
+        {
+            "label": "Competences",
+            "name": "competences",
+            "system": "yggdrasill",
+            "path": "packs/competences.db",
+            "entity": "Items",
+            "tag": "competences"
+        },
+        {
+            "label": "Magic competences",
+            "name": "competences-magiques",
+            "system": "yggdrasill",
+            "path": "packs/competences-magiques.db",
+            "entity": "Items",
+            "tag": "competences-magiques"
+        },
+        {
+            "label": "Martial competences",
+            "name": "competences-martiales",
+            "system": "yggdrasill",
+            "path": "packs/competences-martiales.db",
+            "entity": "Items",
+            "tag": "competences-martiales"
+        },
+        {
+            "label": "Creature tempers",
+            "name": "creature-tempers",
+            "system": "yggdrasill",
+            "path": "packs/creature-tempers.db",
+            "entity": "Items",
+            "tag": "creature-tempers"
+        },
+        {
+            "label": "Items",
+            "name": "items",
+            "system": "yggdrasill",
+            "path": "packs/items.db",
+            "entity": "Items",
+            "tag": "items"
+        },
+        {
+            "label": "Powers",
+            "name": "powers",
+            "system": "yggdrasill",
+            "path": "packs/powers.db",
+            "entity": "Items",
+            "tag": "powers"
+        },
+        {
+            "label": "Protection",
+            "name": "protection",
+            "system": "yggdrasill",
+            "path": "packs/protection.db",
+            "entity": "Items",
+            "tag": "protection"
+        },
+        {
+            "label": "Prowess",
+            "name": "prowess",
+            "system": "yggdrasill",
+            "path": "packs/prowess.db",
+            "entity": "Items",
+            "tag": "prowess"
+        },
+        {
+            "label": "Runes",
+            "name": "runes",
+            "system": "yggdrasill",
+            "path": "packs/runes.db",
+            "entity": "Items",
+            "tag": "runes"
+        },
+        {
+            "label": "Galdr",
+            "name": "spell-galdr",
+            "system": "yggdrasill",
+            "path": "packs/spell-galdr.db",
+            "entity": "Items",
+            "tag": "spell-galdr"
+        },
+        {
+            "label": "Sejdr",
+            "name": "spell-sejdr",
+            "system": "yggdrasill",
+            "path": "packs/spell-sejdr.db",
+            "entity": "Items",
+            "tag": "spell-sejdr"
         }
     ],
     "system": [],
