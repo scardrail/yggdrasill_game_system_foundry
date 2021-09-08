@@ -1,39 +1,144 @@
 <section class="competence-list">
-    <table>
-        <tr>
-            <th>
-                {{localize "yggdrasill.competence.name"}}
-            </th>
-            <th>{{localize "yggdrasill.competence.value"}}</th>
-            <th colspan="3">
-                <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
-                    <i class="fas fa-plus"></i>
-                </a>
-            </th>
-        </tr>
-        {{#each competences as |competence id|}}
-            <tr class="skill-item item" data-item-id="{{_id}}">
-                <td>
-                {{#if (upper ../data.data.nbDiceKept 0)}}
-                    <a><p class="item-roll">{{name}}</p></a>
-                {{else}}
-                    <p>{{name}}</p>
-                {{/if}}
-                </td>
-                <td>
-                    <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
-                    </td>
-                <td>
-                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">
-                        <i class="fas fa-edit"></i>
+    {{#if data.data.hasMagicCpt}}
+    <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;"> 
+    {{else}}
+    <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"> 
+    {{/if}}
+        <table>
+            <tr>
+                <th>
+                    {{localize "yggdrasill.competence.name"}}
+                </th>
+                <th>{{localize "yggdrasill.competence.value"}}</th>
+                <th colspan="3">
+                    <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
+                        <i class="fas fa-plus"></i>
                     </a>
-                </td>
-                <td>
-                    <a class="item-delete " title="{{localize "yggdrasill.sheet.deleteCpt"}}">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                </td>
+                </th>
             </tr>
-        {{/each}}
-    </table>
+            {{#each competencesNormal as |competence id|}}
+                <tr class="skill-item item" data-item-id="{{_id}}">
+                    <td>
+                    {{#if (upper ../data.data.nbDiceKept 0)}}
+                        <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+                            <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                                <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                            </span>
+                        </div>
+                    {{else}}
+                        <div class="competence_name">{{name}}
+                            <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                                <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                            </span>
+                        </div>
+                    {{/if}}
+                    </td>
+                    <td>
+                        <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
+                        </td>
+                    <td>
+                        <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="item-delete " title="{{localize "yggdrasill.sheet.deleteCpt"}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </table><table>
+            <tr>
+                <th>
+                    {{localize "yggdrasill.competence.name"}}
+                </th>
+                <th>{{localize "yggdrasill.competence.value"}}</th>
+                <th colspan="3">
+                    <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </th>
+            </tr>
+            {{#each competencesMartial as |competence id|}}
+                <tr class="skill-item item" data-item-id="{{_id}}">
+                    <td>
+                    {{#if (upper ../data.data.nbDiceKept 0)}}
+                        <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+                            <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                                <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                            </span>
+                        </div>
+                    {{else}}
+                        <div class="competence_name">{{name}}
+                            <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                                <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                            </span>
+                        </div>
+                    {{/if}}
+                    </td>
+                    <td>
+                        <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
+                        </td>
+                    <td>
+                        <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="item-delete " title="{{localize "yggdrasill.sheet.deleteCpt"}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+        {{#if data.data.hasMagicCpt}}
+            <table>
+                <tr>
+                    <th>
+                        {{localize "yggdrasill.competence.name"}}
+                    </th>
+                    <th>{{localize "yggdrasill.competence.value"}}</th>
+                    <th colspan="3">
+                        <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </th>
+                </tr>
+                {{#each competencesMagic as |competence id|}}
+                    <tr class="skill-item item" data-item-id="{{_id}}">
+                        <td>
+                        {{#if (upper ../data.data.nbDiceKept 0)}}
+                            <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+                                <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                                    <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                                </span>
+                            </div>
+                        {{else}}
+                            <div class="competence_name">{{name}}
+                                <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                                    <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                                </span>
+                            </div>
+                        {{/if}}
+                        </td>
+                        <td>
+                            <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
+                            </td>
+                        <td>
+                            <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="item-delete " title="{{localize "yggdrasill.sheet.deleteCpt"}}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        {{/if}}
+    </div>
 </section>

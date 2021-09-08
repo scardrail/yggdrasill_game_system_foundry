@@ -74,10 +74,12 @@ yggdrasill.magicDuration = {
     day: "yggdrasill.magicCpt.duration.day"
 };
 yggdrasill.duration = {
-    action: "yggdrasill.sheet.duration.action",
-    turn: "yggdrasill.sheet.duration.turn",
-    minute: "yggdrasill.sheet.duration.minute",
-    hour: "yggdrasill.sheet.duration.hour"
+    none: "yggdrasill.extra.none",
+    hour: "yggdrasill.sheet.duration.hour",
+    day: "yggdrasill.sheet.duration.day",
+    week: "yggdrasill.sheet.duration.week",
+    month: "yggdrasill.sheet.duration.month",
+    year: "yggdrasill.sheet.duration.year",
 };
 yggdrasill.freyrsAett = {
     fehu: "yggdrasill.aett.freyr.fehu",

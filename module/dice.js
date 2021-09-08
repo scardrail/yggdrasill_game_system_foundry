@@ -297,6 +297,7 @@ function resetingValues(data, type) {
         data.nbDiceFuror.value = 0;
         data.caracUsed.name = "";
         data.caracUsed.value = 0;
+        data.caracUsed.rollModifier = 0;
         data.isDestinyRoll = false;
         data.caracUsed.isDefensive = false;
         data.magicCpt.sejdrCpt.positiveness = "none";

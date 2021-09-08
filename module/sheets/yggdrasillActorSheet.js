@@ -20,7 +20,11 @@ export default class YggdrasillActorSheet extends ActorSheet {
         data.powers = data.items.filter(function(item) { return item.type == "power" });
         data.armors = data.items.filter(function(item) { return item.type == "protection" });
         data.objects = data.items.filter(function(item) { return item.type == "object" });
+        data.runes = data.items.filter(function(item) { return item.type == "rune" });
         data.competences = data.items.filter(function(item) { return item.type == "competence" });
+        data.competencesNormal = data.competences.filter(function(item) { return item.data.type == "base" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        data.competencesMartial = data.competences.filter(function(item) { return item.data.type == "martial" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        data.competencesMagic = data.competences.filter(function(item) { return item.data.type == "magic" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
         data.tempers = data.items.filter(function(item) { return item.type == "temper" });
         data.martialCpt = data.items.filter(function(item) { return item.type == "martialCpt" });
         data.sejdrCpt = data.items.filter(function(item) { return item.type == "sejdrCpt" });

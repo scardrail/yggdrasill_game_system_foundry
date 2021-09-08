@@ -1,5 +1,11 @@
 <tr class="weapon-item item" data-item-id="{{_id}}">
-    <td><a><p class="item-roll">{{name}}</p></a></td>
+    <td>
+        <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+            <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+            </span>
+        </div>
+    </td>
     <td>{{data.dmgBase}}</td>
     {{#if data.properties.ranged}}
         {{#if (not data.properties.instinct)}}

@@ -1,0 +1,61 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="128" width="128" />
+        <h1>
+            <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+        </h1>
+    </header>
+    <div class="sheet-content">
+        <h3>
+            {{localize "yggdrasill.description"}}
+        </h3>
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+
+        
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.power"}}</th>
+                <td>
+                    <input name="data.power" type="number" value="{{data.data.power}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.support"}}</th>
+                <td>
+                    <select name="data.support" style="width:100%">
+                        {{#select data.data.support}}
+                        {{#each config.runeSupport as |path key|}}
+                        <option value="{{key}}">{{localize (add path ".value")}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.magicCpt.durationN"}}</th>
+                <td>
+                    <input name="data.lifeDuration.value" style="width:50%" type="number" value="{{data.data.lifeDuration.value}}" data-type="Number"><select name="data.lifeDuration.duration" style="width:50%">
+                        {{#select data.data.lifeDuration.duration}}
+                        {{#each config.duration as |path key|}}
+                        <option value="{{key}}">{{localize path}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>{{localize "yggdrasill.item.price"}}</th>
+                <td>
+                    <input name="data.price" type="number" value="{{data.data.price}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.item.qty"}}</th>
+                <td>
+                    <input name="data.qty" type="number" value="{{data.data.qty}}" data-type="Number">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

@@ -183,6 +183,7 @@
                 "isInitiated": false,
                 "isInFuror": false,
                 "isDestinyRoll": false,
+                "hasMagicCpt": false,
                 "nbDiceFuror": {
                     "value": 0,
                     "min": 0,
@@ -194,6 +195,7 @@
                     "name": "",
                     "value": 0,
                     "mod": 0,
+                    "rollModifier": 0,
                     "isOffensive": false,
                     "isDefensive": false
                 },
@@ -300,6 +302,7 @@
             "protection",
             "power",
             "object",
+            "rune",
             "competence",
             "martialCpt",
             "sejdrCpt",
@@ -394,6 +397,18 @@
             },
             "oSubType": "clothe",
             "enc": 0
+        },
+        "rune": {
+            "templates": [
+                "base",
+                "item"
+            ],
+            "power": 0,
+            "lifeDuration": {
+                "value": 0,
+                "duration": "none"
+            },
+            "support": "none"
         },
         "competence": {
             "templates": [

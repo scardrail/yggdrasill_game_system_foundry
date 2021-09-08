@@ -2,6 +2,7 @@ import * as Dice from "./dice.js"
 export function addChatListeners(html) {
     html.on('click', 'button.roll', onCaracRoll);
     html.on('change', '.furor', onSetNbDiceFuror);
+    html.on('change', '.modifier', onSetRollModifier);
     html.on('change', '.destiny', onSetIfDestinyDice);
     html.on('change', '.carac', onSetCarac);
     html.on('change', '.off', onSetOffensive);
@@ -82,6 +83,15 @@ function onSetDuration(event) {
     attacker.data.data.magicCpt.galdrCpt.galdrDuration.dice = game.i18n.localize("yggdrasill.magicCpt.galdrDuration." + duration + ".dice");
     attacker.data.data.magicCpt.galdrCpt.galdrDuration.unit = game.i18n.localize("yggdrasill.magicCpt.galdrDuration." + duration + ".unit");
     attacker.data.data.magicCpt.galdrCpt.galdrDuration.sd = game.i18n.localize("yggdrasill.magicCpt.galdrDuration." + duration + ".sd");
+    console.log(attacker);
+}
+
+function onSetRollModifier(event) {
+    const element = event.currentTarget.closest(".modifier");
+    let modifier = parseInt(element.value);
+    console.log(modifier);
+    let attacker = game.actors.get(element.dataset.ownerId);
+    attacker.data.data.caracUsed.rollModifier = modifier;
     console.log(attacker);
 }
 
@@ -263,7 +273,7 @@ function onCaracRoll(event) {
         console.log(attacker);
         let isConflict = false
         caracValue = attacker.data.data.caracUsed.value;
-        caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.rollModifier + attacker.data.data.actions.modifier + attacker.data.data.martialCpt.mod;
+        caracMod = attacker.data.data.caracUsed.mod + attacker.data.data.caracUsed.rollModifier + attacker.data.data.rollModifier + attacker.data.data.actions.modifier + attacker.data.data.martialCpt.mod;
         event.currentTarget.style.borderColor = "black";
         event.currentTarget.setAttribute("disabled", "");
         Dice.TaskCheck({

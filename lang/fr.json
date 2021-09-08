@@ -45,7 +45,8 @@
             "addRune": "Ajout d'une rune",
             "editRune": "Editer une rune",
             "deleteRune": "Suprimer une rune",
-            "new-runeCpt": "Nouvelle rune",
+            "new-runeCpt": "Nouvelle compétence de rune",
+            "new-rune": "Nouvelle rune",
 
             "addTemper": "Ajout d'un caractère",
             "editTemper": "Editer un caractère",
@@ -56,11 +57,11 @@
             "failure": "Echec",
             "durationN": "Durée",
             "duration": {
-                "action": "Action",
-                "turn": "Tour",
-                "minute": "Minute",
                 "hour": "Heure",
-                "day": "Jours"
+                "day": "Jour",
+                "week": "Semaine",
+                "month": "Mois",
+                "year": "Année"
             }
         },
         "tabs": {
@@ -80,6 +81,9 @@
             "qtyMax": "Quantitée",
             "price": "Prix",
             "property": "Proptiétés"
+        },
+        "rune": {
+            "name": "Nom de la rune"
         },
         "power": {
             "name": "Nom du pouvoir"
@@ -579,7 +583,8 @@
             "other": {
                 "carac": "Carac :",
                 "furor": "Furor :",
-                "destiny": "Destin ?"
+                "destiny": "Destin ?",
+                "modifier": "Modificateur :"
             }
         },
         "attackTypes": {

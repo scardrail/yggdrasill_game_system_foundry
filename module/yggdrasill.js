@@ -24,6 +24,7 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/character-martialCpt-block.hbs",
         "systems/yggdrasill/templates/partials/character-armors-block.hbs",
         "systems/yggdrasill/templates/partials/character-objects-block.hbs",
+        "systems/yggdrasill/templates/partials/character-runes-block.hbs",
         "systems/yggdrasill/templates/partials/character-competences-block.hbs",
         "systems/yggdrasill/templates/partials/character-aett-block.hbs",
         "systems/yggdrasill/templates/partials/character-parameters-block.hbs",

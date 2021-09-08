@@ -12,6 +12,9 @@
             <div style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
                 <h3>{{localize "yggdrasill.chat.other.destiny"}}</h3><label class="checkbox"><input class="destiny" data-owner-id="{{owner}}" data-field="data.isDestinyRoll" type="checkbox" {{checked  data.isDestinyRoll}}></label>    
             </div>
+            <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                <h3>{{localize "yggdrasill.chat.other.modifier"}}</h3><input class="modifier" data-owner-id="{{owner}}" name="data.caracUsed.rollModifier" type="number" value="{{actor.data.caracUsed.rollModifier}}" data-type="Number" style="text-align: right;">    
+            </div>
         </div>
         <div class="card-buttons">
             <button type="button" class="roll">{{localize "yggdrasill.chat.actions.roll"}}</button>

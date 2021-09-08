@@ -1,0 +1,55 @@
+<section class="rune-list">
+    <table>
+        <tr>
+            <th>{{localize "yggdrasill.rune.name"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.power"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.support"}}</th>
+            <th>{{localize "yggdrasill.magicCpt.durationN"}}</th>
+            <th>{{localize "yggdrasill.item.qty"}}</th>
+            <th>{{localize "yggdrasill.item.price"}}</th>
+            <th colspan="2">
+                <a class="item-create" data-type="rune" title="{{localize "yggdrasill.sheet.addRune"}}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </th>
+        </tr>
+        {{#each runes as |rune id|}}
+            <tr class="rune-item item" data-item-id="{{_id}}">
+                <td>
+                    <div class="competence_name">{{name}}
+                        <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                            <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <input class="rune-power inline-edit" data-field="data.power" type="number" min="0" value="{{data.power}}"/>
+                </td>
+                <td>
+                    {{localize (add (lookup ../config.runeSupport data.support) ".value")}}
+                </td>
+                <td>
+                    <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                        <input class="rune-duration inline-edit" data-field="data.lifeDuration.value" type="number" min="0" value="{{data.lifeDuration.value}}"/><p>{{localize (lookup ../config.duration data.lifeDuration.duration)}}</p>
+                    </div>
+                </td>
+                <td>
+                    <input class="object-qty inline-edit" data-field="data.qty" type="number" min="0" value="{{data.qty}}"/>
+                    </td>
+                <td>
+                    {{data.price}}
+                    </td>
+                <td>
+                    <a class="item-edit" title="{{localize "yggdrasill.sheet.editRune"}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="item-delete" title="{{localize "yggdrasill.sheet.deleteRune"}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</section>

@@ -12,6 +12,9 @@ export default class yggdrasillActor extends Actor {
             try {
                 actorData = calculStats.setProtection(actorData);
             } finally {}
+            try {
+                actorData = calculStats.setHasMagicCpt(actorData);
+            } finally {}
             let data = actorData.data;
             data = calculStats.setCharacterCaracs(data);
         } else {

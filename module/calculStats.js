@@ -334,3 +334,21 @@ export function setMartialCpt(actorData) {
     }
     return actorData;
 }
+
+
+export function setHasMagicCpt(actorData) {
+    console.log(actorData);
+    try {
+        let competence = actorData.items.filter(function(cpt) { return cpt.type == "competence" });
+        console.log(competence);
+        let item = competence.filter(function(item) { return item.data.data.type == "magic" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        console.log(item);
+        if (item.length > 0) actorData.data.hasMagicCpt = true;
+        console.log(actorData);
+
+    } catch (e) {
+        console.log("setHasMagicCpt " + e);
+        actorData.data.hasMagicCpt = false;
+    }
+    return actorData;
+}

@@ -1,5 +1,11 @@
 <tr class="protection-item item" data-item-id="{{_id}}">
-    <td>{{name}}</td>
+    <td>
+        <div class="competence_name">{{name}}
+            <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
+                <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+            </span>
+        </div>
+    </td>
     <td>
         <label class="checkbox"><input type="checkbox" disabled="disabled" name="data.properties.pieceProtec" {{checked  data.properties.pieceProtec}}></label>
     </td>
