@@ -25,17 +25,19 @@ export async function TaskCheck({
     console.log("Yggdrasill || actor :");
     console.log(actor);
 
-    let rollFormula = "(@caracValue)d10kh(@nbDiceKept)x10";
+    let rollFormula = caracValue + "d10kh" + nbDiceKept + "x10";
     let isBlind = false;
     if (actor.type == "extra" || actor.type == "creature") {
-        rollFormula = "(@caracValue)d10";
+        rollFormula = caracValue + "d10";
         isBlind = true;
     }
+    console.log(rollFormula);
 
-    if (actionValue != 0) rollFormula += " + @actionValue";
-    if (modifier != 0) rollFormula += " + @modifier";
-    if (destinyDice != 0) rollFormula += " + (@destinyDice)d10";
-    if (nbDiceFuror != 0) rollFormula += " + (@nbDiceFuror)d10";
+    if (actionValue != 0) rollFormula += " + " + actionValue;
+    if (modifier != 0) rollFormula += " + " + modifier;
+    if (destinyDice != 0) rollFormula += " + " + destinyDice + "d10";
+    if (nbDiceFuror != 0) rollFormula += " + " + nbDiceFuror + "d10";
+    console.log(rollFormula);
 
     let rollData = {
         actionValue: actionValue,
@@ -84,7 +86,7 @@ export async function TaskCheck({
         }, chatOptions);
         const isPrivate = false;
 
-        let rollResult = new Roll(rollFormula, rollData).roll()
+        let rollResult = await new Roll(rollFormula, rollData).roll({ async: true })
 
         // Execute the roll, if needed
         if (!rollResult._evaluated) rollResult.evaluate();
@@ -105,6 +107,8 @@ export async function TaskCheck({
 
         // Define chat data
         const chatData = {
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            rollMode: game.settings.get("core", "rollMode"),
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,
@@ -116,7 +120,7 @@ export async function TaskCheck({
             config: CONFIG.yggdrasill,
             sound: CONFIG.sounds.dice
         };
-        chatData.roll = true;
+        chatData.roll = rollResult;
 
         // Render the roll display template
         chatData.content = await renderTemplate(chatOptions.template, cardData);
@@ -161,7 +165,7 @@ export async function TaskCheck({
         }, chatOptions);
         const isPrivate = false;
 
-        let rollResult = new Roll(rollFormula, rollData).roll()
+        let rollResult = await new Roll(rollFormula, rollData).roll({ async: true })
 
         // Execute the roll, if needed
         if (!rollResult._evaluated) rollResult.evaluate();
@@ -251,6 +255,8 @@ export async function TaskCheck({
 
         // Define chat data
         let chatData = {
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            rollMode: game.settings.get("core", "rollMode"),
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,
@@ -263,7 +269,7 @@ export async function TaskCheck({
             config: CONFIG.yggdrasill,
             sound: CONFIG.sounds.dice
         };
-        chatData.roll = true;
+        chatData.roll = rollResult;
 
 
         cardData.criticalFailures = criticalFailures;
@@ -295,7 +301,6 @@ function resetingValues(data, type) {
     console.log("Yggdrasill || resetingValues");
     if (type == "pj" || type == "pnj") {
         data.nbDiceFuror.value = 0;
-        data.caracUsed.name = "";
         data.caracUsed.value = 0;
         data.caracUsed.rollModifier = 0;
         data.isDestinyRoll = false;
