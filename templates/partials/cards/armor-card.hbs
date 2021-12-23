@@ -6,6 +6,12 @@
             </span>
         </div>
     </td>
+    
+    <td>
+        {{#if data.properties.equipable}}
+            <label class="checkbox"><input type="checkbox" disabled="disabled" name="data.properties.equiped" {{checked  data.properties.equiped}}></label>
+        {{/if}}
+    </td>
     <td>
         <label class="checkbox"><input type="checkbox" disabled="disabled" name="data.properties.pieceProtec" {{checked  data.properties.pieceProtec}}></label>
     </td>
