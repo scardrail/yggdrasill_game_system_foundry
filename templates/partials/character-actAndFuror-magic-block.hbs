@@ -1,0 +1,40 @@
+<section class="actAndFuror-list">
+    <div class="actAndFuror-tables" style="display: grid; grid-template-columns:repeat(2, 1fr) 180px; gap:5px;">
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.character.actions"}}</th>
+                <th>{{localize "yggdrasill.character.actionsMod"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.actions.value}}/{{data.data.actions.max}}</p>
+                </td>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.actions.modifier}}</p>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>{{localize "yggdrasill.characteristics.secondary.protection"}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.protection}}</p>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>
+                    {{localize "yggdrasill.character.reserve"}}{{#if data.data.lifePoints.isWeary}}({{localize "yggdrasill.character.weary"}}){{/if}}
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <p style="margin: 0.35em 0;">{{data.data.reserve.value}}/{{data.data.reserve.max}}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

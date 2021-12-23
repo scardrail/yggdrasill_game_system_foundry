@@ -18,6 +18,7 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/character-secCarac-block.hbs",
         "systems/yggdrasill/templates/partials/character-thirdCarac-block.hbs",
         "systems/yggdrasill/templates/partials/character-actAndFuror-block.hbs",
+        "systems/yggdrasill/templates/partials/character-actAndFuror-magic-block.hbs",
         "systems/yggdrasill/templates/partials/character-weapons-block.hbs",
         "systems/yggdrasill/templates/partials/character-powers-block.hbs",
         "systems/yggdrasill/templates/partials/character-magics-block.hbs",
