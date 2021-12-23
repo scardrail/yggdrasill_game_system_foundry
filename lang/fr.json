@@ -57,6 +57,8 @@
             "failure": "Echec",
             "durationN": "Durée",
             "duration": {
+                "turn": "Turn",
+                "minute": "Minute",
                 "hour": "Heure",
                 "day": "Jour",
                 "week": "Semaine",
@@ -374,6 +376,7 @@
             "tableware": "Vaisselle",
             "food": "Aliment",
             "drink": "Boisson",
+            "instrument": "Instrument",
             "other": "Autre"
         },
         "cCategory": {

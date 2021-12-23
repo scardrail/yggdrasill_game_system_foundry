@@ -56,6 +56,8 @@
             "failure": "Failure",
             "durationN": "Duration",
             "duration": {
+                "turn": "Turn",
+                "minute": "Minute",
                 "hour": "Hour",
                 "day": "Day",
                 "week": "Week",
@@ -375,6 +377,7 @@
             "tableware": "Tableware",
             "food": "Food",
             "drink": "Drink",
+            "instrument": "Instrument",
             "other": "Other"
         },
         "cCategory": {
