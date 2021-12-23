@@ -32,9 +32,12 @@ function setTempersModifications(data) {
 function newTM(data, tempers) {
     tempers.forEach(temper => {
         temper.data.data.caracs.forEach(carac => {
+            console.log(carac.name);
             if (carac.name == "conflict" || carac.name == "mystic") {
                 data.data[carac.name].offensive.mod += carac.modifier;
                 data.data[carac.name].defensive.mod += carac.sndModifier;
+            } else if (carac.name == "dmgMod") {
+                data.data[carac.name] += carac.modifier;
             } else {
                 data.data[carac.name].mod += carac.modifier;
             }
@@ -134,7 +137,6 @@ function setAction(data, caracs) {
 }
 
 function setFuror(data, caracs) {
-
     if (data.reserve.value == 0) {
         if (data.isInFuror) data.isInFuror = false;
         data.lifePoints.isWeary = true;
@@ -155,8 +157,10 @@ function setFuror(data, caracs) {
     if (data.isBerserk && data.isInFuror) {
         data.nbDiceFuror.max = caracs.tenacity;
         data.nbDiceFuror.min = 1;
+        console.log("entrée en fureur !! ");
+    } else if (data.isBerserk && !data.isInFuror) {
+        console.log("sortie de fureur !! ");
     }
-
     return data;
 }
 
@@ -262,18 +266,25 @@ export function setProtection(actorData) {
 
     console.log(actorData);
     try {
-        let items = actorData.items.filter(function(item) { return item.type == "protection" });
-        console.log(items);
+        let armors = actorData.items.filter(function(item) { return item.type == "protection" });
+        let weapons = actorData.items.filter(function(item) { return item.type == "arme" });
+        console.log(armors);
+        console.log(weapons);
         let protection = 0;
         let protectionShield = 0;
         let enc = 0;
-        items.forEach(item => {
-            if (item.data.data.pSubType != "shield") {
-                protection += item.data.data.defBase.value;
-            } else {
-                protectionShield += item.data.data.defBase.value;
+        armors.forEach(item => {
+            if (item.data.data.properties.equiped) {
+                if (item.data.data.pSubType != "shield") {
+                    protection += item.data.data.defBase.value;
+                } else {
+                    protectionShield += item.data.data.defBase.value;
+                    enc -= item.data.data.enc;
+                }
             }
-
+            enc += item.data.data.enc;
+        });
+        weapons.forEach(item => {
             enc += item.data.data.enc;
         });
 
