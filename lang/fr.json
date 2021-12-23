@@ -94,6 +94,7 @@
             "enc": "Encombrement",
             "solidity": "Solidité",
             "equiped": "Equipé ?",
+            "stored": "Rangé ?",
             "ranged": "A distance ?",
             "equipable": "Equipable ?",
             "stackable": "Empilable ?",

@@ -30,6 +30,7 @@
                 <th>{{localize "yggdrasill.item.property"}}</th>
                 <td>
                     <label class="checkbox"> <input type="checkbox" name="data.properties.equipable" {{checked data.data.properties.equipable}}> {{localize "yggdrasill.equipment.equipable"}}</label>
+                    <label class="checkbox"><input type="checkbox" name="data.properties.stored"  {{checked  data.data.properties.stored}}> {{localize "yggdrasill.equipment.stored"}}</label>
                     {{#if (not data.data.properties.unique)}}
                         <label class="checkbox"> <input type="checkbox" name="data.properties.stackable" {{checked data.data.properties.stackable}}> {{localize "yggdrasill.equipment.stackable"}}</label>
                     {{/if}}

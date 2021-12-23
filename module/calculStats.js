@@ -274,15 +274,17 @@ export function setProtection(actorData) {
         let protectionShield = 0;
         let enc = 0;
         armors.forEach(item => {
-            if (item.data.data.properties.equiped) {
-                if (item.data.data.pSubType != "shield") {
-                    protection += item.data.data.defBase.value;
-                } else {
-                    protectionShield += item.data.data.defBase.value;
-                    enc -= item.data.data.enc;
+            if (!item.data.data.properties.stored) {
+                if (item.data.data.properties.equiped) {
+                    if (item.data.data.pSubType != "shield") {
+                        protection += item.data.data.defBase.value;
+                    } else {
+                        protectionShield += item.data.data.defBase.value;
+                        enc -= item.data.data.enc;
+                    }
                 }
+                enc += item.data.data.enc;
             }
-            enc += item.data.data.enc;
         });
         weapons.forEach(item => {
             enc += item.data.data.enc;

@@ -93,6 +93,7 @@
             "enc": "Space requirement",
             "solidity": "Solidity",
             "equiped": "Equipped ?",
+            "stored": "Stored ?",
             "ranged": "Ranged ?",
             "equipable": "Equipable ?",
             "stackable": "Stackable ?",

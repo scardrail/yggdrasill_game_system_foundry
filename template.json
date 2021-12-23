@@ -327,6 +327,7 @@
                 "properties": {
                     "equiped": false,
                     "ranged": false,
+                    "stored": false,
                     "equipable": false,
                     "stackable": false,
                     "unique": false,

@@ -26,6 +26,7 @@
         <input class="weapon-solidity inline-edit" data-field="data.solidity" type="number" min="0" value="{{data.solidity}}"/>
         </td>
     <td>{{data.enc}}</td>
+    <td><label class="checkbox"><input class="weapon-stored inline-edit" disabled="disabled" data-field="data.properties.stored" type="checkbox" {{checked  data.properties.stored}}></label></td>
     {{#if data.properties.ranged}}
     <td>{{data.rangeC}}/{{data.rangeM}}/{{data.rangeL}}/{{data.rangeE}}</td>
     {{else}}
