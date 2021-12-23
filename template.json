@@ -324,8 +324,8 @@
             "equipment": {
                 "enc": 0,
                 "solidity": 0,
-                "equiped": false,
                 "properties": {
+                    "equiped": false,
                     "ranged": false,
                     "equipable": false,
                     "stackable": false,
