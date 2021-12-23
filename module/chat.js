@@ -286,6 +286,7 @@ function onCaracRoll(event) {
             isConflict: isConflict,
             attackType: attackType,
             actor: attacker.data,
+            speaker: attacker,
             item: item.data
         })
     }

@@ -4,7 +4,7 @@
     {{else}}
     <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"> 
     {{/if}}
-        <table>
+        <table style="height: max-content">
             <tr>
                 <th>
                     {{localize "yggdrasill.competence.name"}}
@@ -48,7 +48,7 @@
                     </td>
                 </tr>
             {{/each}}
-        </table><table>
+        </table><table style="height: max-content">
             <tr>
                 <th>
                     {{localize "yggdrasill.competence.name"}}
@@ -94,7 +94,7 @@
             {{/each}}
         </table>
         {{#if data.data.hasMagicCpt}}
-            <table>
+            <table style="height: max-content">
                 <tr>
                     <th>
                         {{localize "yggdrasill.competence.name"}}

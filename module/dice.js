@@ -10,6 +10,7 @@ export async function TaskCheck({
     isOffensive = false,
     attackType = null,
     actor = null,
+    speaker = null,
     item = null
 } = {}) {
     console.log("Yggdrasill || caracValue " + caracValue);
@@ -74,6 +75,7 @@ export async function TaskCheck({
     if (item.type == "arme" && !(actor.data.caracUsed.isDefensive)) {
         let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
         console.log(item);
+        console.log("weapon roll");
         console.log(actor);
 
         let chatOptions = {};
@@ -105,13 +107,15 @@ export async function TaskCheck({
 
         console.log(rollResult)
 
+
         // Define chat data
-        const chatData = {
+        let chatData = {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             rollMode: game.settings.get("core", "rollMode"),
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,
+            speaker: { actor: speaker },
             tooltip: isPrivate ? "" : await rollResult.getTooltip(),
             total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
             item: item,
@@ -126,7 +130,10 @@ export async function TaskCheck({
         chatData.content = await renderTemplate(chatOptions.template, cardData);
 
         actor.data = resetingValues(actor.data);
-        return ChatMessage.create(chatData);
+        let myMessage = ChatMessage.create(chatData);
+        console.log(myMessage.ChatMessage.getSpeaker())
+
+        return myMessage;
 
 
     } else {
@@ -260,6 +267,7 @@ export async function TaskCheck({
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,
+            speaker: { actor: speaker },
             tooltip: isPrivate ? "" : await rollResult.getTooltip(),
             total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
             criticalFailures: criticalFailures,
@@ -269,6 +277,8 @@ export async function TaskCheck({
             config: CONFIG.yggdrasill,
             sound: CONFIG.sounds.dice
         };
+
+        console.log(actor);
         chatData.roll = rollResult;
 
 
@@ -276,8 +286,11 @@ export async function TaskCheck({
         // Render the roll display template
         chatData.content = await renderTemplate(chatOptions.template, cardData);
 
+
         actor.data = resetingValues(actor.data, actor.type);
         let message = ChatMessage.create(chatData);
+        console.log(ChatMessage.getSpeaker())
+
         if (criticalFailures) await rollCriticalFail();
         return message;
     }

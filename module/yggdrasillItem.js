@@ -24,16 +24,12 @@ export default class yggdrasillItem extends Item {
                 data.properties.ranged = false;
             }
         }
-
-        // if (itemData.type == "temper") {
-        //     data = calculStats.setItemTempersCaracs(data);
-        // }
     }
     async roll() {
 
         let chatData = {
             user: game.user.id,
-            speaker: ChatMessage.getSpeaker()
+            speaker: { actor: this.actor },
         };
 
         let cardData = {
@@ -42,12 +38,13 @@ export default class yggdrasillItem extends Item {
             actor: this.actor.data,
             config: CONFIG.yggdrasill
         }
+        console.log("roll data card");
         console.log(this.actor.data);
 
         chatData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
 
         chatData.roll = true;
-
+        ChatMessage.applyRollMode(chatData, "selfroll");
         return ChatMessage.create(chatData);
     }
 }

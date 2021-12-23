@@ -50,11 +50,14 @@ export default class YggdrasillActorSheet extends ActorSheet {
             html.find(".item-roll").click(this._onItemRoll.bind(this));
             html.find(".carac-roll").click(this._onCptRoll.bind(this));
             html.find(".task-check").click(this._onTaskCheck.bind(this));
-
         }
 
         super.activateListeners(html);
+
     }
+
+
+
 
     _onItemCreate(event) {
         event.preventDefault();
@@ -119,14 +122,46 @@ export default class YggdrasillActorSheet extends ActorSheet {
         item.roll();
     }
 
+
+
+    async _onFurorIntRoll(event, checked) {
+        if (!checked) {
+            let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
+            let carac = "spirit.intelect";
+
+            let chatData = {
+                user: game.user.id,
+                speaker: { actor: this.actor },
+            };
+
+
+            let cardData = {
+                ...this.data,
+                owner: this.actor.id,
+                actor: this.actor.data,
+                carac: carac,
+                config: CONFIG.yggdrasill
+            }
+            console.log(this.actor.data);
+
+            chatData.roll = true;
+
+
+            chatData.content = await renderTemplate(chatTemplate, cardData);
+            ChatMessage.applyRollMode(chatData, "selfroll");
+            return ChatMessage.create(chatData);
+        }
+    }
+
     async _onCptRoll(event) {
         let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
         let carac = event.currentTarget.dataset.carac;
 
         let chatData = {
             user: game.user.id,
-            speaker: ChatMessage.getSpeaker()
+            speaker: { actor: this.actor },
         };
+
 
         let cardData = {
             ...this.data,
@@ -137,10 +172,11 @@ export default class YggdrasillActorSheet extends ActorSheet {
         }
         console.log(this.actor.data);
 
-        chatData.content = await renderTemplate(chatTemplate, cardData);
-
         chatData.roll = true;
 
+
+        chatData.content = await renderTemplate(chatTemplate, cardData);
+        ChatMessage.applyRollMode(chatData, "selfroll");
         return ChatMessage.create(chatData);
     }
 
@@ -179,6 +215,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             isConflict: isConflict,
             isOffensive: isOffensive,
             actor: this.actor.data,
+            speaker: this.actor,
             item: item,
         })
     }
