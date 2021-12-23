@@ -287,7 +287,9 @@ export function setProtection(actorData) {
             }
         });
         weapons.forEach(item => {
-            enc += item.data.data.enc;
+            if (!item.data.data.properties.stored) {
+                enc += item.data.data.enc;
+            }
         });
 
         console.log(protection);
