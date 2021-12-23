@@ -24,6 +24,7 @@ yggdrasill.objectTypes = {
     tableware: "yggdrasill.oCategory.tableware",
     food: "yggdrasill.oCategory.food",
     drink: "yggdrasill.oCategory.drink",
+    instrument: "yggdrasill.oCategory.instrument",
     other: "yggdrasill.oCategory.other"
 };
 yggdrasill.competenceTypes = {
