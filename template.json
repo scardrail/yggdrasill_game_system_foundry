@@ -283,6 +283,11 @@
             "actions": {
                 "value": 0,
                 "max": 2
+            },
+            "lifePoints": {
+                "value": 0,
+                "max": 2,
+                "min": 0
             }
         },
         "creature": {
@@ -293,6 +298,11 @@
             "actions": {
                 "value": 0,
                 "max": 2
+            },
+            "lifePoints": {
+                "value": 0,
+                "max": 2,
+                "min": 0
             }
         }
     },
