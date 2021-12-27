@@ -1,6 +1,7 @@
 export function setExtraCaracs(data) {
     console.log(data);
 
+    data = setExtraLifepoints(data);
     data = setTempersModifications(data);
     data = setRollableStats(data);
     data = setActionsModifications(data);
@@ -9,6 +10,25 @@ export function setExtraCaracs(data) {
     return data;
 }
 
+function setExtraLifepoints(data) {
+    console.log(data);
+
+    switch (data.data.lifeStatus) {
+        case "frisky":
+            data.data.lifePoints.value = 2;
+            break;
+        case "injured":
+            data.data.lifePoints.value = 1;
+            break;
+        case "dead":
+            data.data.lifePoints.value = 0;
+            break;
+        default:
+            data.data.lifePoints.value = 2;
+            break;
+    }
+    return data;
+}
 
 function setTempersModifications(data) {
     console.log(data);
