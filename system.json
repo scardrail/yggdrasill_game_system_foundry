@@ -5,9 +5,9 @@
     "author": "Scardrail",
     "authors": [],
     "flags": {},
-    "version": "0.1.12",
+    "version": "0.1.20",
     "minimumCoreVersion": "0.8.8",
-    "compatibleCoreVersion": "0.8.9",
+    "compatibleCoreVersion": "0.9.238",
     "scripts": [],
     "esmodules": [
         "module/yggdrasill.js"
