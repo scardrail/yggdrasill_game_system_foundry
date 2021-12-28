@@ -222,6 +222,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             caracName: null,
             modifier: 0,
             isCpt: false,
+            isWeapon: false,
             isConflict: false,
             isOffensive: false,
             actorType: null,
@@ -271,6 +272,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             caracName: task.caracName,
             modifier: task.modifier,
             isCpt: task.isCpt,
+            isWeapon: task.isWeapon,
             isConflict: task.isConflict,
             isOffensive: task.isOffensive,
             actor: this.actor.data,
@@ -317,9 +319,11 @@ export default class YggdrasillActorSheet extends ActorSheet {
 }
 
 function setImportantCharacterTask(task, actor) {
+    console.log(task.taskType);
 
     switch (task.taskType) {
         case "carac":
+            console.log("Yggdrasill || carac");
             task.caracName = event.currentTarget.dataset.carac;
 
             if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
@@ -340,18 +344,30 @@ function setImportantCharacterTask(task, actor) {
             }
 
             break;
-
-
         case "competence":
+            console.log("Yggdrasill || competence");
             task.itemId = event.currentTarget.closest(".item").dataset.itemId;
             task.item = actor.items.get(task.itemId).data;
             task.isCpt = true;
             task.actionValue = task.item.data.value;
             break;
+        case "arme":
+            console.log("Yggdrasill || weapon");
+            task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            task.item = actor.items.get(task.itemId).data;
+            task.isWeapon = true;
+            let competence = actor.items.filter(function(item) {
+                return item.data.data.identifier == task.item.data.subType
+            });
+            try {
+                task.actionValue = competence[0].data.data.value;
+            } catch (e) {
+                task.actionValue = 0;
+            }
+            break;
         default:
             break;
     }
-
     task.nbDiceKept = actor.data.data.nbDiceKept;
     task.modifier += actor.data.data.caracUsed.rollModifier + actor.data.data.rollModifier + actor.data.data.actions.modifier + actor.data.data.martialCpt.mod;
 

@@ -587,6 +587,7 @@
             },
             "other": {
                 "carac": "Carac :",
+                "attackType": "type d'attaque :",
                 "furor": "Furor :",
                 "destiny": "Destin ?",
                 "modifier": "Modificateur :"

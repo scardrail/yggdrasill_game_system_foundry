@@ -10,6 +10,7 @@ export async function TaskCheck({
     isDestinyRoll = false,
     modifier = 0,
     isCpt = false,
+    isWeapon = false,
     isConflict = false,
     isOffensive = false,
     attackType = null,
@@ -19,23 +20,6 @@ export async function TaskCheck({
     item = null,
     itemType = null
 } = {}) {
-    console.log("Yggdrasill || taskType " + taskType);
-    console.log("Yggdrasill || caracValue " + caracValue);
-    console.log("Yggdrasill || caracName " + caracName);
-    console.log("Yggdrasill || nbDiceKept " + nbDiceKept);
-    console.log("Yggdrasill || actionValue " + actionValue);
-    console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
-    console.log("Yggdrasill || destinyDice " + destinyDice);
-    console.log("Yggdrasill || modifier " + modifier);
-    console.log("Yggdrasill || isCpt " + isCpt);
-    console.log("Yggdrasill || isConflict " + isConflict);
-    console.log("Yggdrasill || isOffensive " + isOffensive);
-    console.log("Yggdrasill || attackType " + attackType);
-    console.log("Yggdrasill || actor :");
-    console.log(actor);
-    console.log("Yggdrasill || item :");
-    console.log(item);
-
     if (askForOptions && actorType != "extra" && actorType != "creature") {
         let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item);
         if (checkOptions.cancelled) {
@@ -46,13 +30,58 @@ export async function TaskCheck({
         modifier += checkOptions.modifier;
         if (checkOptions.caracUsed) {
             let caracUsed = getCaracDatasFromItem(checkOptions.caracUsed, actor);
-            console.log(caracUsed);
             caracValue = caracUsed.caracValue;
             caracName = caracUsed.caracName;
             modifier += caracUsed.modifier;
         }
+        if (isWeapon) {
+            switch (checkOptions.cptUsed) {
+                case 'devastating':
+                case 'iStoppage':
+                case 'pStoppage':
+                    actor.data.dmgMod = (caracValue * 3);
+                    modifier += -caracValue;
+                    break;
+                case 'force':
+                case 'iImpact':
+                case 'pImpact':
+                    actor.data.dmgMod = caracValue;
+                    break;
+                case 'precise':
+                    actor.data.enemyArmorMod = -caracValue;
+                    break;
+                case 'aimed':
+                    actor.data.enemyArmorMod = -(caracValue * 3);
+                    actor.data.dmgMod = (caracValue * 3)
+                    modifier += -caracValue;
+                    break;
+                case 'parade':
+                    actor.data.caracUsed.isDefensive = true;
+                    break;
+                default:
+                    console.log(`Sorry, we are out of ${checkOptions.cptUsed}.`);
+            }
+        }
 
     }
+    console.log("Yggdrasill || taskType " + taskType);
+    console.log("Yggdrasill || caracValue " + caracValue);
+    console.log("Yggdrasill || caracName " + caracName);
+    console.log("Yggdrasill || nbDiceKept " + nbDiceKept);
+    console.log("Yggdrasill || actionValue " + actionValue);
+    console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
+    console.log("Yggdrasill || destinyDice " + destinyDice);
+    console.log("Yggdrasill || modifier " + modifier);
+    console.log("Yggdrasill || isCpt " + isCpt);
+    console.log("Yggdrasill || isWeapon " + isWeapon);
+    console.log("Yggdrasill || isConflict " + isConflict);
+    console.log("Yggdrasill || isOffensive " + isOffensive);
+    console.log("Yggdrasill || attackType " + attackType);
+    console.log("Yggdrasill || actor :");
+    console.log(actor);
+    console.log("Yggdrasill || item :");
+    console.log(item);
+
 
     let rollFormula = caracValue + "d10kh" + nbDiceKept + "x10";
     let detailFormula = caracName + " " + game.i18n.localize("yggdrasill.chat.rollFormula.roll");
@@ -115,9 +144,9 @@ export async function TaskCheck({
 
     if (item.type == "arme" && !(actor.data.caracUsed.isDefensive)) {
         let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
-        console.log(item);
+        // console.log(item);
         console.log("weapon roll");
-        console.log(actor);
+        // console.log(actor);
 
         let chatOptions = {};
 
@@ -148,7 +177,7 @@ export async function TaskCheck({
             config: CONFIG.yggdrasill
         }
 
-        console.log(rollResult)
+        // console.log(rollResult)
 
 
         // Define chat data
@@ -176,15 +205,13 @@ export async function TaskCheck({
 
         actor.data = resetingValues(actor.data);
         let myMessage = ChatMessage.create(chatData);
-        console.log(myMessage.ChatMessage.getSpeaker())
-
         return myMessage;
 
 
     } else {
         console.log("Yggdrasill ||" + item.type);
-        console.log(item);
-        console.log(actor);
+        // console.log(item);
+        // console.log(actor);
         let chatTemplate = ""
         if (item.type == "sejdrCpt") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-sejdrCpt-card.hbs";
@@ -204,8 +231,8 @@ export async function TaskCheck({
         } else {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/rollCheck.hbs";
         }
-        console.log(item);
-        console.log(actor);
+        // console.log(item);
+        // console.log(actor);
 
         let chatOptions = {};
 
@@ -351,27 +378,23 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
     const templates = {
         "carac": "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs",
         "competence": "systems/yggdrasill/templates/partials/dialog/cpt-check-dialog.hbs",
+        "arme": "systems/yggdrasill/templates/partials/dialog/weapon-check-dialog.hbs",
     };
 
     let html;
     let name;
-    switch (taskType) {
-        case "carac":
-            html = await renderTemplate(templates[taskType], {
-                actor: actor
-            });
-            name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
-            break;
-        case "competence":
-            html = await renderTemplate(templates[taskType], {
-                actor: actor,
-                item: item,
-                config: CONFIG.yggdrasill
-            });
-            name = game.i18n.localize(item.name);
-            break;
-        default:
-            break;
+    if (taskType == "carac") {
+        html = await renderTemplate(templates[taskType], {
+            actor: actor
+        });
+        name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
+    } else if (taskType == "competence" || taskType == "arme") {
+        html = await renderTemplate(templates[taskType], {
+            actor: actor,
+            item: item,
+            config: CONFIG.yggdrasill
+        });
+        name = game.i18n.localize(item.name);
     }
 
     return new Promise(resolve => {
@@ -384,7 +407,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
                 normal: {
                     label: game.i18n.localize("yggdrasill.chat.actions.roll"),
                     callback: html => resolve(
-                        _processTaskCheckOptions(html, taskType)
+                        _processTaskCheckOptions(html, taskType, item)
                     )
                 },
                 cancel: {
@@ -403,7 +426,8 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
     });
 }
 
-function _processTaskCheckOptions(html, taskType) {
+function _processTaskCheckOptions(html, taskType, item) {
+
     let form = html[0].querySelector('form');
     console.log(form);
 
@@ -421,6 +445,22 @@ function _processTaskCheckOptions(html, taskType) {
                 isDestinyRoll: form.isDestinyRoll.checked,
                 modifier: parseInt(form.ModificatorRollValue.value),
                 caracUsed: form.caracUsed.value
+            }
+        case "arme":
+
+            let cptUsed = form.caracUsed.value;
+            let carac = null;
+            if (!item.data.properties.ranged) {
+                carac = CONFIG.yggdrasill.meleeCoresp[cptUsed];
+            } else {
+                carac = CONFIG.yggdrasill.rangedCoresp[cptUsed];
+            }
+            return {
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value),
+                caracUsed: carac,
+                cptUsed: cptUsed
             }
         default:
             break;
@@ -452,9 +492,7 @@ async function rollCriticalFail() {
         return table._id == "UnAwWsx5UK6Y6rVJ"
     });
     table = table[0];
-    console.log(table);
     const defaultResults = await table.roll();
-    console.log(defaultResults);
     let messageData = {
         roll: defaultResults.roll,
         speaker: ChatMessage.getSpeaker()

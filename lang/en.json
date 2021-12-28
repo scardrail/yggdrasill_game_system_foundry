@@ -589,6 +589,7 @@
             },
             "other": {
                 "carac": "Carac :",
+                "attackType": "Attack type :",
                 "furor": "Furor :",
                 "destiny": "Destiny ?",
                 "modifier": "Modifier :"
