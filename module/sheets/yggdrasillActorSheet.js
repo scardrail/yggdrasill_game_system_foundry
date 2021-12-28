@@ -5,7 +5,11 @@ export default class YggdrasillActorSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             with: 840,
             height: 800,
-            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "carac" }],
+            tabs: [{
+                navSelector: ".sheet-tabs",
+                contentSelector: ".sheet-body",
+                initial: "carac"
+            }],
             template: "systems/yggdrasill/templates/sheets/importantCharacter-sheet.hbs",
             classes: ["yggdrasill", "sheet", "importantCharacter"]
         })
@@ -16,20 +20,48 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
         data.config = CONFIG.yggdrasill;
 
-        data.weapons = data.items.filter(function(item) { return item.type == "arme" });
-        data.powers = data.items.filter(function(item) { return item.type == "power" });
-        data.armors = data.items.filter(function(item) { return item.type == "protection" });
-        data.objects = data.items.filter(function(item) { return item.type == "object" });
-        data.runes = data.items.filter(function(item) { return item.type == "rune" });
-        data.competences = data.items.filter(function(item) { return item.type == "competence" });
-        data.competencesNormal = data.competences.filter(function(item) { return item.data.type == "base" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
-        data.competencesMartial = data.competences.filter(function(item) { return item.data.type == "martial" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
-        data.competencesMagic = data.competences.filter(function(item) { return item.data.type == "magic" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
-        data.tempers = data.items.filter(function(item) { return item.type == "temper" });
-        data.martialCpt = data.items.filter(function(item) { return item.type == "martialCpt" });
-        data.sejdrCpt = data.items.filter(function(item) { return item.type == "sejdrCpt" });
-        data.galdrCpt = data.items.filter(function(item) { return item.type == "galdrCpt" });
-        data.runeCpt = data.items.filter(function(item) { return item.type == "runeCpt" });
+        data.weapons = data.items.filter(function(item) {
+            return item.type == "arme"
+        });
+        data.powers = data.items.filter(function(item) {
+            return item.type == "power"
+        });
+        data.armors = data.items.filter(function(item) {
+            return item.type == "protection"
+        });
+        data.objects = data.items.filter(function(item) {
+            return item.type == "object"
+        });
+        data.runes = data.items.filter(function(item) {
+            return item.type == "rune"
+        });
+        data.competences = data.items.filter(function(item) {
+            return item.type == "competence"
+        });
+        data.competencesNormal = data.competences.filter(function(item) {
+            return item.data.type == "base"
+        }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        data.competencesMartial = data.competences.filter(function(item) {
+            return item.data.type == "martial"
+        }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        data.competencesMagic = data.competences.filter(function(item) {
+            return item.data.type == "magic"
+        }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        data.tempers = data.items.filter(function(item) {
+            return item.type == "temper"
+        });
+        data.martialCpt = data.items.filter(function(item) {
+            return item.type == "martialCpt"
+        });
+        data.sejdrCpt = data.items.filter(function(item) {
+            return item.type == "sejdrCpt"
+        });
+        data.galdrCpt = data.items.filter(function(item) {
+            return item.type == "galdrCpt"
+        });
+        data.runeCpt = data.items.filter(function(item) {
+            return item.type == "runeCpt"
+        });
         console.log(data);
 
         return data;
@@ -131,7 +163,9 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
             let chatData = {
                 user: game.user.id,
-                speaker: { actor: this.actor },
+                speaker: {
+                    actor: this.actor
+                },
             };
 
 
@@ -159,7 +193,9 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
         let chatData = {
             user: game.user.id,
-            speaker: { actor: this.actor },
+            speaker: {
+                actor: this.actor
+            },
         };
 
 
@@ -181,42 +217,97 @@ export default class YggdrasillActorSheet extends ActorSheet {
     }
 
     _onTaskCheck(event) {
-        let isCpt = false;
-        let isConflict = false;
-        let isOffensive = false;
-        let item = {};
-        try {
-            item = this.actor.items.get(event.currentTarget.dataset.itemId).data;
-        } catch (e) {
-            item = null
+        let task = {
+            taskType: null,
+            actionValue: 0,
+            nbDiceKept: 0,
+            nbDiceFuror: 0,
+            destinyDice: 0,
+            caracValue: 0,
+            caracName: null,
+            modifier: 0,
+            isCpt: false,
+            isConflict: false,
+            isOffensive: false,
+            actorType: null,
+            item: null,
         }
-        try {
-            isCpt = event.currentTarget.dataset.competence;
-            console.log(isCpt);
-        } catch (e) {}
-        try {
-            isConflict = event.currentTarget.dataset.conflict;
-            isOffensive = event.currentTarget.dataset.offensive;
-            this.actor.data.data.physic.roll = event.currentTarget.dataset.physic;
-            console.log(isConflict);
-            console.log(isOffensive);
-        } catch (e) {
+        task.actorType = this.actor.type;
+        task.taskType = event.currentTarget.dataset.tasktype;
+
+
+        if (task.actorType == "pj" || task.actorType == "pnj") {
+            switch (task.taskType) {
+                case "carac":
+                    task.caracName = event.currentTarget.dataset.carac;
+                    task.nbDiceKept = this.actor.data.data.nbDiceKept;
+
+                    if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
+                        task.caracValue = this.actor.data.data.primCarac.body[task.caracName].value;
+                        task.modifier = this.actor.data.data.primCarac.body[task.caracName].mod;
+                    } else if (task.caracName == "intelect" || task.caracName == "perception" || task.caracName == "tenacity") {
+                        task.caracValue = this.actor.data.data.primCarac.spirit[task.caracName].value;
+                        task.modifier = this.actor.data.data.primCarac.spirit[task.caracName].mod;
+                    } else {
+                        task.caracValue = this.actor.data.data.primCarac.soul[task.caracName].value;
+                        task.modifier = this.actor.data.data.primCarac.soul[task.caracName].mod;
+                    }
+
+                    task.modifier += this.actor.data.data.caracUsed.rollModifier + this.actor.data.data.rollModifier + this.actor.data.data.actions.modifier + this.actor.data.data.martialCpt.mod;
+                    break;
+
+                default:
+                    break;
+            }
+
+            try {
+                task.item = this.actor.items.get(event.currentTarget.dataset.itemId).data;
+            } catch (e) {
+                task.item = null
+            }
+        } else {
+
+            try {
+                task.isCpt = event.currentTarget.dataset.competence;
+                console.log(task.isCpt);
+            } catch (e) {}
+            try {
+                task.isConflict = event.currentTarget.dataset.conflict;
+                task.isOffensive = event.currentTarget.dataset.offensive;
+                this.actor.data.data.physic.roll = event.currentTarget.dataset.physic;
+
+                task.actionValue = event.currentTarget.dataset.actionValue;
+                task.nbDiceKept = event.currentTarget.dataset.nbDiceKept;
+                task.nbDiceFuror = event.currentTarget.dataset.nbDiceFuror;
+                task.destinyDice = event.currentTarget.dataset.destinyDice;
+                task.caracValue = event.currentTarget.dataset.caracValue;
+                task.modifier = event.currentTarget.dataset.modifier;
+            } catch (e) {
+
+            }
+
+
 
         }
+
+        console.log(task);
 
         Dice.TaskCheck({
-            actionValue: event.currentTarget.dataset.actionValue,
-            nbDiceKept: event.currentTarget.dataset.nbDiceKept,
-            nbDiceFuror: event.currentTarget.dataset.nbDiceFuror,
-            destinyDice: event.currentTarget.dataset.destinyDice,
-            caracValue: event.currentTarget.dataset.caracValue,
-            modifier: event.currentTarget.dataset.modifier,
-            isCpt: isCpt,
-            isConflict: isConflict,
-            isOffensive: isOffensive,
+            askForOptions: true,
+            actionValue: task.actionValue,
+            nbDiceKept: task.nbDiceKept,
+            nbDiceFuror: task.nbDiceFuror,
+            destinyDice: task.destinyDice,
+            caracValue: task.caracValue,
+            caracName: task.caracName,
+            modifier: task.modifier,
+            isCpt: task.isCpt,
+            isConflict: task.isConflict,
+            isOffensive: task.isOffensive,
             actor: this.actor.data,
+            actorType: task.actorType,
             speaker: this.actor,
-            item: item,
+            item: task.item,
         })
     }
 

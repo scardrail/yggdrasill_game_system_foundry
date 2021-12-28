@@ -213,7 +213,9 @@ function onCaracRoll(event) {
         console.log("Yggdrasill || weapon");
         let weapon = attacker.items.get(card.dataset.itemId);
         console.log(weapon.data.data.subType);
-        competence = attacker.items.filter(function(item) { return item.data.data.identifier == weapon.data.data.subType });
+        competence = attacker.items.filter(function(item) {
+            return item.data.data.identifier == weapon.data.data.subType
+        });
         try {
             competenceValue = competence[0].data.data.value;
         } catch (e) {
@@ -226,7 +228,9 @@ function onCaracRoll(event) {
         if (attacker.data.data.nbDiceFuror.value <= 0) attacker.data.data.nbDiceFuror.value = 1;
         cptNeeded = false;
         let cpt = attacker.items.get(card.dataset.itemId);
-        competence = attacker.items.filter(function(item) { return item.data.data.identifier == cpt.type });
+        competence = attacker.items.filter(function(item) {
+            return item.data.data.identifier == cpt.type
+        });
         console.log(cpt);
         console.log(competence);
         try {
@@ -259,6 +263,7 @@ function onCaracRoll(event) {
     } else if (card.dataset.type == "basicCarac") {
         console.log("Yggdrasill || competence de base");
         let carac = card.dataset.carac;
+        console.log(carac);
         var listPath = carac.split(".");
         console.log("Yggdrasill || carac" + listPath[0] + " " + listPath[1]);
         attacker.data.data.caracUsed.value = attacker.data.data.primCarac[listPath[0]][listPath[1]].value;
@@ -281,6 +286,7 @@ function onCaracRoll(event) {
             nbDiceKept: attacker.data.data.nbDiceKept,
             nbDiceFuror: attacker.data.data.nbDiceFuror.value,
             destinyDice: destinyDice,
+            isDestinyRoll: attacker.data.data.isDestinyRoll,
             caracValue: caracValue,
             modifier: caracMod,
             isConflict: isConflict,

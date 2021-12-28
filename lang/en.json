@@ -572,7 +572,8 @@
                 "attack": "Attack",
                 "defense": "Defense",
                 "damages": "Damages",
-                "roll": "Roll !"
+                "roll": "Roll !",
+                "cancel": "Cancel"
             },
             "category": {
                 "arme": "Weapon",

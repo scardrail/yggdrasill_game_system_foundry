@@ -1,19 +1,26 @@
 export async function TaskCheck({
+    taskType = null,
+    askForOptions = false,
     caracValue = 0,
+    caracName = null,
     nbDiceKept = 0,
     actionValue = 0,
     nbDiceFuror = 0,
     destinyDice = 0,
+    isDestinyRoll = false,
     modifier = 0,
     isCpt = false,
     isConflict = false,
     isOffensive = false,
     attackType = null,
     actor = null,
+    actorType = null,
     speaker = null,
-    item = null
+    item = null,
+    itemType = null
 } = {}) {
     console.log("Yggdrasill || caracValue " + caracValue);
+    console.log("Yggdrasill || caracName " + caracName);
     console.log("Yggdrasill || nbDiceKept " + nbDiceKept);
     console.log("Yggdrasill || actionValue " + actionValue);
     console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
@@ -26,6 +33,16 @@ export async function TaskCheck({
     console.log("Yggdrasill || actor :");
     console.log(actor);
 
+    if (askForOptions && actorType != "extra" && actorType != "creature") {
+        let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor);
+        if (checkOptions.cancelled) {
+            return;
+        }
+        nbDiceFuror = checkOptions.nbDiceFuror;
+        isDestinyRoll = checkOptions.isDestinyRoll;
+        modifier += checkOptions.modifier;
+    }
+
     let rollFormula = caracValue + "d10kh" + nbDiceKept + "x10";
     let isBlind = false;
     if (actor.type == "extra" || actor.type == "creature") {
@@ -36,7 +53,7 @@ export async function TaskCheck({
 
     if (actionValue != 0) rollFormula += " + " + actionValue;
     if (modifier != 0) rollFormula += " + " + modifier;
-    if (destinyDice != 0) rollFormula += " + " + destinyDice + "d10";
+    if (isDestinyRoll) rollFormula += " + 1d10";
     if (nbDiceFuror != 0) rollFormula += " + " + nbDiceFuror + "d10";
     console.log(rollFormula);
 
@@ -49,7 +66,9 @@ export async function TaskCheck({
         modifier: modifier,
     };
 
-    if (item == null) item = { type: "" };
+    if (item == null) item = {
+        type: ""
+    };
 
     if (actor.data.isInitiated && (item.type == "sejdrCpt" || item.type == "galdrCpt" || item.type == "runeCpt")) {
         actor.data.nbDiceFuror.max = actor.data.primCarac.spirit.tenacity;
@@ -88,7 +107,9 @@ export async function TaskCheck({
         }, chatOptions);
         const isPrivate = false;
 
-        let rollResult = await new Roll(rollFormula, rollData).roll({ async: true })
+        let rollResult = await new Roll(rollFormula, rollData).roll({
+            async: true
+        })
 
         // Execute the roll, if needed
         if (!rollResult._evaluated) rollResult.evaluate();
@@ -115,7 +136,9 @@ export async function TaskCheck({
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,
-            speaker: { actor: speaker },
+            speaker: {
+                actor: speaker
+            },
             tooltip: isPrivate ? "" : await rollResult.getTooltip(),
             total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
             item: item,
@@ -172,7 +195,9 @@ export async function TaskCheck({
         }, chatOptions);
         const isPrivate = false;
 
-        let rollResult = await new Roll(rollFormula, rollData).roll({ async: true })
+        let rollResult = await new Roll(rollFormula, rollData).roll({
+            async: true
+        })
 
         // Execute the roll, if needed
         if (!rollResult._evaluated) rollResult.evaluate();
@@ -267,7 +292,9 @@ export async function TaskCheck({
             formula: isPrivate ? "???" : rollResult._formula,
             flavor: isPrivate ? null : chatOptions.flavor,
             user: chatOptions.user,
-            speaker: { actor: speaker },
+            speaker: {
+                actor: speaker
+            },
             tooltip: isPrivate ? "" : await rollResult.getTooltip(),
             total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
             criticalFailures: criticalFailures,
@@ -297,8 +324,59 @@ export async function TaskCheck({
 
 }
 
+
+async function GetTaskCheckOptions(taskType, caracName, actor) {
+    const template = "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs";
+    const html = await renderTemplate(template, {
+        actor: actor
+    });
+    let name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
+
+    return new Promise(resolve => {
+        const data = {
+            title: game.i18n.format(name, {
+                type: taskType
+            }),
+            content: html,
+            buttons: {
+                normal: {
+                    label: game.i18n.localize("yggdrasill.chat.actions.roll"),
+                    callback: html => resolve(
+                        _processTaskCheckOptions(html)
+                    )
+                },
+                cancel: {
+                    label: game.i18n.localize("yggdrasill.chat.actions.cancel"),
+                    callback: html => resolve({
+                        cancelled: true
+                    })
+                }
+            },
+            default: "normal",
+            close: () => resolve({
+                cancelled: true
+            })
+        }
+        new Dialog(data, null).render(true);
+    });
+}
+
+function _processTaskCheckOptions(html) {
+    let form = html[0].querySelector('form');
+    console.log(form);
+    // console.log(form.querySelector('[name="nbRollDiceFuror"]'));
+
+    return {
+        nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+        isDestinyRoll: form.isDestinyRoll.checked,
+        modifier: parseInt(form.ModificatorRollValue.value)
+    }
+}
+
 async function rollCriticalFail() {
-    let table = game.tables.filter(function(table) { return table._id == "UnAwWsx5UK6Y6rVJ" });
+    let table = game.tables.filter(function(table) {
+        return table._id == "UnAwWsx5UK6Y6rVJ"
+    });
     table = table[0];
     console.log(table);
     const defaultResults = await table.roll();
