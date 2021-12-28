@@ -19,6 +19,7 @@ export async function TaskCheck({
     item = null,
     itemType = null
 } = {}) {
+    console.log("Yggdrasill || taskType " + taskType);
     console.log("Yggdrasill || caracValue " + caracValue);
     console.log("Yggdrasill || caracName " + caracName);
     console.log("Yggdrasill || nbDiceKept " + nbDiceKept);
@@ -32,30 +33,54 @@ export async function TaskCheck({
     console.log("Yggdrasill || attackType " + attackType);
     console.log("Yggdrasill || actor :");
     console.log(actor);
+    console.log("Yggdrasill || item :");
+    console.log(item);
 
     if (askForOptions && actorType != "extra" && actorType != "creature") {
-        let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor);
+        let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item);
         if (checkOptions.cancelled) {
             return;
         }
         nbDiceFuror = checkOptions.nbDiceFuror;
         isDestinyRoll = checkOptions.isDestinyRoll;
         modifier += checkOptions.modifier;
+        if (checkOptions.caracUsed) {
+            let caracUsed = getCaracDatasFromItem(checkOptions.caracUsed, actor);
+            console.log(caracUsed);
+            caracValue = caracUsed.caracValue;
+            caracName = caracUsed.caracName;
+            modifier += caracUsed.modifier;
+        }
+
     }
 
     let rollFormula = caracValue + "d10kh" + nbDiceKept + "x10";
+    let detailFormula = caracName + " " + game.i18n.localize("yggdrasill.chat.rollFormula.roll");
     let isBlind = false;
     if (actor.type == "extra" || actor.type == "creature") {
         rollFormula = caracValue + "d10";
+        detailFormula = "carac roll";
         isBlind = true;
     }
-    console.log(rollFormula);
 
-    if (actionValue != 0) rollFormula += " + " + actionValue;
-    if (modifier != 0) rollFormula += " + " + modifier;
-    if (isDestinyRoll) rollFormula += " + 1d10";
-    if (nbDiceFuror != 0) rollFormula += " + " + nbDiceFuror + "d10";
+    if (actionValue != 0) {
+        rollFormula += " + " + actionValue;
+        detailFormula += " / " + game.i18n.localize("yggdrasill.chat.rollFormula.cpt");
+    }
+    if (modifier != 0) {
+        rollFormula += " + " + modifier;
+        detailFormula += " / " + game.i18n.localize("yggdrasill.chat.rollFormula.mod");
+    }
+    if (nbDiceFuror != 0) {
+        rollFormula += " + " + nbDiceFuror + "d10";
+        detailFormula += " / " + game.i18n.localize("yggdrasill.chat.rollFormula.furor");
+    }
+    if (isDestinyRoll) {
+        rollFormula += " + 1d10";
+        detailFormula += " / " + game.i18n.localize("yggdrasill.chat.rollFormula.destiny");
+    }
     console.log(rollFormula);
+    console.log(detailFormula);
 
     let rollData = {
         actionValue: actionValue,
@@ -63,7 +88,7 @@ export async function TaskCheck({
         nbDiceFuror: nbDiceFuror,
         destinyDice: destinyDice,
         caracValue: caracValue,
-        modifier: modifier,
+        modifier: modifier
     };
 
     if (item == null) item = {
@@ -88,9 +113,6 @@ export async function TaskCheck({
     }
     if (actor.data.isInFuror && actor.data.nbDiceFuror.value > actor.data.nbDiceFuror.min) actor.data.nbDiceFuror.minMax = actor.data.nbDiceFuror.value;
 
-    let messageData = {
-        speaker: ChatMessage.getSpeaker()
-    };
     if (item.type == "arme" && !(actor.data.caracUsed.isDefensive)) {
         let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
         console.log(item);
@@ -325,12 +347,32 @@ export async function TaskCheck({
 }
 
 
-async function GetTaskCheckOptions(taskType, caracName, actor) {
-    const template = "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs";
-    const html = await renderTemplate(template, {
-        actor: actor
-    });
-    let name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
+async function GetTaskCheckOptions(taskType, caracName, actor, item) {
+    const templates = {
+        "carac": "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs",
+        "competence": "systems/yggdrasill/templates/partials/dialog/cpt-check-dialog.hbs",
+    };
+
+    let html;
+    let name;
+    switch (taskType) {
+        case "carac":
+            html = await renderTemplate(templates[taskType], {
+                actor: actor
+            });
+            name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
+            break;
+        case "competence":
+            html = await renderTemplate(templates[taskType], {
+                actor: actor,
+                item: item,
+                config: CONFIG.yggdrasill
+            });
+            name = game.i18n.localize(item.name);
+            break;
+        default:
+            break;
+    }
 
     return new Promise(resolve => {
         const data = {
@@ -342,7 +384,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor) {
                 normal: {
                     label: game.i18n.localize("yggdrasill.chat.actions.roll"),
                     callback: html => resolve(
-                        _processTaskCheckOptions(html)
+                        _processTaskCheckOptions(html, taskType)
                     )
                 },
                 cancel: {
@@ -361,16 +403,48 @@ async function GetTaskCheckOptions(taskType, caracName, actor) {
     });
 }
 
-function _processTaskCheckOptions(html) {
+function _processTaskCheckOptions(html, taskType) {
     let form = html[0].querySelector('form');
     console.log(form);
-    // console.log(form.querySelector('[name="nbRollDiceFuror"]'));
 
-    return {
-        nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
-        isDestinyRoll: form.isDestinyRoll.checked,
-        modifier: parseInt(form.ModificatorRollValue.value)
+
+    switch (taskType) {
+        case "carac":
+            return {
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value)
+            }
+        case "competence":
+            return {
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value),
+                caracUsed: form.caracUsed.value
+            }
+        default:
+            break;
     }
+}
+
+function getCaracDatasFromItem(caracName, actor) {
+    let caracDatas = {
+        caracName: null,
+        caracValue: 0,
+        modifier: 0
+    };
+    caracDatas.caracName = caracName;
+    if (caracName == "power" || caracName == "vigour" || caracName == "agility") {
+        caracDatas.caracValue = actor.data.primCarac.body[caracName].value;
+        caracDatas.modifier = actor.data.primCarac.body[caracName].mod;
+    } else if (caracName == "intelect" || caracName == "perception" || caracName == "tenacity") {
+        caracDatas.caracValue = actor.data.primCarac.spirit[caracName].value;
+        caracDatas.modifier = actor.data.primCarac.spirit[caracName].mod;
+    } else {
+        caracDatas.caracValue = actor.data.primCarac.soul[caracName].value;
+        caracDatas.modifier = actor.data.primCarac.soul[caracName].mod;
+    }
+    return caracDatas;
 }
 
 async function rollCriticalFail() {

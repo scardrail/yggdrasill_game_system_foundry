@@ -20,7 +20,7 @@
                 <tr class="skill-item item" data-item-id="{{_id}}">
                     <td>
                     {{#if (upper ../data.data.nbDiceKept 0)}}
-                        <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+                        <div class="competence_name"><a><p data-tasktype="competence" class="task-check">{{name}}</p></a>
                             <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
                                 <h1>{{name}} :</h1><p>{{{data.description}}}</p>
                             </span>
@@ -64,7 +64,7 @@
                 <tr class="skill-item item" data-item-id="{{_id}}">
                     <td>
                     {{#if (upper ../data.data.nbDiceKept 0)}}
-                        <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+                        <div class="competence_name"><a><p data-tasktype="competence" class="task-check">{{name}}</p></a>
                             <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
                                 <h1>{{name}} :</h1><p>{{{data.description}}}</p>
                             </span>
@@ -110,7 +110,7 @@
                     <tr class="skill-item item" data-item-id="{{_id}}">
                         <td>
                         {{#if (upper ../data.data.nbDiceKept 0)}}
-                            <div class="competence_name"><a><p class="item-roll">{{name}}</p></a>
+                            <div class="competence_name"><a><p data-tasktype="competence" class="task-check">{{name}}</p></a>
                                 <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
                                     <h1>{{name}} :</h1><p>{{{data.description}}}</p>
                                 </span>

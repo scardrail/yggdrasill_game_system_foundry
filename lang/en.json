@@ -592,6 +592,13 @@
                 "furor": "Furor :",
                 "destiny": "Destiny ?",
                 "modifier": "Modifier :"
+            },
+            "rollFormula": {
+                "roll": "roll",
+                "cpt": "cpt",
+                "mod": "mod",
+                "destiny": "destiny",
+                "furor": "furor"
             }
         },
         "attackTypes": {

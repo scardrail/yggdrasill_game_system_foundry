@@ -29,7 +29,9 @@ export default class yggdrasillItem extends Item {
 
         let chatData = {
             user: game.user.id,
-            speaker: { actor: this.actor },
+            speaker: {
+                actor: this.actor
+            },
         };
 
         let cardData = {
@@ -40,6 +42,7 @@ export default class yggdrasillItem extends Item {
         }
         console.log("roll data card");
         console.log(this.actor.data);
+        console.log(this.type);
 
         chatData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
 

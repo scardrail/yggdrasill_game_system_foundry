@@ -88,9 +88,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
     }
 
-
-
-
     _onItemCreate(event) {
         event.preventDefault();
         let element = event.currentTarget;
@@ -153,8 +150,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
         item.roll();
     }
-
-
 
     async _onFurorIntRoll(event, checked) {
         if (!checked) {
@@ -230,6 +225,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             isConflict: false,
             isOffensive: false,
             actorType: null,
+            itemId: null,
             item: null,
         }
         task.actorType = this.actor.type;
@@ -237,36 +233,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
 
         if (task.actorType == "pj" || task.actorType == "pnj") {
-            switch (task.taskType) {
-                case "carac":
-                    task.caracName = event.currentTarget.dataset.carac;
-                    task.nbDiceKept = this.actor.data.data.nbDiceKept;
-
-                    if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
-                        task.caracValue = this.actor.data.data.primCarac.body[task.caracName].value;
-                        task.modifier = this.actor.data.data.primCarac.body[task.caracName].mod;
-                    } else if (task.caracName == "intelect" || task.caracName == "perception" || task.caracName == "tenacity") {
-                        task.caracValue = this.actor.data.data.primCarac.spirit[task.caracName].value;
-                        task.modifier = this.actor.data.data.primCarac.spirit[task.caracName].mod;
-                    } else {
-                        task.caracValue = this.actor.data.data.primCarac.soul[task.caracName].value;
-                        task.modifier = this.actor.data.data.primCarac.soul[task.caracName].mod;
-                    }
-
-                    task.modifier += this.actor.data.data.caracUsed.rollModifier + this.actor.data.data.rollModifier + this.actor.data.data.actions.modifier + this.actor.data.data.martialCpt.mod;
-                    break;
-
-                default:
-                    break;
-            }
-
-            try {
-                task.item = this.actor.items.get(event.currentTarget.dataset.itemId).data;
-            } catch (e) {
-                task.item = null
-            }
+            task = setImportantCharacterTask(task, this.actor);
         } else {
-
             try {
                 task.isCpt = event.currentTarget.dataset.competence;
                 console.log(task.isCpt);
@@ -294,6 +262,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
         Dice.TaskCheck({
             askForOptions: true,
+            taskType: task.taskType,
             actionValue: task.actionValue,
             nbDiceKept: task.nbDiceKept,
             nbDiceFuror: task.nbDiceFuror,
@@ -345,4 +314,46 @@ export default class YggdrasillActorSheet extends ActorSheet {
         new Roll(rollFormula, rollData).roll().toMessage(messageData);
 
     }
+}
+
+function setImportantCharacterTask(task, actor) {
+
+    switch (task.taskType) {
+        case "carac":
+            task.caracName = event.currentTarget.dataset.carac;
+
+            if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
+                task.caracValue = actor.data.data.primCarac.body[task.caracName].value;
+                task.modifier = actor.data.data.primCarac.body[task.caracName].mod;
+            } else if (task.caracName == "intelect" || task.caracName == "perception" || task.caracName == "tenacity") {
+                task.caracValue = actor.data.data.primCarac.spirit[task.caracName].value;
+                task.modifier = actor.data.data.primCarac.spirit[task.caracName].mod;
+            } else {
+                task.caracValue = actor.data.data.primCarac.soul[task.caracName].value;
+                task.modifier = actor.data.data.primCarac.soul[task.caracName].mod;
+            }
+
+            try {
+                task.item = actor.items.get(event.currentTarget.dataset.itemId).data;
+            } catch (e) {
+                task.item = null
+            }
+
+            break;
+
+
+        case "competence":
+            task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            task.item = actor.items.get(task.itemId).data;
+            task.isCpt = true;
+            task.actionValue = task.item.data.value;
+            break;
+        default:
+            break;
+    }
+
+    task.nbDiceKept = actor.data.data.nbDiceKept;
+    task.modifier += actor.data.data.caracUsed.rollModifier + actor.data.data.rollModifier + actor.data.data.actions.modifier + actor.data.data.martialCpt.mod;
+
+    return task;
 }
