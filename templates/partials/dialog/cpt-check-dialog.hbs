@@ -6,7 +6,9 @@
         <select class="carac" data-type="{{type}}" data-owner-id="{{owner}}" name="caracUsed" style="width:100%">
             {{#select actor.data.caracUsed}}
                 {{#each config.carac as |name type|}}
+                    {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation type)) type) "value") 1) ../actor.data.lifePoints.isWeary)}}
                     <option name="caracUsed" value="{{type}}">{{localize name}}</option>
+                    {{/if}}
                 {{/each}}
             {{/select}}
         </select>

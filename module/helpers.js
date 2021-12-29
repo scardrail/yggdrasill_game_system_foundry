@@ -107,6 +107,15 @@ export const registerHandlebarsHelpers = function() {
     Handlebars.registerHelper('andNot', function(val1, val2) {
         return !val1 && !val2;
     });
+    Handlebars.registerHelper('xAndNot', function(val1, val2) {
+        if (val1 == val2 && val1 && val2)
+            return false;
+        else
+            return true;
+    });
+    Handlebars.registerHelper('stringify', function(val) {
+        return parseInt(val);
+    });
 
     Handlebars.registerHelper('times', function(n, block) {
         var accum = '';
@@ -118,6 +127,8 @@ export const registerHandlebarsHelpers = function() {
         }
         return accum;
     });
+
+
 
     Handlebars.registerHelper('for', function(from, to, incr, block) {
         var accum = '';

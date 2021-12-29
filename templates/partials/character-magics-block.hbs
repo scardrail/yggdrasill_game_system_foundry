@@ -20,7 +20,11 @@
             <tr class="sejdrCpt-item item" data-item-id="{{_id}}">
                 <td>
                     <div class="competence_name">
-                    <a><p class="item-roll">{{name}}</p></a>
+                    {{#if (and ../data.data.lifePoints.isWeary (lowerEq ../data.data.primCarac.soul.instinct.value 1 ))}}                        
+                        <p>{{name}}</p>
+                    {{else}}
+                        <a><p class="task-check" data-tasktype="sejdrCpt" >{{name}}</p></a>
+                    {{/if}}
                         <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
                             <h1>{{name}} :</h1><p>
                                 <h3>
@@ -70,7 +74,11 @@
                 <td>{{data.difficultyLevel}}</td>
                 <td>
                     <div class="competence_name">
-                    <a><p class="item-roll">{{name}}</p></a>
+                    {{#if (and ../data.data.lifePoints.isWeary (lowerEq ../data.data.primCarac.soul.charisma.value 1 ))}}                        
+                        <p>{{name}}</p>
+                    {{else}}
+                        <a><p class="task-check" data-tasktype="galdrCpt" >{{name}}</p></a>
+                    {{/if}}
                         <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
                             <h1>{{name}} :</h1><p>{{{data.description}}}</p>
                         </span>
@@ -108,7 +116,11 @@
             <tr class="runeCpt-item item" data-item-id="{{_id}}">
                 <td>
                     <div class="competence_name">
-                    <a><p class="item-roll">{{name}}</p></a>
+                    {{#if (and ../data.data.lifePoints.isWeary (lowerEq ../data.data.primCarac.soul.communication.value 1 ))}}                        
+                        <p>{{name}}</p>
+                    {{else}}
+                        <a><p class="task-check" data-tasktype="runeCpt" >{{name}}</p></a>
+                    {{/if}}
                         <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
                             <h1>{{name}} :</h1><p>
                                 <h3>

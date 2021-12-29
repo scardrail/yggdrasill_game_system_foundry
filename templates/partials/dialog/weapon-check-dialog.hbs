@@ -7,7 +7,9 @@
                 <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
                     {{#select actor.data.caracUsed}}
                         {{#each config.powerRangedCarac as |name key|}}
+                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
                             <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                                {{/if}}
                         {{/each}}
                     {{/select}}
                 </select>
@@ -18,7 +20,9 @@
                     <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
                         {{#select actor.data.caracUsed}}
                             {{#each config.instinctRangedCarac as |name key|}}
+                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
                                 <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                                {{/if}}
                             {{/each}}
                         {{/select}}
                     </select>
@@ -29,7 +33,9 @@
                     <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
                         {{#select actor.data.caracUsed}}
                             {{#each config.rangedCarac as |name key|}}
+                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
                                 <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                                {{/if}}
                             {{/each}}
                         {{/select}}
                     </select>
@@ -42,7 +48,10 @@
             <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
                 {{#select actor.data.caracUsed}}
                 {{#each config.meleeCarac as |name key|}}
-                    <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                 {{log (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.meleeCoresp key))) (lookup ../config.meleeCoresp key)) "value")}}
+                    {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.meleeCoresp key))) (lookup ../config.meleeCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
+                        <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                    {{/if}}
                 {{/each}}
             {{/select}}
         </select>

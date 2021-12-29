@@ -62,9 +62,10 @@ yggdrasill.galdrTypes = {
     curses: "yggdrasill.magicCpt.galdrTypes.curses"
 };
 yggdrasill.magicPositiveness = {
-    positive: "yggdrasill.magicCpt.positiveness.positive",
     neutral: "yggdrasill.magicCpt.positiveness.neutral",
-    negative: "yggdrasill.magicCpt.positiveness.negative"
+    positive: "yggdrasill.magicCpt.positiveness.positive",
+    negative: "yggdrasill.magicCpt.positiveness.negative",
+    both: "yggdrasill.magicCpt.positiveness.both"
 };
 yggdrasill.magicDuration = {
     none: "yggdrasill.extra.none",
@@ -171,6 +172,28 @@ yggdrasill.carac = {
     charisma: "yggdrasill.characteristics.primary.charisma",
     instinct: "yggdrasill.characteristics.primary.instinct",
     communication: "yggdrasill.characteristics.primary.communication"
+};
+yggdrasill.caracLocation = {
+    power: "body",
+    vigour: "body",
+    agility: "body",
+    intelect: "spirit",
+    perception: "spirit",
+    tenacity: "spirit",
+    charisma: "soul",
+    instinct: "soul",
+    communication: "soul"
+};
+yggdrasill.caracFullLocation = {
+    power: "body.power.value",
+    vigour: "body.vigour.value",
+    agility: "body.agility.value",
+    intelect: "spirit.intelect.value",
+    perception: "spirit.perception.value",
+    tenacity: "spirit.tenacity.value",
+    charisma: "soul.charisma.value",
+    instinct: "soul.instinct.value",
+    communication: "soul.communication.value"
 };
 yggdrasill.extraCarac = {
     conflict: "yggdrasill.extra.conflict",
