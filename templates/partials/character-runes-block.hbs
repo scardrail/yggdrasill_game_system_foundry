@@ -18,7 +18,12 @@
                 <td>
                     <div class="competence_name">{{name}}
                         <span class="comp_tooltiptext comp_tooltiptextwidth_noLinkCol comp_tooltiptextleft_noLinkCol">
-                            <h1>{{name}} :</h1><p>{{{data.description}}}</p>
+                            {{#if (or (equals data.positiveness "none") (equals data.positiveness "positive"))}}
+                                <h1>{{localize "yggdrasill.magicCpt.positiveEffect"}} :</h1><p>{{{data.positiveEffect}}}</p>
+                            {{/if}}
+                            {{#if (or (equals data.positiveness "none") (equals data.positiveness "negative"))}}
+                                <h1>{{localize "yggdrasill.magicCpt.negativeEffect"}} :</h1><p>{{{data.negativeEffect}}}</p>
+                            {{/if}}
                         </span>
                     </div>
                 </td>

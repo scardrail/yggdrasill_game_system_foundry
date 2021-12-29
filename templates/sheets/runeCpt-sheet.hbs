@@ -25,6 +25,18 @@
                 </td>
             </tr>
             <tr>
+                <th>{{localize "yggdrasill.magicCpt.positivenessN"}}</th>
+                <td>
+                    <select name="data.positiveness" style="width:100%">
+                        {{#select data.data.positiveness}}
+                        {{#each config.magicPositiveness as |name type|}}
+                        <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <th>{{localize "yggdrasill.magicCpt.targets"}}</th>
                 <td>
                     <input name="data.targets" type="text" value="{{data.data.targets}}" data-type="Text">
