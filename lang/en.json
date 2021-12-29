@@ -319,27 +319,27 @@
                 },
                 "skin": {
                     "value": "Skin",
-                    "sd": 3,
+                    "sd": "3",
                     "duration": "Hours"
                 },
                 "cloth": {
                     "value": "Cloth",
-                    "sd": 6,
+                    "sd": "6",
                     "duration": "Days"
                 },
                 "leather": {
                     "value": "Leather",
-                    "sd": 9,
+                    "sd": "9",
                     "duration": "Weeks"
                 },
                 "wood": {
                     "value": "Wood",
-                    "sd": 12,
+                    "sd": "12",
                     "duration": "Months"
                 },
                 "stoneMetal": {
                     "value": "Stone, Metal",
-                    "sd": 15,
+                    "sd": "15",
                     "duration": "Years"
                 }
             },

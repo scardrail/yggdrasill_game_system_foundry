@@ -313,31 +313,31 @@
                 },
                 "skin": {
                     "value": "Peau",
-                    "sd": 3,
+                    "sd": "3",
                     "effectsDuration": "Heures",
                     "castDuration": "Action"
                 },
                 "cloth": {
                     "value": "Tissu",
-                    "sd": 6,
+                    "sd": "6",
                     "effectsDuration": "Jours",
                     "castDuration": "Tour"
                 },
                 "leather": {
                     "value": "Cuir",
-                    "sd": 9,
+                    "sd": "9",
                     "effectsDuration": "Semaines",
                     "castDuration": "Minute"
                 },
                 "wood": {
                     "value": "Bois",
-                    "sd": 12,
+                    "sd": "12",
                     "effectsDuration": "Mois",
                     "castDuration": "Heure"
                 },
                 "stoneMetal": {
                     "value": "Pierre, Métal",
-                    "sd": 15,
+                    "sd": "15",
                     "effectsDuration": "Années",
                     "castDuration": "Jour"
                 }
