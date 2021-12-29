@@ -11,6 +11,10 @@ export async function TaskCheck({
     modifier = 0,
     isCpt = false,
     isWeapon = false,
+    isMagic = false,
+    isRune = false,
+    isSejdr = false,
+    isGaldr = false,
     isConflict = false,
     isOffensive = false,
     attackType = null,
@@ -18,7 +22,10 @@ export async function TaskCheck({
     actorType = null,
     speaker = null,
     item = null,
-    itemType = null
+    itemType = null,
+    magicPositiveness = null,
+    galdrData = null,
+    runeData = null,
 } = {}) {
     if (askForOptions && actorType != "extra" && actorType != "creature") {
         let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item);
@@ -62,7 +69,42 @@ export async function TaskCheck({
                     console.log(`Sorry, we are out of ${checkOptions.cptUsed}.`);
             }
         }
+        if (isSejdr) {
+            magicPositiveness = checkOptions.positiveness;
+        } else if (isGaldr) {
+            let galdrTargetSize = game.i18n.localize(checkOptions.targetPath + ".size");
+            let galdrTargetValue = null;
+            if (galdrTargetSize != checkOptions.targetPath + ".size")
+                galdrTargetValue = galdrTargetSize + game.i18n.localize(checkOptions.targetPath + ".value")
+            else
+                galdrTargetValue = game.i18n.localize(checkOptions.targetPath + ".value")
 
+            galdrData = {
+                sd: checkOptions.sd,
+                durationDice: game.i18n.localize(checkOptions.durationPath + ".dice"),
+                durationUnit: game.i18n.localize(checkOptions.durationPath + ".unit"),
+                targetValue: galdrTargetValue
+            }
+        } else if (isRune) {
+            magicPositiveness = checkOptions.positiveness;
+            let castDuration = (6 - actor.data.primCarac.body.agility.value) + " " + game.i18n.localize(checkOptions.supportPath + ".castDuration");
+            let effectsDuration = actionValue + " " + game.i18n.localize(checkOptions.supportPath + ".effectsDuration");
+            let support = game.i18n.localize(checkOptions.supportPath + ".value");
+            runeData = {
+                positiveness: magicPositiveness,
+                sd: checkOptions.sd,
+                power: checkOptions.power,
+                castDuration: castDuration,
+                effectsDuration: effectsDuration,
+                support: support
+            }
+            console.log(runeData)
+        }
+
+    }
+
+    if (caracValue == 1 && actorType != "extra" && actorType != "creature") {
+        nbDiceKept += -1;
     }
     console.log("Yggdrasill || taskType " + taskType);
     console.log("Yggdrasill || caracValue " + caracValue);
@@ -72,8 +114,7 @@ export async function TaskCheck({
     console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
     console.log("Yggdrasill || destinyDice " + destinyDice);
     console.log("Yggdrasill || modifier " + modifier);
-    console.log("Yggdrasill || isCpt " + isCpt);
-    console.log("Yggdrasill || isWeapon " + isWeapon);
+    console.log("Yggdrasill || isGaldr " + isGaldr);
     console.log("Yggdrasill || isConflict " + isConflict);
     console.log("Yggdrasill || isOffensive " + isOffensive);
     console.log("Yggdrasill || attackType " + attackType);
@@ -125,7 +166,7 @@ export async function TaskCheck({
     };
 
     if (actor.data.isInitiated && (item.type == "sejdrCpt" || item.type == "galdrCpt" || item.type == "runeCpt")) {
-        actor.data.nbDiceFuror.max = actor.data.primCarac.spirit.tenacity;
+        actor.data.nbDiceFuror.max = actor.data.primCarac.soul.instinct;
         actor.data.nbDiceFuror.min = 1;
         actor.data.secCarac.dp.magic = 0;
         actor.data.secCarac.dm.magic = 0;
@@ -144,10 +185,7 @@ export async function TaskCheck({
 
     if (item.type == "arme" && !(actor.data.caracUsed.isDefensive)) {
         let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
-        // console.log(item);
         console.log("weapon roll");
-        // console.log(actor);
-
         let chatOptions = {};
 
         chatOptions = foundry.utils.mergeObject({
@@ -210,8 +248,6 @@ export async function TaskCheck({
 
     } else {
         console.log("Yggdrasill ||" + item.type);
-        // console.log(item);
-        // console.log(actor);
         let chatTemplate = ""
         if (item.type == "sejdrCpt") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-sejdrCpt-card.hbs";
@@ -228,11 +264,11 @@ export async function TaskCheck({
                 console.log("Yggdrasill |0| isConflict " + isConflict);
                 actor.data.dmgMod = 0;
             }
+        } else if (item.type == "competence") {
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-competence-card.hbs";
         } else {
-            chatTemplate = "systems/yggdrasill/templates/partials/chat/rollCheck.hbs";
+            chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
         }
-        // console.log(item);
-        // console.log(actor);
 
         let chatOptions = {};
 
@@ -254,24 +290,27 @@ export async function TaskCheck({
         if (item.type == "sejdrCpt") {
             let mr = Math.round(rollResult._total * 100) / 100 - 14;
             let durationValue = "";
+            let failure = false;
             console.log("Yggdrasill || _total" + rollResult._total);
             console.log("Yggdrasill || mr" + mr);
             if (mr >= 0 && mr <= 5) {
-                durationValue = "[[1d5]]" + game.i18n.localize("yggdrasill.sheet.duration.action");
+                durationValue = "[[1d5]]" + game.i18n.localize("yggdrasill.magicCpt.duration.action");
             } else if (mr >= 6 && mr <= 10) {
-                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.sheet.duration.turn");
+                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.magicCpt.duration.turn");
 
             } else if (mr >= 11 && mr <= 15) {
-                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.sheet.duration.minute");
+                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.magicCpt.duration.minute");
 
             } else if (mr >= 16 && mr <= 25) {
-                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.sheet.duration.hour");
+                durationValue = "[[1d10]]" + game.i18n.localize("yggdrasill.magicCpt.duration.hour");
 
             } else if (mr >= 26) {
-                durationValue = "[[1d5]]" + game.i18n.localize("yggdrasill.sheet.duration.day");
+                durationValue = "[[1d5]]" + game.i18n.localize("yggdrasill.magicCpt.duration.day");
 
             } else {
                 durationValue = game.i18n.localize("yggdrasill.sheet.failure");
+                failure = true;
+
             }
             item.data.durationValue = durationValue;
             cardData = {
@@ -282,12 +321,14 @@ export async function TaskCheck({
                 total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
                 mr: mr,
                 item: item,
+                positiveness: magicPositiveness,
+                failure: failure,
                 owner: actor.id,
                 actor: actor,
                 config: CONFIG.yggdrasill
             }
 
-        } else {
+        } else if (item.type == "galdrCpt") {
             cardData = {
                 formula: isPrivate ? "???" : rollResult._formula,
                 flavor: isPrivate ? null : chatOptions.flavor,
@@ -295,6 +336,37 @@ export async function TaskCheck({
                 tooltip: isPrivate ? "" : await rollResult.getTooltip(),
                 total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
                 item: item,
+                galdrData: galdrData,
+                owner: actor.id,
+                actor: actor,
+                config: CONFIG.yggdrasill
+            }
+        } else if (item.type == "runeCpt") {
+            cardData = {
+                formula: isPrivate ? "???" : rollResult._formula,
+                flavor: isPrivate ? null : chatOptions.flavor,
+                user: chatOptions.user,
+                tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+                total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+                item: item,
+                runeData: runeData,
+                owner: actor.id,
+                actor: actor,
+                config: CONFIG.yggdrasill
+            }
+
+        } else {
+            let caracNameSent = null;
+            if (actor.type == "extra" || actor.type == "creature") caracNameSent = game.i18n.localize(CONFIG.yggdrasill.extraCarac[caracName])
+            else caracNameSent = game.i18n.localize(CONFIG.yggdrasill.carac[caracName])
+            cardData = {
+                formula: isPrivate ? "???" : rollResult._formula,
+                flavor: isPrivate ? null : chatOptions.flavor,
+                user: chatOptions.user,
+                tooltip: isPrivate ? "" : await rollResult.getTooltip(),
+                total: isPrivate ? "?" : Math.round(rollResult._total * 100) / 100,
+                item: item,
+                caracName: caracNameSent,
                 owner: actor.id,
                 actor: actor,
                 config: CONFIG.yggdrasill
@@ -379,6 +451,9 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
         "carac": "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs",
         "competence": "systems/yggdrasill/templates/partials/dialog/cpt-check-dialog.hbs",
         "arme": "systems/yggdrasill/templates/partials/dialog/weapon-check-dialog.hbs",
+        "sejdrCpt": "systems/yggdrasill/templates/partials/dialog/sejdr-check-dialog.hbs",
+        "galdrCpt": "systems/yggdrasill/templates/partials/dialog/galdr-check-dialog.hbs",
+        "runeCpt": "systems/yggdrasill/templates/partials/dialog/rune-check-dialog.hbs"
     };
 
     let html;
@@ -388,7 +463,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
             actor: actor
         });
         name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
-    } else if (taskType == "competence" || taskType == "arme") {
+    } else {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
             item: item,
@@ -431,6 +506,12 @@ function _processTaskCheckOptions(html, taskType, item) {
     let form = html[0].querySelector('form');
     console.log(form);
 
+    let positiveness = null;
+    let sd = 0;
+    let targetPath = null;
+    let supportPath = null;
+    let durationPath = null;
+
 
     switch (taskType) {
         case "carac":
@@ -439,6 +520,7 @@ function _processTaskCheckOptions(html, taskType, item) {
                 isDestinyRoll: form.isDestinyRoll.checked,
                 modifier: parseInt(form.ModificatorRollValue.value)
             }
+            break;
         case "competence":
             return {
                 nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
@@ -446,8 +528,8 @@ function _processTaskCheckOptions(html, taskType, item) {
                 modifier: parseInt(form.ModificatorRollValue.value),
                 caracUsed: form.caracUsed.value
             }
+            break;
         case "arme":
-
             let cptUsed = form.caracUsed.value;
             let carac = null;
             if (!item.data.properties.ranged) {
@@ -462,6 +544,66 @@ function _processTaskCheckOptions(html, taskType, item) {
                 caracUsed: carac,
                 cptUsed: cptUsed
             }
+            break;
+        case "sejdrCpt":
+            if (item.data.positiveness == "both") {
+                positiveness = form.positiveness.value;
+            } else {
+                positiveness = item.data.positiveness
+            }
+            return {
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value),
+                caracUsed: "",
+                positiveness: positiveness
+            }
+            break;
+        case "galdrCpt":
+            targetPath = CONFIG.yggdrasill.galdrTargets[item.data.type][form.targets.value];
+            durationPath = CONFIG.yggdrasill.galdrDuration[form.duration.value];
+            console.log(targetPath);
+            console.log(durationPath);
+
+            sd = item.data.difficultyLevel + parseInt(game.i18n.localize(targetPath + ".sd")) + parseInt(game.i18n.localize(durationPath + ".sd"));
+
+            console.log(sd);
+
+            return {
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value),
+                caracUsed: "",
+                sd: sd,
+                durationPath: durationPath,
+                targetPath: targetPath
+            }
+            break;
+        case "runeCpt":
+            supportPath = CONFIG.yggdrasill.runeSupport[form.support.value];
+            if (item.data.positiveness == "both") {
+                positiveness = form.positiveness.value;
+            } else {
+                positiveness = item.data.positiveness
+            }
+            console.log(supportPath);
+
+
+            sd = parseInt(item.data.level) + parseInt(game.i18n.localize(supportPath + ".sd")) + parseInt(form.power.value);
+
+            console.log(sd);
+
+            return {
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value),
+                caracUsed: "",
+                sd: sd,
+                positiveness: positiveness,
+                supportPath: supportPath,
+                power: form.power.value
+            }
+            break;
         default:
             break;
     }
@@ -504,6 +646,8 @@ function resetingValues(data, type) {
     console.log("Yggdrasill || resetingValues");
     if (type == "pj" || type == "pnj") {
         data.nbDiceFuror.value = 0;
+        data.nbDiceFuror.min = 0;
+        data.nbDiceFuror.max = 1;
         data.caracUsed.value = 0;
         data.caracUsed.rollModifier = 0;
         data.isDestinyRoll = false;

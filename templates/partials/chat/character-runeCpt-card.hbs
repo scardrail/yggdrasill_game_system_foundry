@@ -2,24 +2,29 @@
 <div>
     <h2>{{localize "yggdrasill.magicCpt.name"}} : {{item.name}}</h2>
 
-    <h2>{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{actor.data.magicCpt.runeCpt.difficultyLevelSum}}</h2>
+{{#if (upperEq total runeData.sd)}}
+    <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{runeData.sd}}</h2>
 </div>
 <div>
-    {{localize "yggdrasill.magicCpt.preparation"}} :  {{actor.data.magicCpt.runeCpt.castDuration}}
+    {{localize "yggdrasill.magicCpt.preparation"}} :  {{runeData.castDuration}}
 </div>
 <div>
-    {{localize "yggdrasill.magicCpt.power"}} : {{actor.data.magicCpt.runeCpt.power}}
+    {{localize "yggdrasill.magicCpt.power"}} : {{runeData.power}}
 </div>
 <div>
-    {{localize "yggdrasill.magicCpt.durationN"}} :  {{actor.data.magicCpt.runeCpt.effectsDuration}}
+    {{localize "yggdrasill.magicCpt.durationN"}} :  {{runeData.effectsDuration}}
 </div>
 <div>
-    {{localize "yggdrasill.magicCpt.support"}} :  {{actor.data.magicCpt.runeCpt.support}}
+    {{localize "yggdrasill.magicCpt.support"}} :  {{runeData.support}}
 </div>
 <div>
-    {{#if (eq actor.data.magicCpt.runeCpt.positiveness "positive")}}
-        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.positiveEffect}}}
+    {{#if (eq runeData.positiveness "positive")}}
+        {{localize "yggdrasill.magicCpt.positiveEffect"}} :  {{{item.data.positiveEffect}}}
     {{else}}
-        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.negativeEffect}}}
+        {{localize "yggdrasill.magicCpt.negativeEffect"}} :  {{{item.data.negativeEffect}}}
     {{/if}}
 </div>
+    {{else}}
+        <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{runeData.sd}}</h2>
+    </div>
+    {{/if}}

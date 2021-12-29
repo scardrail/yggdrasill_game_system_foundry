@@ -1,0 +1,45 @@
+<form>
+    
+    {{#if (equals item.data.positiveness "both")}}
+        <div class="form-group">
+            <label>{{localize "yggdrasill.magicCpt.positivenessN"}}</label>
+            <select class="carac" data-type="{{type}}" data-owner-id="{{owner}}" name="positiveness" style="width:100%">
+                {{#select actor.data.magicCpt.sejdrCpt.positiveness}}
+                    {{#each config.runePositiveness as |path positiv|}}
+                        <option value="{{positiv}}">{{localize path}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+    {{/if}}
+    <div class="form-group">
+        <label>{{localize "yggdrasill.magicCpt.support"}}</label>
+        <select class="support" data-key="{{key}}" data-owner-id="{{owner}}" path="data.magicCpt.runeCpt.support" name="support" style="width:100%">
+            {{#select actor.data.magicCpt.runeCpt.support}}
+                {{#each config.runeSupport as |path key|}}
+                    <option value="{{key}}">{{localize (add path ".value")}} | {{localize "yggdrasill.magicCpt.difficultyLevel"}} : {{localize (add path ".sd")}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>{{localize "yggdrasill.magicCpt.power"}}</label>
+        <input class="power" data-owner-id="{{owner}}" name="power" type="number" min="1" max="15" value="1" data-type="Number">
+    </div>
+    <div class="form-group">
+        <label>{{localize "yggdrasill.chat.other.furor"}}</label>
+        {{#if (upper actor.data.nbDiceFuror.max actor.data.reserve.value)}}
+            <input class="furor" name="nbRollDiceFuror" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.reserve.value}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p>
+        {{else}}
+            <input class="furor" name="nbRollDiceFuror" type="number" min="{{actor.data.nbDiceFuror.min}}" max="{{actor.data.nbDiceFuror.max}}" value="{{actor.data.nbDiceFuror.value}}" data-type="Number" style="text-align: right;"><p style="margin: 0.35em 0;">/{{actor.data.reserve.value}}</p> 
+        {{/if}}
+    </div>
+    <div class="form-group"  style="display: grid; grid-template-columns:repeat(3, 1fr); gap:2px;">
+        <label>{{localize "yggdrasill.chat.other.destiny"}}</label>
+        <input type="checkbox" name="isDestinyRoll"/>
+    </div>    
+    <div class="form-group">
+        <label>{{localize "yggdrasill.chat.other.modifier"}}</label>
+        <input type="number" name="ModificatorRollValue" data-type="Number" value="0"/>
+    </div>
+</form>

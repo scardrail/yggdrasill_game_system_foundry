@@ -213,6 +213,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
     _onTaskCheck(event) {
         let task = {
+            askForOptions: true,
             taskType: null,
             actionValue: 0,
             nbDiceKept: 0,
@@ -223,6 +224,10 @@ export default class YggdrasillActorSheet extends ActorSheet {
             modifier: 0,
             isCpt: false,
             isWeapon: false,
+            isMagic: false,
+            isRune: false,
+            isSejdr: false,
+            isGaldr: false,
             isConflict: false,
             isOffensive: false,
             actorType: null,
@@ -250,6 +255,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
                 task.nbDiceFuror = event.currentTarget.dataset.nbDiceFuror;
                 task.destinyDice = event.currentTarget.dataset.destinyDice;
                 task.caracValue = event.currentTarget.dataset.caracValue;
+                task.caracName = event.currentTarget.dataset.actionName;
                 task.modifier = event.currentTarget.dataset.modifier;
             } catch (e) {
 
@@ -262,7 +268,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         console.log(task);
 
         Dice.TaskCheck({
-            askForOptions: true,
+            askForOptions: task.askForOptions,
             taskType: task.taskType,
             actionValue: task.actionValue,
             nbDiceKept: task.nbDiceKept,
@@ -273,6 +279,10 @@ export default class YggdrasillActorSheet extends ActorSheet {
             modifier: task.modifier,
             isCpt: task.isCpt,
             isWeapon: task.isWeapon,
+            isMagic: task.isMagic,
+            isGaldr: task.isGaldr,
+            isRune: task.isRune,
+            isSejdr: task.isSejdr,
             isConflict: task.isConflict,
             isOffensive: task.isOffensive,
             actor: this.actor.data,
@@ -320,6 +330,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
 function setImportantCharacterTask(task, actor) {
     console.log(task.taskType);
+    let competence = null;
 
     switch (task.taskType) {
         case "carac":
@@ -356,7 +367,7 @@ function setImportantCharacterTask(task, actor) {
             task.itemId = event.currentTarget.closest(".item").dataset.itemId;
             task.item = actor.items.get(task.itemId).data;
             task.isWeapon = true;
-            let competence = actor.items.filter(function(item) {
+            competence = actor.items.filter(function(item) {
                 return item.data.data.identifier == task.item.data.subType
             });
             try {
@@ -365,9 +376,95 @@ function setImportantCharacterTask(task, actor) {
                 task.actionValue = 0;
             }
             break;
+        case "sejdrCpt":
+            console.log("Yggdrasill || sejdr");
+            task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            task.item = actor.items.get(task.itemId).data;
+            console.log(task.item);
+            console.log(actor);
+            task.isMagic = true;
+            task.isSejdr = true;
+            task.caracValue = actor.data.data.primCarac.soul.instinct.value;
+            task.modifier += actor.data.data.primCarac.soul.instinct.mod;
+            task.modifier += task.item.data.modifier;
+            competence = actor.items.filter(function(item) {
+                return item.data.data.identifier == task.item.type
+            });
+            try {
+                task.actionValue = competence[0].data.data.value;
+            } catch (e) {
+                task.actionValue = 0;
+            }
+            if (actor.data.data.nbDiceFuror.value <= 0) actor.data.data.nbDiceFuror.value = 1;
+            if (actor.data.data.primCarac.soul.instinct.value <= actor.data.data.reserve.value) {
+                actor.data.data.nbDiceFuror.max = actor.data.data.primCarac.soul.instinct.value;
+            } else {
+                actor.data.data.nbDiceFuror.max = actor.data.data.reserve.value;
+            }
+            actor.data.data.nbDiceFuror.min = 1;
+            task.actionValue = actor.data.data.primCarac.soul.instinct.value;
+            if (task.item.data.positiveness == "both" && !task.askForOptions) task.askForOptions = true;
+
+            break;
+        case "galdrCpt":
+            console.log("Yggdrasill || galdr");
+            task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            task.item = actor.items.get(task.itemId).data;
+            console.log(task.item);
+            task.isMagic = true;
+            task.isGaldr = true;
+            task.caracValue = actor.data.data.primCarac.soul.charisma.value;
+            task.modifier += actor.data.data.primCarac.soul.charisma.mod;
+            competence = actor.items.filter(function(item) {
+                return item.data.data.identifier == task.item.type
+            });
+            try {
+                task.actionValue = competence[0].data.data.value;
+            } catch (e) {
+                task.actionValue = 0;
+            }
+            if (actor.data.data.nbDiceFuror.value <= 0) actor.data.data.nbDiceFuror.value = 1;
+            if (actor.data.data.primCarac.soul.instinct.value <= actor.data.data.reserve.value) {
+                actor.data.data.nbDiceFuror.max = actor.data.data.primCarac.soul.instinct.value;
+            } else {
+                actor.data.data.nbDiceFuror.max = actor.data.data.reserve.value;
+            }
+            actor.data.data.nbDiceFuror.min = 1;
+            task.actionValue = actor.data.data.primCarac.soul.charisma.value;
+            task.askForOptions = true;
+            break;
+        case "runeCpt":
+            console.log("Yggdrasill || rune");
+            task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            task.item = actor.items.get(task.itemId).data;
+            console.log(task.item);
+            console.log(actor);
+            task.isMagic = true;
+            task.isRune = true;
+            task.caracValue = actor.data.data.primCarac.soul.communication.value;
+            task.modifier += actor.data.data.primCarac.soul.communication.mod;
+            competence = actor.items.filter(function(item) {
+                return item.data.data.identifier == task.item.type
+            });
+            try {
+                task.actionValue = competence[0].data.data.value;
+            } catch (e) {
+                task.actionValue = 0;
+            }
+            if (actor.data.data.nbDiceFuror.value <= 0) actor.data.data.nbDiceFuror.value = 1;
+            if (actor.data.data.primCarac.soul.instinct.value <= actor.data.data.reserve.value) {
+                actor.data.data.nbDiceFuror.max = actor.data.data.primCarac.soul.instinct.value;
+            } else {
+                actor.data.data.nbDiceFuror.max = actor.data.data.reserve.value;
+            }
+            actor.data.data.nbDiceFuror.min = 1;
+            task.actionValue = actor.data.data.primCarac.soul.communication.value;
+            if (task.item.data.positiveness == "both" && !task.askForOptions) task.askForOptions = true;
+            break;
         default:
             break;
     }
+
     task.nbDiceKept = actor.data.data.nbDiceKept;
     task.modifier += actor.data.data.caracUsed.rollModifier + actor.data.data.rollModifier + actor.data.data.actions.modifier + actor.data.data.martialCpt.mod;
 
