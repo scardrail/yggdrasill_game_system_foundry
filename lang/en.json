@@ -179,28 +179,28 @@
                     },
                     "xs": {
                         "value": "cm3 (Cat, ball, sword,...)",
-                        "size": 10,
-                        "sd": 3
+                        "size": "10",
+                        "sd": "3"
                     },
                     "s": {
                         "value": "cm3 (Stool, child,...)",
-                        "size": 50,
-                        "sd": 6
+                        "size": "50",
+                        "sd": "6"
                     },
                     "m": {
                         "value": "m3 (Man, 2 children,...)",
-                        "size": 1,
-                        "sd": 9
+                        "size": "1",
+                        "sd": "9"
                     },
                     "l": {
                         "value": "m3 (Charette, 2 horsemen,...)",
-                        "size": 5,
-                        "sd": 12
+                        "size": "5",
+                        "sd": "12"
                     },
                     "xl": {
                         "value": "m3 (House, kraken, boat,...)",
-                        "size": 10,
-                        "sd": 15
+                        "size": "10",
+                        "sd": "15"
                     }
                 },
                 "charms": {
@@ -210,23 +210,23 @@
                     },
                     "xs": {
                         "value": "1",
-                        "sd": 3
+                        "sd": "3"
                     },
                     "s": {
                         "value": "2 to 4",
-                        "sd": 6
+                        "sd": "6"
                     },
                     "m": {
                         "value": "5 to 9",
-                        "sd": 9
+                        "sd": "9"
                     },
                     "l": {
                         "value": "10 to 49",
-                        "sd": 12
+                        "sd": "12"
                     },
                     "xl": {
                         "value": "50 and +",
-                        "sd": 15
+                        "sd": "15"
                     }
                 },
                 "curses": {
@@ -236,23 +236,23 @@
                     },
                     "xs": {
                         "value": "1",
-                        "sd": 3
+                        "sd": "3"
                     },
                     "s": {
                         "value": "2 to 4",
-                        "sd": 6
+                        "sd": "6"
                     },
                     "m": {
                         "value": "5 to 9",
-                        "sd": 9
+                        "sd": "9"
                     },
                     "l": {
                         "value": "10 to 49",
-                        "sd": 12
+                        "sd": "12"
                     },
                     "xl": {
                         "value": "50 and +",
-                        "sd": 15
+                        "sd": "15"
                     }
                 }
             },
@@ -267,37 +267,38 @@
                     "value": "1d5 Action",
                     "dice": "[[1d5]]",
                     "unit": "Action",
-                    "sd": 3
+                    "sd": "3"
                 },
                 "turn": {
                     "value": "1d10 Turn",
                     "dice": "[[1d10]]",
                     "unit": "Turn",
-                    "sd": 6
+                    "sd": "6"
                 },
                 "minute": {
                     "value": "1d10 Minute",
                     "dice": "[[1d10]]",
                     "unit": "Minute",
-                    "sd": 9
+                    "sd": "9"
                 },
                 "hour": {
                     "value": "1d10 Hour",
                     "dice": "[[1d10]]",
                     "unit": "Hour",
-                    "sd": 12
+                    "sd": "12"
                 },
                 "day": {
                     "value": "1d5 Day",
                     "dice": "[[1d5]]",
                     "unit": "Day",
-                    "sd": 15
+                    "sd": "15"
                 }
             },
             "positivenessN": "Positiveness",
             "positiveness": {
                 "positive": "Positive",
                 "neutral": "Neutral",
+                "both": "Both",
                 "negative": "Negative"
             },
             "durationN": "Duration",

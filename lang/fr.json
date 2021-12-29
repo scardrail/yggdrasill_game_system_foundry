@@ -174,31 +174,31 @@
                     "value": "1d5 Action",
                     "dice": "[[1d5]]",
                     "unit": "Action",
-                    "sd": 3
+                    "sd": "3"
                 },
                 "turn": {
                     "value": "1d10 Tour",
                     "dice": "[[1d10]]",
                     "unit": "Tour",
-                    "sd": 6
+                    "sd": "6"
                 },
                 "minute": {
                     "value": "1d10 Minute",
                     "dice": "[[1d10]]",
                     "unit": "Minute",
-                    "sd": 9
+                    "sd": "9"
                 },
                 "hour": {
                     "value": "1d10 Heure",
                     "dice": "[[1d10]]",
                     "unit": "Heure",
-                    "sd": 12
+                    "sd": "12"
                 },
                 "day": {
                     "value": "1d5 Jour",
                     "dice": "[[1d5]]",
                     "unit": "Jour",
-                    "sd": 15
+                    "sd": "15"
                 }
             },
             "galdrTargets": {
@@ -210,28 +210,28 @@
                     },
                     "xs": {
                         "value": "cm3 (Chat, balle, épée,...)",
-                        "size": 10,
-                        "sd": 3
+                        "size": "10",
+                        "sd": "3"
                     },
                     "s": {
                         "value": "cm3 (Tabouret, enfant,...)",
-                        "size": 50,
-                        "sd": 6
+                        "size": "50",
+                        "sd": "6"
                     },
                     "m": {
                         "value": "m3 (Homme, 2 enfants,...)",
-                        "size": 1,
-                        "sd": 9
+                        "size": "1",
+                        "sd": "9"
                     },
                     "l": {
                         "value": "m3 (Charette, 2 cavaliers,...)",
-                        "size": 5,
-                        "sd": 12
+                        "size": "5",
+                        "sd": "12"
                     },
                     "xl": {
                         "value": "m3 (Maison, kraken, bateau,...)",
-                        "size": 10,
-                        "sd": 15
+                        "size": "10",
+                        "sd": "15"
                     }
                 },
                 "charms": {
@@ -241,23 +241,23 @@
                     },
                     "xs": {
                         "value": "1",
-                        "sd": 3
+                        "sd": "3"
                     },
                     "s": {
                         "value": "2 à 4",
-                        "sd": 6
+                        "sd": "6"
                     },
                     "m": {
                         "value": "5 à 9",
-                        "sd": 9
+                        "sd": "9"
                     },
                     "l": {
                         "value": "10 à 49",
-                        "sd": 12
+                        "sd": "12"
                     },
                     "xl": {
                         "value": "50 et +",
-                        "sd": 15
+                        "sd": "15"
                     }
                 },
                 "curses": {
@@ -267,23 +267,23 @@
                     },
                     "xs": {
                         "value": "1",
-                        "sd": 3
+                        "sd": "3"
                     },
                     "s": {
                         "value": "2 à 4",
-                        "sd": 6
+                        "sd": "6"
                     },
                     "m": {
                         "value": "5 à 9",
-                        "sd": 9
+                        "sd": "9"
                     },
                     "l": {
                         "value": "10 à 49",
-                        "sd": 12
+                        "sd": "12"
                     },
                     "xl": {
                         "value": "50 et +",
-                        "sd": 15
+                        "sd": "15"
                     }
                 }
             },
@@ -291,6 +291,7 @@
             "positiveness": {
                 "positive": "Positif",
                 "neutral": "Neutre",
+                "both": "Les deux",
                 "negative": "Négatif"
             },
             "durationN": "Durée",
