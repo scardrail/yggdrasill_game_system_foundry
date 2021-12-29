@@ -18,8 +18,9 @@
             <td>
                 <a><h3 class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
-                data-carac-value=1
+                data-carac-value=2
                 data-action-value="{{data.data.relational.roll}}" 
+                data-action-name="relational" 
                 data-modifier="{{data.data.actions.modifier}}"
                 >{{localize "yggdrasill.extra.relational"}}</h3></a>
             </td>
@@ -32,8 +33,9 @@
             <td>
                 <a><h3 class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
-                data-carac-value=1
+                data-carac-value=2
                 data-action-value="{{data.data.physic.roll}}" 
+                data-action-name="physic" 
                 data-modifier="{{data.data.actions.modifier}}"
                 >{{localize "yggdrasill.extra.physic"}}</h3></a>
             </td>
@@ -48,8 +50,9 @@
             <td>
                 <a><h3 class="task-check"
                 data-nb-dice-kept="{{data.data.nbDiceKept}}" 
-                data-carac-value=1
+                data-carac-value=2
                 data-action-value="{{data.data.mental.roll}}" 
+                data-action-name="mental" 
                 data-modifier="{{data.data.actions.modifier}}"
                 >{{localize "yggdrasill.extra.mental"}}</h3></a>
                 </td>
@@ -64,22 +67,29 @@
             </td>
             <td>
                 <div  style="display: grid; grid-template-columns:1fr 50%; gap:4px;">
-                    <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <div  style="display: grid; grid-template-columns:3fr 33%; gap:2px;">
                         <input name="data.mystic.offensive.value" type="number" min="0"value="{{data.data.mystic.offensive.value}}"
-                        data-dtype="Number"  style="text-align: right;"><p style="margin: 0.35em 0;">-> {{data.data.mystic.offensive.roll}}</p>
-                    </div><div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                        data-dtype="Number"  style="text-align: right;"><a><p class="task-check" style="margin: 0.35em 0;"
+                        data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                        data-carac-value=2
+                        data-action-value="{{data.data.mystic.offensive.roll}}" 
+                        data-action-name="mystic" 
+                        data-modifier="{{data.data.actions.modifier}}"
+                        >-> {{data.data.mystic.offensive.roll}}</p></a>
+                    </div><div  style="display: grid; grid-template-columns:3fr 33%; gap:2px;">
                         <input name="data.mystic.defensive.value" type="number" min="0"value="{{data.data.mystic.defensive.value}}"
-                        data-dtype="Number"  style="text-align: right;"><p style="margin: 0.35em 0;">-> {{data.data.mystic.defensive.roll}}</p>
+                        data-dtype="Number"  style="text-align: right;"><a><p class="task-check" style="margin: 0.35em 0;"
+                        data-nb-dice-kept="{{data.data.nbDiceKept}}" 
+                        data-carac-value=2
+                        data-action-value="{{data.data.mystic.defensive.roll}}" 
+                        data-action-name="mystic" 
+                        data-modifier="{{data.data.actions.modifier}}"
+                        >-> {{data.data.mystic.defensive.roll}}</p></a>
                     </div>
                 </div>
             </td>
             <td>
-                <a><h3 class="task-check"
-                data-nb-dice-kept="{{data.data.nbDiceKept}}" 
-                data-carac-value=1
-                data-action-value="{{data.data.vitality.roll}}" 
-                data-modifier="{{data.data.actions.modifier}}"
-                >{{localize "yggdrasill.extra.vitality"}}</h3></a>
+                <h3>{{localize "yggdrasill.extra.vitality"}}</h3>
             </td>
             <td>
                 <div  style="display: grid; grid-template-columns:1fr 50%; gap:2px;">

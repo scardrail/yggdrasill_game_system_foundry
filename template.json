@@ -259,7 +259,8 @@
                     "roll": 0
                 },
                 "lifeStatus": "frisky",
-                "nbCaracUp": 1
+                "nbCaracUp": 1,
+                "nbDiceKept": 2
             }
         },
         "pj": {

@@ -170,7 +170,7 @@ function setFuror(data, caracs) {
         data.nbDiceFuror.max = data.reserve.max;
     } else if (data.isInitiated) {
         data.reserve.max = (caracs.vigour + caracs.intelect + caracs.instinct);
-        data.nbDiceFuror.max = data.reserve.max;
+        data.nbDiceFuror.max = caracs.instinct;
     } else {
         data.reserve.max = Math.floor(((caracs.vigour + caracs.tenacity + caracs.instinct) / 2));
         data.nbDiceFuror.max = 1;
