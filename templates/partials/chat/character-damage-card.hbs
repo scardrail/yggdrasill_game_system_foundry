@@ -1,12 +1,10 @@
-
 <div class= "chat-card" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
     <div class="card-header">
-    <h1>{{localize "yggdrasill.weapon.name"}} : {{item.name}}</h1>
+    <h2>{{localize "yggdrasill.weapon.name"}} : {{item.name}}</h2>
     </div>
     <div class="card-content">
     {{> "systems/yggdrasill/templates/partials/chat/rollCheck.hbs"}}
     </div>
-    <div class="card-buttons">
-        <button type="button"><i class="fas fa-bahai"></i>{{localize "yggdrasill.chat.actions.damages"}} : {{add item.data.dmgBase actor.data.dmgMod}} ({{item.data.dmgBase}} + {{actor.data.dmgMod}})</button>
-    </div>
+    
+    <h2>{{localize "yggdrasill.chat.actions.damages"}} : {{add item.data.dmgBase actor.data.dmgMod}} ({{item.data.dmgBase}} + {{actor.data.dmgMod}})</h2>
 </div>
