@@ -33,7 +33,9 @@ function setExtraLifepoints(data) {
 function setTempersModifications(data) {
     console.log(data);
     try {
-        let tempers = data.items.filter(function(item) { return item.type == "temper" });
+        let tempers = data.items.filter(function(item) {
+            return item.type == "temper"
+        });
 
         console.log(tempers);
 
@@ -161,7 +163,6 @@ function setFuror(data, caracs) {
         if (data.isInFuror) data.isInFuror = false;
         data.lifePoints.isWeary = true;
         data.lifePoints.wearyTime = (data.reserve.max * 10) + " " + game.i18n.localize("yggdrasill.sheet.duration.minute");
-        data.nbDiceKept += -1;
     }
 
     if (data.isBerserk) {
@@ -286,8 +287,12 @@ export function setProtection(actorData) {
 
     console.log(actorData);
     try {
-        let armors = actorData.items.filter(function(item) { return item.type == "protection" });
-        let weapons = actorData.items.filter(function(item) { return item.type == "arme" });
+        let armors = actorData.items.filter(function(item) {
+            return item.type == "protection"
+        });
+        let weapons = actorData.items.filter(function(item) {
+            return item.type == "arme"
+        });
         console.log(armors);
         console.log(weapons);
         let protection = 0;
@@ -333,9 +338,13 @@ export function setMartialCpt(actorData) {
     console.log(actorData);
     try {
 
-        let item = actorData.items.filter(function(item) { return item.type == "martialCpt" });
+        let item = actorData.items.filter(function(item) {
+            return item.type == "martialCpt"
+        });
         console.log(item);
-        item = item.filter(function(item) { return item.data.data.properties.isChecked });
+        item = item.filter(function(item) {
+            return item.data.data.properties.isChecked
+        });
         console.log(item);
         let competenceModifier = item[0].data.data.modifier;
         let competenceDmgMod = item[0].data.data.dmgMod;
@@ -374,9 +383,13 @@ export function setMartialCpt(actorData) {
 export function setHasMagicCpt(actorData) {
     console.log(actorData);
     try {
-        let competence = actorData.items.filter(function(cpt) { return cpt.type == "competence" });
+        let competence = actorData.items.filter(function(cpt) {
+            return cpt.type == "competence"
+        });
         console.log(competence);
-        let item = competence.filter(function(item) { return item.data.data.type == "magic" }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
+        let item = competence.filter(function(item) {
+            return item.data.data.type == "magic"
+        }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
         console.log(item);
         if (item.length > 0) actorData.data.hasMagicCpt = true;
         console.log(actorData);
