@@ -419,7 +419,10 @@
                 "value": 0,
                 "duration": "none"
             },
-            "support": "none"
+            "support": "none",
+            "positiveness": "none",
+            "positiveEffect": "",
+            "negativeEffect": ""
         },
         "competence": {
             "templates": [
@@ -467,7 +470,7 @@
                 "cptMagic"
             ],
             "type": "divination",
-            "positiveness": "positive",
+            "positiveness": "neutral",
             "preparation": {
                 "value": 0,
                 "unit": "action"
@@ -491,7 +494,7 @@
                 "cptSpe"
             ],
             "dommain": "",
-            "positiveness": "positive",
+            "positiveness": "both",
             "positiveEffect": "",
             "negativeEffect": "",
             "targets": "Une personne"
