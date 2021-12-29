@@ -2,14 +2,19 @@
 <div>
     <h2>{{localize "yggdrasill.magicCpt.dommain"}} : {{item.name}}</h2>
 
-    <h2>{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{actor.data.magicCpt.galdrCpt.difficultyLevelSum}}</h2>
-</div>
-<div>
-    {{localize "yggdrasill.magicCpt.durationN"}} :  {{actor.data.magicCpt.galdrCpt.galdrDuration.dice}} {{actor.data.magicCpt.galdrCpt.galdrDuration.unit}}
-</div>
-<div>
-    {{localize "yggdrasill.magicCpt.zoneTargets"}} : {{#if (not (eq actor.data.magicCpt.galdrCpt.galdrTargets.size "0"))}} {{actor.data.magicCpt.galdrCpt.galdrTargets.size}} {{/if}} {{actor.data.magicCpt.galdrCpt.galdrTargets.value}}
-</div>
-<div>
-    {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.description}}}
-</div>
+    {{#if (upperEq total galdrData.sd)}}
+        <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{galdrData.sd}}</h2>
+    </div>
+    <div>
+        {{localize "yggdrasill.magicCpt.durationN"}} :  {{galdrData.durationDice}} {{galdrData.durationUnit}}
+    </div>
+    <div>
+        {{localize "yggdrasill.magicCpt.zoneTargets"}} : {{galdrData.targetValue}}
+    </div>
+    <div>
+        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.description}}}
+    </div>
+    {{else}}
+        <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{galdrData.sd}}</h2>
+    </div>
+    {{/if}}

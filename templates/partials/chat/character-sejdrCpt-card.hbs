@@ -7,13 +7,21 @@
 <div>
     {{localize "yggdrasill.magicCpt.durationN"}} :  {{item.data.durationValue}}
 </div>
-<div>
-    {{localize "yggdrasill.magicCpt.zone"}} :  {{item.data.zone}}
-</div>
-<div>
-    {{#if (eq actor.data.magicCpt.sejdrCpt.positiveness "positive")}}
-        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.effects}}}
-    {{else}}
-        {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.invertEffects}}}
-    {{/if}}
-</div>
+{{#if (not failure)}}
+    <div>
+        {{localize "yggdrasill.magicCpt.zone"}} :  {{item.data.zone}}
+    </div>
+    <div>
+        {{#if (not (eq item.data.positiveness "both"))}}
+            {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.effects}}}
+        {{else}}
+            {{#if (eq positiveness "positive")}}
+                {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.effects}}}
+            {{else}}
+                {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.invertEffects}}}
+            {{/if}}
+        {{/if}}
+    </div>
+{{/if}}
+
+
