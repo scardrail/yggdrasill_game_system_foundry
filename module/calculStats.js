@@ -71,7 +71,7 @@ function newTM(data, tempers) {
 function setRollableStats(data) {
     console.log(data);
     for (const [key, value] of Object.entries(CONFIG.yggdrasill.extraCarac)) {
-        if (!(key == 'none' || key == 'dmgMod')) {
+        if (!(key == 'none' || key == 'dmgMod' || key == 'attack' || key == 'defense')) {
             if (!(key == 'conflict' || key == 'mystic')) {
                 data.data[key].roll = data.data[key].value + data.data[key].mod
             } else {

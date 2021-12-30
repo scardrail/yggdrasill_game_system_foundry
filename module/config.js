@@ -203,6 +203,8 @@ yggdrasill.extraCarac = {
     mystic: "yggdrasill.extra.mystic",
     vitality: "yggdrasill.extra.vitality",
     dmgMod: "yggdrasill.extra.dmgMod",
+    attack: "yggdrasill.chat.actions.attack",
+    defense: "yggdrasill.chat.actions.defense",
     none: "yggdrasill.extra.none"
 };
 yggdrasill.meleeCarac = {

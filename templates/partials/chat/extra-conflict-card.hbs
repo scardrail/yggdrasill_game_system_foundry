@@ -1,6 +1,13 @@
-{{> "systems/yggdrasill/templates/partials/chat/rollCheck.hbs"}}
-{{#if (not (equals actor.data.dmgMod "0"))}}
+<div class= "chat-card" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
+    <div class="card-header">
+    <h2>{{localize "yggdrasill.competence.name"}} : {{caracName}}</h2>
+    </div>
+    <div class="card-content">
+    {{> "systems/yggdrasill/templates/partials/chat/rollCheck.hbs"}}
+    </div>
+    {{#if (not (equals actor.data.dmgMod "0"))}}
     <div>
         <h2>{{localize "yggdrasill.chat.actions.damages"}} :  {{actor.data.dmgMod}}</h2>
     </div>
 {{/if}}
+</div>

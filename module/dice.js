@@ -256,13 +256,16 @@ export async function TaskCheck({
         } else if (item.type == "runeCpt") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-runeCpt-card.hbs";
         } else if (isConflict == "true") {
-            chatTemplate = "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs";
             if (isOffensive == "true") {
+                chatTemplate = "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs";
                 console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
                 actor.data.dmgMod = "[[1d10]] + " + actor.data.physic.roll + " + MR";
+                caracName = "attack";
             } else {
+                chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
                 console.log("Yggdrasill |0| isConflict " + isConflict);
                 actor.data.dmgMod = 0;
+                caracName = "defense";
             }
         } else if (item.type == "competence") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-competence-card.hbs";

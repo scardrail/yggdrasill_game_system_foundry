@@ -1,5 +1,9 @@
-import { registerHandlebarsHelpers } from "./helpers.js";
-import { yggdrasill } from "./config.js";
+import {
+    registerHandlebarsHelpers
+} from "./helpers.js";
+import {
+    yggdrasill
+} from "./config.js";
 
 import * as Chat from "./chat.js";
 
@@ -43,7 +47,6 @@ async function preloadHandlebarsTemplates() {
         "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs",
 
         "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs",
-        "systems/yggdrasill/templates/partials/chat/character-weapon-card.hbs",
         "systems/yggdrasill/templates/partials/chat/character-competence-card.hbs",
         "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs"
 
@@ -60,10 +63,14 @@ Hooks.once("init", () => {
     CONFIG.Actor.documentClass = yggdrasillActor;
 
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("yggdrasill", YggdrasillItemSheet, { makeDefault: true });
+    Items.registerSheet("yggdrasill", YggdrasillItemSheet, {
+        makeDefault: true
+    });
 
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("yggdrasill", YggdrasillActorSheet, { makeDefault: true });
+    Actors.registerSheet("yggdrasill", YggdrasillActorSheet, {
+        makeDefault: true
+    });
 
     // Register Handlebars helpers
     registerHandlebarsHelpers();

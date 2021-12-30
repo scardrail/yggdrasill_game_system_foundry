@@ -79,8 +79,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
 
         //if is editable
         if (this.actor.isOwner) {
-            html.find(".item-roll").click(this._onItemRoll.bind(this));
-            html.find(".carac-roll").click(this._onCptRoll.bind(this));
             html.find(".task-check").click(this._onTaskCheck.bind(this));
         }
 
@@ -144,13 +142,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
         return this.actor.deleteEmbeddedDocuments("Item", itemId, options);
     }
 
-    _onItemRoll(event) {
-        const itemId = event.currentTarget.closest(".item").dataset.itemId;
-        const item = this.actor.items.get(itemId);
-
-        item.roll();
-    }
-
     async _onFurorIntRoll(event, checked) {
         if (!checked) {
             let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
@@ -181,36 +172,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
             return ChatMessage.create(chatData);
         }
     }
-
-    async _onCptRoll(event) {
-        let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
-        let carac = event.currentTarget.dataset.carac;
-
-        let chatData = {
-            user: game.user.id,
-            speaker: {
-                actor: this.actor
-            },
-        };
-
-
-        let cardData = {
-            ...this.data,
-            owner: this.actor.id,
-            actor: this.actor.data,
-            carac: carac,
-            config: CONFIG.yggdrasill
-        }
-        console.log(this.actor.data);
-
-        chatData.roll = true;
-
-
-        chatData.content = await renderTemplate(chatTemplate, cardData);
-        ChatMessage.applyRollMode(chatData, "selfroll");
-        return ChatMessage.create(chatData);
-    }
-
     _onTaskCheck(event) {
         let task = {
             askForOptions: true,
@@ -460,6 +421,27 @@ function setImportantCharacterTask(task, actor) {
             actor.data.data.nbDiceFuror.min = 1;
             task.actionValue = actor.data.data.primCarac.soul.communication.value;
             if (task.item.data.positiveness == "both" && !task.askForOptions) task.askForOptions = true;
+            break;
+        case "furor":
+            console.log("Yggdrasill || furor");
+            task.caracName = event.currentTarget.dataset.carac;
+
+            if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
+                task.caracValue = actor.data.data.primCarac.body[task.caracName].value;
+                task.modifier = actor.data.data.primCarac.body[task.caracName].mod;
+            } else if (task.caracName == "intelect" || task.caracName == "perception" || task.caracName == "tenacity") {
+                task.caracValue = actor.data.data.primCarac.spirit[task.caracName].value;
+                task.modifier = actor.data.data.primCarac.spirit[task.caracName].mod;
+            } else {
+                task.caracValue = actor.data.data.primCarac.soul[task.caracName].value;
+                task.modifier = actor.data.data.primCarac.soul[task.caracName].mod;
+            }
+
+            try {
+                task.item = actor.items.get(event.currentTarget.dataset.itemId).data;
+            } catch (e) {
+                task.item = null
+            }
             break;
         default:
             break;
