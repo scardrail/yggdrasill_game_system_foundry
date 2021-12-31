@@ -7,7 +7,7 @@
 <div>
     {{localize "yggdrasill.magicCpt.durationN"}} :  {{item.data.durationValue}}
 </div>
-{{#if (not failure)}}
+{{#if (and (not failure) (not criticalFailures))}}
     <div>
         {{localize "yggdrasill.magicCpt.zone"}} :  {{item.data.zone}}
     </div>
@@ -22,6 +22,15 @@
             {{/if}}
         {{/if}}
     </div>
+    
+    {{#if (or (equals positiveness "positive") (equals positiveness "neutral"))}}
+        <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}}</h2>
+    {{else}}
+        <h2 style="color: rgb(150, 97, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} + {{localize "yggdrasill.characteristics.secondary.dm"}}</h2>
+    {{/if}}
+{{else}}
+    <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}}</h2>
 {{/if}}
+
 
 

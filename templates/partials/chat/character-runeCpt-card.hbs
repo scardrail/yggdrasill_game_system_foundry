@@ -1,15 +1,13 @@
 {{> "systems/yggdrasill/templates/partials/chat/rollCheck.hbs"}}
 <div>
     <h2>{{localize "yggdrasill.magicCpt.name"}} : {{item.name}}</h2>
-
-{{#if (upperEq total runeData.sd)}}
-    <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{runeData.sd}}</h2>
+</div>
+    {{#if (and (upperEq total runeData.sd) (not criticalFailures))}}
+<div>
+    {{localize "yggdrasill.magicCpt.power"}} :<p style="font-weight: bold;">{{runeData.power}}</p>
 </div>
 <div>
     {{localize "yggdrasill.magicCpt.preparation"}} :  {{runeData.castDuration}}
-</div>
-<div>
-    {{localize "yggdrasill.magicCpt.power"}} : {{runeData.power}}
 </div>
 <div>
     {{localize "yggdrasill.magicCpt.durationN"}} :  {{runeData.effectsDuration}}
@@ -20,11 +18,13 @@
 <div>
     {{#if (eq runeData.positiveness "positive")}}
         {{localize "yggdrasill.magicCpt.positiveEffect"}} :  {{{item.data.positiveEffect}}}
+        <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} :  {{runeData.sd}}</h2>
     {{else}}
         {{localize "yggdrasill.magicCpt.negativeEffect"}} :  {{{item.data.negativeEffect}}}
+        <h2 style="color: rgb(150, 97, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} :  {{runeData.sd}}</h2>
     {{/if}}
 </div>
     {{else}}
-        <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{runeData.sd}}</h2>
+        <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} :  {{runeData.sd}}</h2>
     </div>
     {{/if}}

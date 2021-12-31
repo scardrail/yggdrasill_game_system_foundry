@@ -3,6 +3,7 @@
         "types": ["pj", "pnj", "extra", "creature"],
         "templates": {
             "commonStats": {
+                "id": " ",
                 "age": 0,
                 "kingdom": " ",
                 "archetype": " ",
@@ -21,6 +22,7 @@
                     "copper": 0
                 },
                 "dmgMod": 0,
+                "isReseting": false,
                 "ttlProtec": 0,
                 "protecMod": 0,
                 "actions": {
@@ -58,6 +60,48 @@
                         "castDuration": "",
                         "support": ""
                     }
+                },
+                "sr": {
+                    "value": 0,
+                    "level": {
+                        "0": {
+                            "value": 5,
+                            "modulo": 1
+                        },
+                        "1": {
+                            "value": 7,
+                            "modulo": 2
+                        },
+                        "2": {
+                            "value": 10,
+                            "modulo": 3
+                        },
+                        "3": {
+                            "value": 14,
+                            "modulo": 4
+                        },
+                        "4": {
+                            "value": 19,
+                            "modulo": 5
+                        },
+                        "5": {
+                            "value": 25,
+                            "modulo": 16
+                        },
+                        "6": {
+                            "value": 32,
+                            "modulo": 7
+                        },
+                        "7": {
+                            "value": 40,
+                            "modulo": 8
+                        },
+                        "8": {
+                            "value": 49,
+                            "modulo": 9
+                        }
+                    }
+
                 }
             },
             "importantCharacter": {
@@ -167,11 +211,14 @@
                     "status": "frisky",
                     "modifier": 0,
                     "isWeary": false,
+                    "isIndestructible": false,
                     "wearyTime": ""
                 },
                 "reserve": {
                     "value": 0,
-                    "max": 0
+                    "max": 0,
+                    "inSR": 0,
+                    "outSR": 0
                 },
                 "aett": {
                     "freyr": "fehu",
@@ -182,12 +229,14 @@
                 "isBerserk": false,
                 "isInitiated": false,
                 "isInFuror": false,
+                "wasInFuror": false,
                 "isDestinyRoll": false,
                 "hasMagicCpt": false,
                 "nbDiceFuror": {
                     "value": 0,
                     "min": 0,
-                    "max": 0
+                    "max": 0,
+                    "lastValue": 0
                 },
                 "enemyArmorMod": 0,
                 "nbDiceKept": 2,
@@ -197,7 +246,8 @@
                     "mod": 0,
                     "rollModifier": 0,
                     "isOffensive": false,
-                    "isDefensive": false
+                    "isDefensive": false,
+                    "isMagic": true
                 },
                 "martialCpt": {
                     "isMcptAttackUsed": false,

@@ -1,5 +1,5 @@
 export function setExtraCaracs(data) {
-    console.log(data);
+    // console.log(data);
 
     data = setExtraLifepoints(data);
     data = setTempersModifications(data);
@@ -11,7 +11,7 @@ export function setExtraCaracs(data) {
 }
 
 function setExtraLifepoints(data) {
-    console.log(data);
+    // console.log(data);
 
     switch (data.data.lifeStatus) {
         case "frisky":
@@ -31,18 +31,18 @@ function setExtraLifepoints(data) {
 }
 
 function setTempersModifications(data) {
-    console.log(data);
+    // console.log(data);
     try {
         let tempers = data.items.filter(function(item) {
             return item.type == "temper"
         });
 
-        console.log(tempers);
+        // console.log(tempers);
 
         tempers.forEach(temper => {
             if (temper.data.data.nbCaracUp > data.data.nbCaracUp) data.data.nbCaracUp = temper.data.data.nbCaracUp;
         });
-        console.log(data.data.nbCaracUp);
+        // console.log(data.data.nbCaracUp);
         data = newTM(data, tempers);
 
     } catch (e) {
@@ -54,7 +54,7 @@ function setTempersModifications(data) {
 function newTM(data, tempers) {
     tempers.forEach(temper => {
         temper.data.data.caracs.forEach(carac => {
-            console.log(carac.name);
+            // console.log(carac.name);
             if (carac.name == "conflict" || carac.name == "mystic") {
                 data.data[carac.name].offensive.mod += carac.modifier;
                 data.data[carac.name].defensive.mod += carac.sndModifier;
@@ -69,7 +69,7 @@ function newTM(data, tempers) {
 }
 
 function setRollableStats(data) {
-    console.log(data);
+    // console.log(data);
     for (const [key, value] of Object.entries(CONFIG.yggdrasill.extraCarac)) {
         if (!(key == 'none' || key == 'dmgMod' || key == 'attack' || key == 'defense')) {
             if (!(key == 'conflict' || key == 'mystic')) {
@@ -98,7 +98,7 @@ export function setCharacterCaracs(data) {
 
     let caracs = setCaracsDictionary(data);
 
-    console.log(data);
+    // console.log(data);
 
     data = setAction(data, caracs);
     data = setFuror(data, caracs);
@@ -111,6 +111,7 @@ export function setCharacterCaracs(data) {
     } else {
         data.rollModifier = (data.secCarac.spaceReq.modifier);
     }
+    data.isReseting = false;
     return data;
 }
 
@@ -159,28 +160,43 @@ function setAction(data, caracs) {
 }
 
 function setFuror(data, caracs) {
+    console.log(data)
     if (data.reserve.value == 0) {
-        if (data.isInFuror) data.isInFuror = false;
+        if (data.isInFuror) {
+            game.actors.get(data.id).update({
+                'data.isInFuror': false
+            })
+        }
         data.lifePoints.isWeary = true;
         data.lifePoints.wearyTime = (data.reserve.max * 10) + " " + game.i18n.localize("yggdrasill.sheet.duration.minute");
     }
 
     if (data.isBerserk) {
         data.reserve.max = (caracs.vigour + caracs.tenacity + caracs.instinct);
-        data.nbDiceFuror.max = data.reserve.max;
     } else if (data.isInitiated) {
         data.reserve.max = (caracs.vigour + caracs.intelect + caracs.instinct);
-        data.nbDiceFuror.max = caracs.instinct;
+        if (!data.isReseting) data.nbDiceFuror.max = caracs.instinct;
     } else {
         data.reserve.max = Math.floor(((caracs.vigour + caracs.tenacity + caracs.instinct) / 2));
-        data.nbDiceFuror.max = 1;
+        if (!data.isReseting) data.nbDiceFuror.max = 1;
     }
-    if (data.isBerserk && data.isInFuror) {
+    if (data.isBerserk && data.isInFuror && !data.wasInFuror) {
+        data.wasInFuror = true;
         data.nbDiceFuror.max = caracs.tenacity;
         data.nbDiceFuror.min = 1;
+        data.nbDiceFuror.value = 1;
+        data.nbDiceFuror.lastValue = 1;
         console.log("entrée en fureur !! ");
     } else if (data.isBerserk && !data.isInFuror) {
+        data.wasInFuror = false;
+        data.nbDiceFuror.max = 1;
+        data.nbDiceFuror.min = 0;
+        data.nbDiceFuror.value = 0;
+        data.nbDiceFuror.lastValue = 0;
         console.log("sortie de fureur !! ");
+    } else {
+
+        console.log("déjà en fureur !! ");
     }
     return data;
 }
@@ -193,6 +209,8 @@ function setSecCaracs(data, caracs) {
     data.secCarac.dp.base = (caracs.agility + caracs.vigour + caracs.instinct);
     if (!(data.isInFuror)) {
         data.secCarac.ttlDp = sum(data.secCarac.dp);
+    } else {
+        data.secCarac.ttlDp = 0;
     }
 
     data.secCarac.dm.base = (caracs.tenacity + caracs.instinct + caracs.intelect);
@@ -213,8 +231,10 @@ function setSecCaracs(data, caracs) {
         data.secCarac.spaceReq.modifier = -3;
     } else if (data.secCarac.spaceReq.value > data.secCarac.spaceReq.troubled && data.secCarac.spaceReq.value <= data.secCarac.spaceReq.crowded) {
         data.secCarac.spaceReq.status = "crowded";
+        data.sr.value += 1;
     } else if (data.secCarac.spaceReq.value > data.secCarac.spaceReq.crowded) {
         data.secCarac.spaceReq.status = "overloaded";
+        data.sr.value += 2;
     } else {
         data.secCarac.spaceReq.status = "free";
     }
@@ -233,36 +253,33 @@ function setLifepoints(data, caracs) {
 
     if (data.isBerserk && data.isInFuror) {
         data.lifePoints.min = data.lifePoints.indestructible;
-
-        if (data.lifePoints.value <= data.lifePoints.indestructible) {
-            data.lifePoints.status = "dead";
-            data.isDead = true;
-            data.nbDiceKept = 0;
-        } else {
-            data.lifePoints.status = "indestructible";
-        }
+        data.lifePoints.isIndestructible = true;
     } else {
         data.lifePoints.min = data.lifePoints.dead;
+    }
+    // set lifePoints modifiers
+    if (data.lifePoints.value <= data.lifePoints.injured && data.lifePoints.value > data.lifePoints.bruised) {
+        if (!data.lifePoints.isIndestructible) data.lifePoints.modifier = -3;
+        data.lifePoints.status = "injured";
+    } else if (data.lifePoints.value <= data.lifePoints.bruised && data.lifePoints.value > data.lifePoints.unconscious) {
+        data.lifePoints.status = "bruised";
+    } else if (data.lifePoints.value <= data.lifePoints.unconscious && data.lifePoints.value > data.lifePoints.dead && !data.lifePoints.isIndestructible) {
+        data.lifePoints.status = "unconscious";
+    } else if (data.lifePoints.value <= data.lifePoints.dead && !data.lifePoints.isIndestructible) {
+        data.lifePoints.status = "dead";
+        data.isDead = true;
+        data.nbDiceKept = 0;
+    } else if (data.lifePoints.value <= data.lifePoints.indestructible && data.lifePoints.isIndestructible) {
+        data.lifePoints.status = "dead";
+        data.isDead = true;
+        data.lifePoints.isIndestructible = false;
+        data.nbDiceKept = 0;
+    } else {
+        data.lifePoints.status = "frisky";
+    }
 
-        // set lifePoints modifiers
-        if (data.lifePoints.value <= data.lifePoints.injured && data.lifePoints.value > data.lifePoints.bruised) {
-            data.lifePoints.modifier = -3;
-            data.lifePoints.status = "injured";
-        } else if (data.lifePoints.value <= data.lifePoints.bruised && data.lifePoints.value > data.lifePoints.unconscious) {
-            data.lifePoints.status = "bruised";
-        } else if (data.lifePoints.value <= data.lifePoints.unconscious && data.lifePoints.value > data.lifePoints.dead) {
-            data.lifePoints.status = "unconscious";
-        } else if (data.lifePoints.value <= data.lifePoints.dead) {
-            data.lifePoints.status = "dead";
-            data.isDead = true;
-            data.nbDiceKept = 0;
-        } else {
-            data.lifePoints.status = "frisky";
-        }
-
-        if (data.lifePoints.isWeary || data.lifePoints.status == "bruised") {
-            data.nbDiceKept += -1;
-        }
+    if (data.lifePoints.isWeary || (data.lifePoints.status == "bruised" && !data.lifePoints.isIndestructible)) {
+        data.nbDiceKept += -1;
     }
     return data;
 
@@ -285,7 +302,7 @@ function setInitiative(data, value) {
 
 export function setProtection(actorData) {
 
-    console.log(actorData);
+    // console.log(actorData);
     try {
         let armors = actorData.items.filter(function(item) {
             return item.type == "protection"
@@ -293,8 +310,8 @@ export function setProtection(actorData) {
         let weapons = actorData.items.filter(function(item) {
             return item.type == "arme"
         });
-        console.log(armors);
-        console.log(weapons);
+        // console.log(armors);
+        // console.log(weapons);
         let protection = 0;
         let protectionShield = 0;
         let enc = 0;
@@ -317,9 +334,9 @@ export function setProtection(actorData) {
             }
         });
 
-        console.log(protection);
-        console.log(protectionShield);
-        console.log(enc);
+        // console.log(protection);
+        // console.log(protectionShield);
+        // console.log(enc);
 
         actorData.data.protection = protection;
         actorData.data.secCarac.dp.protection = protectionShield;
@@ -329,23 +346,23 @@ export function setProtection(actorData) {
     } catch (e) {
         console.log("No Protection " + e);
     }
-    console.log(actorData);
+    // console.log(actorData);
     return actorData;
 }
 
 
 export function setMartialCpt(actorData) {
-    console.log(actorData);
+    // console.log(actorData);
     try {
 
         let item = actorData.items.filter(function(item) {
             return item.type == "martialCpt"
         });
-        console.log(item);
+        // console.log(item);
         item = item.filter(function(item) {
             return item.data.data.properties.isChecked
         });
-        console.log(item);
+        // console.log(item);
         let competenceModifier = item[0].data.data.modifier;
         let competenceDmgMod = item[0].data.data.dmgMod;
         let competenceType = item[0].data.data.type;
@@ -365,7 +382,7 @@ export function setMartialCpt(actorData) {
             default:
                 break;
         }
-        console.log(actorData);
+        // console.log(actorData);
 
     } catch (e) {
         actorData.data.martialCpt.isMcptAttackUsed = false;
@@ -381,18 +398,14 @@ export function setMartialCpt(actorData) {
 
 
 export function setHasMagicCpt(actorData) {
-    console.log(actorData);
     try {
         let competence = actorData.items.filter(function(cpt) {
             return cpt.type == "competence"
         });
-        console.log(competence);
         let item = competence.filter(function(item) {
             return item.data.data.type == "magic"
         }).sort((a, b) => parseInt(b.data.value) - parseInt(a.data.value));
-        console.log(item);
         if (item.length > 0) actorData.data.hasMagicCpt = true;
-        console.log(actorData);
 
     } catch (e) {
         console.log("setHasMagicCpt " + e);

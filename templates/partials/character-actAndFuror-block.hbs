@@ -29,8 +29,13 @@
         <table>
             <tr>
                 <th>
-                    {{localize "yggdrasill.character.reserve"}}{{#if data.data.lifePoints.isWeary}}({{localize "yggdrasill.character.weary"}}){{else}}{{#if data.data.isBerserk}}<label 
-                    class="checkbox"> <input class="furor-roll" type="checkbox" name="data.isInFuror" {{checked data.data.isInFuror}}></label>{{/if}}{{/if}}
+                    {{#if data.data.isBerserk}}
+                        <a class="task-check" data-tasktype="furor">{{localize "yggdrasill.character.reserve"}}</a>{{#if data.data.lifePoints.isWeary}}({{localize "yggdrasill.character.weary"}}){{else}}<label 
+                        class="checkbox"> <input type="checkbox" disabled="disabled" name="data.isInFuror" {{checked data.data.isInFuror}}></label>{{/if}}
+                    {{else}}
+                        {{localize "yggdrasill.character.reserve"}}{{#if data.data.lifePoints.isWeary}}({{localize "yggdrasill.character.weary"}}){{/if}}
+                    {{/if}}
+                    
                 </th>
             </tr>
             <tr>

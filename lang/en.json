@@ -349,6 +349,7 @@
             "effects": "Effects",
             "invertEffects": "Invert effects",
             "difficultyLevel": "DL",
+            "successThreshold": "ST",
             "targets": "Targets",
             "zoneTargets": "Zone / Targets",
             "dommain": "Dommain",
@@ -591,6 +592,7 @@
             "other": {
                 "carac": "Carac :",
                 "attackType": "Attack type :",
+                "ennemyAttack": "Attack of the opponent",
                 "furor": "Furor :",
                 "destiny": "Destiny ?",
                 "modifier": "Modifier :"
@@ -601,6 +603,14 @@
                 "mod": "mod",
                 "destiny": "destiny",
                 "furor": "furor"
+            },
+            "furorDialog": {
+                "enter": "Are you sure you want to enter the Furor state and let your alter-ego enter a combat trance?",
+                "exit": "Are you sure you want to quit your Furor state?",
+                "status": "your status : ",
+                "sr": "Success threshold : ",
+                "yes": "yes",
+                "no": "no"
             }
         },
         "attackTypes": {

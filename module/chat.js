@@ -211,6 +211,7 @@ function onCaracRoll(event) {
 
     if (card.dataset.type == "arme") {
         console.log("Yggdrasill || weapon");
+        if (attacker.data.data.isInitiated) attacker.data.data.nbDiceFuror.value = 0;
         let weapon = attacker.items.get(card.dataset.itemId);
         console.log(weapon.data.data.subType);
         competence = attacker.items.filter(function(item) {
@@ -257,11 +258,13 @@ function onCaracRoll(event) {
         item = cpt;
     } else if (card.dataset.type == "competence") {
         console.log("Yggdrasill || competence");
+        if (attacker.data.data.isInitiated) attacker.data.data.nbDiceFuror.value = 0;
         competence = attacker.items.get(card.dataset.itemId);
         competenceValue = competence.data.data.value;
         item = competence;
     } else if (card.dataset.type == "basicCarac") {
         console.log("Yggdrasill || competence de base");
+        if (attacker.data.data.isInitiated) attacker.data.data.nbDiceFuror.value = 0;
         let carac = card.dataset.carac;
         console.log(carac);
         var listPath = carac.split(".");

@@ -142,36 +142,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
         return this.actor.deleteEmbeddedDocuments("Item", itemId, options);
     }
 
-    async _onFurorIntRoll(event, checked) {
-        if (!checked) {
-            let chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
-            let carac = "spirit.intelect";
-
-            let chatData = {
-                user: game.user.id,
-                speaker: {
-                    actor: this.actor
-                },
-            };
-
-
-            let cardData = {
-                ...this.data,
-                owner: this.actor.id,
-                actor: this.actor.data,
-                carac: carac,
-                config: CONFIG.yggdrasill
-            }
-            console.log(this.actor.data);
-
-            chatData.roll = true;
-
-
-            chatData.content = await renderTemplate(chatTemplate, cardData);
-            ChatMessage.applyRollMode(chatData, "selfroll");
-            return ChatMessage.create(chatData);
-        }
-    }
     _onTaskCheck(event) {
         let task = {
             askForOptions: true,
@@ -183,6 +153,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             caracValue: 0,
             caracName: null,
             modifier: 0,
+            isFuror: false,
             isCpt: false,
             isWeapon: false,
             isMagic: false,
@@ -239,6 +210,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             caracName: task.caracName,
             modifier: task.modifier,
             isCpt: task.isCpt,
+            isFuror: task.isFuror,
             isWeapon: task.isWeapon,
             isMagic: task.isMagic,
             isGaldr: task.isGaldr,
@@ -252,46 +224,14 @@ export default class YggdrasillActorSheet extends ActorSheet {
             item: task.item,
         })
     }
-
-    _onFurorCheck(event) {
-        const actor = this.actor.data;
-        let rollFormula = "";
-        let sr = {};
-        if (element.dataset.type == "enter") {
-            sr = {
-                "frisky": 14,
-                "injured": 19,
-                "bruised": 25
-            };
-            rollFormula = "(@caracValue)d10kh(@nbDiceKept)x10+@modifiercs>=@sr";
-        } else {
-            sr = {
-                "frisky": 5,
-                "injured": 7,
-                "bruised": 10
-            };
-            rollFormula = "((@caracValue)d10kh(@nbDiceKept)x10+@actionValue+@modifier)cs>=(@sr+@usedFurorDices)";
-        }
-        let rollData = {
-            actionValue: actor.data.secCarac.ttlDm,
-            sr: sr[actor.data.lifePoints.status],
-            usedFurorDices: actor.data.reserve.max - actor.data.reserve.value,
-            nbDiceKept: actor.data.nbDiceKept,
-            caracValue: actor.data.primCarac.spirit.intelect.value,
-            modifier: actor.data.rollModifier + actor.data.primCarac.spirit.intelect.mod + actor.data.actions.modifier,
-        };
-
-        let messageData = {
-            speaker: ChatMessage.getSpeaker(),
-        };
-        new Roll(rollFormula, rollData).roll().toMessage(messageData);
-
-    }
 }
 
 function setImportantCharacterTask(task, actor) {
     console.log(task.taskType);
+    console.log(actor.data);
     let competence = null;
+
+    if (!actor.data.data.isInFuror) actor.data.data.nbDiceFuror.value = 0
 
     switch (task.taskType) {
         case "carac":
@@ -424,26 +364,29 @@ function setImportantCharacterTask(task, actor) {
             break;
         case "furor":
             console.log("Yggdrasill || furor");
-            task.caracName = event.currentTarget.dataset.carac;
-
-            if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
-                task.caracValue = actor.data.data.primCarac.body[task.caracName].value;
-                task.modifier = actor.data.data.primCarac.body[task.caracName].mod;
-            } else if (task.caracName == "intelect" || task.caracName == "perception" || task.caracName == "tenacity") {
-                task.caracValue = actor.data.data.primCarac.spirit[task.caracName].value;
-                task.modifier = actor.data.data.primCarac.spirit[task.caracName].mod;
-            } else {
-                task.caracValue = actor.data.data.primCarac.soul[task.caracName].value;
-                task.modifier = actor.data.data.primCarac.soul[task.caracName].mod;
-            }
-
-            try {
-                task.item = actor.items.get(event.currentTarget.dataset.itemId).data;
-            } catch (e) {
-                task.item = null
+            task.isFuror = true;
+            task.caracName = "intelect";
+            task.caracValue = actor.data.data.primCarac.spirit.intelect.value;
+            task.modifier = actor.data.data.primCarac.spirit.intelect.mod;
+            if (actor.data.data.isInFuror) task.modifier += actor.data.data.secCarac.ttlDm
+            switch (actor.data.data.lifePoints.status) {
+                case "frisky":
+                    if (actor.data.data.isInFuror) actor.data.data.reserve.outSR = actor.data.data.sr.level[0].value + (actor.data.data.reserve.max - actor.data.data.reserve.value);
+                    else actor.data.data.sr.value = 3;
+                    break;
+                case "injured":
+                    if (actor.data.data.isInFuror) actor.data.data.reserve.outSR = actor.data.data.sr.level[1].value + (actor.data.data.reserve.max - actor.data.data.reserve.value);
+                    else actor.data.data.sr.value = 4;
+                    break;
+                case "bruised":
+                    if (actor.data.data.isInFuror) actor.data.data.reserve.outSR = actor.data.data.sr.level[2].value + (actor.data.data.reserve.max - actor.data.data.reserve.value);
+                    else actor.data.data.sr.value = 5;
+                    break;
             }
             break;
         default:
+            task.askForOptions = false;
+            console.log("task.taskType unknown")
             break;
     }
 

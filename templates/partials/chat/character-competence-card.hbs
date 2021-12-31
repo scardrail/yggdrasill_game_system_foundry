@@ -5,4 +5,21 @@
     <div class="card-content">
     {{> "systems/yggdrasill/templates/partials/chat/rollCheck.hbs"}}
     </div>
+    
+    {{#if criticalFailures}}
+            <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+    {{else}}
+        {{#if (upperEq total (add (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+            {{log (add (add total "upperEq") (add (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+            <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+        {{else}}
+            {{#if (lowerEq total (subs (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+                {{log (add (add total "lowerEq") (subs (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+                <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+            {{else}}
+                {{log (add (add total "Between") (add (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}} 
+                <h2 style="color: rgb(150, 97, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+            {{/if}}
+        {{/if}}
+    {{/if}}
 </div>

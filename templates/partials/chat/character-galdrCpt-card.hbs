@@ -2,8 +2,8 @@
 <div>
     <h2>{{localize "yggdrasill.magicCpt.dommain"}} : {{item.name}}</h2>
 
-    {{#if (upperEq total galdrData.sd)}}
-        <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{galdrData.sd}}</h2>
+    {{#if (and (upperEq total galdrData.sd) (not criticalFailures))}}
+        <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} :  {{galdrData.sd}}</h2>
     </div>
     <div>
         {{localize "yggdrasill.magicCpt.durationN"}} :  {{galdrData.durationDice}} {{galdrData.durationUnit}}
@@ -15,6 +15,6 @@
         {{localize "yggdrasill.magicCpt.effects"}} :  {{{item.data.description}}}
     </div>
     {{else}}
-        <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.difficultyLevel"}} :  {{galdrData.sd}}</h2>
+        <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} :  {{galdrData.sd}}</h2>
     </div>
     {{/if}}

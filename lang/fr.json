@@ -348,6 +348,7 @@
             "effects": "Effets",
             "invertEffects": "Effets Inversés",
             "difficultyLevel": "SD",
+            "successThreshold": "SR",
             "targets": "Cibles",
             "zoneTargets": "Zone / Cibles",
             "dommain": "Dommaine",
@@ -589,6 +590,7 @@
             "other": {
                 "carac": "Carac :",
                 "attackType": "type d'attaque :",
+                "ennemyAttack": "Attaque de l'adversaire",
                 "furor": "Furor :",
                 "destiny": "Destin ?",
                 "modifier": "Modificateur :"
@@ -599,6 +601,14 @@
                 "mod": "mod",
                 "destiny": "destin",
                 "furor": "furor"
+            },
+            "furorDialog": {
+                "enter": "Êtes vous sur de vouloir entrer en état de Furor et laisser votre alter-ego entrer en transe de combat?",
+                "exit": "Êtes vous sur de vouloir quitter votre état de Furor?",
+                "status": "Votre état : ",
+                "sr": "Seuil de réussite : ",
+                "yes": "oui",
+                "no": "non"
             }
         },
         "attackTypes": {

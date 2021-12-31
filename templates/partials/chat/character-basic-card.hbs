@@ -1,8 +1,37 @@
 <div class= "chat-card" data-type="{{type}}" data-item-id="{{_id}}" data-owner-id="{{owner}}">
     <div class="card-header">
-    <h2>{{localize "yggdrasill.competence.name"}} : {{caracName}}</h2>
+    {{#if actor.data.caracUsed.isDefensive}}
+        <h2>{{localize "yggdrasill.competence.name"}} : {{localize "yggdrasill.character.parade"}}</h2>
+    {{else}}
+        <h2>{{localize "yggdrasill.competence.name"}} : {{caracName}}</h2>
+    {{/if}}
     </div>
     <div class="card-content">
     {{> "systems/yggdrasill/templates/partials/chat/rollCheck.hbs"}}
     </div>
+    
+    {{#if actor.data.caracUsed.isDefensive}}
+        {{#if criticalFailures}}
+            <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{localize "yggdrasill.chat.other.ennemyAttack"}}</h2>
+        {{else}}
+            <h2 style="color: rgb(150, 97, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{localize "yggdrasill.chat.other.ennemyAttack"}}</h2>
+        {{/if}}
+    {{else}}
+        {{#if criticalFailures}}
+                <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+        {{else}}
+            {{#if (upperEq total (add (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+                {{log (add (add total "upperEq") (add (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+                <h2 style="color: rgb(0, 94, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+            {{else}}
+                {{#if (lowerEq total (subs (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+                    {{log (add (add total "lowerEq") (subs (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}}
+                    <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+                {{else}}
+                    {{log (add (add total "Between") (add (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") (lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo")))}} 
+                    <h2 style="color: rgb(150, 97, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} ± {{lookup (lookup actor.data.sr.level actor.data.sr.value) "modulo"}}</h2>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    {{/if}}
 </div>

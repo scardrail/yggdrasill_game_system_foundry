@@ -1,0 +1,11 @@
+<form>
+    {{#if actor.data.isInFuror}}
+    <h1>{{localize "yggdrasill.chat.furorDialog.exit"}}</h1>
+    <h2>{{localize "yggdrasill.chat.furorDialog.status"}} {{status}}</h2>
+    <h2>{{localize "yggdrasill.chat.furorDialog.sr"}} {{actor.data.reserve.outSR}}</h2>
+    {{else}}
+    <h1>{{localize "yggdrasill.chat.furorDialog.enter"}}</h1>
+    <h2>{{localize "yggdrasill.chat.furorDialog.status"}} {{status}}</h2>
+    <h2>{{localize "yggdrasill.chat.furorDialog.sr"}} {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}}</h2>
+    {{/if}}
+</form>
