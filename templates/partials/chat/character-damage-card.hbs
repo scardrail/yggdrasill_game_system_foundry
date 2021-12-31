@@ -8,6 +8,10 @@
 
     {{#if criticalFailures}}
         <h2 style="color: rgb(122, 0, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} + {{localize "yggdrasill.characteristics.secondary.dp"}}</h2>
+            <p> MR : {{subs (lookup (lookup actor.data.sr.level actor.data.sr.value) "value") total}}</p>
+            <p> {{localize "yggdrasill.weapon.wDmgBase"}} {{item.data.dmgBase}}</p>
+            <p> {{localize "yggdrasill.chat.other.modifier"}} : {{actor.data.dmgMod}}</p>
+            <h2>{{localize "yggdrasill.chat.actions.damages"}} : {{add (add item.data.dmgBase actor.data.dmgMod) total}} - {{localize "yggdrasill.equipment.defBase"}}</h2>
     {{else}}
         {{#if (lowerEq total (lookup (lookup actor.data.sr.level actor.data.sr.value) "value"))}}
             {{log (add (add total "lowerEq") (lookup (lookup actor.data.sr.level actor.data.sr.value) "value"))}}
@@ -15,7 +19,11 @@
         {{else}}
             {{log (add (add total "Between or upper") (lookup (lookup actor.data.sr.level actor.data.sr.value) "value"))}} 
             <h2 style="color: rgb(150, 97, 0);">{{localize "yggdrasill.magicCpt.successThreshold"}} : {{lookup (lookup actor.data.sr.level actor.data.sr.value) "value"}} + {{localize "yggdrasill.characteristics.secondary.dp"}}</h2>
+        
+            <p> MR : {{subs total (lookup (lookup actor.data.sr.level actor.data.sr.value) "value")}}</p>
+            <p> {{localize "yggdrasill.weapon.wDmgBase"}} {{item.data.dmgBase}}</p>
+            <p> {{localize "yggdrasill.chat.other.modifier"}} {{actor.data.dmgMod}}</p>
+            <h2>{{localize "yggdrasill.chat.actions.damages"}} : {{add (add item.data.dmgBase actor.data.dmgMod) total}} - {{localize "yggdrasill.equipment.defBase"}}</h2>
         {{/if}}
-        <h2>{{localize "yggdrasill.chat.actions.damages"}} : {{add item.data.dmgBase actor.data.dmgMod}} ({{item.data.dmgBase}} + {{actor.data.dmgMod}})</h2>
     {{/if}}
 </div>

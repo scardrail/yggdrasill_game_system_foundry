@@ -113,6 +113,7 @@
             "pSubType": "Type of protection",
             "hands": "Hands number",
             "dmgBase": "Basic damage",
+            "wDmgBase": "Weapon's damages :",
             "range": "Ranged weapon",
             "melee": "Melee weapon",
             "rangeC": "Short range",

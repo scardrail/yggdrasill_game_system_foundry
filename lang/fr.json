@@ -113,6 +113,7 @@
             "pSubType": "Type de la protection",
             "hands": "Nombre de mains",
             "dmgBase": "Dégâts",
+            "wDmgBase": "Dégâts de l'arme :",
             "range": "Arme à distance",
             "melee": "Au corps à corps",
             "rangeC": "Portée courte",
