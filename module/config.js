@@ -308,3 +308,15 @@ yggdrasill.runeSupport = {
     wood: "yggdrasill.magicCpt.runeSupport.wood",
     stoneMetal: "yggdrasill.magicCpt.runeSupport.stoneMetal"
 };
+
+yggdrasill.sr = {
+    0: "yggdrasill.sr.0",
+    1: "yggdrasill.sr.1",
+    2: "yggdrasill.sr.2",
+    3: "yggdrasill.sr.3",
+    4: "yggdrasill.sr.4",
+    5: "yggdrasill.sr.5",
+    6: "yggdrasill.sr.6",
+    7: "yggdrasill.sr.7",
+    8: "yggdrasill.sr.8",
+};

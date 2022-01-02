@@ -631,6 +631,17 @@
                 "aimed": "Tir visé",
                 "parade": "Parade"
             }
+        },
+        "sr": {
+            "0":"Très simple",
+            "1":"Simple",
+            "2":"Aisé",
+            "3":"Moyen",
+            "4":"Difficile",
+            "5":"Très Difficile",
+            "6":"Exceptionnel",
+            "7":"Légendaire",
+            "8":"Divin"
         }
 
     }

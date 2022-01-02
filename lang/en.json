@@ -633,6 +633,17 @@
                 "aimed": "Aimed shot",
                 "parade": "Parade"
             }
+        },
+        "sr":{
+            "0": "Very simple",
+            "1": "Simple",
+            "2": "Easy",
+            "3": "Medium",
+            "4": "Difficult",
+            "5": "Very Difficult",
+            "6": "Exceptional",
+            "7": "Legendary",
+            "8": "Divine"
         }
     }
 }

@@ -25,6 +25,7 @@ export async function TaskCheck({
     magicPositiveness = null,
     galdrData = null,
     runeData = null,
+    sr = 0,
 } = {}) {
     if (askForOptions && actorType != "extra" && actorType != "creature") {
         let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item);
@@ -32,8 +33,14 @@ export async function TaskCheck({
             return;
         }
         nbDiceFuror = checkOptions.nbDiceFuror;
+        try {
+            sr = checkOptions.sr;
+        } catch (error) {
+            console.log(error);
+        }
         game.actors.get(actor._id).update({
-            'data.nbDiceFuror.value': nbDiceFuror
+            'data.nbDiceFuror.value': nbDiceFuror,
+            'data.sr.value' : sr
         })
         isDestinyRoll = checkOptions.isDestinyRoll;
         modifier += checkOptions.modifier;
@@ -269,12 +276,12 @@ export async function TaskCheck({
         } else if (isConflict == "true") {
             if (isOffensive == "true") {
                 chatTemplate = "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs";
-                console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
+                // console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
                 actor.data.dmgMod = "[[1d10]] + " + actor.data.physic.roll + " + MR";
                 caracName = "attack";
             } else {
                 chatTemplate = "systems/yggdrasill/templates/partials/chat/character-basic-card.hbs";
-                console.log("Yggdrasill |0| isConflict " + isConflict);
+                // console.log("Yggdrasill |0| isConflict " + isConflict);
                 actor.data.dmgMod = 0;
                 caracName = "defense";
             }
@@ -528,11 +535,13 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
     if (taskType == "carac") {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
+            config: CONFIG.yggdrasill
         });
         name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
     } else if (taskType == "furor") {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
+            config: CONFIG.yggdrasill,
             status: game.i18n.localize(CONFIG.yggdrasill.importantCharacStatus[actor.data.lifePoints.status])
         });
         name = game.i18n.localize("yggdrasill.character.reserve");
@@ -619,6 +628,7 @@ function _processTaskCheckOptions(html, taskType, item) {
     switch (taskType) {
         case "carac":
             return {
+                sr: parseInt(form.baseSR.value),
                 nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
                 isDestinyRoll: form.isDestinyRoll.checked,
                 modifier: parseInt(form.ModificatorRollValue.value)
