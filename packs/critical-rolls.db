@@ -1,1 +1,246 @@
 {"name":"CriticalFail","img":"icons/svg/d20-grey.svg","results":[{"_id":"7gInUe46PwdJe3vk","type":0,"text":"Le héros touche son allié le plus proche et lui inflige (potentiel de dégâts de l’arme + Marge d’échec) points de dégâts (l’armure s’applique normalement). Si aucun d’entre eux ne se trouve à portée, ou dans sa ligne de mire, l’arme se fiche dans un obstacle ou se brise.","weight":1,"range":[1,1],"drawn":false,"flags":{},"img":"icons/svg/d20-black.svg","rangeL":1,"rangeH":1},{"_id":"T4c42h8xSQkHmBMY","type":0,"text":"Le héros touche son allié le plus proche et lui inflige (potentiel de dégâts de l’arme + Marge d’échec)/2 points de dégâts (l’armure s’applique normalement). Si aucun d’entre eux ne se trouve à portée, ou dans sa ligne de mire, le personnage perd le contrôle de son arme et doit réaliser sa prochaine action avec un malus de –2.","weight":1,"range":[2,3],"drawn":false,"flags":{},"img":"icons/svg/d20-black.svg","rangeL":2,"rangeH":3},{"_id":"38XD5Z8CyoscCzO2","type":0,"text":"Le héros laisse échapper son arme qui tombe à [[1D5]] mètres de lui, dans une direction déterminée au hasard.","weight":1,"range":[4,7],"drawn":false,"flags":{},"img":"icons/svg/d20-black.svg","rangeL":4,"rangeH":7},{"_id":"8aUhNDuspS7Wzw1f","type":0,"text":"Le personnage se blesse lui-même à la suite d’un faux mouvement. Il peut se tordre la cheville, se froisser un muscle ou même se donner un coup tout seul. Il subit (potentiel de dégâts de l’arme + Marge d’échec)/2 points de dégâts. La valeur de ses protections s’applique normalement.","weight":1,"range":[8,9],"drawn":false,"flags":{},"img":"icons/svg/d20-black.svg","rangeL":8,"rangeH":9},{"_id":"fKwfjvO4TfkVQXPt","type":0,"text":"Le personnage se blesse lui-même à la suite d’un faux mouvement. Il peut se tordre la cheville, se froisser un muscle ou même se donner un coup tout seul. Il subit (potentiel de dégâts de l’arme + Marge d’échec) points de dégâts. La valeur de ses protections s’applique normalement.","weight":1,"range":[10,10],"drawn":false,"flags":{},"img":"icons/svg/d20-black.svg","rangeL":10,"rangeH":10}],"formula":"1d10","replacement":true,"displayRoll":true,"folder":null,"sort":0,"permission":{"default":0,"VgwfyRh8yenXnYeR":3},"flags":{"core":{"sourceId":"RollTable.2GuFx1jg2LxJuvSx"}},"_id":"wXmKtll1ZrTEnrw7"}
+{
+  "name": "Blessures",
+  "img": "icons/svg/d20-grey.svg",
+  "results": [
+    {
+      "_id": "V2OEtU6lzar39XdK",
+      "type": 0,
+      "text": "<h2>Thorax enfoncé</h2> <p>Le coup puissant brise une côte au personnage et lui coupe le souffle. Le joueur réalise un test de Vigueur (SR19). En cas d’échec, le héros ne peut plus agir durant les [[1D5]] prochains tours de combat. Tous ses prochains tests voient leur Seuil de réussite augmenter d’un cran jusqu’à ce qu’il reçoive les premiers soins. (VIG –1)</p>",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 2,
+      "rangeH": 2
+    },
+    {
+      "_id": "GmRRocft3X30O4U5",
+      "type": 0,
+      "text": "<h2>Mâchoire fracturée</h2> <p>l’attaque ennemie frappe de plein fouet le menton du héros. Il est secoué pour le reste du tour de combat : il ne peut plus attaquer et le joueur réalise un test de Vigueur (SR14). Un échec signifie que le personnage reste en mode défensif pour un nombre de tours de combat égal à la Marge d’échec. (COM –1)</p>",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 3,
+      "rangeH": 3
+    },
+    {
+      "_id": "jgNTo9pCRajS9fr9",
+      "type": 0,
+      "text": "<h2>Poignet brisé</h2> <p>Lancer [[1D10]] : 1à 5 poignet droit, 6 à 10, poignet gauche. Le choc cause une violente douleur. Le joueur réalise un test d’Agilité (SR 19) ou lâche ce qu’il tient dans cette main. (AGI –1)</p>",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 4,
+      "rangeH": 4
+    },
+    {
+      "_id": "DxCB7bvpwOUpzmw3",
+      "type": 0,
+      "text": "<h2>Cuisse perforée</h2> <p>Le joueur réussit un test de Vigueur (SR 19) ou le héros tombe au sol. (DEP –1)</p>",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 5,
+      "rangeH": 5
+    },
+    {
+      "_id": "v5PEhBsQLPOK8NRA",
+      "type": 0,
+      "text": "<h2>Épaule démise</h2> <p>Le héros ploie sous le coup et ne peut plus attaquer pour le reste de ce tour de combat. (AGI –1)</p>",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 6,
+      "rangeH": 6
+    },
+    {
+      "_id": "55Z14zt45VQXMJ1h",
+      "type": 0,
+      "text": "<h2>Jambe cassée</h2> <p>Le joueur réalise un test d’Agilité (SR 25) ou le personnage chute au sol. (DEP –1)</p>",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 7,
+      "rangeH": 7
+    },
+    {
+      "_id": "IF7R475jkv5MX5U0",
+      "type": 0,
+      "text": "<h2>Plaie ouverte</h2> <p>Une entaille impressionnante marque le corps du guerrier. Le sang ruisselle sur son armure. Cette blessure n’a d’autre conséquence que de laisser une profonde cicatrice une fois guérie.</p>",
+      "weight": 1,
+      "range": [
+        8,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 8,
+      "rangeH": 12
+    },
+    {
+      "_id": "BgbUBsizMuOwpNKl",
+      "type": 0,
+      "text": "<h2>Côtes cassées</h2> <p>Le joueur réalise un test de Ténacité (SR 19) à chaque tour. En cas d’échec, le personnage ne peut entreprendre qu’une seule action pour ce tour. (PUI –1)</p>",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 13,
+      "rangeH": 13
+    },
+    {
+      "_id": "XcECGDL1BQqmblj8",
+      "type": 0,
+      "text": "<h2>Tripes à l’air</h2> <p>Le joueur réussit un test de Vigueur (SR 25) ou le héros s’effondre au sol. Toutes ses caractéristiques sont diminuées d’un point. (PUI –1)</p>",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 14,
+      "rangeH": 14
+    },
+    {
+      "_id": "zbYZfwRZnOBSvQQ0",
+      "type": 0,
+      "text": "<h2>Vilaine entaille</h2> <p>Hémorragie, le héros perd 2 PV par tour. (VIG –1)</p>",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 15,
+      "rangeH": 15
+    },
+    {
+      "_id": "nId73ljLFEAqDAuZ",
+      "type": 0,
+      "text": "<h2>Hémorragie interne</h2> <p>Le joueur réussit un test de Vigueur (SR 19) ou le héros sombre dans l’inconscience. Il perd 2PV par tour. (VIG –1)</p>",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 16,
+      "rangeH": 16
+    },
+    {
+      "_id": "4YLV9zKGgJos7aSW",
+      "type": 0,
+      "text": "<h2>Arcade ouverte</h2> <p>L’orbite fracturée, la paupière gonflée, le personnage ne voit plus rien de ce côté. La difficulté de tous ses tests de Perception est augmentée d’un cran. (PER –1).</p>",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 17,
+      "rangeH": 17
+    },
+    {
+      "_id": "2VUeEpG7lQf5So5q",
+      "type": 0,
+      "text": "<h2>Front ouvert</h2> <p>Du sang ruisselle sur les yeux du héros. Un bruit sourd résonne dans son crâne. Tous les tests des caractéristiques d’Esprit(Intellect, Perception, Tenacité) se font avec un dé de moins.</p>",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 18,
+      "rangeH": 18
+    },
+    {
+      "_id": "fLnL7qtUPsLS9FKK",
+      "type": 0,
+      "text": "<h2>Tranché !</h2> <p>Le coup vient de trancher net ou d’écraser un doigt, une oreille, le nez, etc… du personnage. (AGI –1 ou CHA –1 selon la zone touchée)</p>",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 19,
+      "rangeH": 19
+    },
+    {
+      "_id": "dSlUeHOmAlyKFUmN",
+      "type": 0,
+      "text": "<h2>Amputé !</h2> <p>L’attaque ennemie vient de broyer ou de trancher net la main, le pied, le bras ou la jambe du personnage. Il perd 4PV supplémentaires à chaque tour de combat jusqu’à ce que quelqu’un parvienne à stopper l’hémorragie. Toutes ses caractéristiques sont réduites de 1 point. (AGI et PUI –1 pour le bras ou la main, DEP –2 et PUI –1 pour la jambe ou le pied)</p>",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "rangeL": 20,
+      "rangeH": 20
+    }
+  ],
+  "formula": "2d10",
+  "replacement": true,
+  "displayRoll": true,
+  "flags": {
+    "core": {
+      "sourceId": "RollTable.vgy4KBMgbvPAA4YJ"
+    },
+    "exportSource": {
+      "world": "yggtests",
+      "system": "yggdrasill",
+      "coreVersion": "9.238",
+      "systemVersion": "0.1.201"
+    }
+  }
+}
