@@ -1,6 +1,6 @@
-<form>
-    
+<form>    
     <p>{{localize "yggdrasill.competence.value"}} : {{item.data.value}}</p>
+    {{#if (not isDodging)}}
     <div class="form-group">
         <label>{{localize "yggdrasill.chat.other.carac"}}</label>
         <select class="carac" data-type="{{type}}" data-owner-id="{{owner}}" name="caracUsed" style="width:100%">
@@ -13,6 +13,7 @@
             {{/select}}
         </select>
     </div>
+    {{/if}}
     <div class="form-group">
         <label>{{localize "yggdrasill.chat.other.furor"}}</label>
         {{#if (upper actor.data.nbDiceFuror.max actor.data.reserve.value)}}
@@ -29,4 +30,18 @@
         <label>{{localize "yggdrasill.chat.other.modifier"}}</label>
         <input type="number" name="ModificatorRollValue" data-type="Number" value="0"/>
     </div>
+    <hr>
+    {{#if (not isDodging)}}
+    <div class="form-group">
+        <label>{{localize "yggdrasill.chat.furorDialog.sr"}}</label>
+        <select class="sr" data-owner-id="{{owner}}" name="baseSR" style="width:100%">
+            {{#select actor.data.sr.value}}
+                {{#each config.sr as |name value|}}
+                    <option name="baseSR" value="{{value}}">{{localize name}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+    </div>
+    <hr>
+    {{/if}}
 </form>

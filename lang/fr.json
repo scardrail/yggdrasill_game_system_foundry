@@ -92,6 +92,7 @@
         },
         "equipment": {
             "enc": "Encombrement",
+            "encMin": "Enc.",
             "solidity": "Solidité",
             "equiped": "Equipé ?",
             "stored": "Rangé ?",
@@ -423,7 +424,8 @@
             "modifier": "Modificateur",
             "weary": "Epuisé",
             "isBerserk": "Est un Berserker ? ",
-            "isInitiated": "Est un initié d'Odhinn ?"
+            "isInitiated": "Est un initié d'Odhinn ?",
+            "dodge": "Esquive"
         },
         "characteristics": {
             "primary": {
@@ -633,15 +635,15 @@
             }
         },
         "sr": {
-            "0":"Très simple",
-            "1":"Simple",
-            "2":"Aisé",
-            "3":"Moyen",
-            "4":"Difficile",
-            "5":"Très Difficile",
-            "6":"Exceptionnel",
-            "7":"Légendaire",
-            "8":"Divin"
+            "0": "Très simple",
+            "1": "Simple",
+            "2": "Aisé",
+            "3": "Moyen",
+            "4": "Difficile",
+            "5": "Très Difficile",
+            "6": "Exceptionnel",
+            "7": "Légendaire",
+            "8": "Divin"
         }
 
     }

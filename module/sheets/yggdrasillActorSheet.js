@@ -162,12 +162,22 @@ export default class YggdrasillActorSheet extends ActorSheet {
             isGaldr: false,
             isConflict: false,
             isOffensive: false,
+            isDefensive: false,
             actorType: null,
             itemId: null,
             item: null,
+            isDodge: null,
         }
         task.actorType = this.actor.type;
         task.taskType = event.currentTarget.dataset.tasktype;
+        if (task.taskType == "competence") {
+            try {
+                task.isDodge = event.currentTarget.dataset.isdodge;
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
 
 
         if (task.actorType == "pj" || task.actorType == "pnj") {
@@ -198,6 +208,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
         }
 
         console.log(task);
+        console.log(this.actor);
 
         Dice.TaskCheck({
             askForOptions: task.askForOptions,
@@ -218,26 +229,30 @@ export default class YggdrasillActorSheet extends ActorSheet {
             isSejdr: task.isSejdr,
             isConflict: task.isConflict,
             isOffensive: task.isOffensive,
+            isDefensive: task.isDefensive,
             actor: this.actor.data,
             actorType: task.actorType,
             speaker: this.actor,
             item: task.item,
+            isDodge: task.isDodge,
         })
     }
 }
 
 function setImportantCharacterTask(task, actor) {
     console.log(task.taskType);
+    console.log(task);
     console.log(actor.data);
     let competence = null;
 
-    if (!actor.data.data.isInFuror) actor.data.data.nbDiceFuror.value = 0
+    if (!actor.data.data.isInFuror) actor.data.data.nbDiceFuror.value = 0;
 
     switch (task.taskType) {
         case "carac":
             console.log("Yggdrasill || carac");
-            task.caracName = event.currentTarget.dataset.carac;
-
+            if (!task.caracName) {
+                task.caracName = event.currentTarget.dataset.carac;
+            }
             if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
                 task.caracValue = actor.data.data.primCarac.body[task.caracName].value;
                 task.modifier = actor.data.data.primCarac.body[task.caracName].mod;
@@ -258,7 +273,21 @@ function setImportantCharacterTask(task, actor) {
             break;
         case "competence":
             console.log("Yggdrasill || competence");
-            task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            console.log(task.isDodge);
+            if (task.isDodge) {
+                try {
+                    task.itemId = actor.items.getName("Esquive", {
+                        strict: true
+                    }).data._id;
+                } catch (e) {
+                    task.taskType = "carac";
+                    task.caracName = "agility";
+                    task = setImportantCharacterTask(task, actor);
+                    return task;
+                }
+            } else {
+                task.itemId = event.currentTarget.closest(".item").dataset.itemId;
+            }
             task.item = actor.items.get(task.itemId).data;
             task.isCpt = true;
             task.actionValue = task.item.data.value;

@@ -25,10 +25,12 @@ export async function TaskCheck({
     magicPositiveness = null,
     galdrData = null,
     runeData = null,
+    isDodge = null,
     sr = 0,
 } = {}) {
+    console.log(actor);
     if (askForOptions && actorType != "extra" && actorType != "creature") {
-        let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item);
+        let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item, isDodge);
         if (checkOptions.cancelled) {
             return;
         }
@@ -38,10 +40,7 @@ export async function TaskCheck({
         } catch (error) {
             console.log(error);
         }
-        game.actors.get(actor._id).update({
-            'data.nbDiceFuror.value': nbDiceFuror,
-            'data.sr.value' : sr
-        })
+
         isDestinyRoll = checkOptions.isDestinyRoll;
         modifier += checkOptions.modifier;
         if (checkOptions.caracUsed) {
@@ -113,6 +112,29 @@ export async function TaskCheck({
             console.log(runeData)
         }
 
+        if (item) {
+            if (item.type == "sejdrCpt" || (item.type == "arme" && !(actor.data.caracUsed.isDefensive))) {
+                console.log("is sejdrCpt or is arme and not is Defensive");
+                sr = 3;
+            }
+        }
+        if (actor.data.secCarac.spaceReq.status == "crowded") {
+            console.log("is crowded");
+            sr += 1;
+        } else if (actor.data.secCarac.spaceReq.status == "overloaded") {
+            console.log("is overloaded");
+            sr += 2;
+        }
+        if (actor.data.isInFuror && caracName == "perception") {
+            console.log("is In Furor and perception");
+            sr += 1;
+        };
+
+        game.actors.get(actor._id).update({
+            'data.nbDiceFuror.value': nbDiceFuror
+        })
+        if (sr) actor.data.sr.value = sr;
+
     }
 
     if (caracValue == 1 && actorType != "extra" && actorType != "creature") {
@@ -136,7 +158,7 @@ export async function TaskCheck({
     console.log("Yggdrasill || nbDiceFuror " + nbDiceFuror);
     console.log("Yggdrasill || destinyDice " + destinyDice);
     console.log("Yggdrasill || modifier " + modifier);
-    console.log("Yggdrasill || isFuror " + isFuror);
+    console.log("Yggdrasill || isDodge " + isDodge);
     console.log("Yggdrasill || isConflict " + isConflict);
     console.log("Yggdrasill || isOffensive " + isOffensive);
     console.log("Yggdrasill || attackType " + attackType);
@@ -200,7 +222,7 @@ export async function TaskCheck({
     }
 
     if (actor.data.isBerserk && actor.data.nbDiceFuror.value > 0) {
-        if (actor.data.isInFuror && caracName == "perception") actor.data.sr.value += 1;
+        // if (actor.data.isInFuror && caracName == "perception") actor.data.sr.value += 1;
         if (attackType == "defensive" && actor.data.isInFuror) rollData.nbDiceKept = 1;
         actor.data.isInFuror = true;
     }
@@ -212,7 +234,7 @@ export async function TaskCheck({
     let criticalFailures = false;
 
     if (item.type == "arme" && !(actor.data.caracUsed.isDefensive)) {
-        actor.data.sr.value += 3;
+        // actor.data.sr.value = 3;
         chatTemplate = "systems/yggdrasill/templates/partials/chat/character-damage-card.hbs";
         console.log("weapon roll");
         chatOptions = {};
@@ -267,7 +289,7 @@ export async function TaskCheck({
     } else {
         console.log("Yggdrasill ||" + item.type);
         if (item.type == "sejdrCpt") {
-            actor.data.sr.value += 3;
+            // actor.data.sr.value = 3;
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-sejdrCpt-card.hbs";
         } else if (item.type == "galdrCpt") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-galdrCpt-card.hbs";
@@ -519,7 +541,7 @@ function getifIsCriticalFailures(rollResult) {
 }
 
 
-async function GetTaskCheckOptions(taskType, caracName, actor, item) {
+async function GetTaskCheckOptions(taskType, caracName, actor, item, isDodge) {
     const templates = {
         "carac": "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs",
         "competence": "systems/yggdrasill/templates/partials/dialog/cpt-check-dialog.hbs",
@@ -529,13 +551,16 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
         "runeCpt": "systems/yggdrasill/templates/partials/dialog/rune-check-dialog.hbs",
         "furor": "systems/yggdrasill/templates/partials/dialog/furor-check-dialog.hbs"
     };
-
+    let isDodging = false;
+    if (isDodge) isDodging = true;
     let html;
     let name;
     if (taskType == "carac") {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
-            config: CONFIG.yggdrasill
+            config: CONFIG.yggdrasill,
+            isDodging: isDodging
+
         });
         name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
     } else if (taskType == "furor") {
@@ -549,6 +574,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
             item: item,
+            isDodging: isDodging,
             config: CONFIG.yggdrasill
         });
         name = game.i18n.localize(item.name);
@@ -564,7 +590,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
                     normal: {
                         label: game.i18n.localize("yggdrasill.chat.furorDialog.yes"),
                         callback: html => resolve(
-                            _processTaskCheckOptions(html, taskType, item)
+                            _processTaskCheckOptions(html, taskType, item, isDodging)
                         )
                     },
                     cancel: {
@@ -593,7 +619,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
                     normal: {
                         label: game.i18n.localize("yggdrasill.chat.actions.roll"),
                         callback: html => resolve(
-                            _processTaskCheckOptions(html, taskType, item)
+                            _processTaskCheckOptions(html, taskType, item, isDodging)
                         )
                     },
                     cancel: {
@@ -613,7 +639,7 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item) {
     }
 }
 
-function _processTaskCheckOptions(html, taskType, item) {
+function _processTaskCheckOptions(html, taskType, item, isDodging) {
 
     let form = html[0].querySelector('form');
     console.log(form);
@@ -627,19 +653,39 @@ function _processTaskCheckOptions(html, taskType, item) {
 
     switch (taskType) {
         case "carac":
-            return {
-                sr: parseInt(form.baseSR.value),
-                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
-                isDestinyRoll: form.isDestinyRoll.checked,
-                modifier: parseInt(form.ModificatorRollValue.value)
+            if (!isDodging) {
+                return {
+                    sr: parseInt(form.baseSR.value),
+                    nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                    isDestinyRoll: form.isDestinyRoll.checked,
+                    modifier: parseInt(form.ModificatorRollValue.value)
+                }
+            } else {
+                return {
+                    sr: 3,
+                    nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                    isDestinyRoll: form.isDestinyRoll.checked,
+                    modifier: parseInt(form.ModificatorRollValue.value)
+                }
             }
             break;
         case "competence":
-            return {
-                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
-                isDestinyRoll: form.isDestinyRoll.checked,
-                modifier: parseInt(form.ModificatorRollValue.value),
-                caracUsed: form.caracUsed.value
+            if (!isDodging) {
+                return {
+                    sr: parseInt(form.baseSR.value),
+                    nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                    isDestinyRoll: form.isDestinyRoll.checked,
+                    modifier: parseInt(form.ModificatorRollValue.value),
+                    caracUsed: form.caracUsed.value
+                }
+            } else {
+                return {
+                    sr: 3,
+                    nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                    isDestinyRoll: form.isDestinyRoll.checked,
+                    modifier: parseInt(form.ModificatorRollValue.value),
+                    caracUsed: "agility"
+                }
             }
             break;
         case "arme":

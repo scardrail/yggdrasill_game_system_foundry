@@ -231,10 +231,10 @@ function setSecCaracs(data, caracs) {
         data.secCarac.spaceReq.modifier = -3;
     } else if (data.secCarac.spaceReq.value > data.secCarac.spaceReq.troubled && data.secCarac.spaceReq.value <= data.secCarac.spaceReq.crowded) {
         data.secCarac.spaceReq.status = "crowded";
-        data.sr.value += 1;
+        // data.sr.value += 1;
     } else if (data.secCarac.spaceReq.value > data.secCarac.spaceReq.crowded) {
         data.secCarac.spaceReq.status = "overloaded";
-        data.sr.value += 2;
+        // data.sr.value += 2;
     } else {
         data.secCarac.spaceReq.status = "free";
     }

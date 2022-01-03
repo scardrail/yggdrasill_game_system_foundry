@@ -1,62 +1,4 @@
 <form>
-    <p>{{localize "yggdrasill.chat.actions.damages"}} : {{item.data.dmgBase}}</p>
-    {{#if item.data.properties.ranged}}
-        {{#if item.data.properties.power}}
-            <div class="form-group">
-                <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
-                <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
-                    {{#select actor.data.caracUsed}}
-                        {{#each config.powerRangedCarac as |name key|}}
-                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
-                            <option name="caracUsed" value="{{key}}">{{localize name}}</option>
-                                {{/if}}
-                        {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-        {{else}} {{#if item.data.properties.instinct}}
-                <div class="form-group">
-                    <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
-                    <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
-                        {{#select actor.data.caracUsed}}
-                            {{#each config.instinctRangedCarac as |name key|}}
-                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
-                                <option name="caracUsed" value="{{key}}">{{localize name}}</option>
-                                {{/if}}
-                            {{/each}}
-                        {{/select}}
-                    </select>
-                </div>
-            {{else}} 
-                <div class="form-group">
-                    <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
-                    <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
-                        {{#select actor.data.caracUsed}}
-                            {{#each config.rangedCarac as |name key|}}
-                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
-                                <option name="caracUsed" value="{{key}}">{{localize name}}</option>
-                                {{/if}}
-                            {{/each}}
-                        {{/select}}
-                    </select>
-                </div>
-            {{/if}}
-        {{/if}}
-    {{else}}
-        <div class="form-group">
-            <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
-            <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
-                {{#select actor.data.caracUsed}}
-                {{#each config.meleeCarac as |name key|}}
-                 {{log (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.meleeCoresp key))) (lookup ../config.meleeCoresp key)) "value")}}
-                    {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.meleeCoresp key))) (lookup ../config.meleeCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
-                        <option name="caracUsed" value="{{key}}">{{localize name}}</option>
-                    {{/if}}
-                {{/each}}
-            {{/select}}
-        </select>
-        </div>
-    {{/if}}
     <div class="form-group">
         <label>{{localize "yggdrasill.chat.other.furor"}}</label>
         {{#if (upper actor.data.nbDiceFuror.max actor.data.reserve.value)}}
@@ -73,4 +15,64 @@
         <label>{{localize "yggdrasill.chat.other.modifier"}}</label>
         <input type="number" name="ModificatorRollValue" data-type="Number" value="0"/>
     </div>
+    <hr>
+    {{#if item.data.properties.ranged}}
+        {{#if item.data.properties.power}}
+            <div class="form-group">
+                <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
+                <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
+                    {{#select actor.data.caracUsed.name}}
+                        {{#each config.powerRangedCarac as |name key|}}
+                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
+                            <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                                {{/if}}
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        {{else}} {{#if item.data.properties.instinct}}
+                <div class="form-group">
+                    <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
+                    <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
+                        {{#select actor.data.caracUsed.name}}
+                            {{#each config.instinctRangedCarac as |name key|}}
+                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
+                                <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                                {{/if}}
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+            {{else}} 
+                <div class="form-group">
+                    <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
+                    <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
+                        {{#select actor.data.caracUsed.name}}
+                            {{#each config.rangedCarac as |name key|}}
+                                {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.rangedCoresp key))) (lookup ../config.rangedCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
+                                <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                                {{/if}}
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+            {{/if}}
+        {{/if}}
+    {{else}}
+        <div class="form-group">
+            <label>{{localize "yggdrasill.chat.other.attackType"}}</label>                    
+            <select class="attackType" data-type="{{type}}" data-ranged={{item.data.properties.ranged}} name="caracUsed" style="width:100%">
+                {{#select actor.data.caracUsed.name}}
+                {{#each config.meleeCarac as |name key|}}
+                 {{log (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.meleeCoresp key))) (lookup ../config.meleeCoresp key)) "value")}}
+                    {{#if (xAndNot (equals (lookup (lookup (lookup ../actor.data.primCarac (lookup ../config.caracLocation (lookup ../config.meleeCoresp key))) (lookup ../config.meleeCoresp key)) "value") 1) ../actor.data.lifePoints.isWeary)}}
+                        <option name="caracUsed" value="{{key}}">{{localize name}}</option>
+                    {{/if}}
+                {{/each}}
+            {{/select}}
+        </select>
+        </div>
+    {{/if}}
+    <p>{{localize "yggdrasill.chat.actions.damages"}} : {{item.data.dmgBase}}</p>
+    <hr>
 </form>

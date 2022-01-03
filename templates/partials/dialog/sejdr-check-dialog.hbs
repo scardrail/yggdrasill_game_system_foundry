@@ -1,16 +1,4 @@
 <form>
-    {{#if (equals item.data.positiveness "both")}}
-        <div class="form-group">
-            <label>{{localize "yggdrasill.magicCpt.positivenessN"}}</label>
-            <select class="carac" data-type="{{type}}" data-owner-id="{{owner}}" name="positiveness" style="width:100%">
-                {{#select actor.data.magicCpt.sejdrCpt.positiveness}}
-                    {{#each config.runePositiveness as |path positiv|}}
-                        <option name="positiveness" value="{{positiv}}">{{localize path}}</option>
-                    {{/each}}
-                {{/select}}
-            </select>
-        </div>
-    {{/if}}
     <div class="form-group">
         <label>{{localize "yggdrasill.chat.other.furor"}}</label>
         {{#if (upper actor.data.nbDiceFuror.max actor.data.reserve.value)}}
@@ -27,4 +15,18 @@
         <label>{{localize "yggdrasill.chat.other.modifier"}}</label>
         <input type="number" name="ModificatorRollValue" data-type="Number" value="0"/>
     </div>
+    <hr>
+    {{#if (equals item.data.positiveness "both")}}
+        <div class="form-group">
+            <label>{{localize "yggdrasill.magicCpt.positivenessN"}}</label>
+            <select class="carac" data-type="{{type}}" data-owner-id="{{owner}}" name="positiveness" style="width:100%">
+                {{#select actor.data.magicCpt.sejdrCpt.positiveness}}
+                    {{#each config.runePositiveness as |path positiv|}}
+                        <option name="positiveness" value="{{positiv}}">{{localize path}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+    {{/if}}
+    <hr>
 </form>

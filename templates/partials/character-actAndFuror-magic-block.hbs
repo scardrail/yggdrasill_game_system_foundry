@@ -14,16 +14,29 @@
                 </td>
             </tr>
         </table>
-        <table>
-            <tr>
-                <th>{{localize "yggdrasill.characteristics.secondary.protection"}}</th>
-            </tr>
-            <tr>
-                <td>
-                    <p style="margin: 0.35em 0;">{{data.data.protection}}</p>
-                </td>
-            </tr>
-        </table>
+        <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+            <table>
+                <tr>
+                    <th>{{localize "yggdrasill.characteristics.secondary.protection"}}</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin: 0.35em 0;">{{data.data.protection}}</p>
+                    </td>
+                </tr>
+            </table><table>
+                <tr>
+                    <th>{{localize "yggdrasill.character.dodge"}}</th>
+                </tr>
+                <tr>
+                    <td style="text-align:center; height: 32.75px;" >
+                        <a class="task-check" data-tasktype="competence" data-isdodge="true" title="{{localize "yggdrasill.character.dodge"}}">
+                            <i style="font-size: 16px" class="fas fa-dice-d20"></i>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <table>
             <tr>
                 <th>

@@ -91,6 +91,7 @@
         },
         "equipment": {
             "enc": "Space requirement",
+            "encMin": "Space req.",
             "solidity": "Solidity",
             "equiped": "Equipped ?",
             "stored": "Stored ?",
@@ -424,7 +425,8 @@
             "status": "Status",
             "parade": "Parade",
             "isBerserk": "Is a Berserker ? ",
-            "isInitiated": "Is initated by Odhinn ?"
+            "isInitiated": "Is initated by Odhinn ?",
+            "dodge": "Dodge"
         },
         "characteristics": {
             "primary": {
@@ -634,7 +636,7 @@
                 "parade": "Parade"
             }
         },
-        "sr":{
+        "sr": {
             "0": "Very simple",
             "1": "Simple",
             "2": "Easy",
