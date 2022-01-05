@@ -14,8 +14,11 @@
                 {{/if}}
             </td>
             <td>
-                <input name="data.primCarac.body.power.value" type="number" min="0" max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.body.power.value}}"
-                data-dtype="Number" />
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
+                    <input name="data.primCarac.body.power.value" type="number" min="0" max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.body.power.value}}"
+                    data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.body.power.mod" type="number" value="{{data.data.primCarac.body.power.mod}}"
+                    data-dtype="Number" /></div>
+                </div>
             </td>
             <td>
                 {{#if (and data.data.lifePoints.isWeary (lowerEq data.data.primCarac.spirit.intelect.value 1 ))}}
@@ -25,8 +28,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.spirit.intelect.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.spirit.intelect.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.spirit.intelect.mod" type="number" value="{{data.data.primCarac.spirit.intelect.mod}}"
+                data-dtype="Number" /></div>
             </td>
             <td>
                 {{#if (and data.data.lifePoints.isWeary (lowerEq data.data.primCarac.soul.charisma.value 1 ))}}
@@ -36,8 +41,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.soul.charisma.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.soul.charisma.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.soul.charisma.mod" type="number" value="{{data.data.primCarac.soul.charisma.mod}}"
+                data-dtype="Number" /></div>
             </td>
         </tr>
         <tr>
@@ -49,8 +56,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.body.vigour.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.body.vigour.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.body.vigour.mod" type="number" value="{{data.data.primCarac.body.vigour.mod}}"
+                data-dtype="Number" /></div>
             </td>
             <td>
                 {{#if (and data.data.lifePoints.isWeary (lowerEq data.data.primCarac.spirit.perception.value 1 ))}}
@@ -60,8 +69,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.spirit.perception.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.spirit.perception.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.spirit.perception.mod" type="number" value="{{data.data.primCarac.spirit.perception.mod}}"
+                data-dtype="Number" /></div>
             </td>
             <td>
                 {{#if (and data.data.lifePoints.isWeary (lowerEq data.data.primCarac.soul.instinct.value 1 ))}}
@@ -71,8 +82,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.soul.instinct.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.soul.instinct.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.soul.instinct.mod" type="number" value="{{data.data.primCarac.soul.instinct.mod}}"
+                data-dtype="Number" /></div>
             </td>
         </tr>
         <tr>
@@ -84,8 +97,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.body.agility.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.body.agility.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.body.agility.mod" type="number" value="{{data.data.primCarac.body.agility.mod}}"
+                data-dtype="Number" /></div>
             </td>
             <td>
                 {{#if (and data.data.lifePoints.isWeary (lowerEq data.data.primCarac.spirit.tenacity.value 1 ))}}
@@ -95,8 +110,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.spirit.tenacity.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.spirit.tenacity.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.spirit.tenacity.mod" type="number" value="{{data.data.primCarac.spirit.tenacity.mod}}"
+                data-dtype="Number" /></div>
             </td>
             <td>
                 {{#if (and data.data.lifePoints.isWeary (lowerEq data.data.primCarac.soul.communication.value 1 ))}}
@@ -106,8 +123,10 @@
                 {{/if}}
             </td>
             <td>
+                <div style="display: grid; grid-template-columns:1fr 50%; gap:2px;">
                 <input name="data.primCarac.soul.communication.value" type="number"  min="0"  max={{data.data.valPrimCaracMax}} value="{{data.data.primCarac.soul.communication.value}}"
-                data-dtype="Number" />
+                data-dtype="Number" /><div style="display: grid; grid-template-columns:1fr 50%; gap:2px;"><p style="text-align: center;">+</p><input name="data.primCarac.soul.communication.mod" type="number" value="{{data.data.primCarac.soul.communication.mod}}"
+                data-dtype="Number" /></div>
             </td>
         </tr>
     </table>

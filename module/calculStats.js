@@ -363,11 +363,16 @@ export function setMartialCpt(actorData) {
             return item.data.data.properties.isChecked
         });
         // console.log(item);
-        let competenceModifier = item[0].data.data.modifier;
-        let competenceDmgMod = item[0].data.data.dmgMod;
-        let competenceType = item[0].data.data.type;
+        let competenceModifier = 0;
+        let competenceDmgMod = 0;
+        let competenceType = 0;
+        item.forEach(element => {
+            competenceModifier += element.data.data.modifier;
+            competenceDmgMod += element.data.data.dmgMod;
+            competenceType = element.data.data.type;
+        });
 
-        actorData.data.martialCpt.mod = competenceModifier;
+        actorData.data.martialCpt.mod += competenceModifier;
         switch (competenceType) {
             case "attack":
                 actorData.data.martialCpt.dmgMod = competenceDmgMod;

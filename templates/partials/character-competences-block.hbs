@@ -10,6 +10,7 @@
                     {{localize "yggdrasill.competence.name"}}
                 </th>
                 <th>{{localize "yggdrasill.competence.value"}}</th>
+                <th>{{localize "yggdrasill.character.actionsMod"}}</th>
                 <th colspan="3">
                     <a class="item-create" data-type="competence" title="{{localize "yggdrasill.sheet.addCpt"}}">
                         <i class="fas fa-plus"></i>
@@ -34,7 +35,10 @@
                     {{/if}}
                     </td>
                     <td>
-                        <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
+                        <input class="skill-value inline-edit" data-field="data.baseValue" type="number" min="0" value="{{data.baseValue}}"/>
+                    </td>
+                    <td>
+                        {{data.mod}}
                         </td>
                     <td>
                         <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">
@@ -78,7 +82,7 @@
                     {{/if}}
                     </td>
                     <td>
-                        <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
+                        <input class="skill-value inline-edit" data-field="data.baseValue" type="number" min="0" value="{{data.baseValue}}"/>
                         </td>
                     <td>
                         <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">
@@ -124,7 +128,7 @@
                         {{/if}}
                         </td>
                         <td>
-                            <input class="skill-value inline-edit" data-field="data.value" type="number" min="0" value="{{data.value}}"/>
+                            <input class="skill-value inline-edit" data-field="data.baseValue" type="number" min="0" value="{{data.baseValue}}"/>
                             </td>
                         <td>
                             <a class="item-edit" title="{{localize "yggdrasill.sheet.editCpt"}}">

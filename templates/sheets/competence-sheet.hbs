@@ -37,7 +37,20 @@
             <tr>
                 <th>{{localize "yggdrasill.competence.value"}}</th>
                 <td>
-                    <input name="data.value" type="number" value="{{data.data.value}}" data-type="Number">
+                    <input name="data.baseValue" type="number" value="{{data.data.baseValue}}" data-type="Number">
+                </td>
+            </tr>
+            <tr>
+                <th>{{localize "yggdrasill.character.modifier"}}</th>
+                <td>
+                    <input name="data.mod" type="number" value="{{data.data.mod}}" data-type="Number">
+                </td>
+            </tr>
+            <hr>
+            <tr>
+                <th>{{localize "yggdrasill.character.ttl"}}</th>
+                <td>
+                    {{data.data.value}}
                 </td>
             </tr>
         </table>

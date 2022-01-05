@@ -843,6 +843,23 @@ function resetingValues(data, type, id, nbDiceFuror) {
             data.nbDiceFuror.max = 1;
         }
 
+        if (data.martialCpt.mod != 0) {
+            let i = 0;
+            attacker.data.items.forEach(item => {
+
+                if (item.type == "martialCpt") {
+                    let itm = attacker.data.items.get(item.id);
+                    console.log(itm);
+                    if (itm.data.data.properties.isChecked) {
+                        itm.update({
+                            'data.properties.isChecked': false
+                        })
+                    }
+                }
+                i += 1;
+            });
+        }
+
         console.log(data.nbDiceFuror);
         data.caracUsed.value = 0;
         data.caracUsed.rollModifier = 0;
@@ -850,6 +867,7 @@ function resetingValues(data, type, id, nbDiceFuror) {
         data.caracUsed.isDefensive = false;
         data.magicCpt.sejdrCpt.positiveness = "none";
         data.magicCpt.runeCpt.positiveness = "none";
+
     } else {
         data.dmgMod = 0;
     }

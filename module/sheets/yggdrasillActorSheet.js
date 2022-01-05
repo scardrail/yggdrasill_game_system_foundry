@@ -255,13 +255,13 @@ function setImportantCharacterTask(task, actor) {
             }
             if (task.caracName == "power" || task.caracName == "vigour" || task.caracName == "agility") {
                 task.caracValue = actor.data.data.primCarac.body[task.caracName].value;
-                task.modifier = actor.data.data.primCarac.body[task.caracName].mod;
+                task.modifier += actor.data.data.primCarac.body[task.caracName].mod;
             } else if (task.caracName == "intelect" || task.caracName == "perception" || task.caracName == "tenacity") {
                 task.caracValue = actor.data.data.primCarac.spirit[task.caracName].value;
-                task.modifier = actor.data.data.primCarac.spirit[task.caracName].mod;
+                task.modifier += actor.data.data.primCarac.spirit[task.caracName].mod;
             } else {
                 task.caracValue = actor.data.data.primCarac.soul[task.caracName].value;
-                task.modifier = actor.data.data.primCarac.soul[task.caracName].mod;
+                task.modifier += actor.data.data.primCarac.soul[task.caracName].mod;
             }
 
             try {
@@ -396,7 +396,7 @@ function setImportantCharacterTask(task, actor) {
             task.isFuror = true;
             task.caracName = "intelect";
             task.caracValue = actor.data.data.primCarac.spirit.intelect.value;
-            task.modifier = actor.data.data.primCarac.spirit.intelect.mod;
+            task.modifier += actor.data.data.primCarac.spirit.intelect.mod;
             if (actor.data.data.isInFuror) task.modifier += actor.data.data.secCarac.ttlDm
             switch (actor.data.data.lifePoints.status) {
                 case "frisky":

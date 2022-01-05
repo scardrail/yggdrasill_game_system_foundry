@@ -11,6 +11,8 @@ export default class yggdrasillItem extends Item {
             } else {
                 data.properties.ranged = false;
             }
+        } else if (itemData.type == "competence") {
+            data.value = parseInt(data.baseValue) + parseInt(data.mod);
         }
     }
 }

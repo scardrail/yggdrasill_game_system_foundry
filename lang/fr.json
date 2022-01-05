@@ -425,7 +425,8 @@
             "weary": "Epuisé",
             "isBerserk": "Est un Berserker ? ",
             "isInitiated": "Est un initié d'Odhinn ?",
-            "dodge": "Esquive"
+            "dodge": "Esquive",
+            "ttl": "Total"
         },
         "characteristics": {
             "primary": {
