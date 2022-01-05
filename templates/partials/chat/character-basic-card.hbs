@@ -3,7 +3,11 @@
     {{#if actor.data.caracUsed.isDefensive}}
         <h2>{{localize "yggdrasill.competence.name"}} : {{localize "yggdrasill.character.parade"}}</h2>
     {{else}}
-        <h2>{{localize "yggdrasill.competence.name"}} : {{caracName}}</h2>
+        {{#if actor.data.caracUsed.isDM}}
+            <h2>{{localize "yggdrasill.competence.name"}} : {{localize "yggdrasill.characteristics.secondary.dm"}} / {{caracName}}</h2>
+        {{else}}
+            <h2>{{localize "yggdrasill.competence.name"}} : {{caracName}}</h2>
+        {{/if}}
     {{/if}}
     </div>
     <div class="card-content">

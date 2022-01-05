@@ -23,9 +23,7 @@
                     <a data-tab="cpt">{{ localize "yggdrasill.tabs.cpt" }}</a>
                     <a data-tab="equipmt">{{ localize "yggdrasill.tabs.equipmt" }}</a>
                     <a data-tab="fight">{{ localize "yggdrasill.tabs.fight" }}</a>
-                    {{#if data.data.isInitiated}}
-                        <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
-                    {{/if}}
+                    <a data-tab="magic">{{ localize "yggdrasill.tabs.magic" }}</a>
                     {{#if  (eq actor.type "pnj")}}
                         <a data-tab="power">{{ localize "yggdrasill.tabs.power" }}</a>
                     {{/if}}
@@ -80,9 +78,11 @@
                         <div class="actAndFurorBloc" style="padding: 0px 15px 0px 15px;">
                             {{> "systems/yggdrasill/templates/partials/character-actAndFuror-magic-block.hbs"}}
                         </div>
-                        <div class="magicsBloc" style="padding: 0px 15px 0px 15px;">
-                            {{> "systems/yggdrasill/templates/partials/character-magics-block.hbs"}}
-                        </div>
+                        {{#if data.data.isInitiated}}
+                            <div class="magicsBloc" style="padding: 0px 15px 0px 15px;">
+                                {{> "systems/yggdrasill/templates/partials/character-magics-block.hbs"}}
+                            </div>
+                        {{/if}}
                     </div>
                     {{!-- Powers Tab --}}
                     <div class="tab equipmt" data-group="primary" data-tab="power">

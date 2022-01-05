@@ -101,6 +101,7 @@
             "stackable": "Empilable ?",
             "unique": "Unique ?",
             "2Handed": "A deux mains ?",
+            "dblWeapon": "Doubles armes ?",
             "equipment": "Equipement ?",
             "weapon": "Arme ?",
             "protection": "Protection ?",
@@ -455,7 +456,8 @@
                 "ttlDp": "Total",
                 "dm": "DM",
                 "ttlDm": "Total",
-                "transport": "DEP"
+                "transport": "DEP",
+                "mod": "Mod."
             },
             "primaryDetailed": {
                 "body": {
@@ -597,7 +599,10 @@
                 "ennemyAttack": "Attaque de l'adversaire",
                 "furor": "Furor :",
                 "destiny": "Destin ?",
-                "modifier": "Modificateur :"
+                "modifier": "Modificateur :",
+                "RM": "Résistance magique",
+                "testRM": "Test RM",
+                "initRank": "rang d'initiative :"
             },
             "rollFormula": {
                 "roll": "roll",
@@ -647,5 +652,13 @@
             "8": "Divin"
         }
 
+    },
+    "SETTINGS": {
+        "DualWeaponsModificator": {
+            "name": "Statistique boostée par les doubles armes.",
+            "label": "attack donne +AGI à ses tests d’attaque et –AGI en Parade ; defense donne +AGI en Parade et –AGI à ses tests d’attaque.",
+            "attack": "Boost d'attaque",
+            "defense": "Boost de parade"
+        }
     }
 }

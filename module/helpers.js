@@ -76,6 +76,9 @@ export const registerHandlebarsHelpers = function() {
     Handlebars.registerHelper('equals', function(val1, val2) {
         return val1 == val2;
     });
+    Handlebars.registerHelper('eqNot', function(val1, val2) {
+        return val1 != val2;
+    });
     Handlebars.registerHelper('upper', function(val1, val2) {
         return val1 > val2;
     });

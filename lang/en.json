@@ -100,6 +100,7 @@
             "stackable": "Stackable ?",
             "unique": "Unique ?",
             "2Handed": "Two handed ?",
+            "dblWeapon": "Dual weapons ?",
             "equipment": "Equipment ?",
             "weapon": "Weapon ?",
             "protection": "Protection?",
@@ -598,7 +599,10 @@
                 "ennemyAttack": "Attack of the opponent",
                 "furor": "Furor :",
                 "destiny": "Destiny ?",
-                "modifier": "Modifier :"
+                "modifier": "Modifier :",
+                "RM": "Magic resistance",
+                "testRM": "MR Test",
+                "initRank": "initiative rank :"
             },
             "rollFormula": {
                 "roll": "roll",
@@ -646,6 +650,14 @@
             "6": "Exceptional",
             "7": "Legendary",
             "8": "Divine"
+        }
+    },
+    "SETTINGS": {
+        "DualWeaponsModificator": {
+            "name": "Statistics boosted by dual weapons.",
+            "label": "attack gives +AGI to his attack checks and -AGI to his Parry checks; defense gives +AGI to his Parry checks and -AGI to his attack checks.",
+            "attack": "Boost of attack",
+            "defense": "Parry Boost"
         }
     }
 }

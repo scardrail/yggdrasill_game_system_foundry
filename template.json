@@ -165,20 +165,23 @@
                         "reaction": 0,
                         "spaceReq": 0,
                         "protection": 0,
-                        "magic": 0
+                        "magic": 0,
+                        "mod": 0
                     },
                     "ttlIni": 0,
                     "dp": {
                         "base": 0,
                         "spaceReq": 0,
                         "protection": 0,
-                        "magic": 0
+                        "magic": 0,
+                        "mod": 0
                     },
                     "ttlDp": 0,
                     "dm": {
                         "base": 0,
                         "protection": 0,
-                        "magic": 0
+                        "magic": 0,
+                        "mod": 0
                     },
                     "ttlDm": 0,
                     "transport": {
@@ -247,7 +250,8 @@
                     "rollModifier": 0,
                     "isOffensive": false,
                     "isDefensive": false,
-                    "isMagic": true
+                    "isMagic": true,
+                    "isDM": false
                 },
                 "martialCpt": {
                     "isMcptAttackUsed": false,
@@ -418,7 +422,8 @@
                 "equipment"
             ],
             "properties": {
-                "weapon": true
+                "weapon": true,
+                "dblWeapon": false
             },
             "subType": "wLong",
             "hands": 1,
