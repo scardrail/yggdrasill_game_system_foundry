@@ -40,9 +40,18 @@
                     {{#if (or (eq data.data.subType "wThrow") (eq data.data.subType "wShot"))}}
                         <label class="checkbox"><input type="checkbox" name="data.properties.ranged" {{checked  data.data.properties.ranged}}> {{localize "yggdrasill.equipment.ranged"}}</label>
                     {{else}}
+                        {{#if (not data.data.properties.dblWeapon)}}
                         <label class="checkbox"> <input type="checkbox" name="data.properties.2Handed" {{checked data.data.properties.2Handed}}> {{localize "yggdrasill.equipment.2Handed"}}</label>
+                        {{/if}}
+                        {{log data.data.subType}}
+                        {{log (not data.data.properties.2Handed)}}
+                        {{log (eqNot data.data.subType "wTwoHands")}}
+                        {{log (eqNot data.data.subType "wHast")}}
+                        {{log (or (eqNot data.data.subType "wTwoHands") (eqNot data.data.subType "wHast"))}}
+                        {{#if (and (not data.data.properties.2Handed) (and (eqNot data.data.subType "wTwoHands") (eqNot data.data.subType "wHast")))}}
+                        <label class="checkbox"> <input type="checkbox" name="data.properties.dblWeapon" {{checked data.data.properties.dblWeapon}}> {{localize "yggdrasill.equipment.dblWeapon"}}</label>
+                        {{/if}}
                     {{/if}}
-                    <label class="checkbox"><input type="checkbox" name="data.properties.weapon" {{checked  data.data.properties.weapon}}> {{localize "yggdrasill.equipment.weapon"}}</label>
                 </td>
             </tr>
             <tr>

@@ -155,6 +155,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             modifier: 0,
             isFuror: false,
             isCpt: false,
+            isSecCarac: false,
             isWeapon: false,
             isMagic: false,
             isRune: false,
@@ -173,15 +174,23 @@ export default class YggdrasillActorSheet extends ActorSheet {
         if (task.taskType == "competence") {
             try {
                 task.isDodge = event.currentTarget.dataset.isdodge;
-
             } catch (error) {
                 console.log(error);
             }
+        } else if (task.taskType == "seccarac") {
+            this.actor.data.data.caracUsed.isDM = true;
         }
 
 
         if (task.actorType == "pj" || task.actorType == "pnj") {
             task = setImportantCharacterTask(task, this.actor);
+            if (task.taskType == "arme") {
+                if (task.item.data.properties["2Handed"] && task.item.data.subType == "wLong") {
+                    console.log("2Handed");
+                    this.actor.data.data.dmgMod += 3;
+                    // this.actor.data.data.secCarac.ini.mod += 2;
+                }
+            }
         } else {
             try {
                 task.isCpt = event.currentTarget.dataset.competence;
@@ -191,7 +200,6 @@ export default class YggdrasillActorSheet extends ActorSheet {
                 task.isConflict = event.currentTarget.dataset.conflict;
                 task.isOffensive = event.currentTarget.dataset.offensive;
                 this.actor.data.data.physic.roll = event.currentTarget.dataset.physic;
-
                 task.actionValue = event.currentTarget.dataset.actionValue;
                 task.nbDiceKept = event.currentTarget.dataset.nbDiceKept;
                 task.nbDiceFuror = event.currentTarget.dataset.nbDiceFuror;
@@ -199,14 +207,8 @@ export default class YggdrasillActorSheet extends ActorSheet {
                 task.caracValue = event.currentTarget.dataset.caracValue;
                 task.caracName = event.currentTarget.dataset.actionName;
                 task.modifier = event.currentTarget.dataset.modifier;
-            } catch (e) {
-
-            }
-
-
-
+            } catch (e) {}
         }
-
         console.log(task);
         console.log(this.actor);
 
@@ -221,6 +223,7 @@ export default class YggdrasillActorSheet extends ActorSheet {
             caracName: task.caracName,
             modifier: task.modifier,
             isCpt: task.isCpt,
+            isSecCarac: task.isSecCarac,
             isFuror: task.isFuror,
             isWeapon: task.isWeapon,
             isMagic: task.isMagic,
@@ -291,6 +294,11 @@ function setImportantCharacterTask(task, actor) {
             task.item = actor.items.get(task.itemId).data;
             task.isCpt = true;
             task.actionValue = task.item.data.value;
+            break;
+        case "seccarac":
+            console.log("Yggdrasill || secondary carac");
+            task.isSecCarac = true;
+            task.actionValue = actor.data.data.secCarac.ttlDm;
             break;
         case "arme":
             console.log("Yggdrasill || weapon");

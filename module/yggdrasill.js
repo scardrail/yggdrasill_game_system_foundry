@@ -54,6 +54,25 @@ async function preloadHandlebarsTemplates() {
     return loadTemplates(templatePaths);
 }
 
+function registerSystemsSettings() {
+    game.settings.register("yggdrasill", "DualWeaponsModificator", {
+        config: true,
+        scrope: "client",
+        name: "SETTINGS.DualWeaponsModificator.name",
+        hint: "SETTINGS.DualWeaponsModificator.label",
+        type: String,
+        choices: {
+            "none": "",
+            "attack": "SETTINGS.DualWeaponsModificator.attack",
+            "defense": "SETTINGS.DualWeaponsModificator.defense"
+        },
+        default: "none",
+        onChange: value => {
+            console.log(value);
+        }
+    })
+}
+
 Hooks.once("init", () => {
     console.log("Yggdrasill | Initialisation du système Yggdrasill");
 
@@ -75,6 +94,8 @@ Hooks.once("init", () => {
     // Register Handlebars helpers
     registerHandlebarsHelpers();
     preloadHandlebarsTemplates();
+
+    registerSystemsSettings();
 });
 
 Hooks.on("renderChatLog", (app, html, data) => {

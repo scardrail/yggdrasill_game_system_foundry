@@ -29,6 +29,11 @@ export async function TaskCheck({
     sr = 0,
 } = {}) {
     console.log(actor);
+    try {
+        console.log(item);
+    } catch (e) {
+
+    }
     if (askForOptions && actorType != "extra" && actorType != "creature") {
         let checkOptions = await GetTaskCheckOptions(taskType, caracName, actor, item, isDodge);
         if (checkOptions.cancelled) {
@@ -50,32 +55,105 @@ export async function TaskCheck({
             modifier += caracUsed.modifier;
         }
         if (isWeapon) {
+
+            let dualWeaponSettings = null;
+            console.log(item);
+            if (item.data.properties.dblWeapon) dualWeaponSettings = game.settings.get("yggdrasill", "DualWeaponsModificator");
+            console.log(dualWeaponSettings);
+
             switch (checkOptions.cptUsed) {
                 case 'devastating':
                 case 'iStoppage':
                 case 'pStoppage':
-                    actor.data.dmgMod = (caracValue * 3);
+                    console.log("*3");
+                    actor.data.dmgMod += (caracValue * 3);
                     modifier += -caracValue;
+                    switch (dualWeaponSettings) {
+                        case "attack":
+                            modifier += (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        case "defense":
+                            modifier -= (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 'force':
                 case 'iImpact':
                 case 'pImpact':
-                    actor.data.dmgMod = caracValue;
+                    console.log("*1");
+                    actor.data.dmgMod += caracValue;
+                    switch (dualWeaponSettings) {
+                        case "attack":
+                            modifier += (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        case "defense":
+                            modifier -= (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 'precise':
+                    console.log("-1");
                     actor.data.enemyArmorMod = -caracValue;
+                    switch (dualWeaponSettings) {
+                        case "attack":
+                            modifier += (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        case "defense":
+                            modifier -= (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 'aimed':
+                    console.log("-*3");
                     actor.data.enemyArmorMod = -(caracValue * 3);
-                    actor.data.dmgMod = (caracValue * 3)
+                    actor.data.dmgMod += (caracValue * 3)
                     modifier += -caracValue;
+                    switch (dualWeaponSettings) {
+                        case "attack":
+                            modifier += (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        case "defense":
+                            modifier -= (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 'parade':
+                    console.log("def");
                     actor.data.caracUsed.isDefensive = true;
+                    switch (dualWeaponSettings) {
+                        case "attack":
+                            modifier -= (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        case "defense":
+                            modifier += (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
+                    console.log("norm");
+                    switch (dualWeaponSettings) {
+                        case "attack":
+                            modifier += (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        case "defense":
+                            modifier -= (actor.data.primCarac.body.agility.value + actor.data.primCarac.body.agility.mod);
+                            break;
+                        default:
+                            break;
+                    }
                     console.log(`Sorry, we are out of ${checkOptions.cptUsed}.`);
             }
+            console.log(modifier);
         }
         if (isSejdr) {
             actor.data.caracUsed.isMagic = true;
@@ -169,6 +247,7 @@ export async function TaskCheck({
     console.log(item);
 
 
+
     let rollFormula = caracValue + "d10kh" + nbDiceKept + "x10";
     let detailFormula = caracName + " " + game.i18n.localize("yggdrasill.chat.rollFormula.roll");
     let isBlind = false;
@@ -194,6 +273,8 @@ export async function TaskCheck({
         rollFormula += " + 1d10";
         detailFormula += " / " + game.i18n.localize("yggdrasill.chat.rollFormula.destiny");
     }
+
+
     console.log(rollFormula);
     console.log(detailFormula);
 
@@ -289,7 +370,6 @@ export async function TaskCheck({
     } else {
         console.log("Yggdrasill ||" + item.type);
         if (item.type == "sejdrCpt") {
-            // actor.data.sr.value = 3;
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-sejdrCpt-card.hbs";
         } else if (item.type == "galdrCpt") {
             chatTemplate = "systems/yggdrasill/templates/partials/chat/character-galdrCpt-card.hbs";
@@ -298,7 +378,6 @@ export async function TaskCheck({
         } else if (isConflict == "true") {
             if (isOffensive == "true") {
                 chatTemplate = "systems/yggdrasill/templates/partials/chat/extra-conflict-card.hbs";
-                // console.log("Yggdrasill |[[1d10]]| isConflict " + isConflict);
                 actor.data.dmgMod = "[[1d10]] + " + actor.data.physic.roll + " + MR";
                 caracName = "attack";
             } else {
@@ -544,6 +623,7 @@ function getifIsCriticalFailures(rollResult) {
 async function GetTaskCheckOptions(taskType, caracName, actor, item, isDodge) {
     const templates = {
         "carac": "systems/yggdrasill/templates/partials/dialog/primCarac-check-dialog.hbs",
+        "seccarac": "systems/yggdrasill/templates/partials/dialog/secCarac-check-dialog.hbs",
         "competence": "systems/yggdrasill/templates/partials/dialog/cpt-check-dialog.hbs",
         "arme": "systems/yggdrasill/templates/partials/dialog/weapon-check-dialog.hbs",
         "sejdrCpt": "systems/yggdrasill/templates/partials/dialog/sejdr-check-dialog.hbs",
@@ -555,14 +635,17 @@ async function GetTaskCheckOptions(taskType, caracName, actor, item, isDodge) {
     if (isDodge) isDodging = true;
     let html;
     let name;
-    if (taskType == "carac") {
+    if (taskType == "carac" || taskType == "seccarac") {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
             config: CONFIG.yggdrasill,
             isDodging: isDodging
-
         });
-        name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
+        if (taskType == "carac") {
+            name = game.i18n.localize(CONFIG.yggdrasill.carac[caracName]);
+        } else {
+            name = game.i18n.localize("yggdrasill.characteristics.secondary.dm");
+        }
     } else if (taskType == "furor") {
         html = await renderTemplate(templates[taskType], {
             actor: actor,
@@ -667,6 +750,15 @@ function _processTaskCheckOptions(html, taskType, item, isDodging) {
                     isDestinyRoll: form.isDestinyRoll.checked,
                     modifier: parseInt(form.ModificatorRollValue.value)
                 }
+            }
+            break;
+        case "seccarac":
+            return {
+                sr: parseInt(form.baseSR.value),
+                nbDiceFuror: parseInt(form.nbRollDiceFuror.value),
+                isDestinyRoll: form.isDestinyRoll.checked,
+                modifier: parseInt(form.ModificatorRollValue.value),
+                caracUsed: form.caracUsed.value
             }
             break;
         case "competence":
@@ -859,12 +951,13 @@ function resetingValues(data, type, id, nbDiceFuror) {
                 i += 1;
             });
         }
-
+        data.dmgMod = 0;
         console.log(data.nbDiceFuror);
         data.caracUsed.value = 0;
         data.caracUsed.rollModifier = 0;
         data.isDestinyRoll = false;
         data.caracUsed.isDefensive = false;
+        data.caracUsed.isDM = false;
         data.magicCpt.sejdrCpt.positiveness = "none";
         data.magicCpt.runeCpt.positiveness = "none";
 
